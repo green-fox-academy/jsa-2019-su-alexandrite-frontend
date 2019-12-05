@@ -18,8 +18,8 @@ const fetchStockDetailsSuccess = (data) => ({
 
 // eslint-disable-next-line import/prefer-default-export
 export const fetchStockDetails = (symbol) => (dispatch) => {
-  const url = new URL(`${API_URL}/stock/${symbol}/quote`);
-  url.searchParams.set('token', TOKEN);
+  const url = new URL(`${API_URL}/stock/${symbol}/advanced-stats`);
+  url.searchParams.append('token', TOKEN);
   dispatch(fetchStockDetailsStart());
   fetch(url)
     .then((res) => {

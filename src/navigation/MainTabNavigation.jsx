@@ -10,31 +10,56 @@ import account from '../account';
 import accountIcon from '../../assets/icons/bottom-tab/me.png';
 import watchlistsIcon from '../../assets/icons/bottom-tab/watchlists.png';
 import investmentsIconActive from '../../assets/icons/bottom-tab/investments-active.png';
+import stockDetails from '../stockDetails';
+
+const StackNavigatorOptions = {
+  navigationOptions: {
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#4d63be',
+    },
+    headerMode: 'float',
+  },
+};
 
 const InvestmentsStack = createStackNavigator({
   Investments: {
     screen: investments,
     path: 'investments/',
   },
-});
+  StockDetail: {
+    screen: stockDetails,
+  },
+}, StackNavigatorOptions);
 
 const WatchlistsStack = createStackNavigator({
   Watchlists: {
     screen: watchlists,
     path: 'watchlists/',
   },
-});
+  StockDetail: {
+    screen: stockDetails,
+    path: 'stockDetails/:symbol',
+  },
+}, StackNavigatorOptions);
 
 const AccountStack = createStackNavigator({
   Account: {
     screen: account,
     path: 'account/',
   },
-});
+  StockDetail: {
+    screen: stockDetails,
+  },
+}, StackNavigatorOptions);
 
 const renderIcon = (icon, tintColor) => (<Image source={icon} style={{ tintColor }} />);
 
 const tabs = {
+  Plate: {
+    screen: stockDetails,
+    navigationOptions: { symbol: 'MSFT' },
+  },
   Investments: {
     screen: InvestmentsStack,
     navigationOptions: {
