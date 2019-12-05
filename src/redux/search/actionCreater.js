@@ -1,5 +1,4 @@
 export const START_FETCH = 'start';
-export const FETCH_DATA = 'fetch';
 export const FETCH_SUCCESS = 'success';
 export const FETCH_FAILED = 'failed';
 
@@ -30,12 +29,12 @@ export function fetchData(input) {
   return (dispatch) => {
     fetch(`${URL}/search/${input}?token=T${KEY}`)
       .then((response) => {
-        if (response.status !== 200) {
+        alert(response);
+        if (!response.ok) {
           throw new Error(response.statusText);
         }
-        return response;
+        return response.json();
       })
-      .then((response) => response.json())
       .then((response) => dispatch(fetchSuccess(response)))
       .catch((err) => dispatch(fetchFailed(err)));
   };

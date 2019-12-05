@@ -20,6 +20,7 @@ export default (state = initState, action) => {
         result: action.payload,
       };
     case FETCH_FAILED:
+      alert(action.payload)
       return {
         ...state,
         isloading: false,
