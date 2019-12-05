@@ -4,6 +4,6 @@ import commonStyles from '../common/styles';
 
 export default () => (
   <View style={commonStyles.container}>
-    <Text>This is the watchlist</Text>
+    <Text>This is the account</Text>
   </View>
 );
