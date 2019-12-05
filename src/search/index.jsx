@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import SearchBar from './headerBar';
+import Result from './result';
 
 const navigationOptions = {
   header: () => <SearchBar />,
@@ -8,7 +9,7 @@ const navigationOptions = {
 
 const search = () => (
   <View>
-    <Text>Search Screen</Text>
+    <Result />
   </View>
 );
 
