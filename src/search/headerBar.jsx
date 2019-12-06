@@ -6,6 +6,7 @@ import {
   Text,
   TouchableHighlight,
 } from 'react-native';
+import { StackActions } from 'react-navigation';
 import { useDispatch } from 'react-redux';
 import { searchData } from '../redux/search/actionCreater';
 
@@ -48,7 +49,14 @@ export default function SearchBar() {
           onChangeText={(text) => onChangeText(text)}
           value={value}
         />
-        <TouchableHighlight style={{ marginLeft: 15, alignItems: 'center', justifyContent: 'center' }}>
+        <TouchableHighlight
+          style={{
+            marginLeft: 15,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          onPress={StackActions.pop({ n: 1 })}
+        >
           <Text style={{ color: '#fff', fontSize: 14, fontWeight: '500' }}>Cancel</Text>
         </TouchableHighlight>
       </View>

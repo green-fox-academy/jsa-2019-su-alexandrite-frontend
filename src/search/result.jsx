@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { View, Text, Image } from 'react-native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 import tradeIcon from '../../assets/icons/search-page/trade.png';
 import detailIcon from '../../assets/icons/search-page/detail.png';
@@ -36,8 +37,12 @@ export default () => {
             <Text style={{ fontSize: 10, color: '#999999' }}>{info.exchange}</Text>
           </View>
           <View style={{ flexDirection: 'row' }}>
-            <Image source={tradeIcon} />
-            <Image style={{ marginLeft: 26 }} source={detailIcon} />
+            <TouchableHighlight>
+              <Image source={tradeIcon} />
+            </TouchableHighlight>
+            <TouchableHighlight style={{ marginLeft: 26 }}>
+              <Image source={detailIcon} />
+            </TouchableHighlight>
           </View>
         </View>
       ))}
