@@ -40,6 +40,7 @@ const PlaygroundStack = createStackNavigator({
 const renderIcon = (icon, tintColor) => (<Image source={icon} style={{ tintColor }} />);
 
 const tabs = {
+  ...(process.env.NODE_ENV === 'development' && { Playground: PlaygroundStack }),
   Investments: {
     screen: InvestmentsStack,
     navigationOptions: {
@@ -59,12 +60,6 @@ const tabs = {
     },
   },
 };
-
-if (process.env.NODE_ENV === 'development') {
-  tabs.Playground = {
-    screen: PlaygroundStack,
-  };
-}
 
 const BottomTabNavigatorConfig = {
   tabBarOptions: {
