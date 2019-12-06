@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { View, Image, TouchableHighlight } from 'react-native';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import {
+  View,
+  Image,
+  Text,
+  TouchableHighlight,
+} from 'react-native';
+import PropTypes from 'prop-types';
 import WatchListItem from './WatchListItem';
 import chevron from '../../assets/icons/watchList/chevron.png';
-import { fetchWatchList } from '../redux/watchList/actionCreator';
 
-export default function watchlists() {
-  const dispatch = useDispatch();
-  const watchlist = useSelector((state) => state.watchlists.stocks);
+export default function watchlists({ name }) {
+  const stocks = useSelector((state) => state.watchlists.stocks);
   const [flag, setFlag] = useState(true);
-
 
   function handleClick() {
     setFlag(!flag);
-    console.log(flag);
   }
   return (
     <View>
       <View>
+        <Text>{name}</Text>
         <TouchableHighlight onPress={handleClick}>
           <Image
             source={chevron}
@@ -28,7 +31,7 @@ export default function watchlists() {
         </TouchableHighlight>
       </View>
       <View>
-        {flag ? watchlist.map((item) => (
+        {flag ? stocks.map((item) => (
           <WatchListItem
             key={item.id}
             stockName={item.stockName}
@@ -41,3 +44,7 @@ export default function watchlists() {
     </View>
   );
 }
+
+watchlists.propTypes = {
+  name: PropTypes.string.isRequired,
+};
