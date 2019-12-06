@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { View, Text, Image } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import styles from './styles';
 
 import tradeIcon from '../../assets/icons/search-page/trade.png';
 import detailIcon from '../../assets/icons/search-page/detail.png';
@@ -20,27 +21,16 @@ export default () => {
   return (
     <View>
       {searchResult.map((info) => (
-        <View
-          key={info.symbol}
-          style={{
-            paddingHorizontal: 17,
-            paddingVertical: 11,
-            borderBottomColor: '#eeeeee',
-            borderBottomWidth: 1,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
+        <View key={info.symbol} style={styles.resultList}>
           <View>
-            <Text style={{ fontSize: 12 }}>{info.symbol}</Text>
-            <Text style={{ fontSize: 10, color: '#999999' }}>{info.exchange}</Text>
+            <Text style={styles.stockName}>{info.symbol}</Text>
+            <Text style={styles.stockExchange}>{info.exchange}</Text>
           </View>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={styles.resultButton}>
             <TouchableHighlight>
               <Image source={tradeIcon} />
             </TouchableHighlight>
-            <TouchableHighlight style={{ marginLeft: 26 }}>
+            <TouchableHighlight style={styles.detailButton}>
               <Image source={detailIcon} />
             </TouchableHighlight>
           </View>

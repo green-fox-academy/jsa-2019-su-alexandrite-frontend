@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { StackActions } from 'react-navigation';
 import { useDispatch } from 'react-redux';
+import styles from './styles';
 import { searchData } from '../redux/search/actionCreater';
 
 export default function SearchBar() {
@@ -19,7 +20,7 @@ export default function SearchBar() {
     if (value.length >= 2) {
       timer = setTimeout(() => {
         dispatch(searchData(value));
-      }, 3000);
+      }, 300);
     }
     return () => {
       if (timer) clearTimeout(timer);
@@ -27,37 +28,19 @@ export default function SearchBar() {
   }, [value]);
 
   return (
-    <SafeAreaView style={{
-      backgroundColor: '#566ed3',
-    }}
-    >
-      <View style={{
-        padding: 15,
-        flexDirection: 'row',
-      }}
-      >
+    <SafeAreaView style={styles.headContainer}>
+      <View style={styles.searchContainer}>
         <TextInput
-          style={{
-            flex: 1,
-            backgroundColor: 'white',
-            paddingHorizontal: 11,
-            paddingVertical: 8,
-            fontSize: 12,
-            borderRadius: 50,
-          }}
+          style={styles.searchBar}
           clearButtonMode="while-editing"
           onChangeText={(text) => onChangeText(text)}
           value={value}
         />
         <TouchableHighlight
-          style={{
-            marginLeft: 15,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          onPress={StackActions.pop({ n: 1 })}
+          style={styles.cancelButton}
+          onPress={() => StackActions.pop({ n: 1 })}
         >
-          <Text style={{ color: '#fff', fontSize: 14, fontWeight: '500' }}>Cancel</Text>
+          <Text style={styles.cancerText}>Cancel</Text>
         </TouchableHighlight>
       </View>
 
