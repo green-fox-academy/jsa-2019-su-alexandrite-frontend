@@ -19,6 +19,7 @@ export default StyleSheet.create({
     margin: 15,
     backgroundColor: '#fff',
     borderRadius: 6,
+    elevation: 3,
   },
   cardTitle: {
     fontSize: 13,
