@@ -1,11 +1,25 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import commonStyles from '../common/styles';
+import { View } from 'react-native';
+import { useSelector } from 'react-redux';
 import WatchList from './WatchList';
+import Popup from './Popup';
 
-export default () => (
-  <View style={commonStyles.container}>
-    <Text>This is the watchlists screen</Text>
-    <WatchList/>
-  </View>
-);
+const navigationOptions = {
+  title: 'WATCHLISTS',
+};
+
+const watchlistsScreen = () => {
+  const watchLists = useSelector((state) => state.watchlists.watchlists);
+  return (
+    <View>
+      {watchLists.map((item) => (
+        <WatchList key={item.id} name={item.name} />
+      ))}
+      <Popup />
+    </View>
+  );
+};
+
+watchlistsScreen.navigationOptions = navigationOptions;
+
+export default watchlistsScreen;

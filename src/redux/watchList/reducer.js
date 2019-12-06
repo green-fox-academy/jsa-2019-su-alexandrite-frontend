@@ -1,6 +1,19 @@
 import { FETCH_WATCHLIST_SUCCESS } from './actionCreator';
 
+const watchlist1 = {
+  id: 1,
+  name: 'A share',
+  stocks: [],
+};
+
+const watchlist2 = {
+  id: 2,
+  name: 'NSDQ',
+  stocks: [],
+};
+
 const initalState = {
+  watchlists: [watchlist1, watchlist2],
   stocks: [
     {
       id: 1,
