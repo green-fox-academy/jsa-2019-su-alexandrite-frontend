@@ -11,6 +11,7 @@ import playground from '../playground';
 import accountIcon from '../../assets/icons/bottom-tab/me.png';
 import watchlistsIcon from '../../assets/icons/bottom-tab/watchlists.png';
 import investmentsIconActive from '../../assets/icons/bottom-tab/investments-active.png';
+import search from '../search';
 
 const InvestmentsStack = createStackNavigator({
   Investments: {
@@ -35,6 +36,7 @@ const AccountStack = createStackNavigator({
 
 const PlaygroundStack = createStackNavigator({
   Playground: playground,
+  Search: search,
 });
 
 const renderIcon = (icon, tintColor) => (<Image source={icon} style={{ tintColor }} />);

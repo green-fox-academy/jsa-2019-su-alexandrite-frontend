@@ -1,13 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-
+import { View, Text, Button } from 'react-native';
+import { useNavigation } from 'react-navigation-hooks';
 import commonStyles from '../common/styles';
 
-const playground = () => (
-  <View style={commonStyles.container}>
-    <Text>This is playground for development</Text>
-  </View>
-);
+const playground = () => {
+  const { push } = useNavigation();
+  return (
+    <View style={commonStyles.container}>
+      <Text>This is playground for development</Text>
+      <Button title="search" onPress={() => push('Search')} />
+    </View>
+  );
+};
 
 playground.navigationOptions = {
   title: 'Playground',
