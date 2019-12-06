@@ -12,13 +12,16 @@ const Card = ({ children, title }) => (
 
 
 Card.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node),
+  ]),
   title: PropTypes.string,
 };
 
 Card.defaultProps = {
-  children: undefined,
-  title: '',
+  children: [],
+  title: undefined,
 };
 
 export default Card;
