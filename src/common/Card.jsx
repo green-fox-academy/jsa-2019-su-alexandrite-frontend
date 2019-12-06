@@ -5,7 +5,7 @@ import styles from './styles';
 
 const Card = ({ children, title }) => (
   <View style={styles.card}>
-    <Text style={styles.cardTitle}>{title}</Text>
+    {title && <Text style={styles.cardTitle}>{title}</Text>}
     {children}
   </View>
 );
