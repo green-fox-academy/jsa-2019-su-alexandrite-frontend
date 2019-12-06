@@ -1,4 +1,4 @@
-import { START_FETCH, FETCH_SUCCESS, FETCH_FAILED } from './actionCreater';
+import { SEARCH_START, SEARCH_SUCCESS, SEARCH_FAILED } from './actionCreater';
 
 const initState = {
   isloading: false,
@@ -8,19 +8,18 @@ const initState = {
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case START_FETCH:
+    case SEARCH_START:
       return {
         ...state,
         isloading: true,
       };
-    case FETCH_SUCCESS:
+    case SEARCH_SUCCESS:
       return {
         ...state,
         isloading: false,
         result: action.payload,
       };
-    case FETCH_FAILED:
-      alert(action.payload)
+    case SEARCH_FAILED:
       return {
         ...state,
         isloading: false,

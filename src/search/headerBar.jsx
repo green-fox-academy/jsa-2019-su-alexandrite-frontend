@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, TextInput } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  TextInput,
+  Text,
+  TouchableHighlight,
+} from 'react-native';
 import { useDispatch } from 'react-redux';
-import { fetchData } from '../redux/search/actionCreater';
+import { searchData } from '../redux/search/actionCreater';
 
 export default function SearchBar() {
   const [value, onChangeText] = useState('');
   const dispatch = useDispatch();
+
   useEffect(() => {
     let timer;
     if (value.length >= 2) {
       timer = setTimeout(() => {
-        dispatch(fetchData(value));
-        alert('times up');
+        dispatch(searchData(value));
       }, 3000);
     }
     return () => {
@@ -19,24 +25,34 @@ export default function SearchBar() {
     };
   }, [value]);
 
-  function handleChange(text) {
-    onChangeText(text);
-    // clearTimeout(timer);
-    // if (value.length >= 2) {
-    //   timer = setTimeout(() => {
-    //     dispatch(fetchData(value));
-    //     alert('times up');
-    //   }, 2000);
-    // }
-  }
-
   return (
-    <SafeAreaView>
-      <TextInput
-        style={{ height: 40, backgroundColor: '#566ed3' }}
-        onChangeText={(text) => handleChange(text)}
-        value={value}
-      />
+    <SafeAreaView style={{
+      backgroundColor: '#566ed3',
+    }}
+    >
+      <View style={{
+        padding: 15,
+        flexDirection: 'row',
+      }}
+      >
+        <TextInput
+          style={{
+            flex: 1,
+            backgroundColor: 'white',
+            paddingHorizontal: 11,
+            paddingVertical: 8,
+            fontSize: 12,
+            borderRadius: 50,
+          }}
+          clearButtonMode="while-editing"
+          onChangeText={(text) => onChangeText(text)}
+          value={value}
+        />
+        <TouchableHighlight style={{ marginLeft: 15, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ color: '#fff', fontSize: 14, fontWeight: '500' }}>Cancel</Text>
+        </TouchableHighlight>
+      </View>
+
     </SafeAreaView>
   );
 }

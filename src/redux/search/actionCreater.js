@@ -1,41 +1,41 @@
-export const START_FETCH = 'start';
-export const FETCH_SUCCESS = 'success';
-export const FETCH_FAILED = 'failed';
+import { API_KEY, API_URL } from 'react-native-dotenv';
 
-const URL = process.env.API_URL;
-const KEY = process.env.API_KEY;
+export const SEARCH_START = 'search_start';
+export const SEARCH_SUCCESS = 'search_success';
+export const SEARCH_FAILED = 'search_failed';
 
-export function startFetch() {
+export function searchStart() {
   return {
-    type: START_FETCH,
+    type: SEARCH_START,
   };
 }
 
-export function fetchSuccess(result) {
+export function searchSuccess(result) {
   return {
-    type: FETCH_SUCCESS,
+    type: SEARCH_SUCCESS,
     payload: result,
   };
 }
 
-export function fetchFailed(error) {
+export function searchFailed(error) {
   return {
-    type: FETCH_FAILED,
+    type: SEARCH_FAILED,
     payload: error,
   };
 }
 
-export function fetchData(input) {
+export function searchData(input) {
   return (dispatch) => {
-    fetch(`${URL}/search/${input}?token=T${KEY}`)
+    const url = new URL(`${API_URL}/search/${input}`);
+    url.searchParams.append('token', API_KEY);
+    fetch(url)
       .then((response) => {
-        alert(response);
         if (!response.ok) {
           throw new Error(response.statusText);
         }
         return response.json();
       })
-      .then((response) => dispatch(fetchSuccess(response)))
-      .catch((err) => dispatch(fetchFailed(err)));
+      .then((response) => dispatch(searchSuccess(response)))
+      .catch((err) => dispatch(searchFailed(err)));
   };
 }
