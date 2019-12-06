@@ -6,6 +6,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import watchlists from '../watchlists';
 import investments from '../investments';
 import account from '../account';
+import playground from '../playground';
 
 import accountIcon from '../../assets/icons/bottom-tab/me.png';
 import watchlistsIcon from '../../assets/icons/bottom-tab/watchlists.png';
@@ -32,9 +33,14 @@ const AccountStack = createStackNavigator({
   },
 });
 
+const PlaygroundStack = createStackNavigator({
+  Playground: playground,
+});
+
 const renderIcon = (icon, tintColor) => (<Image source={icon} style={{ tintColor }} />);
 
 const tabs = {
+  ...(process.env.NODE_ENV === 'development' && { Playground: PlaygroundStack }),
   Investments: {
     screen: InvestmentsStack,
     navigationOptions: {
