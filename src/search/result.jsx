@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ActivityIndicator } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import styles from './styles';
 
@@ -13,7 +13,7 @@ export default () => {
   const error = useSelector((state) => state.search.error);
 
   if (isLoading) {
-    return <Text>Loading</Text>;
+    return <ActivityIndicator size="large" />;
   }
   if (error) {
     return <Text>{error.message}</Text>;
