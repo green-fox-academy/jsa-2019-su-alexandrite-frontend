@@ -1,26 +1,26 @@
 import { FETCH_STOCK_DETAILS_START, FETCH_STOCK_DETAILS_SUCCESS, FETCH_STOCK_DETAILS_FAIL } from './actionType';
 
 const initState = {
-  loading: true,
-  details: {},
-  error: '',
+  loading: false,
+  details: undefined,
+  error: undefined,
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
     case FETCH_STOCK_DETAILS_START:
       return {
-        ...state,
+        ...initState,
         loading: true,
       };
     case FETCH_STOCK_DETAILS_SUCCESS:
       return {
-        ...state,
+        ...initState,
         details: action.payload,
       };
     case FETCH_STOCK_DETAILS_FAIL:
       return {
-        ...state,
+        ...initState,
         error: action.payload,
       };
     default:

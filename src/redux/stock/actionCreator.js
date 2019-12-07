@@ -23,7 +23,16 @@ export const fetchStockDetails = (symbol) => (dispatch) => {
   dispatch(fetchStockDetailsStart());
   fetch(url)
     .then((res) => {
-      if (!res.ok) throw new Error(res.statusText);
+      if (!res.ok) {
+        switch (res.status) {
+          case 404:
+            throw new Error(`The stock ${symbol} you are looking for does not exist.`);
+          case 403:
+            throw new Error('Permission denied.');
+          default:
+            throw new Error(res.status);
+        }
+      }
       return res.json();
     })
     .then((res) => dispatch(fetchStockDetailsSuccess(res)))

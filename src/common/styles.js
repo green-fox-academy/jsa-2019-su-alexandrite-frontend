@@ -1,11 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+export const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f4f6f8',
     alignItems: 'center',
-    justifyContent: 'center',
   },
   card: {
     shadowColor: '#000',
@@ -26,5 +27,24 @@ export default StyleSheet.create({
     fontWeight: '600',
     color: '#333',
     marginBottom: 15,
+  },
+  row: {
+    flexDirection: 'row',
+    flex: 1,
+  },
+  column: {
+    flexDirection: 'column',
+    flex: 1,
+  },
+  errorMessageContainer: {
+    borderRadius: 6,
+    paddingHorizontal: 8,
+    paddingVertical: 15,
+    backgroundColor: '#fff6f6',
+    width: width - 60,
+  },
+  errorMessageText: {
+    color: '#9f3a38',
+    fontWeight: 'bold',
   },
 });
