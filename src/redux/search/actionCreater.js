@@ -28,6 +28,7 @@ export function searchData(input) {
   return (dispatch) => {
     const url = new URL(`${API_URL}/search/${input}`);
     url.searchParams.append('token', API_KEY);
+    dispatch(searchStart());
     fetch(url)
       .then((response) => {
         if (!response.ok) {
