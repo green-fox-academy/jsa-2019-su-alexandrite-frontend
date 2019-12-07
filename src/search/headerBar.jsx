@@ -43,7 +43,6 @@ export default function SearchBar() {
           <Text style={styles.cancelText}>Cancel</Text>
         </TouchableHighlight>
       </View>
-
     </SafeAreaView>
   );
 }
