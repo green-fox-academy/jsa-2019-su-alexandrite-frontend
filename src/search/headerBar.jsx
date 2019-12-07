@@ -40,7 +40,7 @@ export default function SearchBar() {
           style={styles.cancelButton}
           onPress={() => StackActions.pop({ n: 1 })}
         >
-          <Text style={styles.cancerText}>Cancel</Text>
+          <Text style={styles.cancelText}>Cancel</Text>
         </TouchableHighlight>
       </View>
 
