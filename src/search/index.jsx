@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import SearchBar from './headerBar';
 import Result from './result';
 
@@ -8,9 +7,7 @@ const navigationOptions = {
 };
 
 const search = () => (
-  <View>
-    <Result />
-  </View>
+  <Result />
 );
 
 search.navigationOptions = navigationOptions;
