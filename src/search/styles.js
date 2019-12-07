@@ -21,7 +21,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  cancerText: {
+  cancelText: {
     color: '#fff',
     fontSize: 14,
     fontWeight: '500',
