@@ -9,6 +9,8 @@ import {
 import PropTypes from 'prop-types';
 import WatchListItem from './WatchListItem';
 import chevron from '../../assets/icons/watchList/chevron.png';
+import Card from '../common/Card';
+import styles from './styles';
 
 export default function watchlists({ name }) {
   const stocks = useSelector((state) => state.watchlists.stocks);
@@ -18,8 +20,8 @@ export default function watchlists({ name }) {
     setFlag(!flag);
   }
   return (
-    <View>
-      <View>
+    <Card>
+      <View style={styles.watchListTitle}>
         <Text>{name}</Text>
         <TouchableHighlight onPress={handleClick}>
           <Image
@@ -41,7 +43,7 @@ export default function watchlists({ name }) {
           />
         )) : null}
       </View>
-    </View>
+    </Card>
   );
 }
 
