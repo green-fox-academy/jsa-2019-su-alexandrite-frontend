@@ -1,55 +1,54 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   View,
   Text,
   Modal,
   TouchableHighlight,
-  Alert,
-  Image,
   TextInput,
 } from 'react-native';
-import add from '../../assets/icons/watchList/add.png';
+import PropTypes from 'prop-types';
+import { postWatchList } from '../redux/watchList/actionCreator';
+import styles from '../common/styles';
 
-export default function Pupup() {
-  const watchLists = useSelector((state) => state.watchlists.watchlists);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [watchListItem, setWatchListItem] = useState('');
+export default function Popup({ visible, toggle }) {
+  const [watchListTitle, setWatchListTitle] = useState('');
+  const dispatch = useDispatch();
 
   return (
-    <View style={{ marginTop: 100 }}>
-      <Modal
-        animationType="slide"
-        transparent={false}
-        visible={modalVisible}
-        presentationStyle="pagesheet"
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-        }}
-      >
-        <View style={{ marginTop: 22 }}>
-          <View>
-            <TextInput onChangeText={(text) => setWatchListItem(text)} />
-            <TouchableHighlight
-              onPress={() => {
-                setModalVisible(!modalVisible);
-                watchLists.push({ name: watchListItem });
-                setWatchListItem('');
-              }}
-            >
-              <Text>Add</Text>
-            </TouchableHighlight>
-          </View>
+    <Modal
+      style={styles.watchListInput}
+      animationType="slide"
+      transparent={false}
+      visible={visible}
+      presentationStyle="pagesheet"
+      onRequestClose={() => {
+        toggle(false);
+      }}
+    >
+      <View style={{ marginTop: 22 }}>
+        <View>
+          <TextInput onChangeText={(text) => setWatchListTitle(text)} />
+          <TouchableHighlight
+            onPress={() => {
+              toggle(!visible);
+              // setWatchListItem('');
+              if (watchListTitle === '') {
+                alert('Please Enter WatchList');
+                toggle(true);
+              } else {
+                dispatch(postWatchList(watchListTitle));
+              }
+            }}
+          >
+            <Text>Add</Text>
+          </TouchableHighlight>
         </View>
-      </Modal>
-
-      <TouchableHighlight
-        onPress={() => {
-          setModalVisible(true);
-        }}
-      >
-        <Image source={add} />
-      </TouchableHighlight>
-    </View>
+      </View>
+    </Modal>
   );
 }
+Popup.prototype = {
+  visible: PropTypes.bool.isRequired,
+  toggle: PropTypes.func,
+};
