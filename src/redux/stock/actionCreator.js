@@ -6,14 +6,14 @@ const fetchStockDetailsStart = () => ({
   type: FETCH_STOCK_DETAILS_START,
 });
 
-const fetchStockDetailsFail = (err) => ({
+const fetchStockDetailsFail = (payload) => ({
   type: FETCH_STOCK_DETAILS_FAIL,
-  payload: err,
+  payload,
 });
 
-const fetchStockDetailsSuccess = (data) => ({
+const fetchStockDetailsSuccess = (payload) => ({
   type: FETCH_STOCK_DETAILS_SUCCESS,
-  payload: data,
+  payload,
 });
 
 const fetchStockDetails = (symbol) => (dispatch) => {
