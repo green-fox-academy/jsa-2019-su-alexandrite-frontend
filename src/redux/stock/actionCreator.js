@@ -16,8 +16,7 @@ const fetchStockDetailsSuccess = (data) => ({
   payload: data,
 });
 
-// eslint-disable-next-line import/prefer-default-export
-export const fetchStockDetails = (symbol) => (dispatch) => {
+const fetchStockDetails = (symbol) => (dispatch) => {
   const url = new URL(`${API_URL}/stock/${symbol}/advanced-stats`);
   url.searchParams.append('token', API_KEY);
   dispatch(fetchStockDetailsStart());
@@ -37,4 +36,8 @@ export const fetchStockDetails = (symbol) => (dispatch) => {
     })
     .then((res) => dispatch(fetchStockDetailsSuccess(res)))
     .catch((err) => dispatch(fetchStockDetailsFail(err)));
+};
+
+export default {
+  fetchStockDetails,
 };
