@@ -6,14 +6,15 @@ import {
   Text,
   TouchableHighlight,
 } from 'react-native';
-import { StackActions } from 'react-navigation';
 import { useDispatch } from 'react-redux';
+import { useNavigation } from 'react-navigation-hooks';
 import styles from './styles';
 import { searchData } from '../redux/search/actionCreater';
 
 export default function SearchBar() {
   const [value, onChangeText] = useState('');
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   useEffect(() => {
     let timer;
@@ -38,7 +39,7 @@ export default function SearchBar() {
         />
         <TouchableHighlight
           style={styles.cancelButton}
-          onPress={() => StackActions.pop({ n: 1 })}
+          onPress={() => navigation.pop()}
         >
           <Text style={styles.cancelText}>Cancel</Text>
         </TouchableHighlight>
