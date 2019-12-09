@@ -34,9 +34,9 @@ export function searchData(input) {
         if (!response.ok) {
           switch (response.status) {
             case 404:
-              throw new Error(`${response.status}: Resource not found.`);
+              throw new Error('Resource not found or unknown symbols were provided.');
             case 400:
-              throw new Error(`${response.status}: Invalid values were supplied for the API request.`);
+              throw new Error(`Invalid values were supplied when search for ${input}.`);
             default:
               throw new Error('Oops, there\'s something wrong with our app.');
           }
