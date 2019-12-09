@@ -1,9 +1,20 @@
-import { FETCH_STOCK_DETAILS_START, FETCH_STOCK_DETAILS_SUCCESS, FETCH_STOCK_DETAILS_FAIL } from './actionType';
+import {
+  FETCH_STOCK_DETAILS_START,
+  FETCH_STOCK_DETAILS_SUCCESS,
+  FETCH_STOCK_DETAILS_FAIL,
+  FETCH_HISTORY_CHART_DATA_START,
+  FETCH_HISTORY_CHART_DATA_SUCCESS,
+  FETCH_HISTORY_CHART_DATA_FAIL,
+} from './actionType';
 
 const initState = {
-  loading: false,
-  details: undefined,
-  error: undefined,
+  loadingStockStatsData: false,
+  stockStatsData: undefined,
+  stockStatsDataError: undefined,
+  loadingHistoricalChartData: false,
+  historicalData: [],
+  timeRange: '6m',
+  historicalDataError: undefined,
 };
 
 export default (state = initState, action) => {
@@ -11,17 +22,38 @@ export default (state = initState, action) => {
     case FETCH_STOCK_DETAILS_START:
       return {
         ...initState,
-        loading: true,
+        loadingStockStatsData: true,
       };
     case FETCH_STOCK_DETAILS_SUCCESS:
       return {
         ...initState,
-        details: action.payload,
+        stockStatsData: action.payload,
       };
     case FETCH_STOCK_DETAILS_FAIL:
       return {
         ...initState,
-        error: action.payload,
+        stockStatsDataError: action.payload,
+      };
+    case FETCH_HISTORY_CHART_DATA_START:
+      return {
+        ...state,
+        loadingHistoricalChartData: true,
+        historicalData: [],
+        historicalDataError: undefined,
+      };
+    case FETCH_HISTORY_CHART_DATA_SUCCESS:
+      return {
+        ...state,
+        loadingHistoricalChartData: false,
+        historicalDataError: undefined,
+        historicalData: action.payload,
+      };
+    case FETCH_HISTORY_CHART_DATA_FAIL:
+      return {
+        ...state,
+        loadingHistoricalChartData: false,
+        historicalDataError: action.payload,
+        historicalData: [],
       };
     default:
       return state;
