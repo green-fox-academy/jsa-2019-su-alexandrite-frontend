@@ -32,7 +32,14 @@ export function searchData(input) {
     fetch(url)
       .then((response) => {
         if (!response.ok) {
-          throw new Error(response.statusText);
+          switch (response.status) {
+            case 404:
+              throw new Error(`${response.status}: Resource not found.`);
+            case 400:
+              throw new Error(`${response.status}: Invalid values were supplied for the API request.`);
+            default:
+              throw new Error('Oops, there\'s something wrong with our app.');
+          }
         }
         return response.json();
       })
