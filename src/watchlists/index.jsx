@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { ScrollView, TouchableHighlight, Image } from 'react-native';
+import {
+  ScrollView,
+  TouchableHighlight,
+  Image,
+  View,
+} from 'react-native';
 import { useSelector } from 'react-redux';
 import WatchList from './WatchList';
 import Popup from './Popup';
@@ -14,10 +19,12 @@ const watchlistsScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const watchLists = useSelector((state) => state.watchlists.watchlists);
   return (
-    <ScrollView style={styles.box}>
-      {watchLists.map((item) => (
-        <WatchList key={item.id} name={item.name} />
-      ))}
+    <View style={styles.container}>
+      <ScrollView>
+        {watchLists.map((item) => (
+          <WatchList key={item.id} name={item.name} />
+        ))}
+      </ScrollView>
       <Popup visible={modalVisible} toggle={setModalVisible} />
       <TouchableHighlight
         style={styles.addIcon}
@@ -27,7 +34,7 @@ const watchlistsScreen = () => {
       >
         <Image source={addIcon} />
       </TouchableHighlight>
-    </ScrollView>
+    </View>
   );
 };
 

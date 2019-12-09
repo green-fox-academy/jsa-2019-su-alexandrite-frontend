@@ -4,8 +4,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   watchListTitle: {
     flex: 1,
@@ -35,6 +33,7 @@ export default StyleSheet.create({
   addIcon: {
     right: 0,
     bottom: 0,
+    position: 'absolute',
   },
   watchListInput: {
     flex: 1,
