@@ -26,10 +26,8 @@ const fetchStockDetails = (symbol) => (dispatch) => {
         switch (res.status) {
           case 404:
             throw new Error(`The stock ${symbol} you are looking for does not exist.`);
-          case 403:
-            throw new Error('Permission denied.');
           default:
-            throw new Error(res.status);
+            throw new Error('Oops, there\'s something wrong with our app.');
         }
       }
       return res.json();
