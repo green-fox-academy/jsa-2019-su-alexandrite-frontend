@@ -43,6 +43,46 @@ const fetchStockDetails = (symbol) => (dispatch) => {
     .catch((err) => dispatch(fetchStockDetailsFail(err)));
 };
 
+const fetchHistoryChartDataStart = () => ({
+  type: FETCH_HISTORY_CHART_DATA_START,
+});
+
+const fetchHistoryChartDataFail = (payload) => ({
+  type: FETCH_HISTORY_CHART_DATA_FAIL,
+  payload,
+});
+
+const fetchHistoryChartDataSuccess = (payload) => ({
+  type: FETCH_HISTORY_CHART_DATA_SUCCESS,
+  payload,
+});
+
+const fetchHistoryChartData = (symbol, range) => (dispatch) => {
+  const url = new URL(`${API_URL}/stock/${symbol}/chart/${range}`);
+  url.searchParams.append('token', API_KEY);
+  dispatch(fetchHistoryChartDataStart());
+  fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        switch (res.status) {
+          case 404:
+            throw new Error(`The stock ${symbol} you are looking for does not exist.`);
+          default:
+            throw new Error('Oops, there\'s something wrong with our app.');
+        }
+      }
+      return res.json();
+    })
+    .then((res) => dispatch(
+      fetchHistoryChartDataSuccess(
+        res.map((dailyData) => dailyData.close),
+      ),
+    ))
+    .catch((err) => dispatch(fetchHistoryChartDataFail(err)));
+};
+
+
 export default {
   fetchStockDetails,
+  fetchHistoryChartData,
 };
