@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchStockDetails } from '../redux/stock/actionCreator';
+import stockActions from '../redux/stock/actionCreator';
 import style from './style';
 import Card from '../common/Card';
 import Column from '../common/Column';
@@ -25,7 +25,7 @@ const Stats = ({ symbol }) => {
   const { details, loading, error } = useSelector((state) => state.stock);
 
   useEffect(() => {
-    dispatch(fetchStockDetails(symbol));
+    dispatch(stockActions.fetchStockDetails(symbol));
   }, []);
 
   return (
