@@ -3,40 +3,40 @@ import { Image } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
-import watchlists from '../watchlists';
-import investments from '../investments';
-import account from '../account';
-import playground from '../playground';
+import Watchlists from '../watchlists';
+import Investments from '../investments';
+import Account from '../account';
+import Playground from '../playground';
 
 import accountIcon from '../../assets/icons/bottom-tab/me.png';
 import watchlistsIcon from '../../assets/icons/bottom-tab/watchlists.png';
 import investmentsIconActive from '../../assets/icons/bottom-tab/investments-active.png';
-import stockDetails from '../stock-details';
+import StockDetails from '../stock-details';
 
 const InvestmentsStack = createStackNavigator({
   Investments: {
-    screen: investments,
+    screen: Investments,
     path: 'investments/',
   },
 });
 
 const WatchlistsStack = createStackNavigator({
   Watchlists: {
-    screen: watchlists,
+    screen: Watchlists,
     path: 'watchlists/',
   },
 });
 
 const AccountStack = createStackNavigator({
   Account: {
-    screen: account,
+    screen: Account,
     path: 'account/',
   },
 });
 
 const PlaygroundStack = createStackNavigator({
-  Playground: playground,
-  StockDetails: stockDetails,
+  Playground,
+  StockDetails,
 });
 
 const renderIcon = (icon, tintColor) => (<Image source={icon} style={{ tintColor }} />);
