@@ -27,9 +27,6 @@ export default StyleSheet.create({
     fontSize: 12,
     color: '#666',
   },
-  box: {
-    position: 'relative',
-  },
   addIcon: {
     right: 0,
     bottom: 0,
