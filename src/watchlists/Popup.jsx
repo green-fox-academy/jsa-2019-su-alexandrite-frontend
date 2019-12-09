@@ -50,5 +50,5 @@ export default function Popup({ visible, toggle }) {
 }
 Popup.prototype = {
   visible: PropTypes.bool.isRequired,
-  toggle: PropTypes.func,
+  toggle: PropTypes.func.isRequired,
 };
