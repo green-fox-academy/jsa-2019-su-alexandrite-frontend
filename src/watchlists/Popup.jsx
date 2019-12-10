@@ -5,7 +5,6 @@ import {
   Text,
   View,
   Modal,
-  Button,
   TextInput,
   SafeAreaView,
   TouchableHighlight,
