@@ -21,7 +21,7 @@ export default function watchlist({ item }) {
     <Card>
       <View style={styles.watchListTitle}>
         <Text style={styles.watchListCardTitle}>{item.name}</Text>
-        <TouchableHighlight onPress={handleClick}>
+        <TouchableHighlight onPress={handleClick} style={styles.expandButton} underlayColor="#0000" activeOpacity={0.5}>
           <Image
             source={chevron}
             style={{

@@ -11,6 +11,11 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  expandButton: {
+    padding: 15,
+    marginVertical: -15,
+    marginRight: -15,
+  },
   watchListItem: {
     flex: 1,
     justifyContent: 'space-between',
