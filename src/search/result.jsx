@@ -37,13 +37,21 @@ ResultItem.propTypes = {
 };
 
 export default () => {
-  const { isLoading, result, error } = useSelector((state) => state.search);
+  const {
+    isLoading,
+    result,
+    error,
+    touched,
+  } = useSelector((state) => state.search);
 
   if (isLoading) {
     return <ActivityIndicator size="large" />;
   }
   if (error) {
     return <Text>{error.message}</Text>;
+  }
+  if (touched && result.length === 0) {
+    return <Text style={styles.noResult}>No Result</Text>;
   }
   return (
     <FlatList

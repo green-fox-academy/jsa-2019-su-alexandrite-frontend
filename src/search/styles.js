@@ -1,7 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
+import Constants from 'expo-constants';
 
 export default StyleSheet.create({
   headContainer: {
+    ...(Platform.OS === 'android' && { paddingTop: Constants.statusBarHeight }),
     backgroundColor: '#566ed3',
   },
   searchContainer: {
@@ -47,5 +49,9 @@ export default StyleSheet.create({
   },
   detailButton: {
     marginLeft: 26,
+  },
+  noResult: {
+    marginTop: 20,
+    textAlign: 'center',
   },
 });

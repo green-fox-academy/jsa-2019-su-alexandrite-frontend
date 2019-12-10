@@ -4,6 +4,7 @@ const initState = {
   isloading: false,
   result: [],
   error: '',
+  touched: false,
 };
 
 export default (state = initState, action) => {
@@ -13,6 +14,7 @@ export default (state = initState, action) => {
         ...state,
         isloading: true,
         error: '',
+        touched: true,
       };
     case SEARCH_SUCCESS:
       return {
