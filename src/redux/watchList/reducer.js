@@ -51,7 +51,6 @@ export default function reducer(state = initalState, action) {
     case FETCH_WATCHLIST_SUCCESS:
       return state;
     case POST_WATCHLIST_SUCCESS:
-
       return {
         ...state,
         counter: state.counter + 1,
