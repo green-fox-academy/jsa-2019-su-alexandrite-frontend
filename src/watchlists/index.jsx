@@ -11,9 +11,11 @@ import Popup from './Popup';
 import addIcon from '../../assets/icons/watchList/add.png';
 import styles from './styles';
 import commonStyle from '../common/styles';
+import SearchButton from '../common/HeaderSearchButton';
 
 const navigationOptions = {
   title: 'Watchlists',
+  headerRight: () => <SearchButton />,
 };
 
 const watchlistsScreen = () => {

@@ -49,4 +49,8 @@ export default StyleSheet.create({
     color: '#9f3a38',
     fontWeight: 'bold',
   },
+  headerIcon: {
+    padding: 15,
+    paddingVertical: 10,
+  },
 });
