@@ -10,6 +10,7 @@ const playground = () => {
     <View style={commonStyles.container}>
       <Text>This is playground for development</Text>
       <Button title="MSFT" onPress={() => push('StockDetails', { symbol: 'MSFT' })} />
+      <Button title="search" onPress={() => push('Search')} />
     </View>
   );
 };
