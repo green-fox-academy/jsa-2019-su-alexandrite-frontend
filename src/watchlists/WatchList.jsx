@@ -22,7 +22,7 @@ export default function watchlists({ name }) {
   return (
     <Card>
       <View style={styles.watchListTitle}>
-        <Text>{name}</Text>
+        <Text style={styles.watchListCardTitle}>{name}</Text>
         <TouchableHighlight onPress={handleClick}>
           <Image
             source={chevron}
@@ -32,17 +32,17 @@ export default function watchlists({ name }) {
           />
         </TouchableHighlight>
       </View>
-      <View>
-        {flag ? stocks.map((item) => (
-          <WatchListItem
-            key={item.id}
-            stockName={item.stockName}
-            curPrice={item.curPrice}
-            fluctuation={item.fluctuation}
-            dealAmount={item.dealAmount}
-          />
-        )) : null}
-      </View>
+      {/* <View style> */}
+      {flag ? stocks.map((item) => (
+        <WatchListItem
+          key={item.id}
+          stockName={item.stockName}
+          curPrice={item.curPrice}
+          fluctuation={item.fluctuation}
+          dealAmount={item.dealAmount}
+        />
+      )) : null}
+      {/* </View> */}
     </Card>
   );
 }

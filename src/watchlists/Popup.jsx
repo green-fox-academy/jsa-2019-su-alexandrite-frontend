@@ -39,16 +39,8 @@ export default function Popup({ visible, toggle }) {
           <View style={styles.modalBody}>
             <TextInput style={styles.modalTextField} placeholder="Watchlist Name" onChangeText={(text) => setWatchListTitle(text)} />
             <View style={styles.modalButtonGroup}>
-              <Button
-                style={styles.modalButton}
-                title="Cancel"
-                onPress={() => {
-                  toggle(false);
-                }}
-              />
-              <Button
-                title="Add"
-                style={styles.modalButton}
+              <TouchableHighlight
+                style={[styles.modalButton, { backgroundColor: '#5eceb1' }]}
                 disabled={watchListTitle === ''}
                 onPress={() => {
                   toggle(!visible);
@@ -59,7 +51,15 @@ export default function Popup({ visible, toggle }) {
                     dispatch(postWatchList(watchListTitle));
                   }
                 }}
-              />
+              >
+                <Text style={{ fontSize: 14, color: '#ffffff' }}>Add</Text>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.modalButton}
+                onPress={() => { toggle(false); }}
+              >
+                <Text style={{ color: '#666666' }}>Cancel</Text>
+              </TouchableHighlight>
             </View>
           </View>
         </View>

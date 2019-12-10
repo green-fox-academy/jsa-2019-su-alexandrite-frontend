@@ -9,6 +9,7 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   watchListItem: {
     flex: 1,
@@ -20,12 +21,18 @@ export default StyleSheet.create({
   },
   watchListItemColumn: {
     flex: 1,
-    flexDirection: 'row',
+    // flexDirection: 'row',
     justifyContent: 'space-between',
   },
   watchListItemColumnText: {
     fontSize: 12,
     color: '#666',
+  },
+  watchListCardTitle: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '600',
+    color: '#333',
   },
   addIcon: {
     right: 0,
@@ -79,11 +86,13 @@ export default StyleSheet.create({
     borderBottomColor: '#eee',
   },
   modalButton: {
-    flex: 1,
+    height: 40,
+    width: 255,
     alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 2,
   },
   modalButtonGroup: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: 'column',
   },
 });

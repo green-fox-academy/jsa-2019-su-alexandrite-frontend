@@ -34,7 +34,7 @@ export default function watchListItem({
           {dealAmount}
         </Text>
       </View>
-      <View style={styles.watchListItemColumn}>
+      <View style={[styles.watchListItemColumn, { flexDirection: 'row' }]}>
         <Image source={tradeIcon} />
         <Image source={detailIcon} />
       </View>

@@ -10,6 +10,7 @@ import WatchList from './WatchList';
 import Popup from './Popup';
 import addIcon from '../../assets/icons/watchList/add.png';
 import styles from './styles';
+import commonStyle from '../common/styles';
 
 const navigationOptions = {
   title: 'WATCHLISTS',
@@ -18,9 +19,10 @@ const navigationOptions = {
 const watchlistsScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const watchLists = useSelector((state) => state.watchlists.watchlists);
+  const { padding } = commonStyle.container;
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ padding }}>
         {watchLists.map((item) => (
           <WatchList key={item.id} name={item.name} />
         ))}
