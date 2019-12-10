@@ -17,6 +17,15 @@ export default function Popup({ visible, toggle }) {
   const [watchListTitle, setWatchListTitle] = useState('');
   const dispatch = useDispatch();
 
+  function handleClick() {
+    toggle(!visible);
+    if (watchListTitle === '') {
+      toggle(true);
+    } else {
+      dispatch(postWatchList(watchListTitle));
+    }
+  }
+
   return (
     <Modal
       animationType="fade"
@@ -41,15 +50,7 @@ export default function Popup({ visible, toggle }) {
               <TouchableHighlight
                 style={[styles.modalButton, { backgroundColor: '#5eceb1' }]}
                 disabled={watchListTitle === ''}
-                onPress={() => {
-                  toggle(!visible);
-                  // setWatchListItem('');
-                  if (watchListTitle === '') {
-                    toggle(true);
-                  } else {
-                    dispatch(postWatchList(watchListTitle));
-                  }
-                }}
+                onPress={handleClick}
               >
                 <Text style={{ fontSize: 14, color: '#ffffff' }}>Add</Text>
               </TouchableHighlight>

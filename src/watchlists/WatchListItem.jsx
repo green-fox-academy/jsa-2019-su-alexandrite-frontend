@@ -7,31 +7,37 @@ import detailIcon from '../../assets/icons/watchList/detail.png';
 
 
 export default function watchListItem({
-  stockName,
-  curPrice,
-  fluctuation,
-  dealAmount,
+  ticker,
+  currPrice,
+  dailyChange,
+  volumn,
 }) {
   return (
     <View style={styles.watchListItem}>
       <View style={styles.watchListItemColumn}>
         <Text style={[styles.watchListItemColumnText, { fontWeight: 'bold', color: '#566ed3' }]}>
-          {stockName}
+          {ticker}
         </Text>
       </View>
       <View style={styles.watchListItemColumn}>
         <Text style={styles.watchListItemColumnText}>
-          {curPrice}
+          {currPrice}
         </Text>
       </View>
       <View style={styles.watchListItemColumn}>
-        <Text style={[styles.watchListItemColumnText, { color: fluctuation > 0 ? '#21af78' : '#d82f2f' }]}>
-          {`${fluctuation > 0 ? '+' : ''}${fluctuation}%`}
-        </Text>
+        {dailyChange > 0 ? (
+          <Text style={[styles.watchListItemColumnText, { color: '#21af78' }]}>
+            {`+${dailyChange}%`}
+          </Text>
+        ) : (
+          <Text style={[styles.watchListItemColumnText, { color: '#d82f2f' }]}>
+            {`${dailyChange}%`}
+          </Text>
+        )}
       </View>
       <View style={styles.watchListItemColumn}>
         <Text style={styles.watchListItemColumnText}>
-          {dealAmount}
+          {volumn}
         </Text>
       </View>
       <View style={[styles.watchListItemColumn, { flexDirection: 'row' }]}>
@@ -43,8 +49,8 @@ export default function watchListItem({
 }
 
 watchListItem.propTypes = {
-  stockName: PropTypes.string.isRequired,
-  curPrice: PropTypes.number.isRequired,
-  fluctuation: PropTypes.number.isRequired,
-  dealAmount: PropTypes.string.isRequired,
+  ticker: PropTypes.string.isRequired,
+  currPrice: PropTypes.number.isRequired,
+  dailyChange: PropTypes.number.isRequired,
+  volumn: PropTypes.string.isRequired,
 };

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import {
   View,
   Image,
@@ -12,41 +11,46 @@ import chevron from '../../assets/icons/watchList/chevron.png';
 import Card from '../common/Card';
 import styles from './styles';
 
-export default function watchlists({ name }) {
-  const stocks = useSelector((state) => state.watchlists.stocks);
-  const [flag, setFlag] = useState(true);
+export default function watchlist({ item }) {
+  const [isOpen, setIsOpen] = useState(true);
 
   function handleClick() {
-    setFlag(!flag);
+    setIsOpen(!isOpen);
   }
   return (
     <Card>
       <View style={styles.watchListTitle}>
-        <Text style={styles.watchListCardTitle}>{name}</Text>
+        <Text style={styles.watchListCardTitle}>{item.name}</Text>
         <TouchableHighlight onPress={handleClick}>
           <Image
             source={chevron}
             style={{
-              transform: [{ rotateZ: flag ? '90deg' : '0deg' }],
+              transform: [{ rotateZ: isOpen ? '90deg' : '0deg' }],
             }}
           />
         </TouchableHighlight>
       </View>
-      {/* <View style> */}
-      {flag ? stocks.map((item) => (
+      {isOpen ? item.stocks.map((stock) => (
         <WatchListItem
-          key={item.id}
-          stockName={item.stockName}
-          curPrice={item.curPrice}
-          fluctuation={item.fluctuation}
-          dealAmount={item.dealAmount}
+          key={stock.id}
+          ticker={stock.ticker}
+          currPrice={stock.currPrice}
+          dailyChange={stock.dailyChange}
+          volumn={stock.volumn}
         />
       )) : null}
-      {/* </View> */}
     </Card>
   );
 }
 
-watchlists.propTypes = {
-  name: PropTypes.string.isRequired,
+watchlist.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    stocks: PropTypes.arrayOf(
+      PropTypes.shape(
+        WatchListItem.propTypes,
+      ),
+    ),
+  }).isRequired,
 };
