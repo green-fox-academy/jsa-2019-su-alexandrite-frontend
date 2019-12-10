@@ -7,6 +7,7 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#f4f6f8',
     alignItems: 'center',
+    padding: 15,
   },
   card: {
     shadowColor: '#000',
@@ -17,9 +18,10 @@ export default StyleSheet.create({
     },
     shadowRadius: 6,
     padding: 15,
-    margin: 15,
+    marginBottom: 15,
     backgroundColor: '#fff',
     borderRadius: 6,
+    elevation: 3,
   },
   cardTitle: {
     fontSize: 13,
