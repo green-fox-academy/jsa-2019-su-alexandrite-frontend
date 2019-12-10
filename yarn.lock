@@ -4994,11 +4994,7 @@ react-native-web@^0.11.7:
 
 react-navigation-hooks@^1.1.0:
   version "1.1.0"
-<<<<<<< HEAD
-  resolved "https://registry.npmjs.org/react-navigation-hooks/-/react-navigation-hooks-1.1.0.tgz#337c41a50ebc7b9030bb9d9333cd4fd6e1f86b68"
-=======
   resolved "https://registry.yarnpkg.com/react-navigation-hooks/-/react-navigation-hooks-1.1.0.tgz#337c41a50ebc7b9030bb9d9333cd4fd6e1f86b68"
->>>>>>> 64e7e03... JSAAL-4 add search button to the playground
   integrity sha512-ZY/aiYJ88KXaOo8iOa4171O/0x6ztGhUPd2OYzdaJhLT/tP64zi5HB/RZFImuKhaBTODXjoSpFaOTA5xpePG4g==
 
 react-navigation-stack@^1.10.3:

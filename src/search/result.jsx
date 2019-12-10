@@ -37,9 +37,7 @@ ResultItem.propTypes = {
 };
 
 export default () => {
-  const isLoading = useSelector((state) => state.search.isLoading);
-  const searchResult = useSelector((state) => state.search.result);
-  const error = useSelector((state) => state.search.error);
+  const { isLoading, result, error } = useSelector((state) => state.search);
 
   if (isLoading) {
     return <ActivityIndicator size="large" />;
@@ -49,7 +47,7 @@ export default () => {
   }
   return (
     <FlatList
-      data={searchResult}
+      data={result}
       renderItem={({ item }) => <ResultItem symbol={item.symbol} exchange={item.exchange} />}
       keyExtractor={(info) => info.symbol}
     />

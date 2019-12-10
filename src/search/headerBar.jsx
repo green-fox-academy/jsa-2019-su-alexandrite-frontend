@@ -9,24 +9,24 @@ import {
 import { useDispatch } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
 import styles from './styles';
-import { searchData } from '../redux/search/actionCreater';
+import searchActions from '../redux/search/actionCreator';
 
 export default function SearchBar() {
-  const [value, onChangeText] = useState('');
+  const [searchInput, onChangeInput] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
   useEffect(() => {
     let timer;
-    if (value.length >= 2) {
+    if (searchInput.length >= 2) {
       timer = setTimeout(() => {
-        dispatch(searchData(value));
+        dispatch(searchActions.searchStockData(searchInput));
       }, 300);
     }
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [value]);
+  }, [searchInput]);
 
   return (
     <SafeAreaView style={styles.headContainer}>
@@ -34,8 +34,8 @@ export default function SearchBar() {
         <TextInput
           style={styles.searchBar}
           clearButtonMode="while-editing"
-          onChangeText={(text) => onChangeText(text)}
-          value={value}
+          onChangeText={(input) => onChangeInput(input)}
+          value={searchInput}
         />
         <TouchableHighlight
           style={styles.cancelButton}

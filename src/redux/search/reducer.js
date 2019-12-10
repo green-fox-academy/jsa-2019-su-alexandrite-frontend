@@ -1,4 +1,4 @@
-import { SEARCH_START, SEARCH_SUCCESS, SEARCH_FAILED } from './actionCreater';
+import { SEARCH_START, SEARCH_SUCCESS, SEARCH_FAILED } from './actionType';
 
 const initState = {
   isloading: false,
@@ -12,12 +12,14 @@ export default (state = initState, action) => {
       return {
         ...state,
         isloading: true,
+        error: '',
       };
     case SEARCH_SUCCESS:
       return {
         ...state,
         isloading: false,
         result: action.payload,
+        error: '',
       };
     case SEARCH_FAILED:
       return {
