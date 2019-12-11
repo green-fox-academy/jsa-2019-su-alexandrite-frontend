@@ -7,7 +7,10 @@ import {
   FETCH_HISTORY_CHART_DATA_START,
   FETCH_HISTORY_CHART_DATA_SUCCESS,
   FETCH_HISTORY_CHART_DATA_FAIL,
+  RESET_STOCK_INFO,
 } from './actionType';
+
+import helper from './helper';
 
 const fetchStockDetailsStart = () => ({
   type: FETCH_STOCK_DETAILS_START,
@@ -52,32 +55,9 @@ const fetchHistoryChartDataFail = (payload) => ({
   payload,
 });
 
+
 const fetchHistoryChartDataSuccess = (histData, range) => {
-  const key2Data = {};
-  const key2Avg = {};
-  const extracted = histData.map(({ close, date, label }) => ({
-    close,
-    label: label || date,
-  }));
-
-  extracted.forEach((data) => {
-    const key = data.label.substr(0, 7);
-    key2Data[key] = key2Data[key] ? [...key2Data[key], data.close] : [data.close];
-  });
-
-  const keys = Object.keys(key2Data);
-
-  keys.forEach((key) => {
-    key2Avg[key] = key2Data[key].reduce((a, b) => a + b) / key2Data[key].length;
-  });
-
-  const payload = {
-    [range]: {
-      extracted,
-      data: keys.map((key) => key2Avg[key]),
-      keys,
-    },
-  };
+  const payload = helper.processChartData(histData, range);
 
   return {
     type: FETCH_HISTORY_CHART_DATA_SUCCESS,
@@ -109,8 +89,12 @@ const fetchHistoryChartData = (symbol, range) => (dispatch) => {
     .catch((err) => dispatch(fetchHistoryChartDataFail(err)));
 };
 
+const resetStockInfo = () => ({
+  type: RESET_STOCK_INFO,
+});
 
 export default {
+  resetStockInfo,
   fetchStockDetails,
   fetchHistoryChartData,
 };

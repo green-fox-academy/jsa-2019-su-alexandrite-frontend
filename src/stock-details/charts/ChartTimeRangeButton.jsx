@@ -12,7 +12,7 @@ const ChartTimeRangeButton = ({ range, active, onPress }) => (
       style.perfChartButton,
       active && style.perfChartButtonActive,
     ]}
-    underlayColor="#0003"
+    underlayColor="#0001"
     activeOpacity={0.5}
     onPress={() => onPress()}
   >

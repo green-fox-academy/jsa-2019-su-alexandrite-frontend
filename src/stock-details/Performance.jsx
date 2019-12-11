@@ -3,16 +3,14 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
-// import { LineChart, Path, YAxis, XAxis, Grid } from 'react-native-svg-charts';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import stockActions from '../redux/stock/actionCreator';
 import style from './style';
 import Card from '../common/Card';
 import ErrorMessage from '../common/ErrorMessage';
-import constants from '../common/constants';
 import PerformanceChart from './charts/PerformanceChart';
-import ChartTimeRangeButton from './charts/ChartTimeRangeButton';
+import TimeRangeSelector from './charts/TimeRangeSelector';
 
 const Performance = ({ symbol }) => {
   const dispatch = useDispatch();
@@ -28,6 +26,11 @@ const Performance = ({ symbol }) => {
     dispatch(stockActions.fetchHistoryChartData(symbol, timeRange));
   }, [timeRange]);
 
+  useEffect(
+    () => () => dispatch(stockActions.resetStockInfo()),
+    [],
+  );
+
   useEffect(() => {
     setSelectedData(historicalData ? historicalData[timeRange] : { data: [], keys: [] });
   }, [historicalData]);
@@ -38,23 +41,15 @@ const Performance = ({ symbol }) => {
         <View style={style.perfChartContainer}>
           {loading && <ActivityIndicator size="large" />}
           {!loading && !error && selectedData && (
-            <PerformanceChart data={selectedData.data} labels={selectedData.keys} />
+            <PerformanceChart
+              data={selectedData.data}
+              labels={selectedData.keys}
+              range={timeRange}
+            />
           )}
         </View>
       ) : <ErrorMessage message={error.message} />}
-      <View style={style.perfChartTimeRangeSelector}>
-        {constants.STOCK_CHART_TIME_RANGES.map((range) => {
-          const active = range === timeRange;
-          return (
-            <ChartTimeRangeButton
-              key={range}
-              range={range}
-              active={active}
-              onPress={() => setTimeRange(range)}
-            />
-          );
-        })}
-      </View>
+      <TimeRangeSelector selected={timeRange} onSelect={setTimeRange} />
     </Card>
   );
 };

@@ -38,22 +38,31 @@ export default StyleSheet.create({
   perfChartTimeRangeSelector: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#eee',
+    backgroundColor: '#f2f3fb',
+    marginTop: 10,
     borderRadius: 20,
-    padding: 2,
+    padding: 5,
   },
   perfChartButton: {
     paddingHorizontal: 20,
     paddingVertical: 5,
     borderRadius: 20,
   },
+  perfChartButtonActive: {
+    backgroundColor: '#566ed3',
+    elevation: 2,
+    shadowColor: '#566ed3',
+    shadowRadius: 2,
+    shadowOpacity: 0.8,
+    shadowOffset: {
+      height: 2,
+    },
+  },
   perfChartButtonText: {
+    color: '#666',
     fontWeight: 'bold',
   },
   perfChartButtonTextActive: {
     color: '#fff',
-  },
-  perfChartButtonActive: {
-    backgroundColor: '#566ed3',
   },
 });
