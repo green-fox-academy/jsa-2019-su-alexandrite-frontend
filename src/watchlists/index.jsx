@@ -4,7 +4,11 @@ import {
   Image,
   View,
   FlatList,
+<<<<<<< HEAD
   TextInput,
+=======
+  Text,
+>>>>>>> JSAAL-13 user can delete watchlists
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import WatchList from './WatchList';
@@ -14,6 +18,8 @@ import styles from './styles';
 import commonStyle from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
 import { postWatchList } from '../redux/watchList/actionCreator';
+
+import watchListAction from '../redux/watchList/actionCreator';
 
 const navigationOptions = {
   title: 'Watchlists',
@@ -37,6 +43,7 @@ const watchlistsScreen = () => {
     setModalVisible(false);
     setWatchListTitle('');
   };
+  const dispatch = useDispatch();
 
   return (
     <View style={styles.container}>
@@ -45,7 +52,15 @@ const watchlistsScreen = () => {
         data={watchlists}
         keyExtractor={(item) => JSON.stringify(item.id)}
         renderItem={({ item }) => (
-          <WatchList item={item} />
+          <View>
+            <WatchList item={item} />
+            <TouchableHighlight onPress={() => {
+              dispatch(watchListAction.deleteWatchList(item.id));
+            }}
+            >
+              <Text>delete</Text>
+            </TouchableHighlight>
+          </View>
         )}
       />
       <Popup
