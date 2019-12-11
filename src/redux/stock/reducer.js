@@ -11,9 +11,16 @@ const initState = {
   loadingStockStatsData: false,
   stockStatsData: undefined,
   stockStatsDataError: undefined,
-  loadingHistoricalChartData: false,
-  historicalData: [],
-  timeRange: '6m',
+  loadingHistoricalChartData: true,
+  historicalData: {
+    '1y': { keys: [], data: [] },
+    '2y': { keys: [], data: [] },
+    '5y': { keys: [], data: [] },
+    '6m': { keys: [], data: [] },
+    '3m': { keys: [], data: [] },
+    '1m': { keys: [], data: [] },
+  },
+  historicalDataMax: 0,
   historicalDataError: undefined,
 };
 
@@ -21,17 +28,19 @@ export default (state = initState, action) => {
   switch (action.type) {
     case FETCH_STOCK_DETAILS_START:
       return {
-        ...initState,
+        ...state,
         loadingStockStatsData: true,
       };
     case FETCH_STOCK_DETAILS_SUCCESS:
       return {
-        ...initState,
+        ...state,
+        loadingStockStatsData: false,
         stockStatsData: action.payload,
       };
     case FETCH_STOCK_DETAILS_FAIL:
       return {
-        ...initState,
+        ...state,
+        loadingStockStatsData: false,
         stockStatsDataError: action.payload,
       };
     case FETCH_HISTORY_CHART_DATA_START:
@@ -46,14 +55,17 @@ export default (state = initState, action) => {
         ...state,
         loadingHistoricalChartData: false,
         historicalDataError: undefined,
-        historicalData: action.payload,
+        historicalData: {
+          ...state.historicalData,
+          ...action.payload,
+        },
       };
     case FETCH_HISTORY_CHART_DATA_FAIL:
       return {
         ...state,
         loadingHistoricalChartData: false,
         historicalDataError: action.payload,
-        historicalData: [],
+        historicalData: undefined,
       };
     default:
       return state;

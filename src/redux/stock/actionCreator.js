@@ -52,14 +52,44 @@ const fetchHistoryChartDataFail = (payload) => ({
   payload,
 });
 
-const fetchHistoryChartDataSuccess = (payload) => ({
-  type: FETCH_HISTORY_CHART_DATA_SUCCESS,
-  payload,
-});
+const fetchHistoryChartDataSuccess = (histData, range) => {
+  const key2Data = {};
+  const key2Avg = {};
+  const extracted = histData.map(({ close, date, label }) => ({
+    close,
+    label: label || date,
+  }));
+
+  extracted.forEach((data) => {
+    const key = data.label.substr(0, 7);
+    key2Data[key] = key2Data[key] ? [...key2Data[key], data.close] : [data.close];
+  });
+
+  const keys = Object.keys(key2Data);
+
+  keys.forEach((key) => {
+    key2Avg[key] = key2Data[key].reduce((a, b) => a + b) / key2Data[key].length;
+  });
+
+  const payload = {
+    [range]: {
+      extracted,
+      data: keys.map((key) => key2Avg[key]),
+      keys,
+    },
+  };
+
+  return {
+    type: FETCH_HISTORY_CHART_DATA_SUCCESS,
+    payload,
+  };
+};
 
 const fetchHistoryChartData = (symbol, range) => (dispatch) => {
   const url = new URL(`${API_URL}/stock/${symbol}/chart/${range}`);
   url.searchParams.append('token', API_KEY);
+  url.searchParams.append('chartCloseOnly', true);
+  // url.searchParams.append('chartSimplify', true);
   dispatch(fetchHistoryChartDataStart());
   fetch(url)
     .then((res) => {
@@ -73,11 +103,9 @@ const fetchHistoryChartData = (symbol, range) => (dispatch) => {
       }
       return res.json();
     })
-    .then((res) => dispatch(
-      fetchHistoryChartDataSuccess(
-        res.map((dailyData) => dailyData.close),
-      ),
-    ))
+    .then((res) => {
+      dispatch(fetchHistoryChartDataSuccess(res, range));
+    })
     .catch((err) => dispatch(fetchHistoryChartDataFail(err)));
 };
 

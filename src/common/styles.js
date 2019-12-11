@@ -22,6 +22,7 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 6,
     elevation: 3,
+    flexDirection: 'column',
   },
   cardTitle: {
     fontSize: 13,

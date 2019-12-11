@@ -30,4 +30,30 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'right',
   },
+  perfChartContainer: {
+    width: width - 60,
+    minHeight: 200,
+    justifyContent: 'center',
+  },
+  perfChartTimeRangeSelector: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#eee',
+    borderRadius: 20,
+    padding: 2,
+  },
+  perfChartButton: {
+    paddingHorizontal: 20,
+    paddingVertical: 5,
+    borderRadius: 20,
+  },
+  perfChartButtonText: {
+    fontWeight: 'bold',
+  },
+  perfChartButtonTextActive: {
+    color: '#fff',
+  },
+  perfChartButtonActive: {
+    backgroundColor: '#566ed3',
+  },
 });
