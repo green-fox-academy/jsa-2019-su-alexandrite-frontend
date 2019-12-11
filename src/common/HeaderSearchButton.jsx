@@ -11,7 +11,7 @@ export default function SearchButton() {
       <FontAwesome
         size={18}
         name="search"
-        color="#999999"
+        color="#999"
       />
     </TouchableHighlight>
   );
