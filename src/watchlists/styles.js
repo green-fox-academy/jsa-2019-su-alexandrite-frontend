@@ -48,4 +48,26 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
+  editorMode: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  editorModeLeft: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  editorModeRight: {
+    flexDirection: 'row',
+  },
+  editor: {
+    flex: 1,
+    alignSelf: 'flex-end',
+    padding: 10,
+  },
+  checkButton: {
+    // width: 20,
+    // height: 20,
+  },
 });
