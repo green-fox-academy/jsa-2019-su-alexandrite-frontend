@@ -1,5 +1,6 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
+import { AsyncStorage } from 'react-native';
 
 import thunk from 'redux-thunk';
 import stockReducer from './redux/stock/reducer';
@@ -9,11 +10,13 @@ import watchlistsReducer from './redux/watchList/reducer';
 const reducer = combineReducers({
   stock: stockReducer,
   search: searchReducer,
-  watchList: watchlistsReducer,
+  watchlists: watchlistsReducer,
 });
 
 const persistConfig = {
-  whitelist: ['watchList'],
+  key: 'root',
+  storage: AsyncStorage,
+  whitelist: ['watchlists'],
 };
 
 const pReducer = persistReducer(persistConfig, reducer);

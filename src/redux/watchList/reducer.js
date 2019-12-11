@@ -46,7 +46,7 @@ const initalState = {
   watchlists: [watchlist1, watchlist2],
 };
 
-export default function reducer(state = initalState, action) {
+export default (state = initalState, action) => {
   switch (action.type) {
     case FETCH_WATCHLIST_SUCCESS:
       return state;
@@ -59,4 +59,4 @@ export default function reducer(state = initalState, action) {
     default:
       return state;
   }
-}
+};
