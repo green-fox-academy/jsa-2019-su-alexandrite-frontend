@@ -1,13 +1,16 @@
 import React from 'react';
 import { registerRootComponent } from 'expo';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
-import store from './store';
+import { store, persistor } from './store';
 import MainTabNavigation from './navigation/MainTabNavigation';
 
 const App = () => (
   <Provider store={store}>
-    <MainTabNavigation />
+    <PersistGate persistor={persistor}>
+      <MainTabNavigation />
+    </PersistGate>
   </Provider>
 );
 
