@@ -22,7 +22,7 @@ export default function watchlist({ item }) {
     setIsOpen(!isOpen);
   }
 
-  function updateCheckBox(i) {
+  function selectItem(i) {
     const copy = [...checkedItems];
     copy[i] = !copy[i];
     setCheckedItems(copy);
@@ -49,7 +49,7 @@ export default function watchlist({ item }) {
                 <EditModeWatchListItem
                   key={stock.id}
                   isChecked={checkedItems[i]}
-                  onSelect={() => updateCheckBox(i)}
+                  onSelect={() => selectItem(i)}
                   ticker={stock.ticker}
                 />
               ) : (
