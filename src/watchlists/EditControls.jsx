@@ -4,16 +4,15 @@ import { View, Text, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const EditorMode = ({ checkedItems, isInEditMode, toggleEditMode }) => {
+const EditorControls = ({ checkedItems, isInEditMode, toggleEditMode }) => {
   const num = checkedItems.filter((checked) => checked).length;
 
   return (
     <View style={styles.editorMode}>
       <TouchableHighlight style={styles.editorButton} underlayColor="#ffebeb">
         <Text style={styles.editDeleteButton}>
-          <FontAwesome5 size={14} name="trash" color="#666" />
-          {' '}
-          {num}
+          <FontAwesome5 size={14} name="trash" />
+          {` ${num}`}
         </Text>
       </TouchableHighlight>
       <View style={styles.editorModeRight}>
@@ -28,10 +27,12 @@ const EditorMode = ({ checkedItems, isInEditMode, toggleEditMode }) => {
   );
 };
 
-EditorMode.propTypes = {
+EditorControls.propTypes = {
   isInEditMode: PropTypes.bool.isRequired,
   toggleEditMode: PropTypes.func.isRequired,
-  checkedItems: PropTypes.arrayOf.isRequired,
+  checkedItems: PropTypes.arrayOf(
+    PropTypes.bool,
+  ).isRequired,
 };
 
-export default EditorMode;
+export default EditorControls;

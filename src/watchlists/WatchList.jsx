@@ -7,15 +7,15 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import WatchListItem from './WatchListItem';
+import EditModeWatchListItem from './EditModeWatchListItem';
 import chevron from '../../assets/icons/watchList/chevron.png';
 import Card from '../common/Card';
 import styles from './styles';
-import EditorMode from './EditorMode';
-import EditorButton from './EditorButton';
+import EditFooter from './EditFooter';
 
 export default function watchlist({ item }) {
   const [isOpen, setIsOpen] = useState(true);
-  const [isInEditMode, setIsEdit] = useState(false);
+  const [isInEditMode, setIsInEditMode] = useState(false);
   const [checkedItems, setCheckedItems] = useState(item.stocks.map(() => false));
 
   function handleClick() {
@@ -44,20 +44,29 @@ export default function watchlist({ item }) {
       {isOpen && (
         <>
           {item.stocks.map((stock, i) => (
-            <WatchListItem
-              key={stock.id}
-              isInEditMode={isInEditMode}
-              isChecked={checkedItems[i]}
-              onSelect={() => updateChecked(i)}
-              ticker={stock.ticker}
-              currPrice={stock.currPrice}
-              dailyChange={stock.dailyChange}
-              volumn={stock.volumn}
-            />
+            isInEditMode
+              ? (
+                <EditModeWatchListItem
+                  key={stock.id}
+                  isChecked={checkedItems[i]}
+                  onSelect={() => updateChecked(i)}
+                  ticker={stock.ticker}
+                />
+              ) : (
+                <WatchListItem
+                  key={stock.id}
+                  ticker={stock.ticker}
+                  currPrice={stock.currPrice}
+                  dailyChange={stock.dailyChange}
+                  volumn={stock.volumn}
+                />
+              )
           ))}
-          {isInEditMode
-            ? <EditorMode checkedItems={checkedItems} isInEditMode={isInEditMode} toggleEditMode={setIsEdit} />
-            : <EditorButton isEdit={isInEditMode} toggle={setIsEdit} />}
+          <EditFooter
+            checkedItems={checkedItems}
+            isInEditMode={isInEditMode}
+            toggleEditMode={setIsInEditMode}
+          />
         </>
       )}
     </Card>
