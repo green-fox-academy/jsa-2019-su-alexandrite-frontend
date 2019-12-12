@@ -47,7 +47,8 @@ stockDetails.navigationOptions = ({ navigation }) => ({
         onPress={fn}
         underlayColor="#0000"
         activeOpacity={0.5}
-        style={commonStyles.headerIcon}>
+        style={commonStyles.headerIcon}
+      >
         <Image source={addToWatchlistIcon} />
       </TouchableHighlight>
     );
