@@ -88,4 +88,8 @@ export default StyleSheet.create({
     fontSize: 12,
     textAlignVertical: 'center',
   },
+  detailIcon: {
+    padding: 10,
+    margin: -10,
+  }
 });

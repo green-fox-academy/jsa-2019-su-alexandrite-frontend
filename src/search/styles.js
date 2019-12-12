@@ -46,8 +46,11 @@ export default StyleSheet.create({
   },
   resultButton: {
     flexDirection: 'row',
+    margin: -10,
+    alignItems: 'center',
   },
   detailButton: {
+    padding: 10,
     marginLeft: 26,
   },
   noResult: {

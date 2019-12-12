@@ -20,6 +20,7 @@ const InvestmentsStack = createStackNavigator({
     path: 'investments/',
   },
   Search,
+  StockDetails,
 });
 
 const WatchlistsStack = createStackNavigator({
@@ -28,6 +29,7 @@ const WatchlistsStack = createStackNavigator({
     path: 'watchlists/',
   },
   Search,
+  StockDetails,
 });
 
 const AccountStack = createStackNavigator({
