@@ -9,7 +9,7 @@ import tradeIcon from '../../assets/icons/watchList/trade.png';
 import detailIcon from '../../assets/icons/watchList/detail.png';
 
 export default function watchListItem({
-  isEdit,
+  isInEditMode,
   isChecked,
   onSelect,
   ticker,
@@ -21,10 +21,10 @@ export default function watchListItem({
     <TouchableHighlight
       underlayColor="rgba(0,0,0,0.1)"
       onPress={onSelect}
-      disabled={!isEdit}
+      disabled={!isInEditMode}
     >
       <View style={styles.watchListItem}>
-        {isEdit && (
+        {isInEditMode && (
         <MaterialIcons
           style={[styles.checkButton, { color: isChecked ? '#666' : '#eee' }]}
           name={isChecked ? 'check-box' : 'check-box-outline-blank'}
@@ -35,7 +35,7 @@ export default function watchListItem({
             {ticker}
           </Text>
         </View>
-        {isEdit
+        {isInEditMode
           ? null
           : (
             <>
@@ -73,7 +73,7 @@ export default function watchListItem({
 }
 
 watchListItem.propTypes = {
-  isEdit: PropTypes.bool.isRequired,
+  isInEditMode: PropTypes.bool.isRequired,
   ticker: PropTypes.string.isRequired,
   currPrice: PropTypes.number.isRequired,
   dailyChange: PropTypes.number.isRequired,

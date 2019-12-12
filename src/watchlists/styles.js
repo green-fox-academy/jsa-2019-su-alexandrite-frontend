@@ -75,11 +75,8 @@ export default StyleSheet.create({
     marginTop: 10,
   },
   checkButton: {
-    // width: 20,
-    // height: 20,
     fontSize: 16,
     marginVertical: -5,
-    // paddingTop: 2,
     marginRight: 25,
   },
   trashIcon: {

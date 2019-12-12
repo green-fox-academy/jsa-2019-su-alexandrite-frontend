@@ -4,7 +4,7 @@ import { View, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const Editor = ({ isEdit, toggle }) => (
+const EditorButton = ({ isEdit, toggle }) => (
   <View style={styles.editor}>
     <TouchableHighlight style={styles.editorButton} onPress={() => toggle(!isEdit)}>
       <MaterialIcons style={{ fontSize: 16 }} name="edit" />
@@ -12,9 +12,9 @@ const Editor = ({ isEdit, toggle }) => (
   </View>
 );
 
-Editor.prototypes = {
+EditorButton.prototypes = {
   isEdit: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
 };
 
-export default Editor;
+export default EditorButton;

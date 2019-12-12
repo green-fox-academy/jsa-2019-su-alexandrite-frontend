@@ -11,11 +11,11 @@ import chevron from '../../assets/icons/watchList/chevron.png';
 import Card from '../common/Card';
 import styles from './styles';
 import EditorMode from './EditorMode';
-import Editor from './Editor';
+import EditorButton from './EditorButton';
 
 export default function watchlist({ item }) {
   const [isOpen, setIsOpen] = useState(true);
-  const [isEdit, setIsEdit] = useState(false);
+  const [isInEditMode, setIsEdit] = useState(false);
   const [checkedItems, setCheckedItems] = useState(item.stocks.map(() => false));
 
   function handleClick() {
@@ -46,7 +46,7 @@ export default function watchlist({ item }) {
           {item.stocks.map((stock, i) => (
             <WatchListItem
               key={stock.id}
-              isEdit={isEdit}
+              isInEditMode={isInEditMode}
               isChecked={checkedItems[i]}
               onSelect={() => updateChecked(i)}
               ticker={stock.ticker}
@@ -55,9 +55,9 @@ export default function watchlist({ item }) {
               volumn={stock.volumn}
             />
           ))}
-          {isEdit
-            ? <EditorMode checkedItems={checkedItems} isEdit={isEdit} toggle={setIsEdit} />
-            : <Editor isEdit={isEdit} toggle={setIsEdit} />}
+          {isInEditMode
+            ? <EditorMode checkedItems={checkedItems} isInEditMode={isInEditMode} toggleEditMode={setIsEdit} />
+            : <EditorButton isEdit={isInEditMode} toggle={setIsEdit} />}
         </>
       )}
     </Card>
