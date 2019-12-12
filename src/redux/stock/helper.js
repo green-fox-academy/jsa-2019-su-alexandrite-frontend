@@ -1,24 +1,26 @@
 const processMonthlyData = (data, range) => {
   // we need to group and calculate the avg by months
-  const key2Data = {};
-  const key2Avg = {};
+  const yearMonth2Data = {};
+  const yearMonth2Avg = {};
 
   data.forEach((dailyData) => {
     const key = dailyData.date.substr(0, 7);
-    key2Data[key] = key2Data[key] ? [...key2Data[key], dailyData.close] : [dailyData.close];
+    yearMonth2Data[key] = yearMonth2Data[key]
+      ? [...yearMonth2Data[key], dailyData.close]
+      : [dailyData.close];
   });
 
-  const keys = Object.keys(key2Data);
+  const keys = Object.keys(yearMonth2Data);
 
   keys.forEach((key) => {
-    const sum = key2Data[key].reduce((a, b) => a + b);
-    const count = key2Data[key].length;
-    key2Avg[key] = sum / count;
+    const sum = yearMonth2Data[key].reduce((a, b) => a + b);
+    const count = yearMonth2Data[key].length;
+    yearMonth2Avg[key] = sum / count;
   });
 
   return {
     [range]: {
-      data: keys.map((key) => key2Avg[key]),
+      data: keys.map((key) => yearMonth2Avg[key]),
       keys,
     },
   };
