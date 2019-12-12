@@ -19,6 +19,7 @@ export default StyleSheet.create({
   watchListItem: {
     flex: 1,
     justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
     borderBottomColor: '#eee',
     borderBottomWidth: 1,
@@ -26,6 +27,7 @@ export default StyleSheet.create({
   },
   watchListItemColumn: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'space-between',
   },
   watchListItemColumnText: {
@@ -43,60 +45,47 @@ export default StyleSheet.create({
     bottom: 0,
     position: 'absolute',
   },
-  watchListInput: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  modalBackground: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,.3)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalContainer: {
-    width: 285,
-    height: 280,
-    backgroundColor:
-      '#fff',
-    borderRadius: 6,
-  },
-  modalHeader: {
-    backgroundColor: '#4d63be',
-    flexDirection: 'row',
-    borderTopStartRadius: 6,
-    borderTopRightRadius: 6,
-    justifyContent: 'space-between',
-  },
-  modalTitle: {
-    padding: 15,
-    fontSize: 13,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  modalCloseButtonWrapper: {
-    padding: 15,
-    borderTopRightRadius: 6,
-  },
-  modalBody: {
-    padding: 15,
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  modalTextField: {
+  watchlistField: {
     padding: 8,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
-  modalButton: {
-    height: 40,
-    width: 255,
+  editorMode: {
+    flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 2,
+    justifyContent: 'space-between',
+    marginTop: 10,
   },
-  modalButtonGroup: {
-    flexDirection: 'column',
+  editorModeLeft: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  editorButton: {
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderRadius: 6,
+  },
+  editorModeRight: {
+    flexDirection: 'row',
+  },
+  editor: {
+    flex: 1,
+    alignSelf: 'flex-end',
+    marginTop: 10,
+  },
+  checkButton: {
+    fontSize: 16,
+    marginVertical: -5,
+    marginRight: 25,
+  },
+  trashIcon: {
+    paddingBottom: 0,
+  },
+  editDeleteButton: {
+    color: '#b40d0d',
+    fontWeight: 'bold',
+    fontSize: 12,
+    textAlignVertical: 'center',
   },
 });

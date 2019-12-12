@@ -6,7 +6,7 @@ import tradeIcon from '../../assets/icons/watchList/trade.png';
 import detailIcon from '../../assets/icons/watchList/detail.png';
 
 
-export default function watchListItem({
+export default function WatchListItem({
   ticker,
   currPrice,
   dailyChange,
@@ -48,7 +48,7 @@ export default function watchListItem({
   );
 }
 
-watchListItem.propTypes = {
+WatchListItem.propTypes = {
   ticker: PropTypes.string.isRequired,
   currPrice: PropTypes.number.isRequired,
   dailyChange: PropTypes.number.isRequired,
