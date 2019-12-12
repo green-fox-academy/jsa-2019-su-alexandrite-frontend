@@ -53,4 +53,48 @@ export default StyleSheet.create({
     padding: 15,
     paddingVertical: 10,
   },
+  popupBackground: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  popupContainer: {
+    width: 285,
+    height: 280,
+    backgroundColor: '#fff',
+    borderRadius: 6,
+  },
+  popupHeader: {
+    backgroundColor: '#4d63be',
+    flexDirection: 'row',
+    borderTopStartRadius: 6,
+    borderTopRightRadius: 6,
+    justifyContent: 'space-between',
+  },
+  popupTitle: {
+    padding: 15,
+    fontSize: 13,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  popupCloseButtonWrapper: {
+    padding: 15,
+    borderTopRightRadius: 6,
+  },
+  popupBody: {
+    padding: 15,
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  popupButton: {
+    height: 40,
+    width: 255,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 2,
+  },
+  popupButtonGroup: {
+    flexDirection: 'column',
+  },
 });
