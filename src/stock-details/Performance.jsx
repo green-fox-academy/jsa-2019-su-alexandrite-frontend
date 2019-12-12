@@ -15,9 +15,11 @@ import TimeRangeSelector from './charts/TimeRangeSelector';
 const Performance = ({ symbol }) => {
   const dispatch = useDispatch();
   const [timeRange, setTimeRange] = useState('1y');
-  const [selectedData, setSelectedData] = useState({ data: [], keys: [] });
   const {
-    historicalData,
+    historicalData: {
+      data,
+      keys,
+    },
     loadingHistoricalChartData: loading,
     historicalDataError: error,
   } = useSelector((state) => state.stock);
@@ -31,19 +33,15 @@ const Performance = ({ symbol }) => {
     [],
   );
 
-  useEffect(() => {
-    setSelectedData(historicalData ? historicalData[timeRange] : { data: [], keys: [] });
-  }, [historicalData]);
-
   return (
     <Card title="Performance">
       {!error ? (
         <View style={style.perfChartContainer}>
           {loading && <ActivityIndicator size="large" />}
-          {!loading && !error && selectedData && (
+          {!loading && !error && (
             <PerformanceChart
-              data={selectedData.data}
-              labels={selectedData.keys}
+              data={data}
+              labels={keys}
               range={timeRange}
             />
           )}

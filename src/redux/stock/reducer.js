@@ -14,14 +14,9 @@ const initState = {
   stockStatsDataError: undefined,
   loadingHistoricalChartData: true,
   historicalData: {
-    '1y': { keys: [], data: [] },
-    '2y': { keys: [], data: [] },
-    '5y': { keys: [], data: [] },
-    '6m': { keys: [], data: [] },
-    '3m': { keys: [], data: [] },
-    '1m': { keys: [], data: [] },
+    keys: [],
+    data: [],
   },
-  historicalDataMax: 0,
   historicalDataError: undefined,
 };
 
@@ -48,7 +43,6 @@ export default (state = initState, action) => {
       return {
         ...state,
         loadingHistoricalChartData: true,
-        historicalData: [],
         historicalDataError: undefined,
       };
     case FETCH_HISTORY_CHART_DATA_SUCCESS:
@@ -57,7 +51,7 @@ export default (state = initState, action) => {
         loadingHistoricalChartData: false,
         historicalDataError: undefined,
         historicalData: {
-          ...state.historicalData,
+          // ...state.historicalData,
           ...action.payload,
         },
       };
@@ -66,7 +60,6 @@ export default (state = initState, action) => {
         ...state,
         loadingHistoricalChartData: false,
         historicalDataError: action.payload,
-        historicalData: undefined,
       };
     case RESET_STOCK_INFO:
       return initState;

@@ -1,4 +1,4 @@
-const processMonthlyData = (data, range) => {
+const processMonthlyData = (data) => {
   // we need to group and calculate the avg by months
   const yearMonth2Data = {};
   const yearMonth2Avg = {};
@@ -19,27 +19,23 @@ const processMonthlyData = (data, range) => {
   });
 
   return {
-    [range]: {
-      data: keys.map((key) => yearMonth2Avg[key]),
-      keys,
-    },
+    data: keys.map((key) => yearMonth2Avg[key]),
+    keys,
   };
 };
 
-const processDailyData = (data, range) => ({
-  [range]: {
-    data: data.map((dailyData) => dailyData.close),
-    keys: data.map((dailyData) => dailyData.date.substr(8, 10)),
-  },
+const processDailyData = (data) => ({
+  data: data.map((dailyData) => dailyData.close),
+  keys: data.map((dailyData) => dailyData.date.substr(8, 10)),
 });
 
 export default {
   processChartData: (data, range) => {
     if (['1y', '2y', '5y', '6m', '3m'].indexOf(range) > -1) {
-      return processMonthlyData(data, range);
+      return processMonthlyData(data);
     }
     if (range === '1m') {
-      return processDailyData(data, range);
+      return processDailyData(data);
     }
     return {};
   },
