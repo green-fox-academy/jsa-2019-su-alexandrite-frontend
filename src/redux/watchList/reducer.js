@@ -1,4 +1,9 @@
-import { FETCH_WATCHLIST_SUCCESS, POST_WATCHLIST_SUCCESS, DELETE_WATCHLIST } from './actionType';
+import {
+  FETCH_WATCHLIST_SUCCESS,
+  POST_WATCHLIST_SUCCESS,
+  DELETE_WATCHLIST,
+  ADD_STOCK_TO_WATCHLIST,
+} from './actionType';
 
 const watchlist1 = {
   id: 1,
@@ -41,12 +46,12 @@ const watchlist2 = {
   stocks: [],
 };
 
-const initalState = {
+const initialState = {
   counter: 3,
   watchlists: [watchlist1, watchlist2],
 };
 
-export default (state = initalState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_WATCHLIST_SUCCESS:
       return state;
@@ -66,6 +71,19 @@ export default (state = initalState, action) => {
       return {
         ...state,
         watchlists: state.watchlists.filter((item) => item.id !== action.payLoad),
+      };
+    case ADD_STOCK_TO_WATCHLIST:
+      return {
+        ...state,
+        watchlists: state.watchlists.map((watchlist) => (
+          watchlist.id === action.payLoad.watchlistId
+            ? ({
+              ...watchlist,
+              stocks: watchlist.stocks.find((stock) => stock.ticker === action.payLoad.stock.ticker)
+                ? watchlist.stocks
+                : [...watchlist.stocks, action.payLoad.stock],
+            })
+            : watchlist)),
       };
     default:
       return state;
