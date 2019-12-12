@@ -4,6 +4,7 @@ import {
   DELETE_WATCHLIST,
   ADD_STOCK_TO_WATCHLIST,
 } from './actionType';
+import { DELETE_WATCHLIST_ITEM } from './actionCreator';
 
 const watchlist1 = {
   id: 1,
@@ -84,6 +85,10 @@ export default (state = initialState, action) => {
                 : [...watchlist.stocks, action.payLoad.stock],
             })
             : watchlist)),
+      };
+    case DELETE_WATCHLIST_ITEM:
+      return {
+        //      watchlists.
       };
     default:
       return state;
