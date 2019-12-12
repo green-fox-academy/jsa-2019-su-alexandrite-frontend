@@ -19,6 +19,7 @@ export default StyleSheet.create({
   watchListItem: {
     flex: 1,
     justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
     borderBottomColor: '#eee',
     borderBottomWidth: 1,
@@ -26,6 +27,7 @@ export default StyleSheet.create({
   },
   watchListItemColumn: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'space-between',
   },
   watchListItemColumnText: {
@@ -53,10 +55,16 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: 10,
   },
   editorModeLeft: {
     flex: 1,
     flexDirection: 'row',
+  },
+  editorButton: {
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderRadius: 6,
   },
   editorModeRight: {
     flexDirection: 'row',
@@ -64,10 +72,23 @@ export default StyleSheet.create({
   editor: {
     flex: 1,
     alignSelf: 'flex-end',
-    padding: 10,
+    marginTop: 10,
   },
   checkButton: {
     // width: 20,
     // height: 20,
+    fontSize: 16,
+    marginVertical: -5,
+    // paddingTop: 2,
+    marginRight: 25,
+  },
+  trashIcon: {
+    paddingBottom: 0,
+  },
+  editDeleteButton: {
+    color: '#b40d0d',
+    fontWeight: 'bold',
+    fontSize: 12,
+    textAlignVertical: 'center',
   },
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { EvilIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { View, Text, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
@@ -9,16 +9,19 @@ const editorMode = ({ checkedItems, isEdit, toggle }) => {
 
   return (
     <View style={styles.editorMode}>
-      <View style={styles.editorModeLeft}>
-        <EvilIcons name="trash" size={20} color="red" />
-        <Text>{num}</Text>
-      </View>
+      <TouchableHighlight style={styles.editorButton} underlayColor="#ffebeb">
+        <Text style={styles.editDeleteButton}>
+          <FontAwesome5 size={14} name="trash" color="#666" />
+          {' '}
+          {num}
+        </Text>
+      </TouchableHighlight>
       <View style={styles.editorModeRight}>
-        <TouchableHighlight>
-          <Text style={{ color: '#c12424', paddingHorizontal: 15, paddingVertical: 8 }}> Delete WatchList</Text>
+        <TouchableHighlight style={styles.editorButton} underlayColor="#ffebeb">
+          <Text style={{ color: '#c12424', fontSize: 12, fontWeight: 'bold' }}> Delete WatchList</Text>
         </TouchableHighlight>
-        <TouchableHighlight onPress={() => toggle(!isEdit)}>
-          <Text style={{ color: '#666666', paddingHorizontal: 15, paddingVertical: 8 }}>Cancel</Text>
+        <TouchableHighlight style={styles.editorButton} onPress={() => toggle(!isEdit)} underlayColor="#eee">
+          <Text style={{ color: '#666', fontSize: 12, fontWeight: 'bold' }}>Cancel</Text>
         </TouchableHighlight>
       </View>
     </View>

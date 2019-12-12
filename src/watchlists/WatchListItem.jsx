@@ -19,12 +19,17 @@ export default function watchListItem({
 }) {
   return (
     <TouchableHighlight
-      style={styles.checkButton}
+      underlayColor="rgba(0,0,0,0.1)"
       onPress={onSelect}
       disabled={!isEdit}
     >
       <View style={styles.watchListItem}>
-        {isEdit && <MaterialIcons name={isChecked ? 'check-box' : 'check-box-outline-blank'} />}
+        {isEdit && (
+        <MaterialIcons
+          style={[styles.checkButton, { color: isChecked ? '#666' : '#eee' }]}
+          name={isChecked ? 'check-box' : 'check-box-outline-blank'}
+        />
+        )}
         <View style={styles.watchListItemColumn}>
           <Text style={[styles.watchListItemColumnText, { fontWeight: 'bold', color: '#566ed3' }]}>
             {ticker}
@@ -54,7 +59,7 @@ export default function watchListItem({
                   {volumn}
                 </Text>
               </View>
-              <View style={[styles.watchListItemColumn, { flexDirection: 'row' }]}>
+              <View style={styles.watchListItemColumn}>
                 <Image source={tradeIcon} />
                 <Image source={detailIcon} />
               </View>
