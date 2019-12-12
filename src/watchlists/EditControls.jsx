@@ -1,6 +1,11 @@
 import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { View, Text, TouchableHighlight, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableHighlight,
+  Alert,
+} from 'react-native';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import watchListAction from '../redux/watchList/actionCreator';
