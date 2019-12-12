@@ -16,7 +16,6 @@ import styles from './styles';
 import EditFooter from './EditFooter';
 import { deleteWatchList } from '../redux/watchList/actionCreator';
 
-
 export default function watchlist({ item }) {
   const [isOpen, setIsOpen] = useState(true);
   const [isInEditMode, setIsInEditMode] = useState(false);
