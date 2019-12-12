@@ -28,7 +28,6 @@ export default function watchListItem({
         </View>
       </View>
     </TouchableHighlight>
-
   );
 }
 
