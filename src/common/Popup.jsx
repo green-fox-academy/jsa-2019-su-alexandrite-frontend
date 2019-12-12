@@ -11,9 +11,9 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const PopupHeader = ({ title, onCancel }) => (
-  <View style={styles.modalHeader}>
-    <Text style={styles.modalTitle}>{title}</Text>
-    <TouchableHighlight style={styles.modalCloseButtonWrapper} underlayColor="rgba(0,0,0,0.1)" onPress={onCancel}>
+  <View style={styles.popupHeader}>
+    <Text style={styles.popupTitle}>{title}</Text>
+    <TouchableHighlight style={styles.popupCloseButtonWrapper} underlayColor="rgba(0,0,0,0.1)" onPress={onCancel}>
       <Ionicons name="md-close" size={13} color="white" />
     </TouchableHighlight>
   </View>
@@ -22,10 +22,10 @@ const PopupHeader = ({ title, onCancel }) => (
 const PopupButtonGroup = ({
   onConfirm, onCancel, confirmButtonText, confirmDisabled,
 }) => (
-  <View style={styles.modalButtonGroup}>
+  <View style={styles.popupButtonGroup}>
     <TouchableHighlight
       style={[
-        styles.modalButton,
+        styles.popupButton,
         { backgroundColor: '#5eceb1' },
         confirmDisabled && { opacity: 0.5 },
       ]}
@@ -36,7 +36,7 @@ const PopupButtonGroup = ({
       <Text style={{ fontSize: 14, color: '#fff' }}>{confirmButtonText}</Text>
     </TouchableHighlight>
     <TouchableHighlight
-      style={styles.modalButton}
+      style={styles.popupButton}
       onPress={onCancel}
       underlayColor="#eee"
     >
@@ -56,10 +56,10 @@ export default function Popup({
       presentationStyle="overFullScreen"
       onRequestClose={onCancel}
     >
-      <SafeAreaView style={styles.modalBackground}>
-        <View style={styles.modalContainer}>
+      <SafeAreaView style={styles.popupBackground}>
+        <View style={styles.popupContainer}>
           <PopupHeader title={title} onCancel={onCancel} />
-          <View style={styles.modalBody}>
+          <View style={styles.popupBody}>
             {children}
             <PopupButtonGroup
               confirmButtonText={confirmButtonText}

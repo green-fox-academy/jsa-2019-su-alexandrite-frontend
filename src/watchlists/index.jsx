@@ -21,7 +21,7 @@ const navigationOptions = {
 };
 
 const watchlistsScreen = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [popupVisible, setModalVisible] = useState(false);
   const [watchListTitle, setWatchListTitle] = useState('');
   const dispatch = useDispatch();
   const { watchlists } = useSelector((state) => state.watchlists);
@@ -49,7 +49,7 @@ const watchlistsScreen = () => {
         )}
       />
       <Popup
-        visible={modalVisible}
+        visible={popupVisible}
         onCancel={onCloseAddModal}
         onConfirm={onConfirmAddModal}
         title="Create a watchlist"

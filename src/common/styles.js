@@ -53,49 +53,48 @@ export default StyleSheet.create({
     padding: 15,
     paddingVertical: 10,
   },
-  modalBackground: {
+  popupBackground: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,.3)',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  modalContainer: {
+  popupContainer: {
     width: 285,
     height: 280,
-    backgroundColor:
-      '#fff',
+    backgroundColor: '#fff',
     borderRadius: 6,
   },
-  modalHeader: {
+  popupHeader: {
     backgroundColor: '#4d63be',
     flexDirection: 'row',
     borderTopStartRadius: 6,
     borderTopRightRadius: 6,
     justifyContent: 'space-between',
   },
-  modalTitle: {
+  popupTitle: {
     padding: 15,
     fontSize: 13,
     fontWeight: 'bold',
     color: 'white',
   },
-  modalCloseButtonWrapper: {
+  popupCloseButtonWrapper: {
     padding: 15,
     borderTopRightRadius: 6,
   },
-  modalBody: {
+  popupBody: {
     padding: 15,
     flex: 1,
     justifyContent: 'space-between',
   },
-  modalButton: {
+  popupButton: {
     height: 40,
     width: 255,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 2,
   },
-  modalButtonGroup: {
+  popupButtonGroup: {
     flexDirection: 'column',
   },
 });
