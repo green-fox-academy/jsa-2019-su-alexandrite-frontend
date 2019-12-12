@@ -15,9 +15,12 @@ import EditFooter from './EditFooter';
 
 export default function watchlist({ item }) {
   const [isOpen, setIsOpen] = useState(true);
+<<<<<<< HEAD
   const [isInEditMode, setIsInEditMode] = useState(false);
   const [checkedItems, setCheckedItems] = useState(item.stocks.map(() => false));
 
+=======
+>>>>>>> JSAAL-13 delete console.log line
   function handleClick() {
     setIsOpen(!isOpen);
   }
