@@ -16,7 +16,7 @@ const chartConfig = {
   backgroundGradientFrom: '#fff',
   backgroundGradientTo: '#fff',
   decimalPlaces: 2,
-  labelColor: 'rgb(100, 100, 100)',
+  labelColor: () => '#666',
 };
 
 
