@@ -10,7 +10,7 @@ import {
   RESET_STOCK_INFO,
 } from './actionType';
 
-import chartHelper from './chartHelper';
+import chartHelper from '../../common/chartHelper';
 
 const fetchStockDetailsStart = () => ({
   type: FETCH_STOCK_DETAILS_START,
