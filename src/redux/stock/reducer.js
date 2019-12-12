@@ -49,7 +49,6 @@ export default (state = initState, action) => {
       return {
         ...state,
         loadingHistoricalChartData: false,
-        historicalDataError: undefined,
         historicalData: {
           // ...state.historicalData,
           ...action.payload,
