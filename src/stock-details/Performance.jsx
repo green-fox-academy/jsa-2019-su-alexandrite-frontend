@@ -16,10 +16,7 @@ const Performance = ({ symbol }) => {
   const dispatch = useDispatch();
   const [timeRange, setTimeRange] = useState('1y');
   const {
-    historicalData: {
-      data,
-      keys,
-    },
+    historicalData: data,
     loadingHistoricalChartData: loading,
     historicalDataError: error,
   } = useSelector((state) => state.stock);
@@ -41,7 +38,6 @@ const Performance = ({ symbol }) => {
           {!loading && !error && (
             <PerformanceChart
               data={data}
-              labels={keys}
               range={timeRange}
             />
           )}

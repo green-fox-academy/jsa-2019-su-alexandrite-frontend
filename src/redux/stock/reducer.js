@@ -13,10 +13,7 @@ const initState = {
   stockStatsData: undefined,
   stockStatsDataError: undefined,
   loadingHistoricalChartData: true,
-  historicalData: {
-    keys: [],
-    data: [],
-  },
+  historicalData: undefined,
   historicalDataError: undefined,
 };
 
@@ -50,7 +47,6 @@ export default (state = initState, action) => {
         ...state,
         loadingHistoricalChartData: false,
         historicalData: {
-          // ...state.historicalData,
           ...action.payload,
         },
       };

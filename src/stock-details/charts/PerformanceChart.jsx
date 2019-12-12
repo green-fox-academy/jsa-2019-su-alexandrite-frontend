@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Text,
   Dimensions,
 } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
@@ -15,16 +14,19 @@ const chartConfig = {
   backgroundColor: '#fff',
   backgroundGradientFrom: '#fff',
   backgroundGradientTo: '#fff',
-  decimalPlaces: 2,
+  decimalPlaces: 0,
   labelColor: () => '#666',
 };
 
-
-const formatXLabel = (i, range, label) => {
+const formatXLabel = (i, range, label, firstOccurrence) => {
   if (range === '1m') {
     // if display data by days, we need to
     // filter half of the values so that the UI remains clean
-    return !(parseInt(i, 10) % 2) ? label : '';
+    return !(parseInt(i, 10) % 2) ? label.substr(8, 10) : '';
+  }
+  if (range === '3m') {
+    return firstOccurrence[label.substr(0, 7)] === i
+      ? constants.MONTHS[new Date(label.substr(0, 7)).getMonth()] : '';
   }
   if (['1y', '2y', '5y'].indexOf(range) > -1) {
     // if display data by years, display the year label only
@@ -34,30 +36,43 @@ const formatXLabel = (i, range, label) => {
   return constants.MONTHS[new Date(label).getMonth()];
 };
 
-const PerformanceChart = ({ data, labels, range }) => (
-  <LineChart
-    data={{
-      labels: [...labels.keys()], // indexes instead of raw labels
-      datasets: [{ data }],
-    }}
-    decorator={({ value }) => <Text>{value}</Text>}
-    width={Dimensions.get('window').width - 60}
-    height={200}
-    formatXLabel={(val) => formatXLabel(val, range, labels[val])}
-    yAxisLabel="$"
-    chartConfig={{
-      ...chartConfig,
-      color: (opacity = 1) => (
-        (data[0] > data[data.length - 1])
-          ? `rgba(255, 0, 0, ${opacity})`
-          : `rgba(94, 206, 177, ${opacity})`),
-    }}
-  />
-);
+const PerformanceChart = ({ data, range }) => {
+  const values = Object.values(data);
+  const keys = Object.keys(data);
+  let firstOccurrence;
+  // special case for 3m
+  if (range === '3m') {
+    firstOccurrence = keys.reduce((result, key, i) => ({
+      ...result,
+      ...(result[key.substr(0, 7)] || { [key.substr(0, 7)]: i }),
+    }), {});
+  }
+  return (
+    <LineChart
+      data={{
+        labels: [...Object.keys(data).keys()], // indexes instead of raw labels
+        datasets: [{ data: Object.values(data) }],
+      }}
+      width={Dimensions.get('window').width - 60}
+      height={200}
+      formatXLabel={(val) => formatXLabel(val, range, keys[val], firstOccurrence)}
+      yAxisLabel="$"
+      yLabelsOffset={10}
+      chartConfig={{
+        ...chartConfig,
+        color: (opacity = 1) => (
+          (values[0] > values[values.length - 1])
+            ? `rgba(255, 0, 0, ${opacity})`
+            : `rgba(94, 206, 177, ${opacity})`),
+      }}
+    />
+  );
+};
 
 PerformanceChart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.number).isRequired,
-  labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+  data: PropTypes.shape({
+    [PropTypes.string]: PropTypes.number,
+  }).isRequired,
   range: PropTypes.string.isRequired,
 };
 

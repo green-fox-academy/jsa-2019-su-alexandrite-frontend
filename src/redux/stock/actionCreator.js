@@ -10,7 +10,7 @@ import {
   RESET_STOCK_INFO,
 } from './actionType';
 
-import helper from './helper';
+import chartHelper from './chartHelper';
 
 const fetchStockDetailsStart = () => ({
   type: FETCH_STOCK_DETAILS_START,
@@ -57,7 +57,7 @@ const fetchHistoryChartDataFail = (payload) => ({
 
 
 const fetchHistoryChartDataSuccess = (histData, range) => {
-  const payload = helper.processChartData(histData, range);
+  const payload = chartHelper.processChartData(histData, range);
 
   return {
     type: FETCH_HISTORY_CHART_DATA_SUCCESS,
@@ -70,7 +70,6 @@ const fetchHistoryChartData = (symbol, range) => (dispatch) => {
   url.searchParams.append('token', API_KEY);
   url.searchParams.append('chartCloseOnly', true);
   url.searchParams.append('includeToday', true);
-  // url.searchParams.append('chartSimplify', true);
   dispatch(fetchHistoryChartDataStart());
   fetch(url)
     .then((res) => {
