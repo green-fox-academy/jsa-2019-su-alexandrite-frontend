@@ -1,10 +1,19 @@
 import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableHighlight, Alert } from 'react-native';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import watchListAction from '../redux/watchList/actionCreator';
 import styles from './styles';
 
-const EditorControls = ({ checkedItems, isInEditMode, toggleEditMode }) => {
+const EditorControls = ({
+  checkedItems,
+  isInEditMode,
+  toggleEditMode,
+  watchListId,
+  watchListName,
+}) => {
+  const dispatch = useDispatch();
   const num = checkedItems.filter((checked) => checked).length;
 
   return (
@@ -16,7 +25,28 @@ const EditorControls = ({ checkedItems, isInEditMode, toggleEditMode }) => {
         </Text>
       </TouchableHighlight>
       <View style={styles.editorModeRight}>
-        <TouchableHighlight style={styles.editorButton} underlayColor="#ffebeb">
+        <TouchableHighlight
+          style={styles.editorButton}
+          underlayColor="#ffebeb"
+          onPress={() => {
+            Alert.alert(
+              `${watchListName}`,
+              'Do you really want to delete this watchlist?',
+              [
+                {
+                  text: 'Delete',
+                  onPress: () => dispatch(watchListAction.deleteWatchList(watchListId)),
+                  style: 'destructive',
+                },
+                {
+                  text: 'Cancel',
+                  style: 'cancel',
+                },
+              ],
+              { cancelable: false },
+            );
+          }}
+        >
           <Text style={{ color: '#c12424', fontSize: 12, fontWeight: 'bold' }}> Delete WatchList</Text>
         </TouchableHighlight>
         <TouchableHighlight style={styles.editorButton} onPress={() => toggleEditMode(!isInEditMode)} underlayColor="#eee">
@@ -33,6 +63,8 @@ EditorControls.propTypes = {
   checkedItems: PropTypes.arrayOf(
     PropTypes.bool,
   ).isRequired,
+  watchListId: PropTypes.number.isRequired,
+  watchListName: PropTypes.string.isRequired,
 };
 
 export default EditorControls;
