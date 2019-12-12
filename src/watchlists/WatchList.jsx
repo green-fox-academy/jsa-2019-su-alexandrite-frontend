@@ -7,16 +7,27 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import WatchListItem from './WatchListItem';
+import EditModeWatchListItem from './EditModeWatchListItem';
 import chevron from '../../assets/icons/watchList/chevron.png';
 import Card from '../common/Card';
 import styles from './styles';
+import EditFooter from './EditFooter';
 
 export default function watchlist({ item }) {
   const [isOpen, setIsOpen] = useState(true);
+  const [isInEditMode, setIsInEditMode] = useState(false);
+  const [checkedItems, setCheckedItems] = useState(item.stocks.map(() => false));
 
   function handleClick() {
     setIsOpen(!isOpen);
   }
+
+  function selectItem(i) {
+    const copy = [...checkedItems];
+    copy[i] = !copy[i];
+    setCheckedItems(copy);
+  }
+
   return (
     <Card>
       <View style={styles.watchListTitle}>
@@ -30,15 +41,34 @@ export default function watchlist({ item }) {
           />
         </TouchableHighlight>
       </View>
-      {isOpen ? item.stocks.map((stock) => (
-        <WatchListItem
-          key={stock.id}
-          ticker={stock.ticker}
-          currPrice={stock.currPrice}
-          dailyChange={stock.dailyChange}
-          volumn={stock.volumn}
-        />
-      )) : null}
+      {isOpen && (
+        <>
+          {item.stocks.map((stock, i) => (
+            isInEditMode
+              ? (
+                <EditModeWatchListItem
+                  key={stock.id}
+                  isChecked={checkedItems[i]}
+                  onSelect={() => selectItem(i)}
+                  ticker={stock.ticker}
+                />
+              ) : (
+                <WatchListItem
+                  key={stock.id}
+                  ticker={stock.ticker}
+                  currPrice={stock.currPrice}
+                  dailyChange={stock.dailyChange}
+                  volumn={stock.volumn}
+                />
+              )
+          ))}
+          <EditFooter
+            checkedItems={checkedItems}
+            isInEditMode={isInEditMode}
+            toggleEditMode={setIsInEditMode}
+          />
+        </>
+      )}
     </Card>
   );
 }
