@@ -69,6 +69,7 @@ const fetchHistoryChartData = (symbol, range) => (dispatch) => {
   const url = new URL(`${API_URL}/stock/${symbol}/chart/${range}`);
   url.searchParams.append('token', API_KEY);
   url.searchParams.append('chartCloseOnly', true);
+  url.searchParams.append('includeToday', true);
   // url.searchParams.append('chartSimplify', true);
   dispatch(fetchHistoryChartDataStart());
   fetch(url)
