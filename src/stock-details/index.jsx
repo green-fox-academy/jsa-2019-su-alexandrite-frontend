@@ -43,7 +43,11 @@ stockDetails.navigationOptions = ({ navigation }) => ({
   headerRight: () => {
     const fn = navigation.getParam('showAddToWatchlistPopup');
     return (
-      <TouchableHighlight onPress={fn}>
+      <TouchableHighlight
+        onPress={fn}
+        underlayColor="#0000"
+        activeOpacity={0.5}
+        style={commonStyles.headerIcon}>
         <Image source={addToWatchlistIcon} />
       </TouchableHighlight>
     );
