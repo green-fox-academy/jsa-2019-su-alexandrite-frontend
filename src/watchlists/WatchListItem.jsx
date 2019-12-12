@@ -35,7 +35,8 @@ export default function watchListItem({
             {ticker}
           </Text>
         </View>
-        {isEdit ? null
+        {isEdit
+          ? null
           : (
             <>
               <View style={styles.watchListItemColumn}>

@@ -55,7 +55,8 @@ export default function watchlist({ item }) {
               volumn={stock.volumn}
             />
           ))}
-          {isEdit ? <EditorMode checkedItems={checkedItems} isEdit={isEdit} toggle={setIsEdit} />
+          {isEdit
+            ? <EditorMode checkedItems={checkedItems} isEdit={isEdit} toggle={setIsEdit} />
             : <Editor isEdit={isEdit} toggle={setIsEdit} />}
         </>
       )}
