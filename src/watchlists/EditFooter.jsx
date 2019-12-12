@@ -7,16 +7,14 @@ const EditFooter = ({
   isInEditMode,
   toggleEditMode,
   checkedItems,
-  watchListId,
-  watchListName,
+  onDeleteWatchlist,
 }) => (isInEditMode
   ? (
     <EditControls
       checkedItems={checkedItems}
       isInEditMode={isInEditMode}
       toggleEditMode={toggleEditMode}
-      watchListId={watchListId}
-      watchListName={watchListName}
+      onDeleteWatchlist={onDeleteWatchlist}
     />
   )
   : <EditButton isInEditMode={isInEditMode} toggleEditMode={toggleEditMode} />
@@ -28,8 +26,7 @@ EditFooter.propTypes = {
   checkedItems: PropTypes.arrayOf(
     PropTypes.bool,
   ).isRequired,
-  watchListId: PropTypes.number.isRequired,
-  watchListName: PropTypes.string.isRequired,
+  onDeleteWatchlist: PropTypes.func.isRequired,
 };
 
 export default EditFooter;

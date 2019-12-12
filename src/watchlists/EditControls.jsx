@@ -4,21 +4,16 @@ import {
   View,
   Text,
   TouchableHighlight,
-  Alert,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import watchListAction from '../redux/watchList/actionCreator';
 import styles from './styles';
 
 const EditorControls = ({
   checkedItems,
   isInEditMode,
   toggleEditMode,
-  watchListId,
-  watchListName,
+  onDeleteWatchlist,
 }) => {
-  const dispatch = useDispatch();
   const num = checkedItems.filter((checked) => checked).length;
 
   return (
@@ -33,24 +28,7 @@ const EditorControls = ({
         <TouchableHighlight
           style={styles.editorButton}
           underlayColor="#ffebeb"
-          onPress={() => {
-            Alert.alert(
-              `${watchListName}`,
-              'Do you really want to delete this watchlist?',
-              [
-                {
-                  text: 'Delete',
-                  onPress: () => dispatch(watchListAction.deleteWatchList(watchListId)),
-                  style: 'destructive',
-                },
-                {
-                  text: 'Cancel',
-                  style: 'cancel',
-                },
-              ],
-              { cancelable: false },
-            );
-          }}
+          onPress={onDeleteWatchlist}
         >
           <Text style={{ color: '#c12424', fontSize: 12, fontWeight: 'bold' }}> Delete WatchList</Text>
         </TouchableHighlight>
@@ -68,8 +46,7 @@ EditorControls.propTypes = {
   checkedItems: PropTypes.arrayOf(
     PropTypes.bool,
   ).isRequired,
-  watchListId: PropTypes.number.isRequired,
-  watchListName: PropTypes.string.isRequired,
+  onDeleteWatchlist: PropTypes.func.isRequired,
 };
 
 export default EditorControls;

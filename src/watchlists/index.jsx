@@ -13,7 +13,7 @@ import addIcon from '../../assets/icons/watchList/add.png';
 import styles from './styles';
 import commonStyle from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
-import watchListAction from '../redux/watchList/actionCreator';
+import { postWatchList } from '../redux/watchList/actionCreator';
 
 const navigationOptions = {
   title: 'Watchlists',
@@ -33,7 +33,7 @@ const watchlistsScreen = () => {
   };
 
   const onConfirmAddModal = () => {
-    if (watchListTitle) dispatch(watchListAction.postWatchList(watchListTitle));
+    if (watchListTitle) dispatch(postWatchList(watchListTitle));
     setModalVisible(false);
     setWatchListTitle('');
   };
@@ -45,9 +45,7 @@ const watchlistsScreen = () => {
         data={watchlists}
         keyExtractor={(item) => JSON.stringify(item.id)}
         renderItem={({ item }) => (
-          <View>
-            <WatchList item={item} />
-          </View>
+          <WatchList item={item} />
         )}
       />
       <Popup

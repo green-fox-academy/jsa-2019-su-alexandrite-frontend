@@ -42,7 +42,7 @@ const watchlist2 = {
 };
 
 const initalState = {
-  counter: 2,
+  counter: 3,
   watchlists: [watchlist1, watchlist2],
 };
 
@@ -64,8 +64,7 @@ export default (state = initalState, action) => {
       };
     case DELETE_WATCHLIST:
       return {
-        counter: state.counter - 1,
-        watchlists: [...state.watchlists.filter((item) => item.id !== action.payLoad)],
+        watchlists: state.watchlists.filter((item) => item.id !== action.payLoad),
       };
     default:
       return state;

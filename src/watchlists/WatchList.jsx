@@ -4,7 +4,9 @@ import {
   Image,
   Text,
   TouchableHighlight,
+  Alert,
 } from 'react-native';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import WatchListItem from './WatchListItem';
 import EditModeWatchListItem from './EditModeWatchListItem';
@@ -12,11 +14,14 @@ import chevron from '../../assets/icons/watchList/chevron.png';
 import Card from '../common/Card';
 import styles from './styles';
 import EditFooter from './EditFooter';
+import { deleteWatchList } from '../redux/watchList/actionCreator';
+
 
 export default function watchlist({ item }) {
   const [isOpen, setIsOpen] = useState(true);
   const [isInEditMode, setIsInEditMode] = useState(false);
   const [checkedItems, setCheckedItems] = useState(item.stocks.map(() => false));
+  const dispatch = useDispatch();
 
   function handleClick() {
     setIsOpen(!isOpen);
@@ -27,6 +32,23 @@ export default function watchlist({ item }) {
     copy[i] = !copy[i];
     setCheckedItems(copy);
   }
+
+  const onDeleteWatchlist = () => Alert.alert(
+    `${item.name}`,
+    'Do you really want to delete this watchlist?',
+    [
+      {
+        text: 'Delete',
+        onPress: () => dispatch(deleteWatchList(item.id)),
+        style: 'destructive',
+      },
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+    ],
+    { cancelable: false },
+  );
 
   return (
     <Card>
@@ -66,8 +88,7 @@ export default function watchlist({ item }) {
             checkedItems={checkedItems}
             isInEditMode={isInEditMode}
             toggleEditMode={setIsInEditMode}
-            watchListId={item.id}
-            watchListName={item.name}
+            onDeleteWatchlist={onDeleteWatchlist}
           />
         </>
       )}
