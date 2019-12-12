@@ -53,4 +53,49 @@ export default StyleSheet.create({
     padding: 15,
     paddingVertical: 10,
   },
+  modalBackground: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: 285,
+    height: 280,
+    backgroundColor:
+      '#fff',
+    borderRadius: 6,
+  },
+  modalHeader: {
+    backgroundColor: '#4d63be',
+    flexDirection: 'row',
+    borderTopStartRadius: 6,
+    borderTopRightRadius: 6,
+    justifyContent: 'space-between',
+  },
+  modalTitle: {
+    padding: 15,
+    fontSize: 13,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  modalCloseButtonWrapper: {
+    padding: 15,
+    borderTopRightRadius: 6,
+  },
+  modalBody: {
+    padding: 15,
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  modalButton: {
+    height: 40,
+    width: 255,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 2,
+  },
+  modalButtonGroup: {
+    flexDirection: 'column',
+  },
 });
