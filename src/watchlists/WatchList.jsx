@@ -61,7 +61,7 @@ export default function watchlist({ item }) {
   );
 
   const onDeleteStocks = () => Alert.alert(
-    `Removing from ${item.name}${item.id}`,
+    `Removing from ${item.name}`,
     `Do you really want to remove these ${checkedItems.filter((val) => val).length} stocks?`,
     [
       {
