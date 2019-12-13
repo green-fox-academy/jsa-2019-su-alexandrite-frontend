@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  TouchableHighlight,
+} from 'react-native';
+import { useNavigation } from 'react-navigation-hooks';
 import styles from './styles';
 import tradeIcon from '../../assets/icons/watchList/trade.png';
 import detailIcon from '../../assets/icons/watchList/detail.png';
@@ -12,6 +18,7 @@ export default function WatchListItem({
   dailyChange,
   volumn,
 }) {
+  const { push } = useNavigation();
   return (
     <View style={styles.watchListItem}>
       <View style={styles.watchListItemColumn}>
@@ -29,11 +36,12 @@ export default function WatchListItem({
           <Text style={[styles.watchListItemColumnText, { color: '#21af78' }]}>
             {`+${dailyChange}%`}
           </Text>
-        ) : (
-          <Text style={[styles.watchListItemColumnText, { color: '#d82f2f' }]}>
-            {`${dailyChange}%`}
-          </Text>
-        )}
+        )
+          : (
+            <Text style={[styles.watchListItemColumnText, { color: '#d82f2f' }]}>
+              {`${dailyChange}%`}
+            </Text>
+          )}
       </View>
       <View style={styles.watchListItemColumn}>
         <Text style={styles.watchListItemColumnText}>
@@ -42,7 +50,14 @@ export default function WatchListItem({
       </View>
       <View style={[styles.watchListItemColumn, { flexDirection: 'row' }]}>
         <Image source={tradeIcon} />
-        <Image source={detailIcon} />
+        <TouchableHighlight
+          onPress={() => push('StockDetails', { symbol: ticker })}
+          underlayColor="#0000"
+          activeOpacity={0.5}
+          style={styles.detailIcon}
+        >
+          <Image source={detailIcon} />
+        </TouchableHighlight>
       </View>
     </View>
   );
