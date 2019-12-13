@@ -68,14 +68,14 @@ export default function watchlist({ item }) {
             isInEditMode
               ? (
                 <EditModeWatchListItem
-                  key={stock.id}
+                  key={stock.ticker}
                   isChecked={checkedItems[i]}
                   onSelect={() => selectItem(i)}
                   ticker={stock.ticker}
                 />
               ) : (
                 <WatchListItem
-                  key={stock.id}
+                  key={stock.ticker}
                   ticker={stock.ticker}
                   currPrice={stock.currPrice}
                   dailyChange={stock.dailyChange}
