@@ -38,7 +38,7 @@ export const addStockToWatchlist = (watchlistId, ticker) => ({
 
 export const deleteStockInWatchList = (watchListId, stocks) => ({
   type: DELETE_STOCK_IN_WATCHLIST,
-  payLoad: {
+  payload: {
     watchListId,
     stocks,
   },

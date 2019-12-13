@@ -89,11 +89,13 @@ export default (state = initialState, action) => {
     case DELETE_STOCK_IN_WATCHLIST:
       return {
         ...state,
-        watchlists: state.watchlists[action.payLoad.watchListId].stocks.filter(
-          (item) => (
-            action.payLoad.stocks.indexOf(item.ticker) > -1
-          ),
-        ),
+        watchlists: state.watchlists.map((wl) => (
+          wl.id === action.payload.watchListId
+            ? {
+              ...wl,
+              stocks: action.payload.stocks,
+            }
+            : wl)),
       };
     default:
       return state;

@@ -13,12 +13,17 @@ const EditorControls = ({
   isInEditMode,
   toggleEditMode,
   onDeleteWatchlist,
+  onDeleteStocks,
 }) => {
   const num = checkedItems.filter((checked) => checked).length;
 
   return (
     <View style={styles.editorMode}>
-      <TouchableHighlight style={styles.editorButton} underlayColor="#ffebeb">
+      <TouchableHighlight
+        style={styles.editorButton}
+        underlayColor="#ffebeb"
+        onPress={onDeleteStocks}
+      >
         <Text style={styles.editDeleteButton}>
           <FontAwesome5 size={14} name="trash" />
           {` ${num}`}
@@ -47,6 +52,7 @@ EditorControls.propTypes = {
     PropTypes.bool,
   ).isRequired,
   onDeleteWatchlist: PropTypes.func.isRequired,
+  onDeleteStocks: PropTypes.func.isRequired,
 };
 
 export default EditorControls;

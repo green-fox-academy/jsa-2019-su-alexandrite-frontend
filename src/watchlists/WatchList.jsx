@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Image,
@@ -14,13 +14,17 @@ import chevron from '../../assets/icons/watchList/chevron.png';
 import Card from '../common/Card';
 import styles from './styles';
 import EditFooter from './EditFooter';
-import { deleteWatchList } from '../redux/watchList/actionCreator';
+import { deleteWatchList, deleteStockInWatchList } from '../redux/watchList/actionCreator';
 
 export default function watchlist({ item }) {
   const [isOpen, setIsOpen] = useState(true);
   const [isInEditMode, setIsInEditMode] = useState(false);
   const [checkedItems, setCheckedItems] = useState(item.stocks.map(() => false));
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setCheckedItems(item.stocks.map(() => false));
+  }, [item]);
 
   function handleClick() {
     setIsOpen(!isOpen);
@@ -32,6 +36,13 @@ export default function watchlist({ item }) {
     setCheckedItems(copy);
   }
 
+  const onConfirmDeleteStockInWatchList = () => {
+    dispatch(deleteStockInWatchList(
+      item.id,
+      item.stocks.filter((_, i) => !checkedItems[i]),
+    ));
+  };
+
   const onDeleteWatchlist = () => Alert.alert(
     `${item.name}`,
     'Do you really want to delete this watchlist?',
@@ -39,6 +50,23 @@ export default function watchlist({ item }) {
       {
         text: 'Delete',
         onPress: () => dispatch(deleteWatchList(item.id)),
+        style: 'destructive',
+      },
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+    ],
+    { cancelable: false },
+  );
+
+  const onDeleteStocks = () => Alert.alert(
+    `Removing from ${item.name}${item.id}`,
+    `Do you really want to remove these ${checkedItems.filter((val) => val).length} stocks?`,
+    [
+      {
+        text: 'Delete',
+        onPress: onConfirmDeleteStockInWatchList,
         style: 'destructive',
       },
       {
@@ -88,6 +116,7 @@ export default function watchlist({ item }) {
             isInEditMode={isInEditMode}
             toggleEditMode={setIsInEditMode}
             onDeleteWatchlist={onDeleteWatchlist}
+            onDeleteStocks={onDeleteStocks}
           />
         </>
       )}
