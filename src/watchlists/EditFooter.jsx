@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import EditControls from './EditControls';
 import EditButton from './EditButton';
 
-const EditFooter = ({ isInEditMode, toggleEditMode, checkedItems }) => (
-  isInEditMode
-    ? (
-      <EditControls
-        checkedItems={checkedItems}
-        isInEditMode={isInEditMode}
-        toggleEditMode={toggleEditMode}
-      />
-    )
-    : <EditButton isInEditMode={isInEditMode} toggleEditMode={toggleEditMode} />
+const EditFooter = ({
+  isInEditMode,
+  toggleEditMode,
+  checkedItems,
+  onDeleteWatchlist,
+}) => (isInEditMode
+  ? (
+    <EditControls
+      checkedItems={checkedItems}
+      isInEditMode={isInEditMode}
+      toggleEditMode={toggleEditMode}
+      onDeleteWatchlist={onDeleteWatchlist}
+    />
+  )
+  : <EditButton isInEditMode={isInEditMode} toggleEditMode={toggleEditMode} />
 );
 
 EditFooter.propTypes = {
@@ -21,6 +26,7 @@ EditFooter.propTypes = {
   checkedItems: PropTypes.arrayOf(
     PropTypes.bool,
   ).isRequired,
+  onDeleteWatchlist: PropTypes.func.isRequired,
 };
 
 export default EditFooter;
