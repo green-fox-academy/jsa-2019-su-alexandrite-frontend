@@ -64,7 +64,7 @@ export default (state = initalState, action) => {
       };
     case DELETE_WATCHLIST:
       return {
-        counter: state.counter,
+        ...state,
         watchlists: state.watchlists.filter((item) => item.id !== action.payLoad),
       };
     default:
