@@ -6,7 +6,7 @@ import {
 } from './actionType';
 
 
-export const DELETE_WATCHLIST_ITEM = 'DELETE_WATCHLIST_ITEM';
+export const DELETE_STOCK_IN_WATCHLIST = 'DELETE_STOCK_IN_WATCHLIST';
 
 export const fetchWatchList = () => ({
   type: FETCH_WATCHLIST_SUCCESS,
@@ -36,7 +36,10 @@ export const addStockToWatchlist = (watchlistId, ticker) => ({
   },
 });
 
-export const deleteWatchListItem = (payLoad) => ({
-  type: DELETE_WATCHLIST_ITEM,
-  payLoad,
+export const deleteStockInWatchList = (watchListId, stocks) => ({
+  type: DELETE_STOCK_IN_WATCHLIST,
+  payLoad: {
+    watchListId,
+    stocks,
+  },
 });

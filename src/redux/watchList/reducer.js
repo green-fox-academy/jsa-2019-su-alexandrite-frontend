@@ -3,8 +3,8 @@ import {
   POST_WATCHLIST_SUCCESS,
   DELETE_WATCHLIST,
   ADD_STOCK_TO_WATCHLIST,
+  DELETE_STOCK_IN_WATCHLIST,
 } from './actionType';
-import { DELETE_WATCHLIST_ITEM } from './actionCreator';
 
 const watchlist1 = {
   id: 1,
@@ -86,9 +86,14 @@ export default (state = initialState, action) => {
             })
             : watchlist)),
       };
-    case DELETE_WATCHLIST_ITEM:
+    case DELETE_STOCK_IN_WATCHLIST:
       return {
-        //      watchlists.
+        ...state,
+        watchlists: state.watchlists[action.payLoad.watchListId].stocks.filter(
+          (item) => (
+            action.payLoad.stocks.indexOf(item.ticker) > -1
+          ),
+        ),
       };
     default:
       return state;
