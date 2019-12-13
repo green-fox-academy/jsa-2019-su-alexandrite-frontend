@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Picker } from 'react-native';
+import { View, Picker, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import Popup from '../common/Popup';
@@ -9,6 +9,8 @@ const WatchlistPickerPopup = ({ visible, onClose, symbol }) => {
   const { watchlists } = useSelector((state) => state.watchlists);
   const [selectedWatchlist, setSelectedWatchlist] = useState();
   const dispatch = useDispatch();
+  const filteredWL = watchlists
+    .filter((wl) => !wl.stocks.find((stock) => stock.ticker === symbol));
   return (
     <Popup
       visible={visible}
@@ -16,20 +18,25 @@ const WatchlistPickerPopup = ({ visible, onClose, symbol }) => {
       onCancel={onClose}
       confirmButtonText="OK"
       onConfirm={() => {
-        dispatch(addStockToWatchlist(selectedWatchlist, symbol));
+        if (selectedWatchlist) dispatch(addStockToWatchlist(selectedWatchlist, symbol));
         onClose();
       }}
     >
       <View style={{ flex: 1, justifyContent: 'center', overflow: 'hidden' }}>
-        <Picker
-          selectedValue={selectedWatchlist}
-          style={{ flex: 0.5, justifyContent: 'center' }}
-          onValueChange={(val) => setSelectedWatchlist(val)}
-        >
-          {watchlists.map(({ name, id }) => (
-            <Picker.Item key={id} label={name} value={id} />
-          ))}
-        </Picker>
+        {filteredWL.length
+          ? (
+            <Picker
+              selectedValue={selectedWatchlist}
+              style={{ flex: 0.5, justifyContent: 'center' }}
+              onValueChange={(val) => setSelectedWatchlist(val)}
+            >
+              {
+                filteredWL.map(({ name, id }) => (
+                  <Picker.Item key={id} label={name} value={id} />
+                ))
+              }
+            </Picker>
+          ) : <Text style={{ textAlign: 'center' }}>You have this stock in all of your watchlists</Text>}
       </View>
     </Popup>
   );
