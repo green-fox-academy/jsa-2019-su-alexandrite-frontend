@@ -7,10 +7,15 @@ import { addStockToWatchlist } from '../redux/watchList/actionCreator';
 
 const WatchlistPickerPopup = ({ visible, onClose, symbol }) => {
   const { watchlists } = useSelector((state) => state.watchlists);
-  const [selectedWatchlist, setSelectedWatchlist] = useState();
   const dispatch = useDispatch();
   const filteredWL = watchlists
     .filter((wl) => !wl.stocks.find((stock) => stock.ticker === symbol));
+  const [selectedWatchlist, setSelectedWatchlist] = useState(
+    filteredWL.length
+      ? filteredWL[0].id
+      : undefined,
+  );
+
   return (
     <Popup
       visible={visible}
