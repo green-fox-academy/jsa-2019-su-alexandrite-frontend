@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "node ./node_modules/eslint/bin/eslint src"
+    "lint": "eslint src"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
