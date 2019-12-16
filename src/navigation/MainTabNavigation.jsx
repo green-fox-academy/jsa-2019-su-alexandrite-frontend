@@ -3,16 +3,16 @@ import { Image } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
-import Watchlists from '../watchlists';
-import Investments from '../investments';
-import Account from '../account';
-import Playground from '../playground';
+import Watchlists from '../Watchlists';
+import Investments from '../Investments';
+import Account from '../Account';
+import Playground from '../Playground';
 
 import accountIcon from '../../assets/icons/bottom-tab/me.png';
 import watchlistsIcon from '../../assets/icons/bottom-tab/watchlists.png';
 import investmentsIconActive from '../../assets/icons/bottom-tab/investments-active.png';
-import StockDetails from '../stock-details';
-import Search from '../search';
+import StockDetails from '../StockDetails';
+import Search from '../Search';
 
 const InvestmentsStack = createStackNavigator({
   Investments: {
