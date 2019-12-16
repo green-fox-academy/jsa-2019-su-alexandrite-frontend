@@ -3,6 +3,7 @@ import {
   POST_WATCHLIST_SUCCESS,
   DELETE_WATCHLIST,
   ADD_STOCK_TO_WATCHLIST,
+  REPLACE_WATCHLIST_STOCKS,
 } from './actionType';
 
 
@@ -36,8 +37,8 @@ export const addStockToWatchlist = (watchlistId, ticker) => ({
   },
 });
 
-export const deleteStockInWatchList = (watchListId, stocks) => ({
-  type: DELETE_STOCK_IN_WATCHLIST,
+export const replaceWatchlistStocks = (watchListId, stocks) => ({
+  type: REPLACE_WATCHLIST_STOCKS,
   payload: {
     watchListId,
     stocks,

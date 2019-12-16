@@ -14,7 +14,7 @@ import chevron from '../../assets/icons/watchList/chevron.png';
 import Card from '../common/Card';
 import styles from './styles';
 import EditFooter from './EditFooter';
-import { deleteWatchList, deleteStockInWatchList } from '../redux/watchList/actionCreator';
+import { deleteWatchList, replaceWatchlistStocks } from '../redux/watchList/actionCreator';
 
 export default function watchlist({ item }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -37,7 +37,7 @@ export default function watchlist({ item }) {
   }
 
   const onConfirmDeleteStockInWatchList = () => {
-    dispatch(deleteStockInWatchList(
+    dispatch(replaceWatchlistStocks(
       item.id,
       item.stocks.filter((_, i) => !checkedItems[i]),
     ));
