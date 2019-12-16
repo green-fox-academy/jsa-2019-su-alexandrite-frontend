@@ -3,6 +3,7 @@ import {
   POST_WATCHLIST_SUCCESS,
   DELETE_WATCHLIST,
   ADD_STOCK_TO_WATCHLIST,
+  REPLACE_WATCHLIST_STOCKS,
 } from './actionType';
 
 const watchlist1 = {
@@ -83,6 +84,17 @@ export default (state = initialState, action) => {
                 ? watchlist.stocks
                 : [...watchlist.stocks, action.payLoad.stock],
             })
+            : watchlist)),
+      };
+    case REPLACE_WATCHLIST_STOCKS:
+      return {
+        ...state,
+        watchlists: state.watchlists.map((watchlist) => (
+          watchlist.id === action.payload.watchListId
+            ? {
+              ...watchlist,
+              stocks: action.payload.stocks,
+            }
             : watchlist)),
       };
     default:
