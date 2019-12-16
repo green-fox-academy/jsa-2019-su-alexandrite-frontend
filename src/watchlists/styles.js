@@ -91,5 +91,5 @@ export default StyleSheet.create({
   detailIcon: {
     padding: 10,
     margin: -10,
-  }
+  },
 });
