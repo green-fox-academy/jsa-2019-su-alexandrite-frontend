@@ -32,7 +32,7 @@ export const addStockToWatchlist = (watchlistId, ticker) => ({
       // to suppress the warning, will be removed after watchlist data story
       currPrice: 0,
       dailyChange: 0,
-      volumn: '0',
+      volume: '0',
     },
   },
 });
