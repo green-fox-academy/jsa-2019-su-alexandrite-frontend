@@ -1,28 +1,63 @@
-import { FETCH_STOCK_DETAILS_START, FETCH_STOCK_DETAILS_SUCCESS, FETCH_STOCK_DETAILS_FAIL } from './actionType';
+import {
+  FETCH_STOCK_DETAILS_START,
+  FETCH_STOCK_DETAILS_SUCCESS,
+  FETCH_STOCK_DETAILS_FAIL,
+  FETCH_HISTORY_CHART_DATA_START,
+  FETCH_HISTORY_CHART_DATA_SUCCESS,
+  FETCH_HISTORY_CHART_DATA_FAIL,
+  RESET_STOCK_INFO,
+} from './actionType';
 
 const initState = {
-  loading: false,
-  details: undefined,
-  error: undefined,
+  loadingStockStatsData: false,
+  stockStatsData: undefined,
+  stockStatsDataError: undefined,
+  loadingHistoricalChartData: true,
+  historicalData: undefined,
+  historicalDataError: undefined,
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
     case FETCH_STOCK_DETAILS_START:
       return {
-        ...initState,
-        loading: true,
+        ...state,
+        loadingStockStatsData: true,
       };
     case FETCH_STOCK_DETAILS_SUCCESS:
       return {
-        ...initState,
-        details: action.payload,
+        ...state,
+        loadingStockStatsData: false,
+        stockStatsData: action.payload,
       };
     case FETCH_STOCK_DETAILS_FAIL:
       return {
-        ...initState,
-        error: action.payload,
+        ...state,
+        loadingStockStatsData: false,
+        stockStatsDataError: action.payload,
       };
+    case FETCH_HISTORY_CHART_DATA_START:
+      return {
+        ...state,
+        loadingHistoricalChartData: true,
+        historicalDataError: undefined,
+      };
+    case FETCH_HISTORY_CHART_DATA_SUCCESS:
+      return {
+        ...state,
+        loadingHistoricalChartData: false,
+        historicalData: {
+          ...action.payload,
+        },
+      };
+    case FETCH_HISTORY_CHART_DATA_FAIL:
+      return {
+        ...state,
+        loadingHistoricalChartData: false,
+        historicalDataError: action.payload,
+      };
+    case RESET_STOCK_INFO:
+      return initState;
     default:
       return state;
   }

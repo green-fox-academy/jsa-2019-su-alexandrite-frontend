@@ -22,7 +22,11 @@ const detailsRow = (key, val) => (
 
 const Stats = ({ symbol }) => {
   const dispatch = useDispatch();
-  const { details, loading, error } = useSelector((state) => state.stock);
+  const {
+    stockStatsData: details,
+    loadingStockStatsData: loading,
+    stockStatsDataError: error,
+  } = useSelector((state) => state.stock);
 
   useEffect(() => {
     dispatch(stockActions.fetchStockDetails(symbol));

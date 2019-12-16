@@ -30,4 +30,39 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'right',
   },
+  perfChartContainer: {
+    width: width - 60,
+    minHeight: 200,
+    justifyContent: 'center',
+  },
+  perfChartTimeRangeSelector: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#f2f3fb',
+    marginTop: 10,
+    borderRadius: 20,
+    padding: 5,
+  },
+  perfChartButton: {
+    paddingHorizontal: 20,
+    paddingVertical: 5,
+    borderRadius: 20,
+  },
+  perfChartButtonActive: {
+    backgroundColor: '#566ed3',
+    elevation: 2,
+    shadowColor: '#566ed3',
+    shadowRadius: 2,
+    shadowOpacity: 0.8,
+    shadowOffset: {
+      height: 2,
+    },
+  },
+  perfChartButtonText: {
+    color: '#666',
+    fontWeight: 'bold',
+  },
+  perfChartButtonTextActive: {
+    color: '#fff',
+  },
 });

@@ -9,6 +9,7 @@ import commonStyles from '../common/styles';
 import Stats from './Stats';
 import addToWatchlistIcon from '../../assets/icons/header/add-to-wl.png';
 import WatchlistPickerPopup from './WatchlistPickerPopup';
+import Performance from './Performance';
 
 const stockDetails = () => {
   const symbol = useNavigationParam('symbol');
@@ -21,9 +22,11 @@ const stockDetails = () => {
     });
   }, []);
 
-  const { backgroundColor } = commonStyles.container;
+
+  const { backgroundColor, flex, ...rest } = commonStyles.container;
   return (
-    <ScrollView style={{ backgroundColor }} contentContainerStyle={commonStyles.container}>
+    <ScrollView style={{ backgroundColor, flex }} contentContainerStyle={rest}>
+      <Performance symbol={symbol} />
       <Stats symbol={symbol} />
       <WatchlistPickerPopup
         symbol={symbol}
