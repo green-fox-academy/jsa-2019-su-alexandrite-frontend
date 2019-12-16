@@ -20,7 +20,7 @@ const navigationOptions = {
   headerRight: () => <SearchButton />,
 };
 
-const watchlistsScreen = () => {
+const WatchlistsScreen = () => {
   const [popupVisible, setModalVisible] = useState(false);
   const [watchListTitle, setWatchListTitle] = useState('');
   const dispatch = useDispatch();
@@ -70,6 +70,6 @@ const watchlistsScreen = () => {
   );
 };
 
-watchlistsScreen.navigationOptions = navigationOptions;
+WatchlistsScreen.navigationOptions = navigationOptions;
 
-export default watchlistsScreen;
+export default WatchlistsScreen;

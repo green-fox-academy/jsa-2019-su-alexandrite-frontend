@@ -6,7 +6,7 @@ import {
 import { MaterialIcons } from '@expo/vector-icons';
 import styles from './styles';
 
-export default function watchListItem({
+export default function WatchListItem({
   isChecked,
   onSelect,
   ticker,
@@ -31,7 +31,7 @@ export default function watchListItem({
   );
 }
 
-watchListItem.propTypes = {
+WatchListItem.propTypes = {
   ticker: PropTypes.string.isRequired,
   isChecked: PropTypes.bool.isRequired,
   onSelect: PropTypes.func.isRequired,
