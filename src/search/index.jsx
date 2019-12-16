@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchBar from './headerBar';
-import Result from './result';
+import SearchBar from './HeaderBar';
+import Result from './Result';
 
 const navigationOptions = {
   header: () => <SearchBar />,
