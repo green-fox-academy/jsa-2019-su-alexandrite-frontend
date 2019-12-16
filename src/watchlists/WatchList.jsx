@@ -107,7 +107,7 @@ export default function watchlist({ item }) {
                   ticker={stock.ticker}
                   currPrice={stock.currPrice}
                   dailyChange={stock.dailyChange}
-                  volumn={stock.volumn}
+                  volume={stock.volume}
                 />
               )
           ))}

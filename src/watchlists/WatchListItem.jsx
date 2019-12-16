@@ -16,7 +16,7 @@ export default function WatchListItem({
   ticker,
   currPrice,
   dailyChange,
-  volumn,
+  volume,
 }) {
   const { push } = useNavigation();
   return (
@@ -45,7 +45,7 @@ export default function WatchListItem({
       </View>
       <View style={styles.watchListItemColumn}>
         <Text style={styles.watchListItemColumnText}>
-          {volumn}
+          {volume}
         </Text>
       </View>
       <View style={[styles.watchListItemColumn, { flexDirection: 'row' }]}>
@@ -67,5 +67,5 @@ WatchListItem.propTypes = {
   ticker: PropTypes.string.isRequired,
   currPrice: PropTypes.number.isRequired,
   dailyChange: PropTypes.number.isRequired,
-  volumn: PropTypes.string.isRequired,
+  volume: PropTypes.string.isRequired,
 };
