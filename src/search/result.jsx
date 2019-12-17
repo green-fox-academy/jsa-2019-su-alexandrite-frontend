@@ -47,26 +47,34 @@ ResultItem.propTypes = {
 
 export default () => {
   const {
-    isLoading,
+    isloading,
     result,
     error,
     touched,
   } = useSelector((state) => state.search);
 
-  if (isLoading) {
-    return <ActivityIndicator size="large" />;
-  }
-  if (error) {
-    return <Text>{error.message}</Text>;
-  }
   if (touched && result.length === 0) {
     return <Text style={styles.noResult}>No Result</Text>;
   }
   return (
-    <FlatList
-      data={result}
-      renderItem={({ item }) => <ResultItem symbol={item.symbol} exchange={item.exchange} />}
-      keyExtractor={(info) => info.symbol}
-    />
+    <View>
+      {!error ? (
+        <>
+          {isloading && <ActivityIndicator size="large" style={styles.loading} />}
+          {!isloading && !error && (
+            <FlatList
+              data={result}
+              renderItem={({ item }) => (
+                <ResultItem
+                  symbol={item.symbol}
+                  exchange={item.exchange}
+                />
+              )}
+              keyExtractor={(info) => info.symbol}
+            />
+          )}
+        </>
+      ) : <Text>{error.message}</Text>}
+    </View>
   );
 };
