@@ -97,4 +97,8 @@ export default StyleSheet.create({
     padding: 10,
     margin: -10,
   },
+  listErrorContainer: {
+    margin: 15,
+    // marginHorizontal: 30,
+  },
 });

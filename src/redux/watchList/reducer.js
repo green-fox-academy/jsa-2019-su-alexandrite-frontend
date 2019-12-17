@@ -6,12 +6,14 @@ import {
   REPLACE_WATCHLIST_STOCKS,
   FETCH_WATCHLIST_DETAIL_START,
   FETCH_WATCHLIST_DETAIL_SUCCESS,
+  FETCH_WATCHLIST_DETAIL_FAIL,
 } from './actionType';
 
 const initialState = {
   counter: 3,
   watchlists: [],
   loadingWatchlistDetails: false,
+  loadingWatchlistDetailsError: undefined,
 };
 
 export default (state = initialState, action) => {
@@ -68,6 +70,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loadingWatchlistDetails: false,
+        loadingWatchlistDetailsError: undefined,
         watchlists: state.watchlists.map((wl) => ({
           ...wl,
           stocks: wl.stocks.map(({ ticker }) => ({
@@ -77,6 +80,12 @@ export default (state = initialState, action) => {
             volume: action.payload[ticker].quote.volume,
           })),
         })),
+      };
+    case FETCH_WATCHLIST_DETAIL_FAIL:
+      return {
+        ...state,
+        loadingWatchlistDetails: false,
+        loadingWatchlistDetailsError: action.payload,
       };
     default:
       return state;

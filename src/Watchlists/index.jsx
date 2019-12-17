@@ -13,6 +13,7 @@ import addIcon from '../../assets/icons/watchList/add.png';
 import styles from './styles';
 import commonStyle from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
+import ErrorMessage from '../common/ErrorMessage';
 import { postWatchList, fetchWatchlistDetail } from '../redux/watchList/actionCreator';
 
 const navigationOptions = {
@@ -24,7 +25,10 @@ const WatchlistsScreen = () => {
   const [popupVisible, setModalVisible] = useState(false);
   const [watchListTitle, setWatchListTitle] = useState('');
   const dispatch = useDispatch();
-  const { watchlists } = useSelector((state) => state.watchlists);
+  const {
+    watchlists,
+    loadingWatchlistDetailsError: error,
+  } = useSelector((state) => state.watchlists);
   const symbols = [...new Set(watchlists.map(({ stocks }) => stocks.map(({ ticker }) => ticker)))];
   const { padding } = commonStyle.container;
 
@@ -45,7 +49,14 @@ const WatchlistsScreen = () => {
 
   return (
     <View style={styles.container}>
+
       <FlatList
+        ListHeaderComponent={() => (error ? (
+          <View style={styles.listErrorContainer}>
+            <ErrorMessage message={error.message} />
+          </View>
+        ) : null)}
+        stickyHeaderIndices={[0]}
         contentContainerStyle={{ padding, paddingBottom: 60 }}
         data={watchlists}
         keyExtractor={(item) => JSON.stringify(item.id)}
