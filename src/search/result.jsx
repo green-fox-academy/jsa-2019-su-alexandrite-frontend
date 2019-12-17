@@ -47,7 +47,7 @@ ResultItem.propTypes = {
 
 export default () => {
   const {
-    isloading,
+    isLoading,
     result,
     error,
     touched,
@@ -60,8 +60,8 @@ export default () => {
     <View>
       {!error ? (
         <>
-          {isloading && <ActivityIndicator size="large" style={styles.loading} />}
-          {!isloading && !error && (
+          {isLoading && <ActivityIndicator size="large" style={styles.loading} />}
+          {!isLoading && !error && (
             <FlatList
               data={result}
               renderItem={({ item }) => (
