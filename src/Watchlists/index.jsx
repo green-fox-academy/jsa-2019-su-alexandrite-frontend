@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   TouchableHighlight,
   Image,
@@ -13,7 +13,7 @@ import addIcon from '../../assets/icons/watchList/add.png';
 import styles from './styles';
 import commonStyle from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
-import { postWatchList } from '../redux/watchList/actionCreator';
+import { postWatchList, fetchWatchlistDetail } from '../redux/watchList/actionCreator';
 
 const navigationOptions = {
   title: 'Watchlists',
@@ -25,7 +25,12 @@ const WatchlistsScreen = () => {
   const [watchListTitle, setWatchListTitle] = useState('');
   const dispatch = useDispatch();
   const { watchlists } = useSelector((state) => state.watchlists);
+  const symbols = [...new Set(watchlists.map(({ stocks }) => stocks.map(({ ticker }) => ticker)))];
   const { padding } = commonStyle.container;
+
+  useEffect(() => {
+    dispatch(fetchWatchlistDetail(symbols));
+  }, [symbols.length]);
 
   const onCloseAddModal = () => {
     setModalVisible(false);

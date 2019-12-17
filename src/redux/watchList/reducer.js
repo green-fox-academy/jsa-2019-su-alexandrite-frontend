@@ -4,6 +4,8 @@ import {
   DELETE_WATCHLIST,
   ADD_STOCK_TO_WATCHLIST,
   REPLACE_WATCHLIST_STOCKS,
+  FETCH_WATCHLIST_DETAIL_START,
+  FETCH_WATCHLIST_DETAIL_SUCCESS,
 } from './actionType';
 
 const watchlist1 = {
@@ -50,6 +52,7 @@ const watchlist2 = {
 const initialState = {
   counter: 3,
   watchlists: [watchlist1, watchlist2],
+  loadingWatchlistDetails: false,
 };
 
 export default (state = initialState, action) => {
@@ -64,25 +67,25 @@ export default (state = initialState, action) => {
           ...state.watchlists,
           {
             id: state.counter + 1,
-            name: action.payLoad,
+            name: action.payload,
             stocks: [],
           }],
       };
     case DELETE_WATCHLIST:
       return {
         ...state,
-        watchlists: state.watchlists.filter((item) => item.id !== action.payLoad),
+        watchlists: state.watchlists.filter((item) => item.id !== action.payload),
       };
     case ADD_STOCK_TO_WATCHLIST:
       return {
         ...state,
         watchlists: state.watchlists.map((watchlist) => (
-          watchlist.id === action.payLoad.watchlistId
+          watchlist.id === action.payload.watchlistId
             ? ({
               ...watchlist,
-              stocks: watchlist.stocks.find((stock) => stock.ticker === action.payLoad.stock.ticker)
+              stocks: watchlist.stocks.find((stock) => stock.ticker === action.payload.stock.ticker)
                 ? watchlist.stocks
-                : [...watchlist.stocks, action.payLoad.stock],
+                : [...watchlist.stocks, action.payload.stock],
             })
             : watchlist)),
       };
@@ -96,6 +99,25 @@ export default (state = initialState, action) => {
               stocks: action.payload.stocks,
             }
             : watchlist)),
+      };
+    case FETCH_WATCHLIST_DETAIL_START:
+      return {
+        ...state,
+        loadingWatchlistDetails: true,
+      };
+    case FETCH_WATCHLIST_DETAIL_SUCCESS:
+      return {
+        ...state,
+        loadingWatchlistDetails: false,
+        watchlists: state.watchlists.map((wl) => ({
+          ...wl,
+          stocks: wl.stocks.map(({ ticker }) => ({
+            ticker,
+            currPrice: action.payload[ticker].quote.latestPrice,
+            dailyChange: action.payload[ticker].quote.changePercent,
+            volume: action.payload[ticker].quote.volume,
+          })),
+        })),
       };
     default:
       return state;

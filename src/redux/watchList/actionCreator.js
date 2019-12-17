@@ -1,9 +1,13 @@
+import { API_URL, API_KEY } from 'react-native-dotenv';
 import {
   FETCH_WATCHLIST_SUCCESS,
   POST_WATCHLIST_SUCCESS,
   DELETE_WATCHLIST,
   ADD_STOCK_TO_WATCHLIST,
   REPLACE_WATCHLIST_STOCKS,
+  FETCH_WATCHLIST_DETAIL_FAIL,
+  FETCH_WATCHLIST_DETAIL_START,
+  FETCH_WATCHLIST_DETAIL_SUCCESS,
 } from './actionType';
 
 
@@ -13,26 +17,26 @@ export const fetchWatchList = () => ({
   type: FETCH_WATCHLIST_SUCCESS,
 });
 
-export const postWatchList = (payLoad) => ({
+export const postWatchList = (payload) => ({
   type: POST_WATCHLIST_SUCCESS,
-  payLoad,
+  payload,
 });
 
-export const deleteWatchList = (payLoad) => ({
+export const deleteWatchList = (payload) => ({
   type: DELETE_WATCHLIST,
-  payLoad,
+  payload,
 });
 
 export const addStockToWatchlist = (watchlistId, ticker) => ({
   type: ADD_STOCK_TO_WATCHLIST,
-  payLoad: {
+  payload: {
     watchlistId,
     stock: {
       ticker,
       // to suppress the warning, will be removed after watchlist data story
       currPrice: 0,
       dailyChange: 0,
-      volume: '0',
+      volume: 0,
     },
   },
 });
@@ -44,3 +48,42 @@ export const replaceWatchlistStocks = (watchListId, stocks) => ({
     stocks,
   },
 });
+
+const fetchWatchlistDetailStart = () => ({
+  type: FETCH_WATCHLIST_DETAIL_START,
+});
+
+const fetchWatchlistDetailSuccess = (payload) => ({
+  type: FETCH_WATCHLIST_DETAIL_SUCCESS,
+  payload,
+});
+
+const fetchWatchlistDetailFail = (payload) => ({
+  type: FETCH_WATCHLIST_DETAIL_FAIL,
+  payload,
+});
+
+export const fetchWatchlistDetail = (symbols) => (dispatch) => {
+  const url = new URL(`${API_URL}/stock/market/batch`);
+  url.searchParams.append('token', API_KEY);
+  url.searchParams.append('symbols', symbols);
+  url.searchParams.append('types', 'quote');
+  url.searchParams.append('displayPercent', true);
+  dispatch(fetchWatchlistDetailStart());
+  fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        switch (res.status) {
+          case 404:
+            throw new Error(`The stock ${symbols} you are looking for does not exist.`);
+          default:
+            throw new Error('Oops, there\'s something wrong with our app.');
+        }
+      }
+      return res.json();
+    })
+    .then((res) => {
+      dispatch(fetchWatchlistDetailSuccess(res));
+    })
+    .catch((err) => dispatch(fetchWatchlistDetailFail(err)));
+};
