@@ -28,6 +28,7 @@ const WatchlistsScreen = () => {
   const {
     watchlists,
     loadingWatchlistDetailsError: error,
+    loadingWatchlistDetails: loading,
   } = useSelector((state) => state.watchlists);
   const symbols = [...new Set(watchlists.map(({ stocks }) => stocks.map(({ ticker }) => ticker)))];
   const { padding } = commonStyle.container;
@@ -49,7 +50,6 @@ const WatchlistsScreen = () => {
 
   return (
     <View style={styles.container}>
-
       <FlatList
         ListHeaderComponent={() => (error ? (
           <View style={styles.listErrorContainer}>
@@ -63,6 +63,8 @@ const WatchlistsScreen = () => {
         renderItem={({ item }) => (
           <WatchList item={item} />
         )}
+        refreshing={loading}
+        onRefresh={() => dispatch(fetchWatchlistDetail(symbols))}
       />
       <Popup
         visible={popupVisible}
