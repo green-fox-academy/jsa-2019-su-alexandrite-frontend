@@ -9,7 +9,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
 import styles from './styles';
-import searchActions from '../redux/search/actionCreator';
+import { searchStockData } from '../redux/search/actionCreator';
 
 export default function SearchBar() {
   const [searchInput, onChangeInput] = useState('');
@@ -20,7 +20,7 @@ export default function SearchBar() {
     let timer;
     if (searchInput.length >= 2) {
       timer = setTimeout(() => {
-        dispatch(searchActions.searchStockData(searchInput));
+        dispatch(searchStockData(searchInput));
       }, 300);
     }
     return () => {
