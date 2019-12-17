@@ -77,6 +77,8 @@ export default function Watchlist({ item }) {
     { cancelable: false },
   );
 
+  const isEmptyWatchList = !item.stocks.length;
+
   return (
     <Card>
       <View style={styles.watchListTitle}>
@@ -92,25 +94,27 @@ export default function Watchlist({ item }) {
       </View>
       {isOpen && (
         <>
-          {item.stocks.map((stock, i) => (
-            isInEditMode
-              ? (
-                <EditModeWatchListItem
-                  key={stock.ticker}
-                  isChecked={checkedItems[i]}
-                  onSelect={() => selectItem(i)}
-                  ticker={stock.ticker}
-                />
-              ) : (
-                <WatchListItem
-                  key={stock.ticker}
-                  ticker={stock.ticker}
-                  currPrice={stock.currPrice}
-                  dailyChange={stock.dailyChange}
-                  volume={stock.volume}
-                />
-              )
-          ))}
+          {isEmptyWatchList
+            ? <View style={styles.editorText}><Text style={{ color: '#ccc' }}>This WatchList is Empty</Text></View>
+            : (item.stocks.map((stock, i) => (
+              isInEditMode
+                ? (
+                  <EditModeWatchListItem
+                    key={stock.ticker}
+                    isChecked={checkedItems[i]}
+                    onSelect={() => selectItem(i)}
+                    ticker={stock.ticker}
+                  />
+                ) : (
+                  <WatchListItem
+                    key={stock.ticker}
+                    ticker={stock.ticker}
+                    currPrice={stock.currPrice}
+                    dailyChange={stock.dailyChange}
+                    volumn={stock.volumn}
+                  />
+                )
+            )))}
           <EditFooter
             checkedItems={checkedItems}
             isInEditMode={isInEditMode}
