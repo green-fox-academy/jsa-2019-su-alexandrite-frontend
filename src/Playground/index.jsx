@@ -4,7 +4,7 @@ import { useNavigation } from 'react-navigation-hooks';
 
 import commonStyles from '../common/styles';
 
-const playground = () => {
+const Playground = () => {
   const { push } = useNavigation();
   return (
     <View style={commonStyles.container}>
@@ -15,8 +15,8 @@ const playground = () => {
   );
 };
 
-playground.navigationOptions = {
+Playground.navigationOptions = {
   title: 'Playground',
 };
 
-export default playground;
+export default Playground;

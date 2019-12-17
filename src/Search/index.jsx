@@ -6,10 +6,10 @@ const navigationOptions = {
   header: () => <SearchBar />,
 };
 
-const search = () => (
+const Search = () => (
   <Result />
 );
 
-search.navigationOptions = navigationOptions;
+Search.navigationOptions = navigationOptions;
 
-export default search;
+export default Search;

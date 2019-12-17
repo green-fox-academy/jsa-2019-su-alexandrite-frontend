@@ -16,7 +16,7 @@ import styles from './styles';
 import EditFooter from './EditFooter';
 import { deleteWatchList, replaceWatchlistStocks } from '../redux/watchList/actionCreator';
 
-export default function watchlist({ item }) {
+export default function Watchlist({ item }) {
   const [isOpen, setIsOpen] = useState(true);
   const [isInEditMode, setIsInEditMode] = useState(false);
   const [checkedItems, setCheckedItems] = useState(item.stocks.map(() => false));
@@ -124,7 +124,7 @@ export default function watchlist({ item }) {
   );
 }
 
-watchlist.propTypes = {
+Watchlist.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
