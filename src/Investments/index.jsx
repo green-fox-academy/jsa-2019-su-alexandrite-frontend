@@ -7,12 +7,12 @@ const navigationOptions = {
   headerRight: () => <SearchButton />,
 };
 
-const investment = () => (
+const Investment = () => (
   <View style={commonStyles.container}>
     <Text>This is the investment screen</Text>
   </View>
 );
 
-investment.navigationOptions = navigationOptions;
+Investment.navigationOptions = navigationOptions;
 
-export default investment;
+export default Investment;

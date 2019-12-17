@@ -11,7 +11,7 @@ import addToWatchlistIcon from '../../assets/icons/header/add-to-wl.png';
 import WatchlistPickerPopup from './WatchlistPickerPopup';
 import Performance from './Performance';
 
-const stockDetails = () => {
+const StockDetails = () => {
   const symbol = useNavigationParam('symbol');
   const navigation = useNavigation();
   const [A2WPopupVisible, setA2WPopupVisible] = useState(false);
@@ -37,7 +37,7 @@ const stockDetails = () => {
   );
 };
 
-stockDetails.navigationOptions = ({ navigation }) => ({
+StockDetails.navigationOptions = ({ navigation }) => ({
   title: navigation.getParam('symbol'),
   headerStyle: {
     backgroundColor: '#566ed3',
@@ -58,4 +58,4 @@ stockDetails.navigationOptions = ({ navigation }) => ({
   },
 });
 
-export default stockDetails;
+export default StockDetails;
