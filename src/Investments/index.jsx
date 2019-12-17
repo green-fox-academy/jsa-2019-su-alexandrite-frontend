@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import commonStyles from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
 import PortfolioValue from './PortfolioValue';
@@ -12,7 +12,6 @@ const navigationOptions = {
 const Investment = () => (
   <View style={commonStyles.container}>
     <PortfolioValue />
-    <Text>This is the investment screen</Text>
   </View>
 );
 
