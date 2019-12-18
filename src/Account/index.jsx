@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import commonStyles from '../common/styles';
+import Login from './Login';
 
 export default () => (
   <View style={commonStyles.container}>
-    <Text>This is the account</Text>
+    <Login />
   </View>
 );
