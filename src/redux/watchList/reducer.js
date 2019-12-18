@@ -73,11 +73,14 @@ export default (state = initialState, action) => {
         loadingWatchlistDetailsError: undefined,
         watchlists: state.watchlists.map((wl) => ({
           ...wl,
-          stocks: wl.stocks.map(({ ticker }) => ({
+          stocks: wl.stocks.map(({ ticker, ...rest }) => ({
+            ...rest,
             ticker,
-            currPrice: action.payload[ticker].quote.latestPrice,
-            dailyChange: action.payload[ticker].quote.changePercent,
-            volume: action.payload[ticker].quote.volume,
+            ...(action.payload[ticker] && {
+              currPrice: action.payload[ticker].quote.latestPrice,
+              dailyChange: action.payload[ticker].quote.changePercent,
+              volume: action.payload[ticker].quote.volume,
+            }),
           })),
         })),
       };
