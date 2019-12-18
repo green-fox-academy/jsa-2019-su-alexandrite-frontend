@@ -1,8 +1,11 @@
-import { SERVER_URL } from 'react-native-dotenv';
+import { SERVER_URL, API_URL, API_KEY } from 'react-native-dotenv';
 import {
   FETCH_USER_INVESTMENT_SHARES_START,
-  fetchUserInvestmentSharesFail,
-  fetchUserInvestmentSharesSuccess,
+  FETCH_USER_INVESTMENT_SHARES_FAIL,
+  FETCH_USER_INVESTMENT_SHARES_SUCCESS,
+  FETCH_STOCK_PRICE_START,
+  FETCH_STOCK_PRICE_FAIL,
+  FETCH_STOCK_PRICE_SUCCESS,
 } from './actionType';
 
 export const fetchUserInvestmentSharesStart = () => ({
@@ -20,9 +23,9 @@ export const fetchUserInvestmentSharesSuccess = (payload) => ({
 });
 
 export const fetchUserInvestmentShares = (uid) => (dispatch) => {
-  const url = new URL(`${SERVER_URL}/investments/${uid}`);
+  const serverUrl = new URL(`${SERVER_URL}/investments/${uid}`);
   dispatch(fetchUserInvestmentSharesStart());
-  fetch(url)
+  fetch(serverUrl)
     .then((response) => {
       if (!response.ok) {
         switch (response.status) {
@@ -36,4 +39,38 @@ export const fetchUserInvestmentShares = (uid) => (dispatch) => {
     })
     .then((response) => dispatch(fetchUserInvestmentSharesSuccess(response)))
     .catch((err) => dispatch(fetchUserInvestmentSharesFail(err)));
+};
+
+export const fetchStockPriceStart = () => ({
+  type: FETCH_STOCK_PRICE_START,
+});
+
+export const fetchStockPriceFail = (payload) => ({
+  type: FETCH_STOCK_PRICE_FAIL,
+  payload,
+});
+
+export const fetchStockPriceSuccess = (payload) => ({
+  type: FETCH_STOCK_PRICE_SUCCESS,
+  payload,
+});
+
+export const fetchStockPrice = (symbols) => (dispatch) => {
+  const apiUrl = new URL(`${API_URL}/stock/market/batch?symbols=${symbols}&types=price`);
+  url.searchParams.append('token', API_KEY);
+  dispatch(fetchStockPriceStart());
+  fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        switch (response.status) {
+          case 404:
+            throw new Error('The symbols of stocks you invested could not be found.');
+          default:
+            throw new Error('Oops, there\'s something wrong with our app.');
+        }
+      }
+      return response.json();
+    })
+    .then((response) => dispatch(fetchStockPriceSuccesss(response)))
+    .catch((err) => dispatch(fetchStockPriceFail(err)));
 };
