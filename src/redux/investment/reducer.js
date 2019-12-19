@@ -9,8 +9,8 @@ import {
 
 const initState = {
   isLoading: false,
-  userShares: [],
-  price: [],
+  userShares: undefined,
+  price: undefined,
   error: '',
 };
 

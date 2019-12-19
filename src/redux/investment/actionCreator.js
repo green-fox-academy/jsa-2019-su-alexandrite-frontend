@@ -23,7 +23,7 @@ export const fetchUserInvestmentSharesSuccess = (payload) => ({
 });
 
 export const fetchUserInvestmentShares = (uid) => (dispatch) => {
-  const serverUrl = new URL(`${SERVER_URL}/investments/${uid}`);
+  const serverUrl = new URL(`${SERVER_URL}/investments/user/${uid}`);
   dispatch(fetchUserInvestmentSharesStart());
   fetch(serverUrl)
     .then((response) => {
@@ -56,8 +56,10 @@ export const fetchStockPriceSuccess = (payload) => ({
 });
 
 export const fetchStockPrice = (symbols) => (dispatch) => {
-  const apiUrl = new URL(`${API_URL}/stock/market/batch?symbols=${symbols}&types=price`);
-  url.searchParams.append('token', API_KEY);
+  const apiUrl = new URL(`${API_URL}/stock/market/batch`);
+  apiUrl.searchParams.append('symbols', symbols);
+  apiUrl.searchParams.append('types', 'price');
+  apiUrl.searchParams.append('token', API_KEY);
   dispatch(fetchStockPriceStart());
   fetch(apiUrl)
     .then((response) => {
@@ -71,6 +73,6 @@ export const fetchStockPrice = (symbols) => (dispatch) => {
       }
       return response.json();
     })
-    .then((response) => dispatch(fetchStockPriceSuccesss(response)))
+    .then((response) => dispatch(fetchStockPriceSuccess(response)))
     .catch((err) => dispatch(fetchStockPriceFail(err)));
 };
