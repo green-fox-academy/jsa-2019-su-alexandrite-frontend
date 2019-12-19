@@ -74,6 +74,11 @@ export default StyleSheet.create({
     alignSelf: 'flex-end',
     marginTop: 10,
   },
+  editorText: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   checkButton: {
     fontSize: 16,
     marginVertical: -5,
