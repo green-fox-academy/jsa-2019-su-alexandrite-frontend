@@ -37,21 +37,21 @@ export default (state = initState, action) => {
     case FETCH_STOCK_PRICE_START:
       return {
         ...state,
-        error: ''
-      }
+        error: '',
+      };
     case FETCH_STOCK_PRICE_FAIL:
       return {
         ...state,
         isLoading: false,
         error: action.payload,
-      }
+      };
     case FETCH_STOCK_PRICE_SUCCESS:
       return {
         ...state,
         isLoading: false,
         price: action.payload,
-        error: ''
-      }
+        error: '',
+      };
     default:
       return state;
   }
