@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import PropTypes from 'prop-types';
-import commonStyle from './styles';
+import commonStyle from '../styles';
 
 const NewsListItem = ({ item, style }) => {
   const date = new Date(item.datetime);

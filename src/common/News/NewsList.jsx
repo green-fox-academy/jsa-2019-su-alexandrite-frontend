@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import NewsListItem from './NewsListItem';
-import commonStyles from './styles';
+import commonStyles from '../styles';
 
 const NewsList = ({ news }) => (
   <FlatList
