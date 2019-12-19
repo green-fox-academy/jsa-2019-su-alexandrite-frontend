@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NewsCard from './NewsCard';
+import NewsListItem from './NewsListItem';
 
 const NewsMappedList = ({ news }) => (
   news.map((item, i) => (
-    <NewsCard
+    <NewsListItem
       key={item.url}
       item={item}
       style={[i !== news.length - 1 && { marginBottom: 15 }]}
@@ -14,7 +14,7 @@ const NewsMappedList = ({ news }) => (
 
 NewsMappedList.propTypes = {
   news: PropTypes.arrayOf(
-    NewsCard.propTypes.item,
+    NewsListItem.propTypes.item,
   ),
 };
 

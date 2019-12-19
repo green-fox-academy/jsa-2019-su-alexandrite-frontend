@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import NewsCard from './NewsCard';
+import NewsListItem from './NewsListItem';
 import commonStyles from './styles';
 
 const NewsList = ({ news }) => (
@@ -12,13 +12,13 @@ const NewsList = ({ news }) => (
     data={news}
     keyExtractor={(item) => item.url}
     ItemSeparatorComponent={() => <View style={commonStyles.newsCardSeparator} />}
-    renderItem={({ item }) => <NewsCard item={item} />}
+    renderItem={({ item }) => <NewsListItem item={item} />}
   />
 );
 
 NewsList.propTypes = {
   news: PropTypes.arrayOf(
-    PropTypes.shape(NewsCard.propTypes),
+    PropTypes.shape(NewsListItem.propTypes),
   ),
 };
 
