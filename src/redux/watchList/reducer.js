@@ -4,9 +4,9 @@ import {
   DELETE_WATCHLIST,
   ADD_STOCK_TO_WATCHLIST,
   REPLACE_WATCHLIST_STOCKS,
-  FETCH_WATCHLIST_DETAIL_START,
-  FETCH_WATCHLIST_DETAIL_SUCCESS,
-  FETCH_WATCHLIST_DETAIL_FAIL,
+  FETCH_WATCHLIST_DETAILS_START,
+  FETCH_WATCHLIST_DETAILS_SUCCESS,
+  FETCH_WATCHLIST_DETAILS_FAIL,
 } from './actionType';
 
 import { round, processLargeNumbers } from '../../common/numbers';
@@ -63,12 +63,12 @@ export default (state = initialState, action) => {
             }
             : watchlist)),
       };
-    case FETCH_WATCHLIST_DETAIL_START:
+    case FETCH_WATCHLIST_DETAILS_START:
       return {
         ...state,
         loadingWatchlistDetails: true,
       };
-    case FETCH_WATCHLIST_DETAIL_SUCCESS:
+    case FETCH_WATCHLIST_DETAILS_SUCCESS:
       return {
         ...state,
         loadingWatchlistDetails: false,
@@ -86,7 +86,7 @@ export default (state = initialState, action) => {
           })),
         })),
       };
-    case FETCH_WATCHLIST_DETAIL_FAIL:
+    case FETCH_WATCHLIST_DETAILS_FAIL:
       return {
         ...state,
         loadingWatchlistDetails: false,

@@ -5,9 +5,9 @@ import {
   DELETE_WATCHLIST,
   ADD_STOCK_TO_WATCHLIST,
   REPLACE_WATCHLIST_STOCKS,
-  FETCH_WATCHLIST_DETAIL_FAIL,
-  FETCH_WATCHLIST_DETAIL_START,
-  FETCH_WATCHLIST_DETAIL_SUCCESS,
+  FETCH_WATCHLIST_DETAILS_FAIL,
+  FETCH_WATCHLIST_DETAILS_START,
+  FETCH_WATCHLIST_DETAILS_SUCCESS,
 } from './actionType';
 
 
@@ -35,27 +35,27 @@ export const replaceWatchlistStocks = (watchListId, stocks) => ({
   },
 });
 
-const fetchWatchlistDetailStart = () => ({
-  type: FETCH_WATCHLIST_DETAIL_START,
+const fetchWatchlistDetailsStart = () => ({
+  type: FETCH_WATCHLIST_DETAILS_START,
 });
 
-const fetchWatchlistDetailSuccess = (payload) => ({
-  type: FETCH_WATCHLIST_DETAIL_SUCCESS,
+const fetchWatchlistDetailsSuccess = (payload) => ({
+  type: FETCH_WATCHLIST_DETAILS_SUCCESS,
   payload,
 });
 
-const fetchWatchlistDetailFail = (payload) => ({
-  type: FETCH_WATCHLIST_DETAIL_FAIL,
+const fetchWatchlistDetailsFail = (payload) => ({
+  type: FETCH_WATCHLIST_DETAILS_FAIL,
   payload,
 });
 
-export const fetchWatchlistDetail = (symbols) => (dispatch) => {
+export const fetchWatchlistDetails = (symbols) => (dispatch) => {
   const url = new URL(`${API_URL}/stock/market/batch`);
   url.searchParams.append('token', API_KEY);
   url.searchParams.append('symbols', symbols);
   url.searchParams.append('types', 'quote');
   url.searchParams.append('displayPercent', true);
-  dispatch(fetchWatchlistDetailStart());
+  dispatch(fetchWatchlistDetailsStart());
   fetch(url)
     .then((res) => {
       if (!res.ok) {
@@ -69,9 +69,9 @@ export const fetchWatchlistDetail = (symbols) => (dispatch) => {
       return res.json();
     })
     .then((res) => {
-      dispatch(fetchWatchlistDetailSuccess(res));
+      dispatch(fetchWatchlistDetailsSuccess(res));
     })
-    .catch((err) => dispatch(fetchWatchlistDetailFail(err)));
+    .catch((err) => dispatch(fetchWatchlistDetailsFail(err)));
 };
 
 export const addStockToWatchlist = (watchlistId, ticker) => (dispatch) => {
@@ -87,5 +87,5 @@ export const addStockToWatchlist = (watchlistId, ticker) => (dispatch) => {
       },
     },
   });
-  dispatch(fetchWatchlistDetail(ticker));
+  dispatch(fetchWatchlistDetails(ticker));
 };

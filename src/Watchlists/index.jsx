@@ -14,7 +14,7 @@ import styles from './styles';
 import commonStyle from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
 import ErrorMessage from '../common/ErrorMessage';
-import { postWatchList, fetchWatchlistDetail } from '../redux/watchList/actionCreator';
+import { postWatchList, fetchWatchlistDetails } from '../redux/watchList/actionCreator';
 
 const navigationOptions = {
   title: 'Watchlists',
@@ -34,7 +34,7 @@ const WatchlistsScreen = () => {
   const { padding } = commonStyle.container;
 
   useEffect(() => {
-    dispatch(fetchWatchlistDetail(symbols));
+    dispatch(fetchWatchlistDetails(symbols));
   }, [symbols.length]);
 
   const onCloseAddModal = () => {
@@ -64,7 +64,7 @@ const WatchlistsScreen = () => {
           <WatchList item={item} />
         )}
         refreshing={loading}
-        onRefresh={() => dispatch(fetchWatchlistDetail(symbols))}
+        onRefresh={() => dispatch(fetchWatchlistDetails(symbols))}
       />
       <Popup
         visible={popupVisible}
