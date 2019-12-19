@@ -8,7 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import PropTypes from 'prop-types';
 import commonStyle from './styles';
 
-const NewsCard = ({ item, style }) => {
+const NewsListItem = ({ item, style }) => {
   const date = new Date(item.datetime);
   return (
     <ImageBackground
@@ -23,7 +23,7 @@ const NewsCard = ({ item, style }) => {
   );
 };
 
-NewsCard.propTypes = {
+NewsListItem.propTypes = {
   item: PropTypes.shape({
     datetime: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     headline: PropTypes.string,
@@ -33,8 +33,8 @@ NewsCard.propTypes = {
   style: ViewPropTypes.style,
 };
 
-NewsCard.defaultProps = {
+NewsListItem.defaultProps = {
   style: undefined,
 };
 
-export default NewsCard;
+export default NewsListItem;
