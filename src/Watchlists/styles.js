@@ -99,6 +99,5 @@ export default StyleSheet.create({
   },
   listErrorContainer: {
     margin: 15,
-    // marginHorizontal: 30,
   },
 });
