@@ -65,4 +65,7 @@ export default StyleSheet.create({
   perfChartButtonTextActive: {
     color: '#fff',
   },
+  newsContainer: {
+    width: width - 60,
+  },
 });

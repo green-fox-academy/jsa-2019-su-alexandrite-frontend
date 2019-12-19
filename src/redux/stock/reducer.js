@@ -6,6 +6,9 @@ import {
   FETCH_HISTORY_CHART_DATA_SUCCESS,
   FETCH_HISTORY_CHART_DATA_FAIL,
   RESET_STOCK_INFO,
+  FETCH_STOCK_NEWS_START,
+  FETCH_STOCK_NEWS_SUCCESS,
+  FETCH_STOCK_NEWS_FAIL,
 } from './actionType';
 
 const initState = {
@@ -15,6 +18,9 @@ const initState = {
   loadingHistoricalChartData: true,
   historicalData: undefined,
   historicalDataError: undefined,
+  loadingStockNews: true,
+  stockNewsData: [],
+  stockNewsError: undefined,
 };
 
 export default (state = initState, action) => {
@@ -46,15 +52,31 @@ export default (state = initState, action) => {
       return {
         ...state,
         loadingHistoricalChartData: false,
-        historicalData: {
-          ...action.payload,
-        },
+        historicalData: action.payload,
       };
     case FETCH_HISTORY_CHART_DATA_FAIL:
       return {
         ...state,
         loadingHistoricalChartData: false,
         historicalDataError: action.payload,
+      };
+    case FETCH_STOCK_NEWS_START:
+      return {
+        ...state,
+        loadingStockNews: true,
+        stockNewsError: undefined,
+      };
+    case FETCH_STOCK_NEWS_SUCCESS:
+      return {
+        ...state,
+        loadingStockNews: false,
+        stockNewsData: action.payload,
+      };
+    case FETCH_STOCK_NEWS_FAIL:
+      return {
+        ...state,
+        loadingStockNews: false,
+        stockNewsError: action.payload,
       };
     case RESET_STOCK_INFO:
       return initState;
