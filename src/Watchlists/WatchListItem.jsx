@@ -10,7 +10,6 @@ import { useNavigation } from 'react-navigation-hooks';
 import styles from './styles';
 import tradeIcon from '../../assets/icons/watchList/trade.png';
 import detailIcon from '../../assets/icons/watchList/detail.png';
-import { processLargeNumbers, round } from '../common/numbers';
 
 export default function WatchListItem({
   ticker,
@@ -34,18 +33,18 @@ export default function WatchListItem({
       <View style={styles.watchListItemColumn}>
         {dailyChange > 0 ? (
           <Text style={[styles.watchListItemColumnText, { color: '#21af78' }]}>
-            {`+${round(dailyChange)}%`}
+            {`+${dailyChange}%`}
           </Text>
         )
           : (
             <Text style={[styles.watchListItemColumnText, { color: '#d82f2f' }]}>
-              {`${round(dailyChange)}%`}
+              {`${dailyChange}%`}
             </Text>
           )}
       </View>
       <View style={styles.watchListItemColumn}>
         <Text style={styles.watchListItemColumnText}>
-          {processLargeNumbers(volume)}
+          {volume}
         </Text>
       </View>
       <View style={[styles.watchListItemColumn, { flexDirection: 'row' }]}>
@@ -67,5 +66,5 @@ WatchListItem.propTypes = {
   ticker: PropTypes.string.isRequired,
   currPrice: PropTypes.number.isRequired,
   dailyChange: PropTypes.number.isRequired,
-  volume: PropTypes.number.isRequired,
+  volume: PropTypes.string.isRequired,
 };

@@ -27,20 +27,6 @@ export const deleteWatchList = (payload) => ({
   payload,
 });
 
-export const addStockToWatchlist = (watchlistId, ticker) => ({
-  type: ADD_STOCK_TO_WATCHLIST,
-  payload: {
-    watchlistId,
-    stock: {
-      ticker,
-      // to suppress the warning, will be removed after watchlist data story
-      currPrice: 0,
-      dailyChange: 0,
-      volume: 0,
-    },
-  },
-});
-
 export const replaceWatchlistStocks = (watchListId, stocks) => ({
   type: REPLACE_WATCHLIST_STOCKS,
   payload: {
@@ -86,4 +72,20 @@ export const fetchWatchlistDetail = (symbols) => (dispatch) => {
       dispatch(fetchWatchlistDetailSuccess(res));
     })
     .catch((err) => dispatch(fetchWatchlistDetailFail(err)));
+};
+
+export const addStockToWatchlist = (watchlistId, ticker) => (dispatch) => {
+  dispatch({
+    type: ADD_STOCK_TO_WATCHLIST,
+    payload: {
+      watchlistId,
+      stock: {
+        ticker,
+        currPrice: 0,
+        dailyChange: 0,
+        volume: '',
+      },
+    },
+  });
+  dispatch(fetchWatchlistDetail(ticker));
 };

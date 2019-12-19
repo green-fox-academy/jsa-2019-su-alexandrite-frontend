@@ -3,7 +3,7 @@ import { View, Picker, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import Popup from '../common/Popup';
-import { addStockToWatchlist, fetchWatchlistDetail } from '../redux/watchList/actionCreator';
+import { addStockToWatchlist } from '../redux/watchList/actionCreator';
 
 const WatchlistPickerPopup = ({ visible, onClose, symbol }) => {
   const { watchlists } = useSelector((state) => state.watchlists);
@@ -23,10 +23,7 @@ const WatchlistPickerPopup = ({ visible, onClose, symbol }) => {
       onCancel={onClose}
       confirmButtonText="OK"
       onConfirm={() => {
-        if (selectedWatchlist) {
-          dispatch(addStockToWatchlist(selectedWatchlist, symbol));
-          dispatch(fetchWatchlistDetail(symbol));
-        }
+        if (selectedWatchlist) dispatch(addStockToWatchlist(selectedWatchlist, symbol));
         onClose();
       }}
     >

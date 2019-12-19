@@ -9,6 +9,8 @@ import {
   FETCH_WATCHLIST_DETAIL_FAIL,
 } from './actionType';
 
+import { round, processLargeNumbers } from '../../common/numbers';
+
 const initialState = {
   counter: 3,
   watchlists: [],
@@ -78,8 +80,8 @@ export default (state = initialState, action) => {
             ticker,
             ...(action.payload[ticker] && {
               currPrice: action.payload[ticker].quote.latestPrice,
-              dailyChange: action.payload[ticker].quote.changePercent,
-              volume: action.payload[ticker].quote.volume,
+              dailyChange: round(action.payload[ticker].quote.changePercent),
+              volume: processLargeNumbers(action.payload[ticker].quote.volume),
             }),
           })),
         })),
