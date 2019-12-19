@@ -7,6 +7,8 @@ import Watchlists from '../Watchlists';
 import Investments from '../Investments';
 import Account from '../Account';
 import Playground from '../Playground';
+// import HomeScreen from '../Account/Home';
+// import LogInScreen from '../Account/Login';
 
 import accountIcon from '../../assets/icons/bottom-tab/me.png';
 import watchlistsIcon from '../../assets/icons/bottom-tab/watchlists.png';
@@ -38,6 +40,7 @@ const AccountStack = createStackNavigator({
     path: 'account/',
   },
 });
+
 
 const PlaygroundStack = createStackNavigator({
   Playground,
