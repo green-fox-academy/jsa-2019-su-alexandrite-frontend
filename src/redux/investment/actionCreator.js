@@ -30,7 +30,7 @@ export const fetchUserInvestmentShares = (uid) => (dispatch) => {
       if (!response.ok) {
         switch (response.status) {
           case 401:
-            throw new Error('Sorry, you are unauthorized for this page, please log in again.');
+            throw new Error('Sorry, we cannot validate your identity. Please login and try again.');
           default:
             throw new Error('Oops, there\'s something wrong with our app.');
         }
@@ -64,12 +64,7 @@ export const fetchStockPrice = (symbols) => (dispatch) => {
   fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
-        switch (response.status) {
-          case 404:
-            throw new Error('The symbols of stocks you invested could not be found.');
-          default:
-            throw new Error('Oops, there\'s something wrong with our app.');
-        }
+        throw new Error('Oops, there\'s something wrong with our app.');
       }
       return response.json();
     })

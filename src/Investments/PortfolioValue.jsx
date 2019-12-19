@@ -1,38 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   View,
   Text,
   ImageBackground,
   ActivityIndicator,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserInvestmentShares, fetchStockPrice } from '../redux/investment/actionCreator';
 import styles from './styles';
 import cardBackground from '../../assets/img/investment/card.png';
 import { round, addComma } from '../common/numbers';
 
-export default function PortfolioValue() {
-  const dispatch = useDispatch();
-  const {
-    isLoading,
-    userShares,
-    price,
-    error,
-  } = useSelector((state) => state.investments);
-
-  useEffect(() => {
-    dispatch(fetchUserInvestmentShares(1));
-  }, []);
-
-  useEffect(() => {
-    if (userShares) {
-      const symbols = userShares.stocks.map((stock) => stock.symbol);
-      dispatch(fetchStockPrice(symbols));
-    }
-  }, [userShares]);
-
-  function calculateInvsetmentsValue() {
+export default function PortfolioValue({
+  isLoading,
+  userShares,
+  price,
+  error,
+}) {
+  const calculateInvsetmentsValue = () => {
     if (userShares && price) {
       const calculatedValue = userShares
         .stocks.map(({ shares, symbol }) => shares * price[symbol].price)
@@ -40,7 +25,7 @@ export default function PortfolioValue() {
       return addComma(round(calculatedValue));
     }
     return 'loading...';
-  }
+  };
 
   return (
     <ImageBackground
@@ -68,3 +53,22 @@ export default function PortfolioValue() {
     </ImageBackground>
   );
 }
+
+PortfolioValue.defaultProps = {
+  userShares: undefined,
+  price: undefined,
+};
+
+PortfolioValue.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  userShares: PropTypes.shape({
+    stocks: PropTypes.arrayOf(
+      PropTypes.shape({
+        symbol: PropTypes.string.isRequired,
+        shares: PropTypes.number.isRequired,
+      }),
+    ),
+  }),
+  price: PropTypes.shape(),
+  error: PropTypes.string.isRequired,
+};
