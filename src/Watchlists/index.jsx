@@ -27,8 +27,8 @@ const WatchlistsScreen = () => {
   const dispatch = useDispatch();
   const {
     watchlists,
-    loadingWatchlistDetailsError: error,
-    loadingWatchlistDetails: loading,
+    hasWatchlistDetailsError: error,
+    isLoadingWatchlistDetails: isLoading,
   } = useSelector((state) => state.watchlists);
   const symbols = [...new Set(watchlists.map(({ stocks }) => stocks.map(({ ticker }) => ticker)))];
   const { padding } = commonStyle.container;
@@ -63,7 +63,7 @@ const WatchlistsScreen = () => {
         renderItem={({ item }) => (
           <WatchList item={item} />
         )}
-        refreshing={loading}
+        refreshing={isLoading}
         onRefresh={() => dispatch(fetchWatchlistDetails(symbols))}
       />
       <Popup

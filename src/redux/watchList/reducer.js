@@ -14,8 +14,8 @@ import { round, processLargeNumbers } from '../../common/numbers';
 const initialState = {
   counter: 3,
   watchlists: [],
-  loadingWatchlistDetails: false,
-  loadingWatchlistDetailsError: undefined,
+  isLoadingWatchlistDetails: false,
+  hasWatchlistDetailsError: undefined,
 };
 
 export default (state = initialState, action) => {
@@ -66,13 +66,13 @@ export default (state = initialState, action) => {
     case FETCH_WATCHLIST_DETAILS_START:
       return {
         ...state,
-        loadingWatchlistDetails: true,
+        isLoadingWatchlistDetails: true,
       };
     case FETCH_WATCHLIST_DETAILS_SUCCESS:
       return {
         ...state,
-        loadingWatchlistDetails: false,
-        loadingWatchlistDetailsError: undefined,
+        isLoadingWatchlistDetails: false,
+        hasWatchlistDetailsError: undefined,
         watchlists: state.watchlists.map((wl) => ({
           ...wl,
           stocks: wl.stocks.map(({ ticker, ...rest }) => ({
@@ -89,8 +89,8 @@ export default (state = initialState, action) => {
     case FETCH_WATCHLIST_DETAILS_FAIL:
       return {
         ...state,
-        loadingWatchlistDetails: false,
-        loadingWatchlistDetailsError: action.payload,
+        isLoadingWatchlistDetails: false,
+        hasWatchlistDetailsError: action.payload,
       };
     default:
       return state;

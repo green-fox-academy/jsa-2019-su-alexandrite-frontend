@@ -57,7 +57,7 @@ export default StyleSheet.create({
     marginTop: 20,
     textAlign: 'center',
   },
-  loading: {
+  isLoading: {
     flex: 1,
     margin: 40,
   },

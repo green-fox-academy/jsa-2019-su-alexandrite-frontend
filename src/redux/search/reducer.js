@@ -3,7 +3,7 @@ import { SEARCH_START, SEARCH_SUCCESS, SEARCH_FAILED } from './actionType';
 const initState = {
   isLoading: false,
   result: [],
-  error: '',
+  hasError: '',
   touched: false,
 };
 
