@@ -15,12 +15,10 @@ export const processLargeNumbers = (n) => {
   return `${round(n / 1000000000)}B`;
 };
 
-export const addComma = (n) => {
-  return `${n}`
-    .split('.')[0]
-    .split('')
-    .reverse()
-    .map((c, i) => !i || i % 3 ? c : c + ',')
-    .reverse()
-    .join('');
-};
+export const addComma = (n) => `${n}`
+  .split('.')[0]
+  .split('')
+  .reverse()
+  .map((c, i) => (!i || i % 3 ? c : `${c},`))
+  .reverse()
+  .join('');
