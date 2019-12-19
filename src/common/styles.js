@@ -97,4 +97,28 @@ export default StyleSheet.create({
   popupButtonGroup: {
     flexDirection: 'column',
   },
+  newsCard: {
+    height: 169,
+    backgroundColor: '#ccc',
+    borderRadius: 6,
+    overflow: 'hidden',
+  },
+  newsCardSeparator: {
+    height: 15,
+  },
+  newsTime: {
+    fontSize: 12,
+    color: '#fff',
+  },
+  newsHeadline: {
+    fontSize: 14,
+    color: '#fff',
+    fontWeight: 'bold',
+    lineHeight: 20,
+  },
+  newsCardOverlay: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    padding: 15,
+  },
 });

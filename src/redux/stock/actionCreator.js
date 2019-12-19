@@ -1,4 +1,9 @@
-import { API_URL, API_KEY } from 'react-native-dotenv';
+import {
+  API_URL,
+  API_KEY,
+  NEWS_API_URL,
+  NEWS_API_KEY,
+} from 'react-native-dotenv';
 
 import {
   FETCH_STOCK_DETAILS_START,
@@ -8,6 +13,9 @@ import {
   FETCH_HISTORY_CHART_DATA_SUCCESS,
   FETCH_HISTORY_CHART_DATA_FAIL,
   RESET_STOCK_INFO,
+  FETCH_STOCK_NEWS_START,
+  FETCH_STOCK_NEWS_SUCCESS,
+  FETCH_STOCK_NEWS_FAIL,
 } from './actionType';
 
 import chartHelper from '../../common/chartHelper';
@@ -26,7 +34,7 @@ const fetchStockDetailsSuccess = (payload) => ({
   payload,
 });
 
-const fetchStockDetails = (symbol) => (dispatch) => {
+export const fetchStockDetails = (symbol) => (dispatch) => {
   const url = new URL(`${API_URL}/stock/${symbol}/advanced-stats`);
   url.searchParams.append('token', API_KEY);
   dispatch(fetchStockDetailsStart());
@@ -65,7 +73,7 @@ const fetchHistoryChartDataSuccess = (histData, range) => {
   };
 };
 
-const fetchHistoryChartData = (symbol, range) => (dispatch) => {
+export const fetchHistoryChartData = (symbol, range) => (dispatch) => {
   const url = new URL(`${API_URL}/stock/${symbol}/chart/${range}`);
   url.searchParams.append('token', API_KEY);
   url.searchParams.append('chartCloseOnly', true);
@@ -89,12 +97,56 @@ const fetchHistoryChartData = (symbol, range) => (dispatch) => {
     .catch((err) => dispatch(fetchHistoryChartDataFail(err)));
 };
 
-const resetStockInfo = () => ({
+export const resetStockInfo = () => ({
   type: RESET_STOCK_INFO,
 });
 
-export default {
-  resetStockInfo,
-  fetchStockDetails,
-  fetchHistoryChartData,
+const fetchStockNewsStart = () => ({
+  type: FETCH_STOCK_NEWS_START,
+});
+
+const fetchStockNewsSuccess = (data) => {
+  const payload = data.articles.map(({
+    publishedAt, title, urlToImage, url,
+  }) => ({
+    datetime: publishedAt,
+    headline: title,
+    image: urlToImage,
+    url,
+  }));
+  return {
+    type: FETCH_STOCK_NEWS_SUCCESS,
+    payload,
+  };
+};
+
+const fetchStockNewsFail = (payload) => ({
+  type: FETCH_STOCK_NEWS_FAIL,
+  payload,
+});
+
+
+export const fetchStockNews = (symbol) => (dispatch) => {
+  const url = new URL(`${NEWS_API_URL}/everything`);
+  url.searchParams.append('apiKey', NEWS_API_KEY);
+  url.searchParams.append('q', symbol);
+  url.searchParams.append('pageSize', 2);
+  url.searchParams.append('sortBy', 'publishedAt');
+  dispatch(fetchStockNewsStart());
+  fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        switch (res.status) {
+          case 404:
+            throw new Error(`The stock ${symbol} you are looking for does not exist.`);
+          default:
+            throw new Error('Oops, there\'s something wrong with our app.');
+        }
+      }
+      return res.json();
+    })
+    .then((res) => {
+      dispatch(fetchStockNewsSuccess(res));
+    })
+    .catch((err) => dispatch(fetchStockNewsFail(err)));
 };
