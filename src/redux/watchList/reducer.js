@@ -15,7 +15,7 @@ const initialState = {
   counter: 3,
   watchlists: [],
   isLoadingWatchlistDetails: false,
-  hasWatchlistDetailsError: undefined,
+  watchlistDetailsError: undefined,
 };
 
 export default (state = initialState, action) => {
@@ -72,7 +72,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoadingWatchlistDetails: false,
-        hasWatchlistDetailsError: undefined,
+        watchlistDetailsError: undefined,
         watchlists: state.watchlists.map((wl) => ({
           ...wl,
           stocks: wl.stocks.map(({ ticker, ...rest }) => ({
@@ -90,7 +90,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoadingWatchlistDetails: false,
-        hasWatchlistDetailsError: action.payload,
+        watchlistDetailsError: action.payload,
       };
     default:
       return state;

@@ -27,7 +27,7 @@ const WatchlistsScreen = () => {
   const dispatch = useDispatch();
   const {
     watchlists,
-    hasWatchlistDetailsError: error,
+    watchlistDetailsError: error,
     isLoadingWatchlistDetails: isLoading,
   } = useSelector((state) => state.watchlists);
   const symbols = [...new Set(watchlists.map(({ stocks }) => stocks.map(({ ticker }) => ticker)))];
