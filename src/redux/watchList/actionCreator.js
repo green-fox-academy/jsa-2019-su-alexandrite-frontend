@@ -10,7 +10,6 @@ import {
   FETCH_WATCHLIST_DETAILS_SUCCESS,
 } from './actionType';
 
-
 export const DELETE_STOCK_IN_WATCHLIST = 'DELETE_STOCK_IN_WATCHLIST';
 
 export const fetchWatchList = () => ({
@@ -49,7 +48,15 @@ const fetchWatchlistDetailsFail = (payload) => ({
   payload,
 });
 
-export const fetchWatchlistDetails = (symbols) => (dispatch) => {
+export const fetchWatchlistDetails = () => (dispatch, getState) => {
+  const symbols = [
+    ...new Set(getState()
+      .watchlists
+      .watchlists
+      .reduce(
+        (result, curr) => [...result, ...curr.stocks.map(({ ticker }) => ticker)],
+        [],
+      ))];
   const url = new URL(`${API_URL}/stock/market/batch`);
   url.searchParams.append('token', API_KEY);
   url.searchParams.append('symbols', symbols);

@@ -30,12 +30,11 @@ const WatchlistsScreen = () => {
     watchlistDetailsError: error,
     isLoadingWatchlistDetails: isLoading,
   } = useSelector((state) => state.watchlists);
-  const symbols = [...new Set(watchlists.map(({ stocks }) => stocks.map(({ ticker }) => ticker)))];
   const { padding } = commonStyle.container;
 
   useEffect(() => {
-    dispatch(fetchWatchlistDetails(symbols));
-  }, [symbols.length]);
+    dispatch(fetchWatchlistDetails());
+  }, []);
 
   const onCloseAddModal = () => {
     setModalVisible(false);
@@ -64,7 +63,7 @@ const WatchlistsScreen = () => {
           <WatchList item={item} />
         )}
         refreshing={isLoading}
-        onRefresh={() => dispatch(fetchWatchlistDetails(symbols))}
+        onRefresh={() => dispatch(fetchWatchlistDetails())}
       />
       <Popup
         visible={popupVisible}
