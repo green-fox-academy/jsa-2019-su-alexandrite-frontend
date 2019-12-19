@@ -132,6 +132,7 @@ export const fetchStockNews = (symbol) => (dispatch) => {
   url.searchParams.append('q', symbol);
   url.searchParams.append('pageSize', 2);
   url.searchParams.append('sortBy', 'publishedAt');
+  url.searchParams.append('language', 'en');
   dispatch(fetchStockNewsStart());
   fetch(url)
     .then((res) => {
