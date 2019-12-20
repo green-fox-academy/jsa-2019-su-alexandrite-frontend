@@ -15,9 +15,6 @@ const initState = {
   loadingHistoricalChartData: true,
   historicalData: undefined,
   historicalDataError: undefined,
-  loadingStockNews: true,
-  stockNewsData: [],
-  stockNewsError: undefined,
 };
 
 export default (state = initState, action) => {
