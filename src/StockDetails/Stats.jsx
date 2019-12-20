@@ -24,7 +24,7 @@ const Stats = ({ symbol }) => {
   const dispatch = useDispatch();
   const {
     stockStatsData: details,
-    loadingStockStatsData: loading,
+    isLoadingStockStatsData: isLoading,
     stockStatsDataError: error,
   } = useSelector((state) => state.stock);
 
@@ -36,8 +36,8 @@ const Stats = ({ symbol }) => {
     <Card title="Details">
       {!error ? (
         <View style={style.detailsContentContainer}>
-          {loading && <ActivityIndicator size="large" />}
-          {!loading && details && (
+          {isLoading && <ActivityIndicator size="large" />}
+          {!isLoading && details && (
             <>
               <Column>
                 {DetailsRow('52 WK Low', details.week52low)}

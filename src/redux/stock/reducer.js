@@ -9,10 +9,10 @@ import {
 } from './actionType';
 
 const initState = {
-  loadingStockStatsData: false,
+  isLoadingStockStatsData: false,
   stockStatsData: undefined,
   stockStatsDataError: undefined,
-  loadingHistoricalChartData: true,
+  isLoadingHistoricalChartData: true,
   historicalData: undefined,
   historicalDataError: undefined,
 };
@@ -22,30 +22,30 @@ export default (state = initState, action) => {
     case FETCH_STOCK_DETAILS_START:
       return {
         ...state,
-        loadingStockStatsData: true,
+        isLoadingStockStatsData: true,
       };
     case FETCH_STOCK_DETAILS_SUCCESS:
       return {
         ...state,
-        loadingStockStatsData: false,
+        isLoadingStockStatsData: false,
         stockStatsData: action.payload,
       };
     case FETCH_STOCK_DETAILS_FAIL:
       return {
         ...state,
-        loadingStockStatsData: false,
+        isLoadingStockStatsData: false,
         stockStatsDataError: action.payload,
       };
     case FETCH_HISTORY_CHART_DATA_START:
       return {
         ...state,
-        loadingHistoricalChartData: true,
+        isLoadingHistoricalChartData: true,
         historicalDataError: undefined,
       };
     case FETCH_HISTORY_CHART_DATA_SUCCESS:
       return {
         ...state,
-        loadingHistoricalChartData: false,
+        isLoadingHistoricalChartData: false,
         historicalData: {
           ...action.payload,
         },
@@ -53,7 +53,7 @@ export default (state = initState, action) => {
     case FETCH_HISTORY_CHART_DATA_FAIL:
       return {
         ...state,
-        loadingHistoricalChartData: false,
+        isLoadingHistoricalChartData: false,
         historicalDataError: action.payload,
       };
     case RESET_STOCK_INFO:
