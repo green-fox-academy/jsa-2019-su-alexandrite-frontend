@@ -16,8 +16,6 @@ const Investment = () => {
   const {
     isLoading,
     userShares,
-    price,
-    error,
   } = useSelector((state) => state.investments);
 
   useEffect(() => {
@@ -33,7 +31,7 @@ const Investment = () => {
 
   return (
     <View style={commonStyles.container}>
-      <PortfolioValue isLoading={isLoading} userShares={userShares} price={price} error={error} />
+      <PortfolioValue />
     </View>
   );
 };

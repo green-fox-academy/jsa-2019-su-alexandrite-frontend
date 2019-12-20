@@ -5,18 +5,20 @@ import {
   ImageBackground,
   ActivityIndicator,
 } from 'react-native';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { FontAwesome } from '@expo/vector-icons';
 import styles from './styles';
 import cardBackground from '../../assets/img/investment/card.png';
 import { round, addComma } from '../common/numbers';
 
-export default function PortfolioValue({
-  isLoading,
-  userShares,
-  price,
-  error,
-}) {
+export default function PortfolioValue() {
+  const {
+    isLoading,
+    userShares,
+    price,
+    error,
+  } = useSelector((state) => state.investments);
+
   const calculateInvsetmentsValue = () => {
     if (userShares && price) {
       const calculatedValue = userShares
@@ -57,18 +59,4 @@ export default function PortfolioValue({
 PortfolioValue.defaultProps = {
   userShares: undefined,
   price: undefined,
-};
-
-PortfolioValue.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
-  userShares: PropTypes.shape({
-    stocks: PropTypes.arrayOf(
-      PropTypes.shape({
-        symbol: PropTypes.string.isRequired,
-        shares: PropTypes.number.isRequired,
-      }),
-    ),
-  }),
-  price: PropTypes.shape(),
-  error: PropTypes.string.isRequired,
 };
