@@ -9,14 +9,12 @@ const navigationOptions = {
   headerRight: () => <SearchButton />,
 };
 
-const Investment = () => {
-  return (
-    <View style={commonStyles.container}>
-      <PortfolioValue />
-    </View>
-  );
-};
+const Investments = () => (
+  <View style={commonStyles.container}>
+    <PortfolioValue />
+  </View>
+);
 
-Investment.navigationOptions = navigationOptions;
+Investments.navigationOptions = navigationOptions;
 
-export default Investment;
+export default Investments;
