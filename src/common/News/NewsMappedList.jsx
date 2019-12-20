@@ -5,7 +5,7 @@ import NewsListItem from './NewsListItem';
 const NewsMappedList = ({ news }) => (
   news.map((item, i) => (
     <NewsListItem
-      key={item.url}
+      key={item.id}
       item={item}
       style={[i !== news.length - 1 && { marginBottom: 15 }]}
     />

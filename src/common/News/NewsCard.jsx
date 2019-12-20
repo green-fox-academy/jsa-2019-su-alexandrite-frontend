@@ -5,6 +5,7 @@ import {
   Text,
   TouchableHighlight,
 } from 'react-native';
+import { useNavigation } from 'react-navigation-hooks';
 import PropTypes from 'prop-types';
 import { fetchStockNews } from './newsService';
 import styles from '../styles';
@@ -17,10 +18,11 @@ const NewsCard = ({ query }) => {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
+  const navigator = useNavigation();
   useEffect(() => {
     setIsLoading(true);
     setError(undefined);
-    fetchStockNews(query)
+    fetchStockNews(query, 1, 2)
       .then((res) => {
         setNews(res);
         setIsLoading(false);
@@ -40,7 +42,11 @@ const NewsCard = ({ query }) => {
             <>
               <NewsMappedList news={news} />
               <CardFooter>
-                <TouchableHighlight style={styles.cardFooterButton} onPress={() => null} underlayColor="#eee">
+                <TouchableHighlight
+                  style={styles.cardFooterButton}
+                  onPress={() => navigator.navigate('NewsList', { query })}
+                  underlayColor="#eee"
+                >
                   <Text style={styles.cardFooterButtonText}>View more</Text>
                 </TouchableHighlight>
               </CardFooter>
