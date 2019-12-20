@@ -26,5 +26,4 @@ NewsList.defaultProps = {
   news: [],
 };
 
-
 export default NewsList;
