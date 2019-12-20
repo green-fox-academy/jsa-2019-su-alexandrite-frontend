@@ -15,12 +15,11 @@ export const processLargeNumbers = (n) => {
   return `${round(n / 1000000000)}B`;
 };
 
-export const addComma = (n) => {
-  const [integer, decimal] = `${n}`.split('.');
-  return integer.split('')
-    .reverse()
-    .map((c, i) => (!i || i % 3 ? c : `${c},`))
-    .reverse()
-    .join('')
-    .concat(`.${decimal.padEnd(2, '0')}`);
-};
+export const transferToDollar = (n) => (
+  Intl.NumberFormat('en-US',
+    {
+      style: 'currency',
+      currency: 'USD',
+      maximumSignificatnDigits: 2,
+    }).format(n)
+);

@@ -8,7 +8,7 @@ import {
   FETCH_STOCK_PRICE_SUCCESS,
   FETCH_STOCK_PRICE,
 } from './actionType';
-import { round, addComma } from '../../common/numbers';
+import { round, transferToDollar } from '../../common/numbers';
 
 export const fetchUserInvestmentSharesStart = () => ({
   type: FETCH_USER_INVESTMENT_SHARES_START,
@@ -58,13 +58,13 @@ export const fetchStockPrice = (stocks, symbols) => (dispatch) => {
         .reduce((a, b) => a + b);
       dispatch({
         type: FETCH_STOCK_PRICE,
-        payload: addComma(round(calculatedValue)),
+        payload: transferToDollar(round(calculatedValue)),
       });
     })
     .catch((err) => dispatch(fetchStockPriceFail(err)));
 };
 
-export const displayInvestmentsValue = (uid) => (dispatch) => {
+export const fetchInvestmentsValue = (uid = 1) => (dispatch) => {
   const serverUrl = new URL(`${SERVER_URL}/investments/user/${uid}`);
   dispatch(fetchUserInvestmentSharesStart());
   fetch(serverUrl)

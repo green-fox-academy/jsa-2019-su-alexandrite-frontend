@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesome } from '@expo/vector-icons';
 import styles from './styles';
 import cardBackground from '../../assets/img/investment/card.png';
-import { displayInvestmentsValue } from '../redux/investment/actionCreator';
+import { fetchInvestmentsValue } from '../redux/investment/actionCreator';
 
 export default function PortfolioValue() {
   const {
@@ -20,7 +20,7 @@ export default function PortfolioValue() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(displayInvestmentsValue(1));
+    dispatch(fetchInvestmentsValue());
   }, []);
 
   return (
@@ -38,9 +38,7 @@ export default function PortfolioValue() {
                 <FontAwesome size={22} name="money" color="#fff" />
                 <Text style={styles.valueText}>Value</Text>
               </View>
-              <Text style={styles.valueNumber}>
-                {`$${totalValue}`}
-              </Text>
+              <Text style={styles.valueNumber}>{totalValue}</Text>
               <Text style={styles.totalText}>Total Investment</Text>
             </>
           )}
