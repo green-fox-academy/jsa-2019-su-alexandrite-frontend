@@ -5,12 +5,14 @@ import {
   FETCH_STOCK_PRICE_START,
   FETCH_STOCK_PRICE_FAIL,
   FETCH_STOCK_PRICE_SUCCESS,
+  FETCH_STOCK_PRICE,
 } from './actionType';
 
 const initState = {
   isLoading: false,
   userShares: undefined,
   price: undefined,
+  totalValue: 0,
   error: '',
 };
 
@@ -48,8 +50,14 @@ export default (state = initState, action) => {
     case FETCH_STOCK_PRICE_SUCCESS:
       return {
         ...state,
-        isLoading: false,
         price: action.payload,
+        error: '',
+      };
+    case FETCH_STOCK_PRICE:
+      return {
+        ...state,
+        isLoading: false,
+        totalValue: action.payload,
         error: '',
       };
     default:
