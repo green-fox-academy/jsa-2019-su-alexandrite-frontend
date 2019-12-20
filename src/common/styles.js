@@ -30,6 +30,11 @@ export default StyleSheet.create({
     color: '#333',
     marginBottom: 15,
   },
+  cardFooter: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingTop: 15,
+  },
   row: {
     flexDirection: 'row',
     flex: 1,
@@ -120,5 +125,16 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     padding: 15,
+  },
+  newsContainer: {
+    width: width - 60,
+  },
+  cardFooterButton: {
+    padding: 5,
+    borderRadius: 3,
+  },
+  cardFooterButtonText: {
+    fontSize: 12,
+    color: '#999',
   },
 });

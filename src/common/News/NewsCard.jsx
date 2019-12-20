@@ -2,22 +2,27 @@ import React, { useEffect, useState } from 'react';
 import {
   View,
   ActivityIndicator,
+  Text,
+  TouchableHighlight,
 } from 'react-native';
+import { useNavigation } from 'react-navigation-hooks';
 import PropTypes from 'prop-types';
 import { fetchStockNews } from './newsService';
-import style from '../../StockDetails/style';
+import styles from '../styles';
 import Card from '../Card';
 import ErrorMessage from '../ErrorMessage';
 import NewsMappedList from './NewsMappedList';
+import CardFooter from '../CardFooter';
 
 const NewsCard = ({ query }) => {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
+  const navigator = useNavigation();
   useEffect(() => {
     setIsLoading(true);
     setError(undefined);
-    fetchStockNews(query)
+    fetchStockNews(query, 1, 2)
       .then((res) => {
         setNews(res);
         setIsLoading(false);
@@ -31,10 +36,21 @@ const NewsCard = ({ query }) => {
   return (
     <Card title="News">
       {!error ? (
-        <View style={style.newsContainer}>
+        <View style={styles.newsContainer}>
           {isLoading && <ActivityIndicator size="large" />}
           {!isLoading && news && (
-            <NewsMappedList news={news} />
+            <>
+              <NewsMappedList news={news} />
+              <CardFooter>
+                <TouchableHighlight
+                  style={styles.cardFooterButton}
+                  onPress={() => navigator.navigate('NewsList', { query })}
+                  underlayColor="#eee"
+                >
+                  <Text style={styles.cardFooterButtonText}>View more</Text>
+                </TouchableHighlight>
+              </CardFooter>
+            </>
           )}
         </View>
       ) : <ErrorMessage message={error.message} />}
