@@ -7,7 +7,7 @@ import SearchButton from '../common/HeaderSearchButton';
 import PortfolioValue from './PortfolioValue';
 
 const navigationOptions = {
-  title: 'Investment',
+  title: 'Investments',
   headerRight: () => <SearchButton />,
 };
 
