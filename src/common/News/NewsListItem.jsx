@@ -12,7 +12,7 @@ const NewsListItem = ({ item, style }) => {
   const date = new Date(item.datetime);
   return (
     <ImageBackground
-      source={item.image && { uri: item.image }}
+      source={item.image ? { uri: item.image } : null}
       style={[commonStyle.newsCard, style]}
     >
       <LinearGradient style={commonStyle.newsCardOverlay} colors={['#0000', '#0000', '#0008', '#000f']}>
