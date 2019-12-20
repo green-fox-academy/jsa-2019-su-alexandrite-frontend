@@ -9,7 +9,6 @@ const CardFooter = ({ children }) => (
   </View>
 );
 
-
 CardFooter.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.node,
