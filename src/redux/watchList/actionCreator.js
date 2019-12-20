@@ -95,5 +95,5 @@ export const addStockToWatchlist = (watchlistId, ticker) => (dispatch) => {
       },
     },
   });
-  dispatch(fetchWatchlistDetails(ticker));
+  dispatch(fetchWatchlistDetails());
 };
