@@ -100,4 +100,9 @@ export default StyleSheet.create({
   listErrorContainer: {
     margin: 15,
   },
+  emptyListContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

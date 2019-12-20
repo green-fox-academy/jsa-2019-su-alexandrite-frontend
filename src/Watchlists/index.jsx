@@ -14,7 +14,10 @@ import styles from './styles';
 import commonStyle from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
 import ErrorMessage from '../common/ErrorMessage';
+import Card from '../common/Card';
 import { postWatchList, fetchWatchlistDetails } from '../redux/watchList/actionCreator';
+
+const EMPTY_LIST_MESSAGE = 'You don\'t have any watchlists right now.\nStart by adding one! ;)';
 
 const navigationOptions = {
   title: 'Watchlists',
@@ -32,8 +35,14 @@ const WatchlistsScreen = () => {
   } = useSelector((state) => state.watchlists);
   const { padding } = commonStyle.container;
 
+  const loadDetails = () => {
+    if (watchlists && watchlists.length) {
+      dispatch(fetchWatchlistDetails());
+    }
+  };
+
   useEffect(() => {
-    dispatch(fetchWatchlistDetails());
+    loadDetails();
   }, []);
 
   const onCloseAddModal = () => {
@@ -63,7 +72,8 @@ const WatchlistsScreen = () => {
           <WatchList item={item} />
         )}
         refreshing={isLoading}
-        onRefresh={() => dispatch(fetchWatchlistDetails())}
+        onRefresh={loadDetails}
+        ListEmptyComponent={<Card><ErrorMessage message={EMPTY_LIST_MESSAGE} /></Card>}
       />
       <Popup
         visible={popupVisible}

@@ -57,6 +57,7 @@ export const fetchWatchlistDetails = () => (dispatch, getState) => {
         (result, curr) => [...result, ...curr.stocks.map(({ ticker }) => ticker)],
         [],
       ))];
+  if (!symbols.length) return;
   const url = new URL(`${API_URL}/stock/market/batch`);
   url.searchParams.append('token', API_KEY);
   url.searchParams.append('symbols', symbols);
