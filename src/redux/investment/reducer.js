@@ -1,59 +1,30 @@
 import {
-  FETCH_USER_INVESTMENT_SHARES_START,
-  FETCH_USER_INVESTMENT_SHARES_FAIL,
-  FETCH_USER_INVESTMENT_SHARES_SUCCESS,
-  FETCH_STOCK_PRICE_START,
-  FETCH_STOCK_PRICE_FAIL,
-  FETCH_STOCK_PRICE_SUCCESS,
-  FETCH_STOCK_PRICE,
+  FETCH_PORTFOLIO_DETAILS_START,
+  FETCH_PORTFOLIO_DETAILS_FAIL,
+  FETCH_PORTFOLIO_DETAILS_SUCCESS,
 } from './actionType';
 
 const initState = {
   isLoading: false,
-  userShares: undefined,
-  price: undefined,
   totalValue: 0,
   error: '',
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case FETCH_USER_INVESTMENT_SHARES_START:
+    case FETCH_PORTFOLIO_DETAILS_START:
       return {
         ...state,
         isLoading: true,
         error: '',
       };
-    case FETCH_USER_INVESTMENT_SHARES_FAIL:
+    case FETCH_PORTFOLIO_DETAILS_FAIL:
       return {
         ...state,
         isLoading: false,
         error: action.payload,
       };
-    case FETCH_USER_INVESTMENT_SHARES_SUCCESS:
-      return {
-        ...state,
-        userShares: action.payload,
-        error: '',
-      };
-    case FETCH_STOCK_PRICE_START:
-      return {
-        ...state,
-        error: '',
-      };
-    case FETCH_STOCK_PRICE_FAIL:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload,
-      };
-    case FETCH_STOCK_PRICE_SUCCESS:
-      return {
-        ...state,
-        price: action.payload,
-        error: '',
-      };
-    case FETCH_STOCK_PRICE:
+    case FETCH_PORTFOLIO_DETAILS_SUCCESS:
       return {
         ...state,
         isLoading: false,

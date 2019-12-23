@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesome } from '@expo/vector-icons';
 import styles from './styles';
 import cardBackground from '../../assets/img/investment/card.png';
-import { fetchInvestmentsValue } from '../redux/investment/actionCreator';
+import { calculatePortfolioValue } from '../redux/investment/actionCreator';
 
 export default function PortfolioValue() {
   const {
@@ -20,7 +20,7 @@ export default function PortfolioValue() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchInvestmentsValue());
+    dispatch(calculatePortfolioValue());
   }, []);
 
   return (
@@ -47,8 +47,3 @@ export default function PortfolioValue() {
     </ImageBackground>
   );
 }
-
-PortfolioValue.defaultProps = {
-  userShares: undefined,
-  price: undefined,
-};
