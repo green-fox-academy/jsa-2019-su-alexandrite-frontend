@@ -12,7 +12,7 @@ const Account = () => {
   const dispatch = useDispatch();
   const { push } = useNavigation();
 
-  const signOut = () => {
+  const handleLogOut = () => {
     dispatch(logOut());
   };
 
@@ -21,18 +21,18 @@ const Account = () => {
       {accessToken
         ? (
           <View>
-            <Text>
+            <Text style={{ fontSize: 20 }}>
               Welcome to our app
               {' '}
               {username}
             </Text>
-            <Button title="SignOut" onPress={signOut} />
+            <Button style={styles.signOutButton} title="LogOut" onPress={handleLogOut} />
           </View>
         )
         : (
           <View>
-            <Text>Please Login</Text>
-            <Button title="SignIn" onPress={() => push('SignIn')} />
+            <Text>Please LogIn</Text>
+            <Button title="LogIn" onPress={() => push('LogIn')} />
           </View>
         )}
     </View>

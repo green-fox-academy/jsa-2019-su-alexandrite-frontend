@@ -47,4 +47,8 @@ export default StyleSheet.create({
     flex: 1,
     padding: 15,
   },
+  signOutButton: {
+    borderRadius: 5,
+    backgroundColor: '#566ed3',
+  },
 });
