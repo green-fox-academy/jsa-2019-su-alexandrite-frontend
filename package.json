@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "lint": "eslint src",
-    "test": "jest --watch --coverage=false --changedSince=origin/development",
+    "test": "jest --coverage=false --changedSince=origin/development",
     "test:coverage": "jest --coverage=true"
   },
   "dependencies": {
