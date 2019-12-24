@@ -1,70 +1,89 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  View,
   TextInput,
-  Button,
+  View,
   KeyboardAvoidingView,
   Alert,
+  TouchableHighlight,
+  Text,
 } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
+import { FontAwesome5 } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
+import loginUser from '../redux/account/actionCreator';
 import styles from './styles';
+import Row from '../common/Row';
+import Column from '../common/Column';
+
+const SignInButton = ({ onPress }) => (
+  <TouchableHighlight style={styles.button} onPress={onPress} underlayColor="#5d70ba" activeOpacity={0.5}>
+    <Text style={styles.buttonText}><FontAwesome5 name="arrow-right" size={16} /></Text>
+  </TouchableHighlight>
+);
 
 const SignIn = () => {
-  const { users } = useSelector((state) => state.users);
-  const [name, setName] = useState('');
-  const [passWord, setPassWord] = useState('');
-  const { push } = useNavigation();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const { pop } = useNavigation();
 
+  const { accessToken } = useSelector((state) => state.users);
+
+  useEffect(() => {
+    if (accessToken) pop();
+  }, [accessToken]);
+
+  // eslint-disable-next-line consistent-return
   const signIn = () => {
-    if (name === '' || passWord === '') {
-      Alert.alert('All fields are requied');
+    if (username === '' || password === '') {
+      return Alert.alert('All the Input Field are required');
     }
-
-    if (name === 'Aaron' && passWord === '123456') {
-      push('Home');
-    } else {
-      Alert.alert('name or passWord is incorrect');
-    }
-    // for (let i = 0; i < users.length; i += 1) {
-    //   if (name === users[i].userName && passWord === users[i].passWord) {
-    //     Alert.alert();
-    //   }
-    // }
-    // Alert.alert();
+    dispatch(loginUser(username, password));
   };
 
   return (
-    <KeyboardAvoidingView style={styles.loginBox} behavior="padding" enabled>
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Username"
-          label="Username"
-          name="username"
-          autoCapitalize="none"
-          autoCorrect={false}
-          style={styles.textInput}
-          onChangeText={(text) => setName(text)}
-          value={name}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          secureTextEntry
-          placeholder="Password"
-          label="Password"
-          name="password"
-          autoCapitalize="none"
-          autoCorrect={false}
-          style={styles.textInput}
-          type="password"
-          onChangeText={(text) => setPassWord(text)}
-          value={passWord}
-        />
-      </View>
-      <Button style={styles.button} title="Sign in!" onPress={signIn} />
+    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+      <Row style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={styles.loginTitle}>Login</Text>
+      </Row>
+      <Row style={{ flex: 2 }}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Username"
+            label="Username"
+            name="username"
+            autoCapitalize="none"
+            autoCorrect={false}
+            style={styles.textInput}
+            onChangeText={(text) => setUsername(text)}
+            value={username}
+          />
+          <TextInput
+            secureTextEntry
+            placeholder="Password"
+            label="Password"
+            name="password"
+            autoCapitalize="none"
+            autoCorrect={false}
+            style={styles.textInput}
+            type="password"
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+          />
+          <Row style={{ flex: 0, justifyContent: 'center' }}>
+            <Column style={{ flex: 0 }}>
+              <SignInButton onPress={signIn} />
+            </Column>
+          </Row>
+        </View>
+      </Row>
     </KeyboardAvoidingView>
   );
+};
+
+SignInButton.propTypes = {
+  onPress: PropTypes.func.isRequired,
 };
 
 export default SignIn;

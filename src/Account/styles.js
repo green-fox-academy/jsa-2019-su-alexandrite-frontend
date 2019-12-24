@@ -2,23 +2,49 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#455a64',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
   },
-  inputContainer: {
+  textInput: {
     borderRadius: 5,
-    backgroundColor: 'rgba(255,255,255,0.3)',
-    width: 300,
-    height: 40,
-    paddingHorizontal: 10,
-    marginTop: 5,
+    backgroundColor: '#fff',
+    // width: 300,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginTop: 15,
+    fontWeight: 'bold',
+    borderWidth: 2,
+    borderColor: '#eee',
+    fontSize: 16,
   },
   button: {
     marginTop: 50,
+    backgroundColor: '#566ed3',
+    borderRadius: 50,
+    width: 60,
+    height: 60,
+    elevation: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#566ed3',
+    shadowOffset: {
+      height: 3,
+    },
+    shadowRadius: 6,
+    shadowOpacity: 0.3,
   },
-  title: {
-    fontSize: 20,
+  buttonText: {
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  loginTitle: {
+    fontSize: 36,
+    fontWeight: 'bold',
+  },
+  inputContainer: {
+    flex: 1,
+    padding: 15,
   },
 });
