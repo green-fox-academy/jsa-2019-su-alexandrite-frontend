@@ -28,7 +28,7 @@ export const fetchStockNews = async (query, page = 1, pageSize = 20) => {
       }
       return res.json();
     })
-    .then(({articles}) => articles.map(({
+    .then(({ articles }) => articles.map(({
       publishedAt, title, urlToImage, url,
     }) => ({
       datetime: publishedAt,
