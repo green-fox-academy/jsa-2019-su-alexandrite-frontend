@@ -4,7 +4,7 @@ import {
   FETCH_PORTFOLIO_DETAILS_FAIL,
   FETCH_PORTFOLIO_DETAILS_SUCCESS,
 } from './actionType';
-import { round, transferToDollar } from '../../common/numbers';
+import { moneyAmount2String } from '../../common/numbers';
 
 export const fetchPortfolioDetailsStart = () => ({
   type: FETCH_PORTFOLIO_DETAILS_START,
@@ -50,11 +50,11 @@ export const calculatePortfolioValue = (uid = 1) => (dispatch) => {
           return res.json();
         })
         .then((res) => {
-          let calculatedValue = stocks
+          let totalValue = stocks
             .map(({ shares, symbol }) => shares * res[symbol].price)
             .reduce((a, b) => a + b);
-          calculatedValue = transferToDollar(round(calculatedValue));
-          dispatch(fetchPortfolioDetailsSuccess(calculatedValue));
+          totalValue = moneyAmount2String((totalValue));
+          dispatch(fetchPortfolioDetailsSuccess({ totalValue }));
         });
     })
     .catch((err) => dispatch(fetchPortfolioDetailsFail(err)));

@@ -15,7 +15,7 @@ export const processLargeNumbers = (n) => {
   return `${round(n / 1000000000)}B`;
 };
 
-export const transferToDollar = (n) => (
+export const moneyAmount2String = (n) => (
   Intl.NumberFormat('en-US',
     {
       style: 'currency',
