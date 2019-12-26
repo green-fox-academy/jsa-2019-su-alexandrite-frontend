@@ -29,7 +29,7 @@ const loginUser = (username, password) => (dispatch) => {
       if (response.status === 200) {
         return response.json();
       }
-      throw new Error('Oops! there is something wrong with your app');
+      throw new Error('Oops, there\'s something wrong with our app.');
     })
     .then((response) => {
       dispatch(loginUserSuccess(response));

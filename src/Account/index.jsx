@@ -25,13 +25,13 @@ const Account = () => {
               {' '}
               {username}
             </Text>
-            <Button style={styles.signOutButton} title="LogOut" onPress={handleLogOut} />
+            <Button style={styles.signOutButton} title="Logout" onPress={handleLogOut} />
           </View>
         )
         : (
           <View>
             <Text>Please Login</Text>
-            <Button title="Login" onPress={() => push('LogIn')} />
+            <Button title="Login" onPress={() => push('Login')} />
           </View>
         )}
     </View>
