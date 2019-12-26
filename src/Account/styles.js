@@ -10,7 +10,6 @@ export default StyleSheet.create({
   textInput: {
     borderRadius: 5,
     backgroundColor: '#fff',
-    // width: 300,
     paddingVertical: 10,
     paddingHorizontal: 15,
     marginTop: 15,

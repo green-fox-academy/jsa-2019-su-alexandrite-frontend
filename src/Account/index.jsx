@@ -5,7 +5,6 @@ import { useNavigation } from 'react-navigation-hooks';
 import { logOut } from '../redux/account/actionCreator';
 import styles from './styles';
 
-
 const Account = () => {
   const { accessToken } = useSelector((state) => state.users);
   const { username } = useSelector((state) => state.users);
@@ -31,7 +30,7 @@ const Account = () => {
         )
         : (
           <View>
-            <Text>Please LogIn</Text>
+            <Text>Please Login</Text>
             <Button title="LogIn" onPress={() => push('LogIn')} />
           </View>
         )}

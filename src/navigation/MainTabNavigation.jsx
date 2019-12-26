@@ -41,7 +41,6 @@ const AccountStack = createStackNavigator({
   LogIn,
 });
 
-
 const PlaygroundStack = createStackNavigator({
   Playground,
   StockDetails,

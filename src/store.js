@@ -19,7 +19,6 @@ const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
   whitelist: ['watchlists'],
-  blacklist: ['users'],
 };
 
 const pReducer = persistReducer(persistConfig, reducer);

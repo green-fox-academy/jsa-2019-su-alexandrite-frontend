@@ -1,11 +1,21 @@
+import { LOCAL_URL } from 'react-native-dotenv';
 import {
   LOGIN_USER_FAILURE,
   LOGIN_USER_SUCCESS,
   LOGOUT_SUCCESS,
 } from './actionType';
 
+const loginUserSuccess = (payload) => ({
+  type: LOGIN_USER_SUCCESS,
+  payload,
+});
+
+export const loginUserFail = (payload) => ({
+  type: LOGIN_USER_FAILURE,
+  payload,
+});
+
 const loginUser = (username, password) => (dispatch) => {
-  const LOCAL_URL = 'http://10.72.161.57:3000';
   const loginURL = `${LOCAL_URL}/users/login`;
   fetch(loginURL, {
     method: 'POST',
@@ -22,9 +32,9 @@ const loginUser = (username, password) => (dispatch) => {
       throw new Error('Unexpected status code');
     })
     .then((response) => {
-      dispatch({ type: LOGIN_USER_SUCCESS, payload: { username, ...response } });
+      dispatch(loginUserSuccess(response, username));
     })
-    .catch((error) => dispatch({ type: LOGIN_USER_FAILURE, payload: error }));
+    .catch((error) => dispatch(loginUserFail(error)));
 };
 
 export const logOut = () => ({
