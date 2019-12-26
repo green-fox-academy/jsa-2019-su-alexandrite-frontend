@@ -34,7 +34,6 @@ const SignIn = () => {
     if (accessToken) pop();
   }, [accessToken]);
 
-  // eslint-disable-next-line consistent-return
   const signIn = () => {
     if (username === '' || password === '') {
       return Alert.alert('All the input field are required');
