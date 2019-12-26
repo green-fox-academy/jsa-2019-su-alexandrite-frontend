@@ -137,4 +137,9 @@ export default StyleSheet.create({
     fontSize: 12,
     color: '#999',
   },
+  progressBar: {
+    height: 4,
+    flexDirection: 'row',
+    backgroundColor: '#eee',
+  },
 });

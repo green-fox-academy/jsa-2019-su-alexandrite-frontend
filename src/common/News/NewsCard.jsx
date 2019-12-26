@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   View,
   ActivityIndicator,
@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
 import PropTypes from 'prop-types';
-import { fetchStockNews } from './newsService';
+import { useFetchStockNews } from './newsService';
 import styles from '../styles';
 import Card from '../Card';
 import ErrorMessage from '../ErrorMessage';
@@ -15,24 +15,8 @@ import NewsMappedList from './NewsMappedList';
 import CardFooter from '../CardFooter';
 
 const NewsCard = ({ query }) => {
-  const [news, setNews] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
+  const { news, isLoading, error } = useFetchStockNews(query, 1, 2);
   const navigator = useNavigation();
-  useEffect(() => {
-    setIsLoading(true);
-    setError(undefined);
-    fetchStockNews(query, 1, 2)
-      .then((res) => {
-        setNews(res);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setIsLoading(false);
-      });
-  }, []);
-
   return (
     <Card title="News">
       {!error ? (

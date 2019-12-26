@@ -19,7 +19,7 @@ const NewsListItem = ({ item, style }) => {
       style={[style, { borderRadius: 6 }]}
     >
       <ImageBackground
-        source={item.image && { uri: item.image }}
+        source={item.image ? { uri: item.image } : null}
         style={commonStyle.newsCard}
       >
         <LinearGradient style={commonStyle.newsCardOverlay} colors={['#0000', '#0000', '#0008', '#000f']}>
