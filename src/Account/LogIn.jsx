@@ -37,9 +37,9 @@ const SignIn = () => {
   // eslint-disable-next-line consistent-return
   const signIn = () => {
     if (username === '' || password === '') {
-      return Alert.alert('All the Input Field are required');
+      return Alert.alert('All the input field are required');
     }
-    dispatch(loginUser(username, password));
+    return dispatch(loginUser(username, password));
   };
 
   return (
