@@ -31,7 +31,7 @@ const Account = () => {
         : (
           <View>
             <Text>Please Login</Text>
-            <Button title="LogIn" onPress={() => push('LogIn')} />
+            <Button title="Login" onPress={() => push('LogIn')} />
           </View>
         )}
     </View>

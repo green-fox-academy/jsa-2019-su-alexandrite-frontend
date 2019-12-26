@@ -29,10 +29,10 @@ const loginUser = (username, password) => (dispatch) => {
       if (response.status === 200) {
         return response.json();
       }
-      throw new Error('Unexpected status code');
+      throw new Error('Oops! there is something wrong with your app');
     })
     .then((response) => {
-      dispatch(loginUserSuccess(response, username));
+      dispatch(loginUserSuccess(response));
     })
     .catch((error) => dispatch(loginUserFail(error)));
 };
@@ -40,6 +40,5 @@ const loginUser = (username, password) => (dispatch) => {
 export const logOut = () => ({
   type: LOGOUT_SUCCESS,
 });
-
 
 export default loginUser;
