@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
 import PropTypes from 'prop-types';
-import { useFetchStockNews } from './newsService';
+import useFetchStockNews from './useFetchStockNews';
 import styles from '../styles';
 import Card from '../Card';
 import ErrorMessage from '../ErrorMessage';

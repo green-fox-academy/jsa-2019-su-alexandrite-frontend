@@ -4,8 +4,7 @@ import {
   NEWS_API_KEY,
 } from 'react-native-dotenv';
 
-// eslint-disable-next-line import/prefer-default-export
-export const useFetchStockNews = (query, page = 1, pageSize = 20) => {
+export default (query, page = 1, pageSize = 20) => {
   const [news, setNews] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
