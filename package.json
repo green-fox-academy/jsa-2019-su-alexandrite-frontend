@@ -7,8 +7,24 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "lint": "eslint src",
-    "test": "jest --coverage=false --changedSince=origin/development",
-    "test:coverage": "jest --coverage=true"
+    "test": "jest --coverage"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 30,
+        "lines": 30,
+        "statements": 30
+      }
+    }
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",

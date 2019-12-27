@@ -22,5 +22,16 @@
     "plugins": [
         "react"
     ],
-    "rules": {}
+    "rules": {},
+    "overrides": [
+        {
+            "files": [
+                "**/*.test.js",
+                "**/*.test.jsx"
+            ],
+            "env": {
+                "jest": true
+            }
+        }
+    ]
 }
