@@ -78,5 +78,4 @@ ListFooter.defaultProps = {
   errorMessage: null,
 };
 
-
 export default NewsList;
