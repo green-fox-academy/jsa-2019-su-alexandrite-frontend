@@ -10,7 +10,6 @@ const ProgressBar = ({ progress }) => (
   </View>
 );
 
-
 ProgressBar.propTypes = {
   progress: PropTypes.number.isRequired,
 };
