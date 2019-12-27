@@ -36,9 +36,7 @@ const ListFooter = ({ errorMessage, isLoading, pageNumber }) => {
 const NewsList = () => {
   const query = useNavigationParam('query');
   const [pageNumber, setPageNumber] = useState(1);
-  const {
-    news, isLoading, error,
-  } = useFetchStockNews(query, pageNumber);
+  const { news, isLoading, error } = useFetchStockNews(query, pageNumber);
 
   return (
     <FlatList
