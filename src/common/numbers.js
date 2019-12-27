@@ -14,3 +14,12 @@ export const processLargeNumbers = (n) => {
   if (n < 1000000000) return `${round(n / 1000000)}M`;
   return `${round(n / 1000000000)}B`;
 };
+
+export const moneyAmount2String = (n) => (
+  Intl.NumberFormat('en-US',
+    {
+      style: 'currency',
+      currency: 'USD',
+      maximumSignificatnDigits: 2,
+    }).format(n)
+);
