@@ -11,12 +11,12 @@ exports[`<Watchlists /> Should render and match the snapshot 1`] = `
 >
   <RCTScrollView
     ListEmptyComponent={
-      <Card>
-        <ErrorMessage
+      <<Card />>
+        <<ErrorMessage />
           message="You don't have any watchlists right now.
 Start by adding one! ;)"
         />
-      </Card>
+      </<Card />>
     }
     ListHeaderComponent={[Function]}
     contentContainerStyle={
@@ -91,585 +91,54 @@ Start by adding one! ;)"
         onLayout={[Function]}
         style={null}
       >
-        <View
-          style={
+        <<Watchlist />
+          item={
             Object {
-              "backgroundColor": "#fff",
-              "borderRadius": 6,
-              "elevation": 3,
-              "marginBottom": 15,
-              "padding": 15,
-              "shadowColor": "#000",
-              "shadowOffset": Object {
-                "x": 0,
-                "y": 4,
-              },
-              "shadowOpacity": 0.1,
-              "shadowRadius": 6,
+              "id": 123,
+              "name": "Sample",
+              "stocks": Array [
+                Object {
+                  "currPrice": 123,
+                  "dailyChange": 1.3,
+                  "ticker": "AAPL",
+                  "volume": "12B",
+                },
+                Object {
+                  "currPrice": 123.1,
+                  "dailyChange": -3.4,
+                  "ticker": "MSFT",
+                  "volume": "43M",
+                },
+              ],
             }
           }
-        >
-          <View
-            style={
-              Object {
-                "alignItems": "center",
-                "flex": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-              }
-            }
-          >
-            <Text
-              style={
-                Object {
-                  "color": "#333",
-                  "fontSize": 13,
-                  "fontWeight": "600",
-                  "lineHeight": 18,
-                }
-              }
-            >
-              Sample
-            </Text>
-            <View
-              accessible={true}
-              focusable={true}
-              isTVSelectable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "marginRight": -15,
-                  "marginVertical": -15,
-                  "padding": 15,
-                }
-              }
-            >
-              <Image
-                source={1}
-                style={
-                  Object {
-                    "transform": Array [
-                      Object {
-                        "rotateZ": "90deg",
-                      },
-                    ],
-                  }
-                }
-              />
-            </View>
-          </View>
-          <View
-            style={
-              Object {
-                "alignItems": "center",
-                "borderBottomColor": "#eee",
-                "borderBottomWidth": 1,
-                "flex": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "padding": 10,
-              }
-            }
-          >
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                }
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#666",
-                      "fontSize": 12,
-                    },
-                    Object {
-                      "color": "#566ed3",
-                      "fontWeight": "bold",
-                    },
-                  ]
-                }
-              >
-                AAPL
-              </Text>
-            </View>
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                }
-              }
-            >
-              <Text
-                style={
-                  Object {
-                    "color": "#666",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                123
-              </Text>
-            </View>
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                }
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#666",
-                      "fontSize": 12,
-                    },
-                    Object {
-                      "color": "#21af78",
-                    },
-                  ]
-                }
-              >
-                +1.3%
-              </Text>
-            </View>
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                }
-              }
-            >
-              <Text
-                style={
-                  Object {
-                    "color": "#666",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                12B
-              </Text>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "flex": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                  Object {
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <Image
-                source={1}
-              />
-              <View
-                accessible={true}
-                focusable={true}
-                isTVSelectable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "margin": -10,
-                    "padding": 10,
-                  }
-                }
-              >
-                <Image
-                  source={1}
-                  style={null}
-                />
-              </View>
-            </View>
-          </View>
-          <View
-            style={
-              Object {
-                "alignItems": "center",
-                "borderBottomColor": "#eee",
-                "borderBottomWidth": 1,
-                "flex": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "padding": 10,
-              }
-            }
-          >
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                }
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#666",
-                      "fontSize": 12,
-                    },
-                    Object {
-                      "color": "#566ed3",
-                      "fontWeight": "bold",
-                    },
-                  ]
-                }
-              >
-                MSFT
-              </Text>
-            </View>
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                }
-              }
-            >
-              <Text
-                style={
-                  Object {
-                    "color": "#666",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                123.1
-              </Text>
-            </View>
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                }
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#666",
-                      "fontSize": 12,
-                    },
-                    Object {
-                      "color": "#d82f2f",
-                    },
-                  ]
-                }
-              >
-                -3.4%
-              </Text>
-            </View>
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                }
-              }
-            >
-              <Text
-                style={
-                  Object {
-                    "color": "#666",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                43M
-              </Text>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "flex": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                  Object {
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <Image
-                source={1}
-              />
-              <View
-                accessible={true}
-                focusable={true}
-                isTVSelectable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "margin": -10,
-                    "padding": 10,
-                  }
-                }
-              >
-                <Image
-                  source={1}
-                  style={null}
-                />
-              </View>
-            </View>
-          </View>
-          <View
-            style={
-              Object {
-                "alignSelf": "flex-end",
-                "flex": 1,
-                "marginTop": 10,
-              }
-            }
-          >
-            <View
-              accessible={true}
-              focusable={true}
-              isTVSelectable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "borderRadius": 6,
-                  "paddingHorizontal": 10,
-                  "paddingVertical": 8,
-                }
-              }
-            >
-              <Text />
-            </View>
-          </View>
-        </View>
+        />
       </View>
     </View>
   </RCTScrollView>
-  <Modal
-    animationType="fade"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    presentationStyle="overFullScreen"
-    transparent={true}
+  <<Popup />
+    confirmButtonText="Add"
+    confirmDisabled={true}
+    onCancel={[Function]}
+    onConfirm={[Function]}
+    title="Create a watchlist"
     visible={false}
   >
-    <RCTSafeAreaView
-      emulateUnlessSupported={true}
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      placeholder="Watchlist Name"
+      rejectResponderTermination={true}
       style={
         Object {
-          "alignItems": "center",
-          "backgroundColor": "rgba(0,0,0,.3)",
-          "flex": 1,
-          "justifyContent": "center",
+          "borderBottomColor": "#eee",
+          "borderBottomWidth": 1,
+          "padding": 8,
         }
       }
-    >
-      <View
-        style={
-          Object {
-            "backgroundColor": "#fff",
-            "borderRadius": 6,
-            "height": 280,
-            "width": 285,
-          }
-        }
-      >
-        <View
-          style={
-            Object {
-              "backgroundColor": "#4d63be",
-              "borderTopRightRadius": 6,
-              "borderTopStartRadius": 6,
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            }
-          }
-        >
-          <Text
-            style={
-              Object {
-                "color": "white",
-                "fontSize": 13,
-                "fontWeight": "bold",
-                "padding": 15,
-              }
-            }
-          >
-            Create a watchlist
-          </Text>
-          <View
-            accessible={true}
-            focusable={true}
-            isTVSelectable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "borderTopRightRadius": 6,
-                "padding": 15,
-              }
-            }
-          >
-            <Text />
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "flex": 1,
-              "justifyContent": "space-between",
-              "padding": 15,
-            }
-          }
-        >
-          <TextInput
-            allowFontScaling={true}
-            onChangeText={[Function]}
-            placeholder="Watchlist Name"
-            rejectResponderTermination={true}
-            style={
-              Object {
-                "borderBottomColor": "#eee",
-                "borderBottomWidth": 1,
-                "padding": 8,
-              }
-            }
-            underlineColorAndroid="transparent"
-          />
-          <View
-            style={
-              Object {
-                "flexDirection": "column",
-              }
-            }
-          >
-            <View
-              accessible={true}
-              focusable={true}
-              isTVSelectable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "borderRadius": 2,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "width": 255,
-                  },
-                  Object {
-                    "backgroundColor": "#5eceb1",
-                  },
-                  Object {
-                    "opacity": 0.5,
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Object {
-                    "color": "#fff",
-                    "fontSize": 14,
-                  }
-                }
-              >
-                Add
-              </Text>
-            </View>
-            <View
-              accessible={true}
-              focusable={true}
-              isTVSelectable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderRadius": 2,
-                  "height": 40,
-                  "justifyContent": "center",
-                  "width": 255,
-                }
-              }
-            >
-              <Text
-                style={
-                  Object {
-                    "color": "#666",
-                  }
-                }
-              >
-                Cancel
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-    </RCTSafeAreaView>
-  </Modal>
+      underlineColorAndroid="transparent"
+    />
+  </<Popup />>
   <View
     accessible={true}
     focusable={true}
