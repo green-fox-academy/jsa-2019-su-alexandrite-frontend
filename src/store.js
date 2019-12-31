@@ -1,7 +1,7 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
-import { AsyncStorage } from 'react-native';
-
+// import ExpoFileSystemStorage from 'redux-persist-expo-filesystem';
+import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import stockReducer from './redux/stock/reducer';
 import searchReducer from './redux/search/reducer';
@@ -15,7 +15,7 @@ const reducer = combineReducers({
 
 const persistConfig = {
   key: 'root',
-  storage: AsyncStorage,
+  storage,
   whitelist: ['watchlists'],
 };
 
