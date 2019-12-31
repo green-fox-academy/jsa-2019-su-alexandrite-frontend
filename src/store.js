@@ -1,6 +1,5 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
-// import ExpoFileSystemStorage from 'redux-persist-expo-filesystem';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import stockReducer from './redux/stock/reducer';
