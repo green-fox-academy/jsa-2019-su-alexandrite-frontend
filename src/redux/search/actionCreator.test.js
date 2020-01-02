@@ -11,9 +11,6 @@ test('trigger action searchStart to get expected result', () => {
   expect(searchStart()).toEqual(result);
 });
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
-
 test('trigger action searchSuccess to get expected result', () => {
   const result = {
     type: SEARCH_SUCCESS,
@@ -44,33 +41,47 @@ test('trigger action searchFailed to get expected result', () => {
   expect(searchFailed({ message: 'The error message' })).toEqual(result);
 });
 
-test('get error message when fetching fails', () => {
-  fetchMock.getOnce('/search/MSFT?token=Tsk_123', {
-    body: {
-      payload: [{
-        symbol: 'MSFT',
-        securityName: 'oso rprtCifcnotMiaroo',
-        securityType: 'sc',
-        region: 'US',
-        exchange: 'ANS',
-      }],
-    },
+const URL = 'https://sandbox.iexapis.com/stable/search/MSFT?Token=<api token>';
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
+describe('async actions', () => {
+  afterEach(() => {
+    fetchMock.reset();
+    fetchMock.restore();
   });
 
-  const expectedActions = [
-    { type: SEARCH_START },
-    {
-      type: SEARCH_SUCCESS,
-      payload: [{
-        symbol: 'MSFT',
-        securityName: 'oso rprtCifcnotMiaroo',
-        securityType: 'sc',
-        region: 'US',
-        exchange: 'ANS',
-      }],
-    },
-  ];
-  const store = mockStore({ searchReducer: [] });
-  store.dispatch(searchStockData('MSFT'));
-  expect(store.getActions()).toEqual(expectedActions);
+  it('creates SEARCH_SUCCESS when fetching has been done', () => {
+    fetchMock.get(URL, {
+      status: 200,
+      body: {
+        payload: [{
+          symbol: 'MSFT',
+          securityName: 'oso rprtCifcnotMiaroo',
+          securityType: 'sc',
+          region: 'US',
+          exchange: 'ANS',
+        }],
+      },
+    });
+
+    const expectedActions = [
+      { type: SEARCH_START },
+      {
+        type: SEARCH_SUCCESS,
+        payload: [{
+          symbol: 'MSFT',
+          securityName: 'oso rprtCifcnotMiaroo',
+          securityType: 'sc',
+          region: 'US',
+          exchange: 'ANS',
+        }],
+      },
+    ];
+
+    const store = mockStore({ searchReducer: [] });
+    store.dispatch(searchStockData('MSFT'));
+    expect(store.getActions()).toEqual(expectedActions);
+  });
 });

@@ -5,14 +5,16 @@ import thunk from 'redux-thunk';
 import stockReducer from './redux/stock/reducer';
 import searchReducer from './redux/search/reducer';
 import watchlistsReducer from './redux/watchList/reducer';
+import invsetmentsReducer from './redux/investment/reducer';
 
 const reducer = combineReducers({
   stock: stockReducer,
   search: searchReducer,
   watchlists: watchlistsReducer,
+  investments: invsetmentsReducer,
 });
 
-const persistConfig = {
+export const persistConfig = {
   key: 'root',
   storage,
   whitelist: ['watchlists'],
