@@ -60,7 +60,7 @@ describe('<Watchlists />', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should dispatch fetch stock details iff watchlists are not empty', () => {
+  it('Should not dispatch fetch stock details if watchlists are empty', () => {
     const mockDispatch = jest.fn(() => { });
     useDispatch.mockReturnValueOnce(mockDispatch);
     fetchWatchlistDetails.mockReturnValueOnce('test_action');

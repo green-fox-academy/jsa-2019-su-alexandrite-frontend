@@ -37,7 +37,7 @@ const EditorControls = ({
         >
           <Text style={{ color: '#c12424', fontSize: 12, fontWeight: 'bold' }}> Delete WatchList</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.editorButton} onPress={() => toggleEditMode(!isInEditMode)} underlayColor="#eee">
+        <TouchableHighlight testID="editor-button" style={styles.editorButton} onPress={() => toggleEditMode(!isInEditMode)} underlayColor="#eee">
           <Text style={{ color: '#666', fontSize: 12, fontWeight: 'bold' }}>Cancel</Text>
         </TouchableHighlight>
       </View>
