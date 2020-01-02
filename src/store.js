@@ -14,7 +14,7 @@ const reducer = combineReducers({
   investments: invsetmentsReducer,
 });
 
-const persistConfig = {
+export const persistConfig = {
   key: 'root',
   storage,
   whitelist: ['watchlists'],
