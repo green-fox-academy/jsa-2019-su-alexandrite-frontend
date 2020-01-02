@@ -101,7 +101,7 @@ exports[`<EditFooter /> Should render and match the snapshot when in edit mode 1
           "paddingVertical": 8,
         }
       }
-      testID="editorButton"
+      testID="editor-button"
     >
       <Text
         style={
