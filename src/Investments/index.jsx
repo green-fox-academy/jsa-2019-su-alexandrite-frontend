@@ -4,7 +4,7 @@ import commonStyles from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
 import PortfolioValue from './PortfolioValue';
 
-export const navigationOptions = {
+const navigationOptions = {
   title: 'Investments',
   headerRight: () => <SearchButton />,
 };

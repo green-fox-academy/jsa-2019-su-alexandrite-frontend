@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Investments, { navigationOptions } from '.';
+import Investments from '.';
 import SearchButton from '../common/HeaderSearchButton';
 
 jest.useFakeTimers();
@@ -27,6 +27,6 @@ describe('<Investments />', () => {
   });
 
   it('Should render header search button', () => {
-    expect(navigationOptions.headerRight()).toEqual(<SearchButton />);
+    expect(Investments.navigationOptions.headerRight()).toEqual(<SearchButton />);
   });
 });
