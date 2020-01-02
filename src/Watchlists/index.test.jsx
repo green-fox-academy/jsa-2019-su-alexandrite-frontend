@@ -1,4 +1,5 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import { useDispatch, useSelector } from 'react-redux';
 import renderer from 'react-test-renderer';
 import Watchlists from './index';
@@ -45,7 +46,9 @@ describe('<Watchlists />', () => {
 
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
-    const wrapper = renderer.create(<Watchlists />);
+
+    const wrapper = shallow(<Watchlists />);
+
     expect(wrapper).not.toBeNull();
     expect(spy).not.toHaveBeenCalled();
   });

@@ -1,3 +1,4 @@
+import { shallow } from 'enzyme';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,7 +25,7 @@ describe('<Search />', () => {
 
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
-    const wrapper = renderer.create(<Search />);
+    const wrapper = shallow(<Search />);
     expect(wrapper).not.toBeNull();
     expect(spy).not.toHaveBeenCalled();
   });
