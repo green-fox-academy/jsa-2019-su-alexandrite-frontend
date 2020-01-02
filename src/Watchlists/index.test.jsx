@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import renderer from 'react-test-renderer';
 import Watchlists from './index';
+import EditFooter from './EditFooter';
+import { fetchWatchlistDetails } from '../redux/watchList/actionCreator';
 
 jest.useFakeTimers();
 
@@ -33,11 +35,8 @@ const SAMPLE_STATE = {
 
 describe('<Watchlists />', () => {
   beforeEach(() => {
-    // useNavigation.mockReturnValueOnce({
-    //   push: jest.fn(() => { }),
-    // });
-    useSelector.mockReturnValueOnce(SAMPLE_STATE);
-    useDispatch.mockReturnValueOnce(() => { });
+    useSelector.mockReturnValue(SAMPLE_STATE);
+    useDispatch.mockReturnValue(jest.fn(() => { }));
   });
 
   afterAll(() => {
@@ -58,8 +57,74 @@ describe('<Watchlists />', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  // it('Should render properly', () => {
-  //   const wrapper = renderer.create(<Watchlists />);
-  //   expect(wrapper.find('FlatList').children.length).toBe(1);
-  // });
+  it('Should dispatch fetch stock details iff watchlists are not empty', () => {
+    const mockDispatch = jest.fn(() => { });
+    useDispatch.mockReturnValueOnce(mockDispatch);
+    fetchWatchlistDetails.mockReturnValueOnce('test_action');
+    useSelector.mockReturnValueOnce({
+      watchlists: [],
+      watchlistDetailsError: null,
+      isLoadingWatchlistDetails: false,
+    });
+    const wl = renderer.create(
+      <Watchlists />,
+    );
+    wl.update(<Watchlists />);
+    expect(mockDispatch).not.toHaveBeenCalled();
+  });
+
+  it('Should dispatch fetch stock details onload when watchlists not empty', () => {
+    const mockDispatch = jest.fn(() => { });
+    useDispatch.mockReturnValue(mockDispatch);
+    fetchWatchlistDetails.mockReturnValueOnce('test_action');
+    const wl = renderer.create(
+      <Watchlists />,
+    );
+    wl.update(<Watchlists />);
+    expect(useDispatch).toHaveBeenCalled();
+    expect(mockDispatch).toHaveBeenCalledWith('test_action');
+  });
+});
+
+describe('<EditFooter />', () => {
+  it('Expect to not log errors in console', () => {
+    const spy = jest.spyOn(global.console, 'error');
+    const wrapper = renderer.create(
+      <EditFooter
+        checkedItems={[]}
+        isInEditMode={false}
+        toggleEditMode={jest.fn()}
+        onDeleteWatchlist={jest.fn()}
+        onDeleteStocks={jest.fn()}
+      />,
+    );
+    expect(wrapper).not.toBeNull();
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('Should render and match the snapshot when not in edit mode', () => {
+    const tree = renderer.create(
+      <EditFooter
+        checkedItems={[]}
+        isInEditMode={false}
+        toggleEditMode={jest.fn()}
+        onDeleteWatchlist={jest.fn()}
+        onDeleteStocks={jest.fn()}
+      />,
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render and match the snapshot when in edit mode', () => {
+    const tree = renderer.create(
+      <EditFooter
+        checkedItems={[]}
+        isInEditMode
+        toggleEditMode={jest.fn()}
+        onDeleteWatchlist={jest.fn()}
+        onDeleteStocks={jest.fn()}
+      />,
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
