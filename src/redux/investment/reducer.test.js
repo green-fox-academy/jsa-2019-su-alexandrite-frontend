@@ -9,7 +9,7 @@ test('return the initial state', () => {
   });
 });
 
-test('FETCH_PORTFOLIO_DETAILS_START', () => {
+test('handle FETCH_PORTFOLIO_DETAILS_START', () => {
   expect(
     reducer([], {
       type: FETCH_PORTFOLIO_DETAILS_START,
