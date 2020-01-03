@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card rednder properly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff6f6",
+      "borderRadius": 6,
+      "paddingHorizontal": 8,
+      "paddingVertical": 15,
+      "width": 690,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#9f3a38",
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Error Message
+  </Text>
+</View>
+`;
