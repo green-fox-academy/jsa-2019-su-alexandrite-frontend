@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WatchList /> should render editfooter and match the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignSelf": "flex-end",
+      "flex": 1,
+      "marginTop": 10,
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "borderRadius": 6,
+        "paddingHorizontal": 10,
+        "paddingVertical": 8,
+      }
+    }
+  >
+    <Text />
+  </View>
+</View>
+`;
+
+exports[`<WatchList /> should render editmodewatchlistitem and match the snapshot 1`] = `
+<<EditModeWatchListItem />
+  isChecked={false}
+  onSelect={[MockFunction]}
+  ticker={true}
+/>
+`;
+
+exports[`<WatchList /> should render watchlistitem if the watchlist is not empty and match the snapshot 1`] = `
+<<WatchlistItem />
+  currPrice={true}
+  dailyChange={true}
+  ticker={true}
+  volume={true}
+/>
+`;
