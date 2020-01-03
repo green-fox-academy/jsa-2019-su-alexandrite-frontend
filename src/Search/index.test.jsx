@@ -3,6 +3,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { useSelector, useDispatch } from 'react-redux';
 import Search from './index';
+import HeaderBar from './HeaderBar';
 
 const SAMPLE_STATE = {
   isLoading: false,
@@ -36,5 +37,9 @@ describe('<Search />', () => {
       <Search />,
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render header search bar', () => {
+    expect(Search.navigationOptions.header()).toEqual(<HeaderBar />);
   });
 });
