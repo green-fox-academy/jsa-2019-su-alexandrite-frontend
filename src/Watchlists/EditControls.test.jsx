@@ -35,8 +35,8 @@ describe('<EditControls />', () => {
   });
 
   it('Should toggle edit mode when tapping on editorButton', () => {
-    const onDeleteWatchlist = jest.fn();
-    const toggle = jest.fn(() => onDeleteWatchlist);
+    const toggleEditMode = jest.fn();
+    const toggle = jest.fn(() => toggleEditMode);
     const wrapper = shallow(
       <EditControls
         checkedItems={[]}
