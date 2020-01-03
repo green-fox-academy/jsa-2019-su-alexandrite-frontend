@@ -5,7 +5,6 @@ import { useNavigation } from 'react-navigation-hooks';
 import ResultItem from './ResultItem';
 
 jest.mock('react-redux');
-jest.mock('../redux/search/actionCreator');
 jest.mock('react-navigation-hooks');
 
 describe('<ResultItem />', () => {

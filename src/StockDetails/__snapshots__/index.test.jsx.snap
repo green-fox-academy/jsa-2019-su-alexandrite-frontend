@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StockDetails /> Should render and match the snapshot 1`] = `
+<RCTScrollView
+  contentContainerStyle={
+    Object {
+      "alignItems": "center",
+      "padding": 15,
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "#f4f6f8",
+      "flex": 1,
+    }
+  }
+>
+  <View>
+    <<Performance /> />
+    <<Stats /> />
+    <<WatchlistPickerPopup />
+      onClose={[Function]}
+      visible={false}
+    />
+  </View>
+</RCTScrollView>
+`;
