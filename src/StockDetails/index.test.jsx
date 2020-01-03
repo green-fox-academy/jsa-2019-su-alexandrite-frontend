@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React, { useState } from 'react';
+import React from 'react';
 import renderer from 'react-test-renderer';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
