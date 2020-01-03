@@ -25,6 +25,7 @@ const ResultItem = ({ symbol, exchange }) => {
           <Image source={tradeIcon} />
         </TouchableHighlight>
         <TouchableHighlight
+          testID="details-button"
           style={styles.detailButton}
           onPress={() => push('StockDetails', { symbol })}
           activeOpacity={0.5}

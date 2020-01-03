@@ -6,7 +6,6 @@ import Result from './Result';
 import ResultItem from './ResultItem';
 
 jest.mock('react-redux');
-jest.mock('../redux/search/actionCreator');
 
 const SAMPLE_STATE = {
   search: {
@@ -24,6 +23,10 @@ describe('<Result />', () => {
     useSelector.mockReturnValue(SAMPLE_STATE);
   });
 
+  afterAll(() => {
+    jest.resetModules();
+  });
+
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const wrapper = shallow(<Result />);
@@ -39,7 +42,7 @@ describe('<Result />', () => {
   });
 
   it('Should render and match the snapshot when touched and no result available', () => {
-    useSelector.mockReturnValue({ ...SAMPLE_STATE, touched: true, result: [] });
+    useSelector.mockReturnValueOnce({ ...SAMPLE_STATE, touched: true, result: [] });
     const tree = renderer.create(
       <Result />,
     ).toJSON();
@@ -47,7 +50,7 @@ describe('<Result />', () => {
   });
 
   it('Should render and match the snapshot when not touched and no result available', () => {
-    useSelector.mockReturnValue({ ...SAMPLE_STATE, touched: false, result: [] });
+    useSelector.mockReturnValueOnce({ ...SAMPLE_STATE, touched: false, result: [] });
     const tree = renderer.create(
       <Result />,
     ).toJSON();
@@ -55,7 +58,7 @@ describe('<Result />', () => {
   });
 
   it('Should render and match the snapshot when loading', () => {
-    useSelector.mockReturnValue({ ...SAMPLE_STATE, isLoading: true });
+    useSelector.mockReturnValueOnce({ ...SAMPLE_STATE, isLoading: true });
     const tree = renderer.create(
       <Result />,
     ).toJSON();
@@ -63,7 +66,7 @@ describe('<Result />', () => {
   });
 
   it('Should render and match the snapshot on error', () => {
-    useSelector.mockReturnValue({ ...SAMPLE_STATE, error: { message: 'sample message' } });
+    useSelector.mockReturnValueOnce({ ...SAMPLE_STATE, error: { message: 'sample message' } });
     const tree = renderer.create(
       <Result />,
     ).toJSON();
