@@ -15,9 +15,15 @@ const mockStorage = {
 };
 jest.mock('redux-persist/lib/storage', () => mockStorage);
 
-jest.mock('react-native-dotenv', () => ({
-  API_URL: 'https://sandbox.iexapis.com/stable',
-  API_KEY: 'abcdefg1234567890',
+jest.mock('redux-persist', () => ({
+  persistReducer: jest.fn(() => { }),
+  persistStore: jest.fn(() => { }),
+}));
+
+jest.mock('redux', () => ({
+  combineReducers: jest.fn(() => { }),
+  createStore: jest.fn(() => { }),
+  applyMiddleware: jest.fn(() => { }),
 }));
 
 Enzyme.configure({ adapter: new Adapter() });
