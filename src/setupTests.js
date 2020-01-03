@@ -8,6 +8,8 @@ import '@testing-library/jest-dom/extend-expect';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
+jest.useFakeTimers();
+
 const mockStorage = {
   getItem: jest.fn(),
   setItem: jest.fn(),
