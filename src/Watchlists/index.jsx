@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   TouchableHighlight,
   Image,
@@ -13,7 +13,11 @@ import addIcon from '../../assets/icons/watchList/add.png';
 import styles from './styles';
 import commonStyle from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
-import { postWatchList } from '../redux/watchList/actionCreator';
+import ErrorMessage from '../common/ErrorMessage';
+import Card from '../common/Card';
+import { postWatchList, fetchWatchlistDetails } from '../redux/watchList/actionCreator';
+
+const EMPTY_LIST_MESSAGE = 'You don\'t have any watchlists right now.\nStart by adding one! ;)';
 
 const navigationOptions = {
   title: 'Watchlists',
@@ -24,8 +28,22 @@ const WatchlistsScreen = () => {
   const [popupVisible, setModalVisible] = useState(false);
   const [watchListTitle, setWatchListTitle] = useState('');
   const dispatch = useDispatch();
-  const { watchlists } = useSelector((state) => state.watchlists);
+  const {
+    watchlists,
+    watchlistDetailsError: error,
+    isLoadingWatchlistDetails: isLoading,
+  } = useSelector((state) => state.watchlists);
   const { padding } = commonStyle.container;
+
+  const loadDetails = () => {
+    if (watchlists && watchlists.length) {
+      dispatch(fetchWatchlistDetails());
+    }
+  };
+
+  useEffect(() => {
+    loadDetails();
+  }, []);
 
   const onCloseAddModal = () => {
     setModalVisible(false);
@@ -41,12 +59,21 @@ const WatchlistsScreen = () => {
   return (
     <View style={styles.container}>
       <FlatList
+        ListHeaderComponent={() => (error ? (
+          <View style={styles.listErrorContainer}>
+            <ErrorMessage message={error.message} />
+          </View>
+        ) : null)}
+        stickyHeaderIndices={[0]}
         contentContainerStyle={{ padding, paddingBottom: 60 }}
         data={watchlists}
         keyExtractor={(item) => JSON.stringify(item.id)}
         renderItem={({ item }) => (
           <WatchList item={item} />
         )}
+        refreshing={isLoading}
+        onRefresh={loadDetails}
+        ListEmptyComponent={<Card><ErrorMessage message={EMPTY_LIST_MESSAGE} /></Card>}
       />
       <Popup
         visible={popupVisible}

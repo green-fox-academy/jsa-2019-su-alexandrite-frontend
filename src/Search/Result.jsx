@@ -60,7 +60,7 @@ export default () => {
     <View>
       {!error ? (
         <>
-          {isLoading && <ActivityIndicator size="large" style={styles.loading} />}
+          {isLoading && <ActivityIndicator size="large" style={styles.isLoading} />}
           {!isLoading && !error && (
             <FlatList
               data={result}
