@@ -17,7 +17,7 @@ const Performance = ({ symbol }) => {
   const [timeRange, setTimeRange] = useState('1y');
   const {
     historicalData: data,
-    loadingHistoricalChartData: loading,
+    isLoadingHistoricalChartData: isLoading,
     historicalDataError: error,
   } = useSelector((state) => state.stock);
 
@@ -34,8 +34,8 @@ const Performance = ({ symbol }) => {
     <Card title="Performance">
       {!error ? (
         <View style={style.perfChartContainer}>
-          {loading && <ActivityIndicator size="large" />}
-          {!loading && !error && (
+          {isLoading && <ActivityIndicator size="large" />}
+          {!isLoading && !error && (
             <PerformanceChart
               data={data}
               range={timeRange}

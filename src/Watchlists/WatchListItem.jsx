@@ -11,7 +11,6 @@ import styles from './styles';
 import tradeIcon from '../../assets/icons/watchList/trade.png';
 import detailIcon from '../../assets/icons/watchList/detail.png';
 
-
 export default function WatchListItem({
   ticker,
   currPrice,

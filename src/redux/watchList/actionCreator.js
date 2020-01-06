@@ -1,11 +1,14 @@
+import { API_URL, API_KEY } from 'react-native-dotenv';
 import {
   FETCH_WATCHLIST_SUCCESS,
   POST_WATCHLIST_SUCCESS,
   DELETE_WATCHLIST,
   ADD_STOCK_TO_WATCHLIST,
   REPLACE_WATCHLIST_STOCKS,
+  FETCH_WATCHLIST_DETAILS_FAIL,
+  FETCH_WATCHLIST_DETAILS_START,
+  FETCH_WATCHLIST_DETAILS_SUCCESS,
 } from './actionType';
-
 
 export const DELETE_STOCK_IN_WATCHLIST = 'DELETE_STOCK_IN_WATCHLIST';
 
@@ -13,28 +16,14 @@ export const fetchWatchList = () => ({
   type: FETCH_WATCHLIST_SUCCESS,
 });
 
-export const postWatchList = (payLoad) => ({
+export const postWatchList = (payload) => ({
   type: POST_WATCHLIST_SUCCESS,
-  payLoad,
+  payload,
 });
 
-export const deleteWatchList = (payLoad) => ({
+export const deleteWatchList = (payload) => ({
   type: DELETE_WATCHLIST,
-  payLoad,
-});
-
-export const addStockToWatchlist = (watchlistId, ticker) => ({
-  type: ADD_STOCK_TO_WATCHLIST,
-  payLoad: {
-    watchlistId,
-    stock: {
-      ticker,
-      // to suppress the warning, will be removed after watchlist data story
-      currPrice: 0,
-      dailyChange: 0,
-      volume: '0',
-    },
-  },
+  payload,
 });
 
 export const replaceWatchlistStocks = (watchListId, stocks) => ({
@@ -44,3 +33,67 @@ export const replaceWatchlistStocks = (watchListId, stocks) => ({
     stocks,
   },
 });
+
+const fetchWatchlistDetailsStart = () => ({
+  type: FETCH_WATCHLIST_DETAILS_START,
+});
+
+const fetchWatchlistDetailsSuccess = (payload) => ({
+  type: FETCH_WATCHLIST_DETAILS_SUCCESS,
+  payload,
+});
+
+const fetchWatchlistDetailsFail = (payload) => ({
+  type: FETCH_WATCHLIST_DETAILS_FAIL,
+  payload,
+});
+
+export const fetchWatchlistDetails = () => (dispatch, getState) => {
+  const symbols = [
+    ...new Set(getState()
+      .watchlists
+      .watchlists
+      .reduce(
+        (result, curr) => [...result, ...curr.stocks.map(({ ticker }) => ticker)],
+        [],
+      ))];
+  if (!symbols.length) return;
+  const url = new URL(`${API_URL}/stock/market/batch`);
+  url.searchParams.append('token', API_KEY);
+  url.searchParams.append('symbols', symbols);
+  url.searchParams.append('types', 'quote');
+  url.searchParams.append('displayPercent', true);
+  dispatch(fetchWatchlistDetailsStart());
+  fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        switch (res.status) {
+          case 404:
+            throw new Error(`The stock ${symbols} you are looking for does not exist.`);
+          default:
+            throw new Error('Oops, there\'s something wrong with our app.');
+        }
+      }
+      return res.json();
+    })
+    .then((res) => {
+      dispatch(fetchWatchlistDetailsSuccess(res));
+    })
+    .catch((err) => dispatch(fetchWatchlistDetailsFail(err)));
+};
+
+export const addStockToWatchlist = (watchlistId, ticker) => (dispatch) => {
+  dispatch({
+    type: ADD_STOCK_TO_WATCHLIST,
+    payload: {
+      watchlistId,
+      stock: {
+        ticker,
+        currPrice: 0,
+        dailyChange: 0,
+        volume: '',
+      },
+    },
+  });
+  dispatch(fetchWatchlistDetails());
+};
