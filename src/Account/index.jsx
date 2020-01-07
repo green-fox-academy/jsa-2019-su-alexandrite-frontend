@@ -25,7 +25,7 @@ const Account = () => {
               {' '}
               {username}
             </Text>
-            <Button style={styles.signOutButton} title="Logout" onPress={handleLogOut} />
+            <Button style={styles.logoutButton} title="logout" onPress={handleLogOut} />
           </View>
         )
         : (

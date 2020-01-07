@@ -1,9 +1,14 @@
 import { BACKEND_URL } from 'react-native-dotenv';
 import {
+  LOGIN_USER_START,
   LOGIN_USER_FAILURE,
   LOGIN_USER_SUCCESS,
   LOGOUT_SUCCESS,
 } from './actionType';
+
+const loginUserStart = () => ({
+  type: LOGIN_USER_START,
+});
 
 const loginUserSuccess = (payload) => ({
   type: LOGIN_USER_SUCCESS,
@@ -17,6 +22,7 @@ export const loginUserFail = (payload) => ({
 
 const loginUser = (username, password) => (dispatch) => {
   const loginURL = `${BACKEND_URL}/users/login`;
+  fetch(loginUserStart);
   fetch(loginURL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

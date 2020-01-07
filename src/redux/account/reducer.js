@@ -1,11 +1,20 @@
 import {
+  LOGIN_USER_START,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAILURE,
   LOGOUT_SUCCESS,
 } from './actionType';
 
-export default (state = {}, action) => {
+const initialState = {
+  accessToken: '',
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
+    case LOGIN_USER_START:
+      return {
+        ...state,
+      };
     case LOGIN_USER_SUCCESS:
       return {
         ...state,
