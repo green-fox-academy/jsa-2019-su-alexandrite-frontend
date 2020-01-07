@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
 import { logOut } from '../redux/account/actionCreator';
 import styles from './styles';
+import Balance from './Balance';
 
 const Account = () => {
   const { accessToken } = useSelector((state) => state.user);
@@ -26,6 +27,7 @@ const Account = () => {
               {username}
             </Text>
             <Button style={styles.logOutButton} title="logout" onPress={handleLogOut} />
+            <Balance />
           </View>
         ) : (
           <View>
