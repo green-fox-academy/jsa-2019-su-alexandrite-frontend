@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 import { BACKEND_URL } from 'react-native-dotenv';
 import {
   LOGIN_USER_START,
@@ -34,9 +35,8 @@ const loginUser = (username, password) => (dispatch) => {
     .then((response) => {
       if (response.status === 200) {
         return response.json();
-      }
-      if (response.status === 401) {
-        return 'Your password and username is incorrect';
+      } if (response.status === 401) {
+        Alert.alert('Your username or password is incorrect');
       }
       throw new Error('Oops, there\'s something wrong with our app.');
     })
