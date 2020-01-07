@@ -25,7 +25,7 @@ jest.mock('redux-persist', () => ({
 jest.mock('redux', () => ({
   combineReducers: jest.fn(() => { }),
   createStore: jest.fn(() => { }),
-  applyMiddleware: jest.fn(() => { }),
+  applyMiddleware: jest.fn(() => () => () => { }),
 }));
 
 Enzyme.configure({ adapter: new Adapter() });
