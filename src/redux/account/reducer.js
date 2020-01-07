@@ -7,6 +7,7 @@ import {
 
 const initialState = {
   accessToken: '',
+  error: '',
 };
 
 export default (state = initialState, action) => {
