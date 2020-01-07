@@ -13,7 +13,7 @@ const reducer = combineReducers({
   stock: stockReducer,
   search: searchReducer,
   watchlists: watchlistsReducer,
-  users: accountReducer,
+  user: accountReducer,
   investments: invsetmentsReducer,
 });
 

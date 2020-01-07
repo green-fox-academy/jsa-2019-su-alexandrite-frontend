@@ -6,8 +6,8 @@ import { logOut } from '../redux/account/actionCreator';
 import styles from './styles';
 
 const Account = () => {
-  const { accessToken } = useSelector((state) => state.users);
-  const { username } = useSelector((state) => state.users);
+  const { accessToken } = useSelector((state) => state.user);
+  const { username } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { push } = useNavigation();
 

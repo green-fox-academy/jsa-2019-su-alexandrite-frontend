@@ -28,7 +28,7 @@ const LogIn = () => {
   const dispatch = useDispatch();
   const { pop } = useNavigation();
 
-  const { accessToken } = useSelector((state) => state.users);
+  const { accessToken } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (accessToken) pop();
