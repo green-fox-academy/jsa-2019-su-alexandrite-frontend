@@ -22,7 +22,7 @@ const SignInButton = ({ onPress }) => (
   </TouchableHighlight>
 );
 
-const SignIn = () => {
+const LogIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const SignIn = () => {
     if (accessToken) pop();
   }, [accessToken]);
 
-  const signIn = () => {
+  const logIn = () => {
     if (username === '' || password === '') {
       return Alert.alert('All the input field are required');
     }
@@ -72,7 +72,7 @@ const SignIn = () => {
           />
           <Row style={{ flex: 0, justifyContent: 'center' }}>
             <Column style={{ flex: 0 }}>
-              <SignInButton onPress={signIn} />
+              <SignInButton onPress={logIn} />
             </Column>
           </Row>
         </View>
@@ -85,4 +85,4 @@ SignInButton.propTypes = {
   onPress: PropTypes.func.isRequired,
 };
 
-export default SignIn;
+export default LogIn;
