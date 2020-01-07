@@ -22,7 +22,11 @@ const firstOccurrence = (keys, range) => {
   if (range === '3m') {
     return keys.reduce((result, key, i) => ({
       ...result,
-      ...(result[key.substr(0, 7)] || { [key.substr(0, 7)]: i }),
+      ...(
+        result[key.substr(0, 7)] !== undefined
+          ? result[key.substr(0, 7)]
+          : { [key.substr(0, 7)]: i }
+      ),
     }), {});
   }
   return null;
