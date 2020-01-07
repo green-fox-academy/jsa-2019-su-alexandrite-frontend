@@ -35,6 +35,9 @@ const loginUser = (username, password) => (dispatch) => {
       if (response.status === 200) {
         return response.json();
       }
+      if (response.status === 401) {
+        return 'Your password and username is incorrect';
+      }
       throw new Error('Oops, there\'s something wrong with our app.');
     })
     .then((response) => {
