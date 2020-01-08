@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   View,
   Text,
   ImageBackground,
   ActivityIndicator,
 } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { FontAwesome } from '@expo/vector-icons';
 import styles from './styles';
 import cardBackground from '../../assets/img/investment/card.png';
-import { calculatePortfolioValue } from '../redux/investment/actionCreator';
 
 export default function PortfolioValue() {
   const {
@@ -17,11 +16,6 @@ export default function PortfolioValue() {
     totalValue,
     error,
   } = useSelector((state) => state.investments);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(calculatePortfolioValue());
-  }, []);
 
   return (
     <ImageBackground

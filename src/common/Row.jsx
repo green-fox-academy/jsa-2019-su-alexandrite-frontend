@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const Row = ({ children, style }) => (
-  <View style={{ ...style, ...styles.row }}>
+  <View style={{ ...styles.row, ...style }}>
     {children}
   </View>
 );

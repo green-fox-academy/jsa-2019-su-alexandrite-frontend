@@ -1,3 +1,4 @@
+import randomColor from 'randomcolor';
 import constants from './constants';
 
 const formatXLabel = (i, range, label, firstOccurrence) => {
@@ -49,6 +50,60 @@ const processDailyData = (data) => data.reduce((result, curr) => ({
   [curr.date]: curr.close,
 }), {});
 
+const processInvestmentAllocationData = (stocks, prices) => {
+  const sector2value = stocks
+    .reduce((result, curr) => ({
+      ...result,
+      ...{
+        [curr.sector]: (result[curr.sector]
+          ? result[curr.sector] + curr.shares * prices[curr.symbol].price
+          : curr.shares * prices[curr.symbol].price
+        ),
+      },
+    }), {});
+
+  const sorted = Object.keys(sector2value).map((sector) => ({
+    key: sector,
+    value: sector2value[sector],
+  })).sort((a, b) => b.value - a.value);
+
+  return sorted.reduce((result, sector, i) => {
+    if (i < constants.PIE_CHART_LEGEND_LIMIT) {
+      return [
+        ...result,
+        {
+          ...sector,
+          svg: {
+            fill: randomColor({
+              luminosity: 'bright',
+              seed: sector.key,
+            }),
+          },
+        },
+      ];
+    }
+    if (i === constants.PIE_CHART_LEGEND_LIMIT) {
+      return [
+        ...result,
+        {
+          key: 'Other',
+          value: sector.value,
+          svg: {
+            fill: '#ccc',
+          },
+        },
+      ];
+    }
+    return [
+      ...result.slice(0, constants.PIE_CHART_LEGEND_LIMIT),
+      {
+        ...result[constants.PIE_CHART_LEGEND_LIMIT],
+        value: result[constants.PIE_CHART_LEGEND_LIMIT].value + sector.value,
+      },
+    ];
+  }, []);
+};
+
 export default {
   processChartData: (data, range) => (
     (range === '1m' || range === '3m')
@@ -57,4 +112,5 @@ export default {
   ),
   formatXLabel,
   firstOccurrence,
+  processInvestmentAllocationData,
 };
