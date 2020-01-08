@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Text, TextInput, ActivityIndicator } from 'react-native';
+import { TextInput, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import Popup from '../common/Popup';
 import styles from './styles';
 import { addToBalance } from '../redux/account/actionCreator';
+import ErrorMessage from '../common/ErrorMessage';
 
 const WatchlistPickerPopup = ({ visible, onClose }) => {
   const {
@@ -23,7 +24,7 @@ const WatchlistPickerPopup = ({ visible, onClose }) => {
       onConfirm={() => {
         dispatch(addToBalance(topUpInput));
         if (error) {
-          return <Text>{error}</Text>;
+          return <ErrorMessage>{error}</ErrorMessage>;
         }
         return onClose();
       }}
