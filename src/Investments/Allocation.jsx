@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  Text,
   ActivityIndicator,
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import styles from './styles';
 import Card from '../common/Card';
+import ErrorMessage from '../common/ErrorMessage';
 import AllocationPieChart from './AllocationPieChart';
 
 const Allocation = () => {
@@ -23,7 +23,7 @@ const Allocation = () => {
             <AllocationPieChart data={allocation} />
           )}
         </>
-      ) : <Text>{error.message}</Text>}
+      ) : <ErrorMessage message={error.message} />}
     </Card>
   );
 };
