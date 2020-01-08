@@ -1,4 +1,3 @@
-import { Alert } from 'react-native';
 import { BACKEND_URL } from 'react-native-dotenv';
 import {
   LOGIN_USER_START,
@@ -22,28 +21,37 @@ export const loginUserFail = (payload) => ({
 });
 
 const loginUser = (username, password) => (dispatch) => {
-  const loginURL = `${BACKEND_URL}/users/login`;
-  fetch(loginUserStart);
-  fetch(loginURL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      username,
-      password,
-    }),
-  })
-    .then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      } if (response.status === 401) {
-        Alert.alert('Your username or password is incorrect');
-      }
-      throw new Error('Oops, there\'s something wrong with our app.');
+  if (username === '') {
+    const error = { message: 'username is required' };
+    dispatch(loginUserFail(error));
+  } else if (password === '') {
+    const error = { message: 'password is required' };
+    dispatch(loginUserFail(error));
+  } else {
+    const loginURL = `${BACKEND_URL}/users/login`;
+    fetch(loginUserStart);
+    fetch(loginURL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
     })
-    .then((response) => {
-      dispatch(loginUserSuccess(response));
-    })
-    .catch((error) => dispatch(loginUserFail(error)));
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        if (response.status === 401) {
+          throw new Error('Your username or password is incorrect!');
+        }
+        throw new Error('Oops, there\'s something wrong with our app.');
+      })
+      .then((response) => {
+        dispatch(loginUserSuccess(response));
+      })
+      .catch((error) => dispatch(loginUserFail(error)));
+  }
 };
 
 export const logOut = () => ({

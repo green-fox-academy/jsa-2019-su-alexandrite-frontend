@@ -8,6 +8,7 @@ import {
 const initialState = {
   accessToken: '',
   error: '',
+  isLogginIn: false,
 };
 
 export default (state = initialState, action) => {
@@ -19,17 +20,21 @@ export default (state = initialState, action) => {
     case LOGIN_USER_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+        accessToken: action.payload,
+        isLogginIn: true,
       };
     case LOGIN_USER_FAILURE:
       return {
         ...state,
         error: action.payload,
+        isLogginIn: false,
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
         accessToken: null,
+        isLogginIn: false,
+        error: null,
       };
     default:
       return state;

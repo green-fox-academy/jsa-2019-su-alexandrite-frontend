@@ -3,7 +3,6 @@ import {
   TextInput,
   View,
   KeyboardAvoidingView,
-  Alert,
   TouchableHighlight,
   Text,
 } from 'react-native';
@@ -15,30 +14,28 @@ import loginUser from '../redux/account/actionCreator';
 import styles from './styles';
 import Row from '../common/Row';
 import Column from '../common/Column';
+import ErrorMessage from '../common/ErrorMessage';
 
-const SignInButton = ({ onPress }) => (
+const LoginButton = ({ onPress }) => (
   <TouchableHighlight style={styles.button} onPress={onPress} underlayColor="#5d70ba" activeOpacity={0.5}>
     <Text style={styles.buttonText}><FontAwesome5 name="arrow-right" size={16} /></Text>
   </TouchableHighlight>
 );
 
-const LogIn = () => {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const { pop } = useNavigation();
 
-  const { accessToken } = useSelector((state) => state.user);
+  const { accessToken, error } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (accessToken) pop();
   }, [accessToken]);
 
-  const logIn = () => {
-    if (username === '' || password === '') {
-      return Alert.alert('All the input field are required');
-    }
-    return dispatch(loginUser(username, password));
+  const login = () => {
+    dispatch(loginUser(username, password));
   };
 
   return (
@@ -70,9 +67,10 @@ const LogIn = () => {
             onChangeText={(text) => setPassword(text)}
             value={password}
           />
+          {error ? <ErrorMessage message={error.message} /> : null}
           <Row style={{ flex: 0, justifyContent: 'center' }}>
             <Column style={{ flex: 0 }}>
-              <SignInButton onPress={logIn} />
+              <LoginButton onPress={login} />
             </Column>
           </Row>
         </View>
@@ -81,8 +79,8 @@ const LogIn = () => {
   );
 };
 
-SignInButton.propTypes = {
+LoginButton.propTypes = {
   onPress: PropTypes.func.isRequired,
 };
 
-export default LogIn;
+export default Login;
