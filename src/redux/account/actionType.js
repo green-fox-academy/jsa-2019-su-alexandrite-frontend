@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 export const LOGIN_USER_START = 'LOGIN_USER_START';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+=======
+export const ADD_TO_BALANCE_START = 'ADD_TO_BALANCE_START';
+export const ADD_TO_BALANCE_SUCCESS = 'ADD_TO_BALANCE_SUCCESS';
+export const ADD_TO_BALANCE_FAIL = 'ADD_TO_BALANCE_FAIL';
+>>>>>>> 892c6b2... JSAAL-63 top-up frontend
