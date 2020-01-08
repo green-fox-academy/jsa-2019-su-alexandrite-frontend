@@ -5,6 +5,7 @@ import {
   FETCH_PORTFOLIO_DETAILS_SUCCESS,
 } from './actionType';
 import { moneyAmount2String } from '../../common/numbers';
+import chartHelper from '../../common/chartHelper';
 
 export const fetchPortfolioDetailsStart = () => ({
   type: FETCH_PORTFOLIO_DETAILS_START,
@@ -54,9 +55,11 @@ export const calculatePortfolioValue = (uid = 1) => (dispatch) => {
             .map(({ shares, symbol }) => shares * res[symbol].price)
             .reduce((a, b) => a + b);
           totalValue = moneyAmount2String((totalValue));
+          const allocation = chartHelper.processInvestmentAllocationData(stocks, res);
           dispatch(fetchPortfolioDetailsSuccess({
             totalValue,
             stocks,
+            allocation,
           }));
         });
     })
