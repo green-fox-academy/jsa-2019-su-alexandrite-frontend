@@ -4,6 +4,7 @@ import {
   ActivityIndicator,
   Text,
   TouchableHighlight,
+  ViewPropTypes,
 } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
 import PropTypes from 'prop-types';
@@ -14,11 +15,11 @@ import ErrorMessage from '../ErrorMessage';
 import NewsMappedList from './NewsMappedList';
 import CardFooter from '../CardFooter';
 
-const NewsCard = ({ query }) => {
+const NewsCard = ({ query, style }) => {
   const { news, isLoading, error } = useFetchStockNews(query, 1, 2);
   const navigator = useNavigation();
   return (
-    <Card title="News">
+    <Card title="News" style={style}>
       {!error ? (
         <View style={styles.newsContainer}>
           {isLoading && <ActivityIndicator size="large" />}
@@ -47,6 +48,11 @@ NewsCard.propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]).isRequired,
+  style: ViewPropTypes.style,
+};
+
+NewsCard.defaultProps = {
+  style: null,
 };
 
 export default NewsCard;

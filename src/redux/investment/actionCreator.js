@@ -54,7 +54,10 @@ export const calculatePortfolioValue = (uid = 1) => (dispatch) => {
             .map(({ shares, symbol }) => shares * res[symbol].price)
             .reduce((a, b) => a + b);
           totalValue = moneyAmount2String((totalValue));
-          dispatch(fetchPortfolioDetailsSuccess({ totalValue }));
+          dispatch(fetchPortfolioDetailsSuccess({
+            totalValue,
+            stocks,
+          }));
         });
     })
     .catch((err) => dispatch(fetchPortfolioDetailsFail(err)));
