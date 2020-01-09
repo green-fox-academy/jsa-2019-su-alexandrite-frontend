@@ -46,9 +46,7 @@ export default (state = initState, action) => {
       return {
         ...state,
         isLoadingHistoricalChartData: false,
-        historicalData: {
-          ...action.payload,
-        },
+        historicalData: action.payload,
       };
     case FETCH_HISTORY_CHART_DATA_FAIL:
       return {

@@ -26,7 +26,7 @@ const fetchStockDetailsSuccess = (payload) => ({
   payload,
 });
 
-const fetchStockDetails = (symbol) => (dispatch) => {
+export const fetchStockDetails = (symbol) => (dispatch) => {
   const url = new URL(`${API_URL}/stock/${symbol}/advanced-stats`);
   url.searchParams.append('token', API_KEY);
   dispatch(fetchStockDetailsStart());
@@ -65,7 +65,7 @@ const fetchHistoryChartDataSuccess = (histData, range) => {
   };
 };
 
-const fetchHistoryChartData = (symbol, range) => (dispatch) => {
+export const fetchHistoryChartData = (symbol, range) => (dispatch) => {
   const url = new URL(`${API_URL}/stock/${symbol}/chart/${range}`);
   url.searchParams.append('token', API_KEY);
   url.searchParams.append('chartCloseOnly', true);
@@ -89,12 +89,6 @@ const fetchHistoryChartData = (symbol, range) => (dispatch) => {
     .catch((err) => dispatch(fetchHistoryChartDataFail(err)));
 };
 
-const resetStockInfo = () => ({
+export const resetStockInfo = () => ({
   type: RESET_STOCK_INFO,
 });
-
-export default {
-  resetStockInfo,
-  fetchStockDetails,
-  fetchHistoryChartData,
-};
