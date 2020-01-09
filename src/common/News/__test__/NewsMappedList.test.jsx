@@ -41,25 +41,4 @@ describe('<NewsMappedList />', () => {
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-
-  // it('Should render properly and match the snapshot when image url not present', () => {
-  //   const tree = renderer.create(
-  //     <NewsListItem item={{ ...sampleNewsItem, image: null }} />,
-  //   ).toJSON();
-  //   expect(tree).toMatchSnapshot();
-  // });
-
-
-  // it('Should navigate to NewsWebView with url passed', () => {
-  //   const mockPush = jest.fn();
-  //   useNavigation.mockReturnValueOnce({
-  //     push: mockPush,
-  //   });
-  //   const wrapper = shallow(
-  //     <NewsListItem item={sampleNewsItem} />,
-  //   );
-  //   wrapper.find('TouchableHighlight').first().simulate('press');
-  //   expect(mockPush).toHaveBeenCalledWith('NewsWebView', { url: sampleNewsItem.url });
-  // });
 });
