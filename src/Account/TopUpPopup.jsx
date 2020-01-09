@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, ActivityIndicator } from 'react-native';
+import { TextInput, Text, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import Popup from '../common/Popup';
@@ -11,7 +11,7 @@ const WatchlistPickerPopup = ({ visible, onClose }) => {
   const {
     isLoading,
     error,
-  } = useSelector((state) => state.account);
+  } = useSelector((state) => state.user);
   const [topUpInput, setTopUpInput] = useState('');
   const dispatch = useDispatch();
 
@@ -24,11 +24,12 @@ const WatchlistPickerPopup = ({ visible, onClose }) => {
       onConfirm={() => {
         dispatch(addToBalance(topUpInput));
         if (error) {
-          return <ErrorMessage>{error}</ErrorMessage>;
+          return <ErrorMessage message={error.message} />;
         }
         return onClose();
       }}
     >
+      <Text style={styles.topUpText}>Top-Up Amount:</Text>
       <TextInput
         style={styles.topUpInput}
         clearButtonMode="while-editing"

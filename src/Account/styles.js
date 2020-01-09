@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -58,43 +57,40 @@ export default StyleSheet.create({
   errorMessage: {
     color: '#9f3a38',
     fontSize: 15,
-=======
-import { StyleSheet, Dimensions } from 'react-native';
-
-export default StyleSheet.create({
-  valueCard: {
-    backgroundColor: '#766ef9',
-    height: 170,
-    width: Math.round(Dimensions.get('window').width) - 30,
-    borderRadius: 6,
-    shadowColor: '#766ef9',
-    shadowOffset: { height: 3 },
-    shadowRadius: 6,
-    shadowOpacity: 0.7,
-    elevation: 6,
   },
   totalText: {
-    color: '#fff',
+    color: 'grey',
     fontSize: 18,
-    marginHorizontal: 22,
-    marginTop: 20,
-    marginBottom: 15,
   },
   valueNumber: {
-    color: '#fff',
+    color: 'black',
     fontSize: 40,
     fontWeight: 'bold',
-    marginLeft: 22,
   },
-  button: {
-    marginRight: 20,
+  topUpbutton: {
+    height: 30,
+    width: 100,
+    borderWidth: 1,
+    borderColor: 'grey',
+    borderRadius: 20,
+  },
+  topUpbuttonText: {
+    color: 'grey',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  topUpText: {
+    fontSize: 16,
+    color: 'grey',
+    marginBottom: -25,
   },
   topUpInput: {
-    flex: 1,
+    height: 50,
     color: 'black',
-    fontSize: 12,
+    fontSize: 30,
+    borderWidth: 2,
     borderColor: '#566ed3',
-    borderRadius: 50,
->>>>>>> 892c6b2... JSAAL-63 top-up frontend
+    borderRadius: 10,
+    padding: 10,
   },
 });

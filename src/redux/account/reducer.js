@@ -45,7 +45,7 @@ export default (state = initialState, action) => {
 
 const initState = {
   isLoading: false,
-  balance: '',
+  balance: '0.00',
   error: '',
 };
 
