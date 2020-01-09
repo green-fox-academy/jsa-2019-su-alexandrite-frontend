@@ -7,7 +7,7 @@ import Watchlists from '../Watchlists';
 import Investments from '../Investments';
 import Account from '../Account';
 import Playground from '../Playground';
-import Login from '../Account/LogIn';
+import Login from '../Account/Login';
 
 import accountIcon from '../../assets/icons/bottom-tab/me.png';
 import watchlistsIcon from '../../assets/icons/bottom-tab/watchlists.png';
