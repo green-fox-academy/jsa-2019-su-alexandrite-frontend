@@ -14,7 +14,6 @@ import loginUser from '../redux/account/actionCreator';
 import styles from './styles';
 import Row from '../common/Row';
 import Column from '../common/Column';
-import ErrorMessage from '../common/ErrorMessage';
 
 const LoginButton = ({ onPress }) => (
   <TouchableHighlight style={styles.button} onPress={onPress} underlayColor="#5d70ba" activeOpacity={0.5}>
@@ -68,7 +67,13 @@ const Login = () => {
             value={password}
           />
           {error
-            ? <View style={styles.errorMessageContainer}><ErrorMessage message={error} /></View>
+            ? (
+              <View style={styles.errorMessageContainer}>
+                <Text style={styles.errorMessage}>
+                  {error}
+                </Text>
+              </View>
+            )
             : null}
           <Row style={{ flex: 0, justifyContent: 'center' }}>
             <Column style={{ flex: 0 }}>

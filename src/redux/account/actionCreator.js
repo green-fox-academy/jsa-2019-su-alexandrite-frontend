@@ -29,7 +29,7 @@ const loginUser = (username, password) => (dispatch) => {
     dispatch(loginUserFail(error));
   } else {
     const loginURL = `${BACKEND_URL}/users/login`;
-    fetch(loginUserStart);
+    dispatch(loginUserStart);
     fetch(loginURL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

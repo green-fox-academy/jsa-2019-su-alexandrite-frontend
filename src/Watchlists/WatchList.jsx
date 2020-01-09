@@ -95,7 +95,7 @@ export default function Watchlist({ item }) {
       {isOpen && (
         <>
           {isEmptyWatchList
-            ? <View style={styles.editorText}><Text style={{ color: '#ccc' }}>This watchList is empty</Text></View>
+            ? <View style={styles.editorText}><Text style={{ color: '#ccc' }}>This WatchList is Empty</Text></View>
             : (item.stocks.map((stock, i) => (
               isInEditMode
                 ? (

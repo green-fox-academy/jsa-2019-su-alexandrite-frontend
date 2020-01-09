@@ -8,7 +8,7 @@ import {
 const initialState = {
   accessToken: '',
   error: '',
-  isLogginIn: false,
+  isLoggingIn: false,
 };
 
 export default (state = initialState, action) => {
@@ -16,12 +16,13 @@ export default (state = initialState, action) => {
     case LOGIN_USER_START:
       return {
         ...state,
+        isLoggingIn: true,
       };
     case LOGIN_USER_SUCCESS:
       return {
         ...state,
         accessToken: action.payload,
-        isLogginIn: true,
+        isLogginIn: false,
       };
     case LOGIN_USER_FAILURE:
       return {
