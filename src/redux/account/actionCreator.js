@@ -20,14 +20,16 @@ export const addToBalanceFail = (payload) => ({
   payload,
 });
 
-export const addToBalance = (topup) => (dispatch) => {
+export const addToBalance = (topUp) => (getState, dispatch) => {
   const serverUrl = new URL(`${SERVER_URL}/account/topup`);
+  const { accessToken } = getState((state) => state.user);
   dispatch(addToBalanceStart);
   fetch(serverUrl, {
     method: 'POST',
-    body: JSON.stringify(topup),
+    body: JSON.stringify({ topUp }),
     headers: new Headers({
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
     }),
   })
     .then((res) => {

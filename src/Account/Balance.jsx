@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import {
   View,
-  ImageBackground,
   Text,
   TouchableHighlight,
 } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
-import cardBackground from '../../assets/img/investment/card.png';
+import { useSelector } from 'react-redux';
 import styles from './styles';
 import TopUpPopup from './TopUpPopup';
 
 export default function Balance() {
+  const { balance } = useSelector((state) => state.user);
   const navigation = useNavigation();
   const [A2WPopupVisible, setA2WPopupVisible] = useState(false);
 
@@ -26,17 +26,16 @@ export default function Balance() {
 
   return (
     <View>
-      <ImageBackground
-        source={cardBackground}
-        style={styles.valueCard}
-        imageStyle={{ borderRadius: 6 }}
+      <Text style={styles.totalText}>Trading Account Balance</Text>
+      <Text style={styles.valueNumber}>{balance}</Text>
+      <TouchableHighlight
+        style={styles.button}
+        onPress={fn}
+        underlayColor="#0000"
+        activeOpacity={0.5}
       >
-        <Text style={styles.totalText}>Balance</Text>
-        <Text style={styles.valueNumber}>1000</Text>
-        <TouchableHighlight style={styles.button} onPress={fn}>
-          <Text>top-up</Text>
-        </TouchableHighlight>
-      </ImageBackground>
+        <Text style={styles.buttonText}>TOP-UP</Text>
+      </TouchableHighlight>
       <TopUpPopup
         visible={A2WPopupVisible}
         onClose={() => setA2WPopupVisible(false)}
