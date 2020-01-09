@@ -9,6 +9,7 @@ jest.mock('react-redux');
 jest.mock('react-navigation-hooks');
 jest.mock('./Performance', () => '<Performance />');
 jest.mock('./Stats', () => '<Stats />');
+jest.mock('../common/News/NewsCard', () => '<NewsCard />');
 jest.mock('./WatchlistPickerPopup', () => '<WatchlistPickerPopup />');
 
 describe('<StockDetails />', () => {
