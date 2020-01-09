@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Popup /> Should render properly and match the snapshot 1`] = `
+exports[`<NewsCard /> Should render properly and match the snapshot 1`] = `
 <View
   style={
     Array [
@@ -88,7 +88,7 @@ exports[`<Popup /> Should render properly and match the snapshot 1`] = `
 </View>
 `;
 
-exports[`<Popup /> Should render properly and match the snapshot on error 1`] = `
+exports[`<NewsCard /> Should render properly and match the snapshot on error 1`] = `
 <View
   style={
     Array [
@@ -148,7 +148,7 @@ exports[`<Popup /> Should render properly and match the snapshot on error 1`] = 
 </View>
 `;
 
-exports[`<Popup /> Should render properly and match the snapshot when loading 1`] = `
+exports[`<NewsCard /> Should render properly and match the snapshot when loading 1`] = `
 <View
   style={
     Array [

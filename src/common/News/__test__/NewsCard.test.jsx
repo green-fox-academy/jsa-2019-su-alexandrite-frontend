@@ -11,7 +11,7 @@ jest.mock('react-navigation-hooks');
 jest.mock('../NewsMappedList', () => '<NewsMappedList />');
 jest.mock('../useFetchStockNews');
 
-describe('<Popup />', () => {
+describe('<NewsCard />', () => {
   beforeEach(() => {
     useDispatch.mockReturnValue(jest.fn());
     useFetchStockNews.mockReturnValue({
