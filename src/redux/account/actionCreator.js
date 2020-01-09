@@ -22,10 +22,10 @@ export const loginUserFail = (payload) => ({
 
 const loginUser = (username, password) => (dispatch) => {
   if (username === '') {
-    const error = { message: 'username is required' };
+    const error = 'username is required';
     dispatch(loginUserFail(error));
   } else if (password === '') {
-    const error = { message: 'password is required' };
+    const error = 'password is required';
     dispatch(loginUserFail(error));
   } else {
     const loginURL = `${BACKEND_URL}/users/login`;
@@ -50,7 +50,7 @@ const loginUser = (username, password) => (dispatch) => {
       .then((response) => {
         dispatch(loginUserSuccess(response));
       })
-      .catch((error) => dispatch(loginUserFail(error)));
+      .catch((error) => dispatch(loginUserFail(error.message)));
   }
 };
 
