@@ -4,8 +4,6 @@ import renderer from 'react-test-renderer';
 
 import Popup from './Popup';
 
-jest.mock('react-navigation-hooks');
-
 describe('<Popup />', () => {
   it('should render properly and match the snapshot', () => {
     const tree = renderer.create(
