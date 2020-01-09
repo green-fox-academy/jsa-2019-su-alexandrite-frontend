@@ -1,6 +1,5 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
 import { useNavigation } from 'react-navigation-hooks';
 import NewsMappedList from '../NewsMappedList';
 
