@@ -1,9 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-// import { shallow } from 'enzyme';
-// import { useNavigation } from 'react-navigation-hooks';
 
-import Popup, { PopupButtonGroup, PopupHeader } from './Popup';
+import Popup from './Popup';
 
 jest.mock('react-navigation-hooks');
 
