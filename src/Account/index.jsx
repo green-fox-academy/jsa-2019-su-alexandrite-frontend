@@ -27,8 +27,7 @@ const Account = () => {
             </Text>
             <Button style={styles.logOutButton} title="logout" onPress={handleLogOut} />
           </View>
-        )
-        : (
+        ) : (
           <View>
             <Text>Please Login</Text>
             <Button title="login" onPress={() => push('Login')} />

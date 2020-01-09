@@ -22,19 +22,19 @@ export default (state = initialState, action) => {
       return {
         ...state,
         accessToken: action.payload,
-        isLogginIn: false,
+        isLoggingIn: false,
       };
     case LOGIN_USER_FAILURE:
       return {
         ...state,
         error: action.payload,
-        isLogginIn: false,
+        isLoggingIn: false,
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
         accessToken: null,
-        isLogginIn: false,
+        isLoggingIn: false,
         error: null,
       };
     default:
