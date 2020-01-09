@@ -83,6 +83,9 @@ exports[`<Popup /> should render properly and match the snapshot 1`] = `
           }
         }
       >
+        <Text>
+          Test
+        </Text>
         <View
           style={
             Object {
@@ -249,6 +252,9 @@ exports[`<Popup /> should render properly and match the snapshot when confirm en
           }
         }
       >
+        <Text>
+          Test
+        </Text>
         <View
           style={
             Object {

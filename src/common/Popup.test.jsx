@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import renderer from 'react-test-renderer';
 
 import Popup from './Popup';
@@ -15,7 +16,9 @@ describe('<Popup />', () => {
         confirmButtonText="OK"
         confirmDisabled={false}
         title="Title"
-      />,
+      >
+        <Text>Test</Text>
+      </Popup>,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -29,7 +32,9 @@ describe('<Popup />', () => {
         confirmButtonText="OK"
         confirmDisabled
         title="Title"
-      />,
+      >
+        <Text>Test</Text>
+      </Popup>,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
