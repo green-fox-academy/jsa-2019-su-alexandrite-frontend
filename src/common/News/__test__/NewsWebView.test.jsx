@@ -2,22 +2,11 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { useNavigationParam } from 'react-navigation-hooks';
 import { shallow } from 'enzyme';
-import { WebView } from 'react-native-webview';
-import { View, LayoutAnimation } from 'react-native';
+import { LayoutAnimation } from 'react-native';
 import NewsWebView from '../NewsWebView';
-
-// const mockWebView = ({
-//   source,
-//   startInLoadingState = false,
-//   renderLoading,
-//   onLoadProgress,
-// }) => <View />;
 
 jest.mock('react-navigation-hooks');
 jest.mock('../../ProgressBar.jsx', () => 'ProgressBar');
-// jest.mock('react-native-webview', () => ({
-//   WebView: () => <></>,
-// }));
 
 describe('<NewsWebView />', () => {
   beforeEach(() => {
