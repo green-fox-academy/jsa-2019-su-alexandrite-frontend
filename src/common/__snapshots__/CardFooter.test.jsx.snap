@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardFooter render properly 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "flex-end",
+      "paddingTop": 15,
+    }
+  }
+/>
+`;
+
+exports[`CardFooter render properly with children 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "flex-end",
+      "paddingTop": 15,
+    }
+  }
+>
+  <Text>
+    test children
+  </Text>
+</View>
+`;
