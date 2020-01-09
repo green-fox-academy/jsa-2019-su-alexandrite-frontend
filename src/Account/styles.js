@@ -50,7 +50,8 @@ export default StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#566ed3',
   },
-  errorMessage: {
-    backgroundColor: 'white',
+  errorMessageContainer: {
+    paddingLeft: 15,
+    paddingTop: 5,
   },
 });

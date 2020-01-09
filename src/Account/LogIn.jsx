@@ -67,7 +67,9 @@ const Login = () => {
             onChangeText={(text) => setPassword(text)}
             value={password}
           />
-          {error ? <ErrorMessage message={error} /> : null}
+          {error
+            ? <View style={styles.errorMessageContainer}><ErrorMessage message={error} /></View>
+            : null}
           <Row style={{ flex: 0, justifyContent: 'center' }}>
             <Column style={{ flex: 0 }}>
               <LoginButton onPress={login} />
