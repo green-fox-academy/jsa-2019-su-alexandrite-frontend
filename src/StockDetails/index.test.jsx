@@ -51,22 +51,6 @@ describe('<StockDetails />', () => {
     expect(mockSetParams).toHaveBeenCalled();
   });
 
-  // it('Should pass close function to modal', () => {
-  //   const mockSetState = jest.fn();
-  //   const spy = jest.spyOn(React, 'useState');
-  //   // jest.mock('react', () => ({
-  //   //   ...React,
-  //   //   useState: jest.fn().mockReturnValue([false, mockSetState]),
-  //   // }));
-  //   // React.mockReturnValueOnce({
-
-  //   // });
-  //   const wrapper = shallow(
-  //     <StockDetails />,
-  //   );
-  //   expect(spy).toHaveBeenCalled();
-  //   wrapper.find('WatchlistPickerPopup').props().onClose();
-  //   expect(mockSetState).toHaveBeenCalledWith(false);
   it('Should pass close function to modal', () => {
     const mockClose = jest.fn();
     const mockGetParams = jest.fn().mockReturnValue(mockClose);
