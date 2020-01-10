@@ -1,9 +1,41 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import commonStyles from '../common/styles';
+import { View, Text, Button } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigation } from 'react-navigation-hooks';
+import { logOut } from '../redux/account/actionCreator';
+import styles from './styles';
 
-export default () => (
-  <View style={commonStyles.container}>
-    <Text>This is the account</Text>
-  </View>
-);
+const Account = () => {
+  const { accessToken } = useSelector((state) => state.users);
+  const { username } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+  const { push } = useNavigation();
+
+  const handleLogOut = () => {
+    dispatch(logOut());
+  };
+
+  return (
+    <View style={styles.container}>
+      {accessToken
+        ? (
+          <View>
+            <Text style={{ fontSize: 20 }}>
+              Welcome to our app
+              {' '}
+              {username}
+            </Text>
+            <Button style={styles.signOutButton} title="Logout" onPress={handleLogOut} />
+          </View>
+        )
+        : (
+          <View>
+            <Text>Please Login</Text>
+            <Button title="Login" onPress={() => push('Login')} />
+          </View>
+        )}
+    </View>
+  );
+};
+
+export default Account;

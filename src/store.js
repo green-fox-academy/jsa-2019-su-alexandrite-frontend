@@ -7,12 +7,14 @@ import stockReducer from './redux/stock/reducer';
 import searchReducer from './redux/search/reducer';
 import watchlistsReducer from './redux/watchList/reducer';
 import invsetmentsReducer from './redux/investment/reducer';
+import accountReducer from './redux/account/reducer';
 
 const reducer = combineReducers({
   stock: stockReducer,
   search: searchReducer,
   watchlists: watchlistsReducer,
   investments: invsetmentsReducer,
+  users: accountReducer,
 });
 
 const persistConfig = {
