@@ -4,6 +4,7 @@ npm-debug.*
 .env
 *.log
 coverage/**/*
+test-results/
 
 # macOS
 .DS_Store
