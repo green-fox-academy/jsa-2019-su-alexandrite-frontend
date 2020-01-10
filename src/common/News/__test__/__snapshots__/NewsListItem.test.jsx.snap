@@ -89,7 +89,7 @@ exports[`<NewsListItem /> Should render properly and match the snapshot 1`] = `
             }
           }
         >
-          1/1/1970, 8:00:00 AM
+          1/1/1970, 8:00:12 AM
         </Text>
         <Text
           style={
@@ -194,7 +194,7 @@ exports[`<NewsListItem /> Should render properly and match the snapshot when ima
             }
           }
         >
-          1/1/1970, 8:00:00 AM
+          1/1/1970, 8:00:12 AM
         </Text>
         <Text
           style={
