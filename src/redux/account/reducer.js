@@ -67,7 +67,7 @@ export default (state = initState, action) => {
       return {
         ...state,
         isLoading: false,
-        ...action.payload,
+        balance: action.payload,
         error: '',
 >>>>>>> 892c6b2... JSAAL-63 top-up frontend
       };
