@@ -58,4 +58,39 @@ export default StyleSheet.create({
     color: '#9f3a38',
     fontSize: 15,
   },
+  totalText: {
+    color: 'grey',
+    fontSize: 18,
+  },
+  valueNumber: {
+    color: 'black',
+    fontSize: 40,
+    fontWeight: 'bold',
+  },
+  topUpbutton: {
+    height: 30,
+    width: 100,
+    borderWidth: 1,
+    borderColor: 'grey',
+    borderRadius: 20,
+  },
+  topUpbuttonText: {
+    color: 'grey',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  topUpText: {
+    fontSize: 16,
+    color: 'grey',
+    marginBottom: -25,
+  },
+  topUpInput: {
+    height: 50,
+    color: 'black',
+    fontSize: 30,
+    borderWidth: 2,
+    borderColor: '#566ed3',
+    borderRadius: 10,
+    padding: 10,
+  },
 });
