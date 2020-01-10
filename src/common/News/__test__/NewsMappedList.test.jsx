@@ -9,14 +9,14 @@ jest.mock('../useFetchStockNews');
 const sampleNews = [
   {
     id: '123',
-    datetime: new Date('2019').getMilliseconds(),
+    datetime: 0,
     headline: 'headline',
     url: 'http://test.test',
     image: 'http://test.test/test.jpg',
   },
   {
     id: '321',
-    datetime: new Date('2019').getMilliseconds(),
+    datetime: 0,
     headline: 'headline',
     url: 'http://test.test',
     image: 'http://test.test/test.jpg',

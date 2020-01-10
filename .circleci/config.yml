@@ -28,11 +28,11 @@ jobs:
           name: Run Jest
           command: yarn test
           environment:
-            JEST_JUNIT_OUTPUT_DIR: test-results/jest
+            JEST_JUNIT_OUTPUT_DIR: ~/repo/test-results
             JEST_JUNIT_OUTPUT_NAME: results.xml
 
       - store_test_results:
-          path: test-results
+          path: ~/repo/test-results
 
       - save_cache:
           paths:
