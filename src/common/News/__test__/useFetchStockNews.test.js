@@ -98,17 +98,4 @@ describe('useFetchStockNews', () => {
     expect(result.current.error.message).toEqual('Oops, there\'s something wrong with our app.');
     fetchMock.reset();
   });
-
-  // it('should update the state when the setValue function is called', async () => {
-  //   const {
-  //     result,
-  //     waitForNextUpdate
-  //   } = renderHook(() => useInput());
-  //   await waitForNextUpdate();
-  //   expect(result.current[0]).toEqual('test-default-value');
-  //   act(() => {
-  //     result.current[1]('test-value-2');
-  //   });
-  //   expect(result.current[0]).toEqual('test-value-2');
-  // });
 });
