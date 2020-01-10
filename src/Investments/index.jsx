@@ -24,13 +24,10 @@ const Investments = () => {
   const dispatch = useDispatch();
   const { push } = useNavigation();
 
-  // useEffect(() => {
-  //   dispatch(calculatePortfolioValue());
-  // }, []);
-  console.log(accessToken);
-
   useEffect(() => {
-    dispatch(calculatePortfolioValue());
+    if (accessToken !== '') {
+      dispatch(calculatePortfolioValue());
+    }
   }, [accessToken]);
 
   const { alignItems, ...rest } = commonStyles.container;

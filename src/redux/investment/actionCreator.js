@@ -24,7 +24,7 @@ export const fetchPortfolioDetailsSuccess = (payload) => ({
 export const calculatePortfolioValue = () => (dispatch, getState) => {
   const serverUrl = new URL(`${SERVER_URL}/investments/user/`);
   const headers = new Headers();
-  const { accessToken } = getState((state) => state.user);
+  const { accessToken } = getState().user;
   headers.append('authorization', `Bearer ${accessToken}`);
   dispatch(fetchPortfolioDetailsStart());
   fetch(serverUrl, { headers })

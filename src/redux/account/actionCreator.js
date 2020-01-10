@@ -48,7 +48,7 @@ const loginUser = (username, password) => (dispatch) => {
         throw new Error('Oops, there\'s something wrong with our app.');
       })
       .then((response) => {
-        dispatch(loginUserSuccess(response));
+        dispatch(loginUserSuccess(response.accessToken));
       })
       .catch((error) => dispatch(loginUserFail(error.message)));
   }
