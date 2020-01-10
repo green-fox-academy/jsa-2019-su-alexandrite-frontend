@@ -21,6 +21,7 @@ export const loginUserFail = (payload) => ({
 });
 
 const loginUser = (username, password) => (dispatch) => {
+  dispatch(loginUserStart());
   if (username === '') {
     const error = 'username is required';
     dispatch(loginUserFail(error));
@@ -29,7 +30,6 @@ const loginUser = (username, password) => (dispatch) => {
     dispatch(loginUserFail(error));
   } else {
     const loginURL = `${BACKEND_URL}/users/login`;
-    dispatch(loginUserStart);
     fetch(loginURL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

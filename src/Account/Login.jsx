@@ -5,6 +5,7 @@ import {
   KeyboardAvoidingView,
   TouchableHighlight,
   Text,
+  ActivityIndicator,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
@@ -15,9 +16,15 @@ import styles from './styles';
 import Row from '../common/Row';
 import Column from '../common/Column';
 
-const LoginButton = ({ onPress }) => (
+const LoginButton = ({ onPress, isLoading }) => (
   <TouchableHighlight style={styles.button} onPress={onPress} underlayColor="#5d70ba" activeOpacity={0.5}>
-    <Text style={styles.buttonText}><FontAwesome5 name="arrow-right" size={16} /></Text>
+    {isLoading
+      ? <ActivityIndicator size="large" color="white" />
+      : (
+        <Text style={styles.buttonText}>
+          <FontAwesome5 name="arrow-right" size={16} />
+        </Text>
+      )}
   </TouchableHighlight>
 );
 
@@ -27,7 +34,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const { pop } = useNavigation();
 
-  const { accessToken, error } = useSelector((state) => state.user);
+  const { accessToken, error, isLoggingIn } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (accessToken) pop();
@@ -77,7 +84,7 @@ const Login = () => {
             : null}
           <Row style={{ flex: 0, justifyContent: 'center' }}>
             <Column style={{ flex: 0 }}>
-              <LoginButton onPress={login} />
+              <LoginButton onPress={login} isLoading={isLoggingIn} />
             </Column>
           </Row>
         </View>
@@ -88,6 +95,7 @@ const Login = () => {
 
 LoginButton.propTypes = {
   onPress: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default Login;
