@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { width } from '../common/styles';
 
 export default StyleSheet.create({
   valueCard: {
@@ -41,5 +42,65 @@ export default StyleSheet.create({
   },
   loading: {
     marginTop: 70,
+  },
+  companyTitle: {
+    borderRadius: 6,
+    paddingHorizontal: 8,
+    paddingVertical: 15,
+    backgroundColor: '#f2f3fb',
+    flexDirection: 'row',
+    width: width - 60,
+    justifyContent: 'center',
+  },
+  companyLogo: {
+    width: 48,
+    height: 48,
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+  },
+  companyInformation: {
+    paddingLeft: 20,
+  },
+  companyName: {
+    fontSize: 14,
+    color: '#566ed3',
+    fontWeight: 'bold',
+  },
+  companyDescription: {
+    fontSize: 12,
+    color: '#7e92a3',
+    paddingTop: 12,
+  },
+  details: {
+    paddingHorizontal: 8,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    width: '100%',
+  },
+  detailsColumn: {
+    flex: 0,
+    paddingTop: 22,
+    minWidth: '30%',
+  },
+  detailNumber: {
+    color: '#566ed3',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  detailLabel: {
+    color: '#bebebe',
+    fontSize: 10,
+    paddingVertical: 5,
+  },
+  viewMoreButton: {
+    padding: 5,
+    borderRadius: 3,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  viewMoreText: {
+    color: '#999',
+    fontSize: 12,
   },
 });

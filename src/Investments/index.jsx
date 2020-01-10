@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
 import commonStyles from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
 import PortfolioValue from './PortfolioValue';
 import { calculatePortfolioValue } from '../redux/investment/actionCreator';
 import PortfolioNews from './PortfolioNews';
+import Instruments from './Instruments';
+
 
 const navigationOptions = {
   title: 'Investments',
@@ -13,6 +15,7 @@ const navigationOptions = {
 };
 
 const Investments = () => {
+  const { alignItems, ...rest } = commonStyles.container;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,10 +23,11 @@ const Investments = () => {
   }, []);
 
   return (
-    <View style={commonStyles.container}>
+    <ScrollView style={rest} contentContainerStyle={{ alignItems }}>
       <PortfolioValue />
+      <Instruments />
       <PortfolioNews />
-    </View>
+    </ScrollView>
   );
 };
 
