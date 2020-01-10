@@ -106,6 +106,7 @@ describe('chartHelper.processMonthlyData', () => {
     };
     expect(chartHelper.processChartData(sampleData, '1m')).toStrictEqual(sampleResult);
   });
+
   it('Should return first occurrence if range is \'3m\'', () => {
     const sampleData = [
       '2010-12-02',
@@ -124,4 +125,3 @@ describe('chartHelper.processMonthlyData', () => {
     });
   });
 });
-
