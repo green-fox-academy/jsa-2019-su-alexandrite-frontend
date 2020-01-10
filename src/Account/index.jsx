@@ -6,8 +6,8 @@ import { logOut } from '../redux/account/actionCreator';
 import styles from './styles';
 
 const Account = () => {
-  const { accessToken } = useSelector((state) => state.users);
-  const { username } = useSelector((state) => state.users);
+  const { accessToken } = useSelector((state) => state.user);
+  const { username } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { push } = useNavigation();
 
@@ -25,13 +25,12 @@ const Account = () => {
               {' '}
               {username}
             </Text>
-            <Button style={styles.signOutButton} title="Logout" onPress={handleLogOut} />
+            <Button style={styles.logOutButton} title="logout" onPress={handleLogOut} />
           </View>
-        )
-        : (
+        ) : (
           <View>
             <Text>Please Login</Text>
-            <Button title="Login" onPress={() => push('Login')} />
+            <Button title="login" onPress={() => push('Login')} />
           </View>
         )}
     </View>

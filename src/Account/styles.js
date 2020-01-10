@@ -17,6 +17,7 @@ export default StyleSheet.create({
     borderWidth: 2,
     borderColor: '#eee',
     fontSize: 16,
+    marginHorizontal: 15,
   },
   button: {
     marginTop: 50,
@@ -44,10 +45,17 @@ export default StyleSheet.create({
   },
   inputContainer: {
     flex: 1,
-    padding: 15,
   },
-  signOutButton: {
+  logOutButton: {
     borderRadius: 5,
     backgroundColor: '#566ed3',
+  },
+  errorMessageContainer: {
+    paddingTop: 10,
+    alignItems: 'center',
+  },
+  errorMessage: {
+    color: '#9f3a38',
+    fontSize: 15,
   },
 });

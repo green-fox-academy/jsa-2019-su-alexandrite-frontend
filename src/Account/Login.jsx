@@ -3,9 +3,9 @@ import {
   TextInput,
   View,
   KeyboardAvoidingView,
-  Alert,
   TouchableHighlight,
   Text,
+  ActivityIndicator,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
@@ -16,29 +16,32 @@ import styles from './styles';
 import Row from '../common/Row';
 import Column from '../common/Column';
 
-const SignInButton = ({ onPress }) => (
+const LoginButton = ({ onPress, isLoading }) => (
   <TouchableHighlight style={styles.button} onPress={onPress} underlayColor="#5d70ba" activeOpacity={0.5}>
-    <Text style={styles.buttonText}><FontAwesome5 name="arrow-right" size={16} /></Text>
+    {isLoading
+      ? <ActivityIndicator size="large" color="white" />
+      : (
+        <Text style={styles.buttonText}>
+          <FontAwesome5 name="arrow-right" size={16} />
+        </Text>
+      )}
   </TouchableHighlight>
 );
 
-const SignIn = () => {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const { pop } = useNavigation();
 
-  const { accessToken } = useSelector((state) => state.users);
+  const { accessToken, error, isLoggingIn } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (accessToken) pop();
   }, [accessToken]);
 
-  const signIn = () => {
-    if (username === '' || password === '') {
-      return Alert.alert('All the input field are required');
-    }
-    return dispatch(loginUser(username, password));
+  const login = () => {
+    dispatch(loginUser(username, password));
   };
 
   return (
@@ -70,9 +73,18 @@ const SignIn = () => {
             onChangeText={(text) => setPassword(text)}
             value={password}
           />
+          {error
+            ? (
+              <View style={styles.errorMessageContainer}>
+                <Text style={styles.errorMessage}>
+                  {error}
+                </Text>
+              </View>
+            )
+            : null}
           <Row style={{ flex: 0, justifyContent: 'center' }}>
             <Column style={{ flex: 0 }}>
-              <SignInButton onPress={signIn} />
+              <LoginButton onPress={login} isLoading={isLoggingIn} />
             </Column>
           </Row>
         </View>
@@ -81,8 +93,9 @@ const SignIn = () => {
   );
 };
 
-SignInButton.propTypes = {
+LoginButton.propTypes = {
   onPress: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
-export default SignIn;
+export default Login;

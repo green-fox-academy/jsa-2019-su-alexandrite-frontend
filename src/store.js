@@ -13,8 +13,8 @@ const reducer = combineReducers({
   stock: stockReducer,
   search: searchReducer,
   watchlists: watchlistsReducer,
+  user: accountReducer,
   investments: invsetmentsReducer,
-  users: accountReducer,
 });
 
 const persistConfig = {

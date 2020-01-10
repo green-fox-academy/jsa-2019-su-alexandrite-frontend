@@ -20,17 +20,18 @@ const navigationOptions = {
 };
 
 const Investments = () => {
-  const { accessToken } = useSelector((state) => state.users);
+  const { accessToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { push } = useNavigation();
 
-  useEffect(() => {
-    dispatch(calculatePortfolioValue());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(calculatePortfolioValue());
+  // }, []);
+  console.log(accessToken);
 
   useEffect(() => {
     dispatch(calculatePortfolioValue());
-  }, accessToken);
+  }, [accessToken]);
 
   const { alignItems, ...rest } = commonStyles.container;
   return (
