@@ -6,3 +6,5 @@ npm-debug.*
 
 # macOS
 .DS_Store
+
+coverage/

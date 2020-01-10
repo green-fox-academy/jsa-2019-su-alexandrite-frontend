@@ -13,6 +13,7 @@ import PortfolioValue from './PortfolioValue';
 import { calculatePortfolioValue } from '../redux/investment/actionCreator';
 import PortfolioNews from './PortfolioNews';
 import Allocation from './Allocation';
+import Instruments from './Instruments';
 
 const navigationOptions = {
   title: 'Investments',
@@ -38,6 +39,7 @@ const Investments = () => {
           <>
             <PortfolioValue />
             <Allocation />
+            <Instruments />
             <PortfolioNews />
           </>
         )
