@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1578381536596" clover="3.2.0">
+  <project timestamp="1578381536596" name="All files">
+    <metrics statements="429" coveredstatements="270" conditionals="174" coveredconditionals="94" methods="181" coveredmethods="67" elements="784" coveredelements="431" complexity="0" loc="429" ncloc="429" packages="14" files="53" classes="53"/>
+    <package name="src">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="App.jsx" path="D:\project\jsa-alexandrite-app\src\App.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="store.js" path="D:\project\jsa-alexandrite-app\src\store.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Account">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.jsx" path="D:\project\jsa-alexandrite-app\src\Account\index.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="2" type="stmt"/>
+      </file>
+      <file name="styles.js" path="D:\project\jsa-alexandrite-app\src\Account\styles.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Investments">
+      <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="5" coveredmethods="4"/>
+      <file name="PortfolioValue.jsx" path="D:\project\jsa-alexandrite-app\src\Investments\PortfolioValue.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="7" coveredconditionals="7" methods="3" coveredmethods="2"/>
+        <line num="19" count="6" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="22" count="6" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+      </file>
+      <file name="index.jsx" path="D:\project\jsa-alexandrite-app\src\Investments\index.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+      </file>
+      <file name="styles.js" path="D:\project\jsa-alexandrite-app\src\Investments\styles.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Playground">
+      <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="index.jsx" path="D:\project\jsa-alexandrite-app\src\Playground\index.jsx">
+        <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Search">
+      <metrics statements="30" coveredstatements="30" conditionals="17" coveredconditionals="16" methods="14" coveredmethods="13"/>
+      <file name="HeaderBar.jsx" path="D:\project\jsa-alexandrite-app\src\Search\HeaderBar.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+      <file name="Result.jsx" path="D:\project\jsa-alexandrite-app\src\Search\Result.jsx">
+        <metrics statements="6" coveredstatements="6" conditionals="11" coveredconditionals="11" methods="4" coveredmethods="3"/>
+        <line num="18" count="9" type="stmt"/>
+        <line num="20" count="9" type="cond" truecount="4" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+      </file>
+      <file name="ResultItem.jsx" path="D:\project\jsa-alexandrite-app\src\Search\ResultItem.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="41" count="4" type="stmt"/>
+      </file>
+      <file name="SearchBarInput.jsx" path="D:\project\jsa-alexandrite-app\src\Search\SearchBarInput.jsx">
+        <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="17" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+      </file>
+      <file name="index.jsx" path="D:\project\jsa-alexandrite-app\src\Search\index.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="styles.js" path="D:\project\jsa-alexandrite-app\src\Search\styles.js">
+        <metrics statements="0" coveredstatements="0" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.StockDetails">
+      <metrics statements="44" coveredstatements="19" conditionals="20" coveredconditionals="0" methods="22" coveredmethods="4"/>
+      <file name="Performance.jsx" path="D:\project\jsa-alexandrite-app\src\StockDetails\Performance.jsx">
+        <metrics statements="10" coveredstatements="2" conditionals="7" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+      </file>
+      <file name="Stats.jsx" path="D:\project\jsa-alexandrite-app\src\StockDetails\Stats.jsx">
+        <metrics statements="9" coveredstatements="3" conditionals="7" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+      </file>
+      <file name="WatchlistPickerPopup.jsx" path="D:\project\jsa-alexandrite-app\src\StockDetails\WatchlistPickerPopup.jsx">
+        <metrics statements="12" coveredstatements="2" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+      </file>
+      <file name="index.jsx" path="D:\project\jsa-alexandrite-app\src\StockDetails\index.jsx">
+        <metrics statements="13" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+      </file>
+      <file name="style.js" path="D:\project\jsa-alexandrite-app\src\StockDetails\style.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.StockDetails.charts">
+      <metrics statements="21" coveredstatements="8" conditionals="7" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <file name="ChartTimeRangeButton.jsx" path="D:\project\jsa-alexandrite-app\src\StockDetails\charts\ChartTimeRangeButton.jsx">
+        <metrics statements="5" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+      </file>
+      <file name="PerformanceChart.jsx" path="D:\project\jsa-alexandrite-app\src\StockDetails\charts\PerformanceChart.jsx">
+        <metrics statements="10" coveredstatements="3" conditionals="3" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="46" count="1" type="stmt"/>
+      </file>
+      <file name="TimeRangeSelector.jsx" path="D:\project\jsa-alexandrite-app\src\StockDetails\charts\TimeRangeSelector.jsx">
+        <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Watchlists">
+      <metrics statements="68" coveredstatements="51" conditionals="24" coveredconditionals="19" methods="35" coveredmethods="19"/>
+      <file name="EditButton.jsx" path="D:\project\jsa-alexandrite-app\src\Watchlists\EditButton.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="14" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+      </file>
+      <file name="EditControls.jsx" path="D:\project\jsa-alexandrite-app\src\Watchlists\EditControls.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="48" count="4" type="stmt"/>
+      </file>
+      <file name="EditFooter.jsx" path="D:\project\jsa-alexandrite-app\src\Watchlists\EditFooter.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="12" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="3" type="stmt"/>
+      </file>
+      <file name="EditModeWatchListItem.jsx" path="D:\project\jsa-alexandrite-app\src\Watchlists\EditModeWatchListItem.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+      </file>
+      <file name="WatchList.jsx" path="D:\project\jsa-alexandrite-app\src\Watchlists\WatchList.jsx">
+        <metrics statements="22" coveredstatements="13" conditionals="8" coveredconditionals="6" methods="14" coveredmethods="5"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="21" count="10" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="23" count="10" type="stmt"/>
+        <line num="25" count="10" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="10" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="46" count="10" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="63" count="10" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="80" count="10" type="stmt"/>
+        <line num="82" count="10" type="stmt"/>
+        <line num="100" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="105" count="0" type="stmt"/>
+        <line num="131" count="2" type="stmt"/>
+      </file>
+      <file name="WatchListItem.jsx" path="D:\project\jsa-alexandrite-app\src\Watchlists\WatchListItem.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
+      </file>
+      <file name="index.jsx" path="D:\project\jsa-alexandrite-app\src\Watchlists\index.jsx">
+        <metrics statements="28" coveredstatements="20" conditionals="8" coveredconditionals="5" methods="12" coveredmethods="6"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
+        <line num="35" count="6" type="stmt"/>
+        <line num="36" count="6" type="stmt"/>
+        <line num="38" count="6" type="stmt"/>
+        <line num="39" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="44" count="6" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="53" count="6" type="stmt"/>
+        <line num="54" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="59" count="6" type="stmt"/>
+        <line num="62" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="70" count="4" type="stmt"/>
+        <line num="72" count="4" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="100" count="2" type="stmt"/>
+      </file>
+      <file name="styles.js" path="D:\project\jsa-alexandrite-app\src\Watchlists\styles.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.common">
+      <metrics statements="63" coveredstatements="47" conditionals="34" coveredconditionals="14" methods="23" coveredmethods="12"/>
+      <file name="Card.jsx" path="D:\project\jsa-alexandrite-app\src\common\Card.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+      </file>
+      <file name="Column.jsx" path="D:\project\jsa-alexandrite-app\src\common\Column.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+      </file>
+      <file name="ErrorMessage.jsx" path="D:\project\jsa-alexandrite-app\src\common\ErrorMessage.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="HeaderSearchButton.jsx" path="D:\project\jsa-alexandrite-app\src\common\HeaderSearchButton.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+      <file name="Popup.jsx" path="D:\project\jsa-alexandrite-app\src\common\Popup.jsx">
+        <metrics statements="9" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+      </file>
+      <file name="Row.jsx" path="D:\project\jsa-alexandrite-app\src\common\Row.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+      <file name="chartHelper.js" path="D:\project\jsa-alexandrite-app\src\common\chartHelper.js">
+        <metrics statements="20" coveredstatements="7" conditionals="22" coveredconditionals="4" methods="10" coveredmethods="2"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="7" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="7" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="58" count="0" type="cond" truecount="0" falsecount="4"/>
+      </file>
+      <file name="constants.js" path="D:\project\jsa-alexandrite-app\src\common\constants.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+      </file>
+      <file name="numbers.js" path="D:\project\jsa-alexandrite-app\src\common\numbers.js">
+        <metrics statements="13" coveredstatements="13" conditionals="8" coveredconditionals="8" methods="4" coveredmethods="4"/>
+        <line num="1" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="12" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+      <file name="styles.js" path="D:\project\jsa-alexandrite-app\src\common\styles.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="11" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.navigation">
+      <metrics statements="11" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="0"/>
+      <file name="MainTabNavigation.jsx" path="D:\project\jsa-alexandrite-app\src\navigation\MainTabNavigation.jsx">
+        <metrics statements="11" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.redux.investment">
+      <metrics statements="37" coveredstatements="13" conditionals="12" coveredconditionals="5" methods="14" coveredmethods="1"/>
+      <file name="actionCreator.js" path="D:\project\jsa-alexandrite-app\src\redux\investment\actionCreator.js">
+        <metrics statements="28" coveredstatements="4" conditionals="7" coveredconditionals="0" methods="13" coveredmethods="0"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="23" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+      </file>
+      <file name="actionType.js" path="D:\project\jsa-alexandrite-app\src\redux\investment\actionType.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+      </file>
+      <file name="reducer.js" path="D:\project\jsa-alexandrite-app\src\redux\investment\reducer.js">
+        <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="14" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.redux.search">
+      <metrics statements="25" coveredstatements="13" conditionals="10" coveredconditionals="5" methods="9" coveredmethods="4"/>
+      <file name="actionCreator.js" path="D:\project\jsa-alexandrite-app\src\redux\search\actionCreator.js">
+        <metrics statements="16" coveredstatements="4" conditionals="5" coveredconditionals="0" methods="8" coveredmethods="3"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+      </file>
+      <file name="actionType.js" path="D:\project\jsa-alexandrite-app\src\redux\search\actionType.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="2" count="7" type="stmt"/>
+        <line num="3" count="7" type="stmt"/>
+      </file>
+      <file name="reducer.js" path="D:\project\jsa-alexandrite-app\src\redux\search\reducer.js">
+        <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="11" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.redux.stock">
+      <metrics statements="52" coveredstatements="26" conditionals="17" coveredconditionals="9" methods="18" coveredmethods="1"/>
+      <file name="actionCreator.js" path="D:\project\jsa-alexandrite-app\src\redux\stock\actionCreator.js">
+        <metrics statements="35" coveredstatements="9" conditionals="8" coveredconditionals="0" methods="17" coveredmethods="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="76" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="77" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
+      </file>
+      <file name="actionType.js" path="D:\project\jsa-alexandrite-app\src\redux\stock\actionType.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+      </file>
+      <file name="reducer.js" path="D:\project\jsa-alexandrite-app\src\redux\stock\reducer.js">
+        <metrics statements="10" coveredstatements="10" conditionals="9" coveredconditionals="9" methods="1" coveredmethods="1"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="21" count="8" type="cond" truecount="8" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.redux.watchList">
+      <metrics statements="54" coveredstatements="35" conditionals="24" coveredconditionals="18" methods="23" coveredmethods="7"/>
+      <file name="actionCreator.js" path="D:\project\jsa-alexandrite-app\src\redux\watchList\actionCreator.js">
+        <metrics statements="29" coveredstatements="10" conditionals="6" coveredconditionals="0" methods="16" coveredmethods="0"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+        <line num="51" count="3" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="60" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="85" count="3" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+      </file>
+      <file name="actionType.js" path="D:\project\jsa-alexandrite-app\src\redux\watchList\actionType.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+      </file>
+      <file name="reducer.js" path="D:\project\jsa-alexandrite-app\src\redux\watchList\reducer.js">
+        <metrics statements="17" coveredstatements="17" conditionals="18" coveredconditionals="18" methods="7" coveredmethods="7"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="22" count="10" type="cond" truecount="9" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="46" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="59" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="90" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
