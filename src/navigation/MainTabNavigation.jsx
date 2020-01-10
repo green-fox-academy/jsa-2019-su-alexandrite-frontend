@@ -14,6 +14,8 @@ import watchlistsIcon from '../../assets/icons/bottom-tab/watchlists.png';
 import investmentsIconActive from '../../assets/icons/bottom-tab/investments-active.png';
 import StockDetails from '../StockDetails';
 import Search from '../Search';
+import NewsList from '../common/News/NewsList';
+import NewsWebView from '../common/News/NewsWebView';
 
 const InvestmentsStack = createStackNavigator({
   Investments: {
@@ -22,6 +24,8 @@ const InvestmentsStack = createStackNavigator({
   },
   Search,
   StockDetails,
+  NewsList,
+  NewsWebView,
 });
 
 const WatchlistsStack = createStackNavigator({
@@ -31,6 +35,8 @@ const WatchlistsStack = createStackNavigator({
   },
   Search,
   StockDetails,
+  NewsList,
+  NewsWebView,
 });
 
 const AccountStack = createStackNavigator({
@@ -45,6 +51,8 @@ const PlaygroundStack = createStackNavigator({
   Playground,
   StockDetails,
   Search,
+  NewsList,
+  NewsWebView,
 });
 
 const renderIcon = (icon, tintColor) => (<Image source={icon} style={{ tintColor }} />);

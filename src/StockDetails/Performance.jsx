@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import stockActions from '../redux/stock/actionCreator';
+import { fetchHistoryChartData, resetStockInfo } from '../redux/stock/actionCreator';
 import style from './style';
 import Card from '../common/Card';
 import ErrorMessage from '../common/ErrorMessage';
@@ -22,11 +22,11 @@ const Performance = ({ symbol }) => {
   } = useSelector((state) => state.stock);
 
   useEffect(() => {
-    dispatch(stockActions.fetchHistoryChartData(symbol, timeRange));
+    dispatch(fetchHistoryChartData(symbol, timeRange));
   }, [timeRange]);
 
   useEffect(
-    () => () => dispatch(stockActions.resetStockInfo()),
+    () => () => dispatch(resetStockInfo()),
     [],
   );
 
