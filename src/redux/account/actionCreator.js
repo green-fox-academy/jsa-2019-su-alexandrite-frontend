@@ -1,4 +1,4 @@
-import { LOCAL_URL } from 'react-native-dotenv';
+import { SERVER_URL } from 'react-native-dotenv';
 import {
   LOGIN_USER_FAILURE,
   LOGIN_USER_SUCCESS,
@@ -16,7 +16,7 @@ export const loginUserFail = (payload) => ({
 });
 
 const loginUser = (username, password) => (dispatch) => {
-  const loginURL = `${LOCAL_URL}/users/login`;
+  const loginURL = `${SERVER_URL}/users/login`;
   fetch(loginURL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

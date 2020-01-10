@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
-import { ScrollView } from 'react-native';
-import { useDispatch } from 'react-redux';
+import {
+  ScrollView,
+  View,
+  Text,
+  Button,
+} from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigation } from 'react-navigation-hooks';
 import commonStyles from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
 import PortfolioValue from './PortfolioValue';
@@ -14,18 +20,35 @@ const navigationOptions = {
 };
 
 const Investments = () => {
+  const { accessToken } = useSelector((state) => state.users);
   const dispatch = useDispatch();
+  const { push } = useNavigation();
 
   useEffect(() => {
     dispatch(calculatePortfolioValue());
   }, []);
 
+  useEffect(() => {
+    dispatch(calculatePortfolioValue());
+  }, accessToken);
+
   const { alignItems, ...rest } = commonStyles.container;
   return (
     <ScrollView style={rest} contentContainerStyle={{ alignItems }}>
-      <PortfolioValue />
-      <Allocation />
-      <PortfolioNews />
+      {accessToken
+        ? (
+          <>
+            <PortfolioValue />
+            <Allocation />
+            <PortfolioNews />
+          </>
+        )
+        : (
+          <View>
+            <Text>Please Login</Text>
+            <Button title="Login" onPress={() => push('Login')} />
+          </View>
+        )}
     </ScrollView>
   );
 };
