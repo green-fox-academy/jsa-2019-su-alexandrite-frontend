@@ -8,7 +8,7 @@ jest.mock('react-navigation-hooks');
 jest.mock('../useFetchStockNews');
 
 const sampleNewsItem = {
-  datetime: 12345,
+  datetime: '2020-01-10T04:46:05.638Z',
   headline: 'headline',
   url: 'http://test.test',
   image: 'http://test.test/test.jpg',
