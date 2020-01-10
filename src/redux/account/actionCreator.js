@@ -39,7 +39,7 @@ export const addToBalance = (topUp) => (getState, dispatch) => {
       return res.json();
     })
     .then((res) => {
-      dispatch(addToBalanceSuccess(moneyAmount2String(res)));
+      dispatch(addToBalanceSuccess(moneyAmount2String(res.balance)));
     })
     .catch((err) => dispatch(addToBalanceFail(err)));
 };

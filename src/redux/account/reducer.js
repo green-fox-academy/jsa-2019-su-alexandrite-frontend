@@ -28,7 +28,7 @@ export default (state = initState, action) => {
       return {
         ...state,
         isLoading: false,
-        ...action.payload,
+        balance: action.payload,
         error: '',
       };
     default:

@@ -13,7 +13,6 @@ export default function Balance() {
   const { balance } = useSelector((state) => state.user);
   const navigation = useNavigation();
   const [A2WPopupVisible, setA2WPopupVisible] = useState(false);
-
   const showTopUpPopup = () => setA2WPopupVisible(true);
 
   useEffect(() => {
