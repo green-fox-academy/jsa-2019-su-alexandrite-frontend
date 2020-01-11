@@ -6,6 +6,7 @@ import SearchButton from '../common/HeaderSearchButton';
 import PortfolioValue from './PortfolioValue';
 import { calculatePortfolioValue } from '../redux/investment/actionCreator';
 import PortfolioNews from './PortfolioNews';
+import TransactionPopup from './TransactionPopup';
 
 const navigationOptions = {
   title: 'Investments',
@@ -23,6 +24,7 @@ const Investments = () => {
     <View style={commonStyles.container}>
       <PortfolioValue />
       <PortfolioNews />
+      <TransactionPopup />
     </View>
   );
 };
