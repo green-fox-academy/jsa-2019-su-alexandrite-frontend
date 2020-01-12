@@ -5,23 +5,19 @@ export const { width, height } = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f4f6f8',
+    // backgroundColor: '#f4f6f8',
     alignItems: 'center',
     padding: 15,
   },
   card: {
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowOffset: {
-      x: 0,
-      y: 4,
-    },
-    shadowRadius: 6,
     padding: 15,
+    // paddingHorizontal: 30,
     marginBottom: 15,
     backgroundColor: '#fff',
     borderRadius: 6,
     elevation: 3,
+    borderBottomColor: '#eee',
+    borderBottomWidth: 1,
   },
   cardTitle: {
     fontSize: 13,
