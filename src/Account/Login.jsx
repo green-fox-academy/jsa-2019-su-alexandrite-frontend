@@ -77,7 +77,7 @@ const Login = () => {
             ? (
               <View style={styles.errorMessageContainer}>
                 <Text style={styles.errorMessage}>
-                  {error}
+                  {error.message}
                 </Text>
               </View>
             )

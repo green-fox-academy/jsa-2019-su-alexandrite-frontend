@@ -8,21 +8,18 @@ export default StyleSheet.create({
     // backgroundColor: '#f4f6f8',
     alignItems: 'center',
     padding: 15,
+    flexDirection: 'column',
   },
   card: {
     padding: 15,
-    // paddingHorizontal: 30,
-    marginBottom: 15,
     backgroundColor: '#fff',
-    borderRadius: 6,
-    elevation: 3,
     borderBottomColor: '#eee',
     borderBottomWidth: 1,
   },
   cardTitle: {
-    fontSize: 13,
-    lineHeight: 18,
-    fontWeight: '600',
+    fontSize: 16,
+    lineHeight: 20,
+    fontWeight: 'bold',
     color: '#333',
     marginBottom: 15,
   },
@@ -44,7 +41,6 @@ export default StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 15,
     backgroundColor: '#fff6f6',
-    width: width - 60,
   },
   errorMessageText: {
     color: '#9f3a38',
@@ -56,21 +52,17 @@ export default StyleSheet.create({
   },
   popupBackground: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,.3)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   popupContainer: {
-    width: 285,
-    height: 280,
+    width: 300,
+    height: 300,
     backgroundColor: '#fff',
-    borderRadius: 6,
   },
   popupHeader: {
     backgroundColor: '#4d63be',
     flexDirection: 'row',
-    borderTopStartRadius: 6,
-    borderTopRightRadius: 6,
     justifyContent: 'space-between',
   },
   popupTitle: {
@@ -81,7 +73,6 @@ export default StyleSheet.create({
   },
   popupCloseButtonWrapper: {
     padding: 15,
-    borderTopRightRadius: 6,
   },
   popupBody: {
     padding: 15,

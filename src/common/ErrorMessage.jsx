@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
+import Row from './Row';
 
 const ErrorMessage = ({ message }) => (
-  <View style={styles.errorMessageContainer}>
+  <Row style={styles.errorMessageContainer}>
     <Text style={styles.errorMessageText}>{message}</Text>
-  </View>
+  </Row>
 );
 
 

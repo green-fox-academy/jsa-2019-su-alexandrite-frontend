@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View,
   ActivityIndicator,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +8,7 @@ import { fetchHistoryChartData, resetStockInfo } from '../redux/stock/actionCrea
 import style from './style';
 import Card from '../common/Card';
 import ErrorMessage from '../common/ErrorMessage';
+import Row from '../common/Row';
 import PerformanceChart from './charts/PerformanceChart';
 import TimeRangeSelector from './charts/TimeRangeSelector';
 
@@ -33,7 +33,7 @@ const Performance = ({ symbol }) => {
   return (
     <Card title="Performance">
       {!error ? (
-        <View style={style.perfChartContainer}>
+        <Row style={style.perfChartContainer}>
           {isLoading && <ActivityIndicator size="large" />}
           {!isLoading && !error && (
             <PerformanceChart
@@ -41,7 +41,7 @@ const Performance = ({ symbol }) => {
               range={timeRange}
             />
           )}
-        </View>
+        </Row>
       ) : <ErrorMessage message={error.message} />}
       <TimeRangeSelector selected={timeRange} onSelect={setTimeRange} />
     </Card>

@@ -1,13 +1,12 @@
 import React from 'react';
 import { PieChart } from 'react-native-svg-charts';
 import PropTypes from 'prop-types';
-import Row from '../common/Row';
 import Column from '../common/Column';
 import AllocationPieChartLegend from './AllocationPieChartLegend';
 import styles from './styles';
 
 const AllocationPieChart = ({ data }) => (
-  <Row>
+  <>
     <Column style={{ flex: 3 }}>
       <PieChart
         data={data}
@@ -24,7 +23,7 @@ const AllocationPieChart = ({ data }) => (
         <AllocationPieChartLegend key={key} label={key} color={color} />
       ))}
     </Column>
-  </Row>
+  </>
 );
 
 AllocationPieChart.propTypes = {

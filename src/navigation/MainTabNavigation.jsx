@@ -16,6 +16,7 @@ import StockDetails from '../StockDetails';
 import Search from '../Search';
 import NewsList from '../common/News/NewsList';
 import NewsWebView from '../common/News/NewsWebView';
+import Transactions from '../Transactions';
 
 const InvestmentsStack = createStackNavigator({
   Investments: {
@@ -45,6 +46,7 @@ const AccountStack = createStackNavigator({
     path: 'account/',
   },
   Login,
+  Transactions,
 });
 
 const PlaygroundStack = createStackNavigator({

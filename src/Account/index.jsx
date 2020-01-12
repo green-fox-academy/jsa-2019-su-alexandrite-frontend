@@ -1,39 +1,47 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, Button, ScrollView } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
-import { logOut } from '../redux/account/actionCreator';
+import { logOut, fetchUserProfile } from '../redux/account/actionCreator';
 import styles from './styles';
+import commonStyles from '../common/styles';
+import Profile from './Profile';
+import Balance from './Balance';
+import Transactions from '../Transactions';
+import MenuItem from './MenuItem';
 
 const Account = () => {
   const { accessToken } = useSelector((state) => state.user);
-  const { username } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { push } = useNavigation();
+
+  useEffect(() => {
+    dispatch(fetchUserProfile());
+  }, [accessToken]);
 
   const handleLogOut = () => {
     dispatch(logOut());
   };
-
+  const { alignItems, ...SVStyles } = commonStyles.container;
+  const navigator = useNavigation();
   return (
-    <View style={styles.container}>
+    <ScrollView style={SVStyles} contentContainerStyle={{ alignItems }}>
       {accessToken
         ? (
-          <View>
-            <Text style={{ fontSize: 20 }}>
-              Welcome to our app
-              {' '}
-              {username}
-            </Text>
-            <Button style={styles.logOutButton} title="logout" onPress={handleLogOut} />
-          </View>
+          <>
+            <Profile />
+            <Balance />
+            {/* <Transactions /> */}
+            <MenuItem name="Transactions" onPress={() => navigator.push('Transactions')} />
+            <MenuItem name="Logout" color="red" onPress={handleLogOut} />
+          </>
         ) : (
           <View>
             <Text>Please Login</Text>
             <Button title="login" onPress={() => push('Login')} />
           </View>
         )}
-    </View>
+    </ScrollView>
   );
 };
 
