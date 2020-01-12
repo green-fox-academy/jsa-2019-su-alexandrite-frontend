@@ -1,4 +1,4 @@
-import { BACKEND_URL } from 'react-native-dotenv';
+import { SERVER_URL } from 'react-native-dotenv';
 import {
   LOGIN_USER_START,
   LOGIN_USER_FAILURE,
@@ -29,7 +29,7 @@ const loginUser = (username, password) => (dispatch) => {
     const error = 'password is required';
     dispatch(loginUserFail(error));
   } else {
-    const loginURL = `${BACKEND_URL}/users/login`;
+    const loginURL = `${SERVER_URL}/users/login`;
     fetch(loginURL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -48,7 +48,7 @@ const loginUser = (username, password) => (dispatch) => {
         throw new Error('Oops, there\'s something wrong with our app.');
       })
       .then((response) => {
-        dispatch(loginUserSuccess(response));
+        dispatch(loginUserSuccess(response.accessToken));
       })
       .catch((error) => dispatch(loginUserFail(error.message)));
   }
