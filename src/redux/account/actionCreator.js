@@ -52,7 +52,7 @@ export const loginUser = (username, password) => (dispatch) => {
         throw new Error('Oops, there\'s something wrong with our app.');
       })
       .then((response) => {
-        dispatch(loginUserSuccess(response));
+        dispatch(loginUserSuccess(response.accessToken));
       })
       .catch((error) => dispatch(loginUserFail(error.message)));
   }
@@ -76,17 +76,21 @@ export const addToBalanceFail = (payload) => ({
   payload,
 });
 
-export const addToBalance = (topUp) => (getState, dispatch) => {
+export const addToBalance = (topUp) => (dispatch, getState) => {
   const serverUrl = new URL(`${SERVER_URL}/account/topup`);
-  const { accessToken } = getState((state) => state.user);
-  dispatch(addToBalanceStart);
+  const { accessToken } = getState().user;
+  dispatch(addToBalanceStart());
+  // if (typeof topUp !== 'number') {
+  //   const error = 'please input a number';
+  //   dispatch(addToBalanceFail(error));
+  // }
   fetch(serverUrl, {
     method: 'POST',
-    body: JSON.stringify({ topUp }),
     headers: new Headers({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
     }),
+    body: JSON.stringify({ topUp }),
   })
     .then((res) => {
       if (!res.ok) {
@@ -95,7 +99,8 @@ export const addToBalance = (topUp) => (getState, dispatch) => {
       return res.json();
     })
     .then((res) => {
-      dispatch(addToBalanceSuccess(moneyAmount2String(res.balance)));
+      const result = moneyAmount2String(res.balance);
+      dispatch(addToBalanceSuccess(result));
     })
     .catch((err) => dispatch(addToBalanceFail(err)));
 };

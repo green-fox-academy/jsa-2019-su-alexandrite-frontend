@@ -13,7 +13,7 @@ const initialState = {
   error: '',
   isLoggingIn: false,
   topUpIsLoading: false,
-  balance: '0.00',
+  balance: '',
   topUpError: '',
 };
 

@@ -9,8 +9,8 @@ import ErrorMessage from '../common/ErrorMessage';
 
 const WatchlistPickerPopup = ({ visible, onClose }) => {
   const {
-    isLoading,
-    error,
+    topUpIsLoading,
+    topUpError,
   } = useSelector((state) => state.user);
   const [topUpInput, setTopUpInput] = useState('');
   const dispatch = useDispatch();
@@ -23,9 +23,6 @@ const WatchlistPickerPopup = ({ visible, onClose }) => {
       confirmButtonText="OK"
       onConfirm={() => {
         dispatch(addToBalance(topUpInput));
-        if (error) {
-          return <ErrorMessage message={error.message} />;
-        }
         return onClose();
       }}
     >
@@ -36,7 +33,7 @@ const WatchlistPickerPopup = ({ visible, onClose }) => {
         onChangeText={(input) => setTopUpInput(input)}
         value={topUpInput}
       />
-      {isLoading && <ActivityIndicator size="large" style={styles.loading} color="#fff" />}
+      {topUpIsLoading && <ActivityIndicator size="large" style={styles.loading} color="#fff" />}
     </Popup>
   );
 };
