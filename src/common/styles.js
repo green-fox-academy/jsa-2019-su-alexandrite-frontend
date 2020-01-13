@@ -130,4 +130,18 @@ export default StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#eee',
   },
+  tag: {
+    backgroundColor: '#999',
+    paddingHorizontal: 5,
+    paddingVertical: 2,
+    justifyContent: 'center',
+    borderRadius: 3,
+    marginRight: 5,
+  },
+  tagText: {
+    fontSize: 9,
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlignVertical: 'center',
+  },
 });

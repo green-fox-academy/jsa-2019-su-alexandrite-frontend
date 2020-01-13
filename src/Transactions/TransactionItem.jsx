@@ -1,13 +1,13 @@
-
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
 import PropTypes from 'prop-types';
+
 import Row from '../common/Row';
 import Column from '../common/Column';
-import { moneyAmount2String } from '../common/numbers';
-
+import styles from './styles';
+import StockIcon from './StockIcon';
+import TransactionTypeAndTime from './TransactionTypeAndTime';
+import TransactionTradingAmount from './TransactionTradingAmount';
+import TransactionTopUpAmount from './TransactionTopUpAmount';
 
 const TransactionItem = ({
   item: {
@@ -16,29 +16,25 @@ const TransactionItem = ({
     shares,
     price,
     amount,
+    symbol,
   },
 }) => (
-    <Row style={{ justifyContent: 'space-between', padding: 15 }}>
-      <Column>
-        <Text>{type}</Text>
-        <Text>{new Date(timestamp).toLocaleDateString()}</Text>
-      </Column>
-      <Column>
-        {
+  <Row style={styles.transactionItem}>
+    <Column>
+      <Row>
+        <StockIcon symbol={symbol} />
+        <TransactionTypeAndTime symbol={symbol} timestamp={timestamp} type={type} />
+      </Row>
+    </Column>
+    <Column style={{ alignItems: 'flex-end' }}>
+      {
           type === 'topUp'
-            ? (
-              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                {`+${moneyAmount2String(amount)}`}
-              </Text>
-            ) : (
-              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                {`${type === 'buy' ? '-' : '+'}${moneyAmount2String(price * shares)}`}
-              </Text>
-            )
+            ? <TransactionTopUpAmount amount={amount} />
+            : <TransactionTradingAmount shares={shares} price={price} type={type} />
         }
-      </Column>
-    </Row>
-  );
+    </Column>
+  </Row>
+);
 
 TransactionItem.propTypes = {
   item: PropTypes.oneOfType([
@@ -52,6 +48,7 @@ TransactionItem.propTypes = {
       shares: PropTypes.number,
       price: PropTypes.number,
       timestamp: PropTypes.string,
+      symbol: PropTypes.string,
     }),
   ]).isRequired,
 };
