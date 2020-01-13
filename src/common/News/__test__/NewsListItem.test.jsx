@@ -2,14 +2,14 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import { useNavigation } from 'react-navigation-hooks';
-import MockDate from 'mockdate';
 
 import NewsListItem from '../NewsListItem';
 
 jest.mock('react-navigation-hooks');
 jest.mock('../useFetchStockNews');
 
-MockDate.set('2020-01-10T04:46:05.638Z');
+const toLocaleString = jest.fn();
+toLocaleString.mockReturnValue('2020-01-10T04:46:05.638Z');
 
 const sampleNewsItem = {
   datetime: '2020-01-10T04:46:05.638Z',
