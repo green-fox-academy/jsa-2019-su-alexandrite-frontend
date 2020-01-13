@@ -7,7 +7,6 @@ import styles from './styles';
 import Card from '../common/Card';
 import ErrorMessage from '../common/ErrorMessage';
 import AllocationPieChart from './AllocationPieChart';
-import Row from '../common/Row';
 
 const Allocation = () => {
   const {
