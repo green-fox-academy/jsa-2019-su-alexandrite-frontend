@@ -20,7 +20,6 @@ const Investments = () => {
     dispatch(calculatePortfolioValue());
   }, []);
 
-  const { alignItems, ...rest } = commonStyles.container;
   return (
     <ScrollView contentContainerStyle={{ flexDirection: 'column', padding: 15 }}>
       <PortfolioValue />
