@@ -11,7 +11,7 @@ import { useNavigation } from 'react-navigation-hooks';
 import commonStyle from '../styles';
 
 const NewsListItem = ({ item, style }) => {
-  const date = new Date(item.datetime);
+  const date = new Date(item.datetime).toLocaleString();
   const { push } = useNavigation();
   return (
     <TouchableHighlight
@@ -23,7 +23,7 @@ const NewsListItem = ({ item, style }) => {
         style={commonStyle.newsCard}
       >
         <LinearGradient style={commonStyle.newsCardOverlay} colors={['#0000', '#0000', '#0008', '#000f']}>
-          <Text style={commonStyle.newsTime}>{date.toLocaleString()}</Text>
+          <Text style={commonStyle.newsTime}>{date}</Text>
           <Text style={commonStyle.newsHeadline}>{item.headline}</Text>
         </LinearGradient>
       </ImageBackground>

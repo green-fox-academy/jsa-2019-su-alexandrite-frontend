@@ -37,7 +37,6 @@ describe('<NewsListItem />', () => {
     expect(tree).toMatchSnapshot();
   });
 
-
   it('Should render properly and match the snapshot when image url not present', () => {
     const tree = renderer.create(
       <NewsListItem item={{ ...sampleNewsItem, image: null }} />,
