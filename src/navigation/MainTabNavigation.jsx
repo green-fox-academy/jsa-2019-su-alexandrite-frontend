@@ -1,19 +1,13 @@
 import React from 'react';
-import { Image } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
+import { FontAwesome5 } from '@expo/vector-icons';
 import Watchlists from '../Watchlists';
 import Investments from '../Investments';
 import Account from '../Account';
 import Login from '../Account/Login';
 
-import iconAccountActive from '../../assets/icons/bottom-tab/account-active.png';
-import iconAccountInactive from '../../assets/icons/bottom-tab/account-inactive.png';
-import iconWatchlistsActive from '../../assets/icons/bottom-tab/watchlists-active.png';
-import iconWatchlistsInactive from '../../assets/icons/bottom-tab/watchlists-inactive.png';
-import iconInvestmentsActive from '../../assets/icons/bottom-tab/investments-active.png';
-import iconInvestmentsInactive from '../../assets/icons/bottom-tab/investments-inactive.png';
 import StockDetails from '../StockDetails';
 import Search from '../Search';
 import NewsList from '../common/News/NewsList';
@@ -53,35 +47,28 @@ const AccountStack = createStackNavigator({
   title: 'ACCOUNT',
 });
 
-const renderIcon = (icon, tintColor) => (<Image source={icon} style={{ tintColor, height: 25, resizeMode: 'contain' }} />);
+const renderIcon = (name, color, solid = false) => (
+  <FontAwesome5 name={name} solid={solid} color={color} size={20} />
+);
 
 const tabs = {
   Investments: {
     screen: InvestmentsStack,
     navigationOptions: {
-      tabBarIcon: ({ focused, tintColor }) => renderIcon(
-        focused ? iconInvestmentsActive : iconInvestmentsInactive,
-        tintColor,
-      ),
+      tabBarIcon: ({ tintColor }) => renderIcon('chart-line', tintColor),
     },
   },
   Watchlists: {
     screen: WatchlistsStack,
     navigationOptions: {
-      tabBarIcon: ({ focused, tintColor }) => renderIcon(
-        focused ? iconWatchlistsActive : iconWatchlistsInactive,
-        tintColor,
-      ),
-
+      tabBarIcon: ({ tintColor }) => renderIcon('heart', tintColor, true),
     },
   },
   Account: {
     screen: AccountStack,
     navigationOptions: {
-      tabBarIcon: ({ focused, tintColor }) => renderIcon(
-        focused ? iconAccountActive : iconAccountInactive,
-        tintColor,
-      ),
+      title: 'ACCOUNT',
+      tabBarIcon: ({ tintColor }) => renderIcon('wallet', tintColor),
     },
   },
 };
