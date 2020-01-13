@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  TouchableHighlight,
-  Image,
   View,
   FlatList,
   TextInput,
@@ -9,13 +7,13 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import WatchList from './WatchList';
 import Popup from '../common/Popup';
-import addIcon from '../../assets/icons/watchList/add.png';
 import styles from './styles';
 import commonStyle from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
 import ErrorMessage from '../common/ErrorMessage';
 import Card from '../common/Card';
 import { postWatchList, fetchWatchlistDetails } from '../redux/watchList/actionCreator';
+import FAB from '../common/FAB';
 
 const EMPTY_LIST_MESSAGE = 'You don\'t have any watchlists right now.\nStart by adding one! ;)';
 
@@ -85,14 +83,12 @@ const WatchlistsScreen = () => {
       >
         <TextInput style={styles.watchlistField} placeholder="Watchlist Name" onChangeText={(text) => setWatchListTitle(text)} />
       </Popup>
-      <TouchableHighlight
-        style={styles.addIcon}
+      <FAB
+        iconName="plus"
         onPress={() => {
           setModalVisible(true);
         }}
-      >
-        <Image source={addIcon} />
-      </TouchableHighlight>
+      />
     </View>
   );
 };

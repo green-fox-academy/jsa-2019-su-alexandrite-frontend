@@ -4,9 +4,6 @@ export const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    // backgroundColor: '#f4f6f8',
-    alignItems: 'center',
     padding: 15,
     flexDirection: 'column',
   },
@@ -156,5 +153,23 @@ export default StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     textAlignVertical: 'center',
+  },
+  FAB: {
+    right: 0,
+    bottom: 0,
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#333',
+    shadowColor: '#333',
+    shadowRadius: 6,
+    shadowOpacity: 0.3,
+    shadowOffset: {
+      height: 3,
+    },
+    borderRadius: 50,
+    margin: 15,
   },
 });
