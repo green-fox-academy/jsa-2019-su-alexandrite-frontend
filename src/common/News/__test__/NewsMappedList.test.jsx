@@ -6,9 +6,6 @@ import NewsMappedList from '../NewsMappedList';
 jest.mock('react-navigation-hooks');
 jest.mock('../useFetchStockNews');
 
-const toLocaleString = jest.fn();
-toLocaleString.mockReturnValue('2020-01-10T04:46:05.638Z');
-
 const sampleNews = [
   {
     id: '123',
@@ -32,6 +29,9 @@ describe('<NewsMappedList />', () => {
       push: jest.fn(),
       navigate: jest.fn(),
     });
+
+    const toLocaleString = jest.fn();
+    toLocaleString.mockReturnValue('2020-01-10T04:46:05.638Z');
   });
 
   afterAll(() => {
