@@ -1,15 +1,20 @@
 import {
-<<<<<<< HEAD
   LOGIN_USER_START,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAILURE,
   LOGOUT_SUCCESS,
+  ADD_TO_BALANCE_START,
+  ADD_TO_BALANCE_SUCCESS,
+  ADD_TO_BALANCE_FAIL,
 } from './actionType';
 
 const initialState = {
   accessToken: '',
   error: '',
   isLoggingIn: false,
+  isLoading: false,
+  balance: '0.00',
+  topUpError: '',
 };
 
 export default (state = initialState, action) => {
@@ -37,39 +42,25 @@ export default (state = initialState, action) => {
         accessToken: null,
         isLoggingIn: false,
         error: null,
-=======
-  ADD_TO_BALANCE_START,
-  ADD_TO_BALANCE_SUCCESS,
-  ADD_TO_BALANCE_FAIL,
-} from './actionType';
-
-const initState = {
-  isLoading: false,
-  balance: '0.00',
-  error: '',
-};
-
-export default (state = initState, action) => {
-  switch (action.type) {
+      };
     case ADD_TO_BALANCE_START:
       return {
         ...state,
         isLoading: true,
-        error: '',
+        topUperror: '',
       };
     case ADD_TO_BALANCE_FAIL:
       return {
         ...state,
         isLoading: false,
-        error: action.payload,
+        topUperror: action.payload,
       };
     case ADD_TO_BALANCE_SUCCESS:
       return {
         ...state,
         isLoading: false,
         balance: action.payload,
-        error: '',
->>>>>>> 892c6b2... JSAAL-63 top-up frontend
+        topUperror: '',
       };
     default:
       return state;

@@ -1,11 +1,14 @@
-<<<<<<< HEAD
-import { BACKEND_URL } from 'react-native-dotenv';
+import { SERVER_URL } from 'react-native-dotenv';
 import {
   LOGIN_USER_START,
   LOGIN_USER_FAILURE,
   LOGIN_USER_SUCCESS,
   LOGOUT_SUCCESS,
+  ADD_TO_BALANCE_START,
+  ADD_TO_BALANCE_SUCCESS,
+  ADD_TO_BALANCE_FAIL,
 } from './actionType';
+import { moneyAmount2String } from '../../common/numbers';
 
 const loginUserStart = () => ({
   type: LOGIN_USER_START,
@@ -21,7 +24,7 @@ export const loginUserFail = (payload) => ({
   payload,
 });
 
-const loginUser = (username, password) => (dispatch) => {
+export const loginUser = (username, password) => (dispatch) => {
   dispatch(loginUserStart());
   if (username === '') {
     const error = 'username is required';
@@ -30,7 +33,7 @@ const loginUser = (username, password) => (dispatch) => {
     const error = 'password is required';
     dispatch(loginUserFail(error));
   } else {
-    const loginURL = `${BACKEND_URL}/users/login`;
+    const loginURL = `${SERVER_URL}/users/login`;
     fetch(loginURL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -58,16 +61,6 @@ const loginUser = (username, password) => (dispatch) => {
 export const logOut = () => ({
   type: LOGOUT_SUCCESS,
 });
-
-export default loginUser;
-=======
-import { SERVER_URL } from 'react-native-dotenv';
-import {
-  ADD_TO_BALANCE_START,
-  ADD_TO_BALANCE_SUCCESS,
-  ADD_TO_BALANCE_FAIL,
-} from './actionType';
-import { moneyAmount2String } from '../../common/numbers';
 
 export const addToBalanceStart = () => ({
   type: ADD_TO_BALANCE_START,
@@ -106,4 +99,3 @@ export const addToBalance = (topUp) => (getState, dispatch) => {
     })
     .catch((err) => dispatch(addToBalanceFail(err)));
 };
->>>>>>> 892c6b2... JSAAL-63 top-up frontend
