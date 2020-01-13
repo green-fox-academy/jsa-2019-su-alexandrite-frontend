@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  View,
   ActivityIndicator,
   Text,
   TouchableHighlight,
@@ -14,7 +13,6 @@ import Card from '../Card';
 import ErrorMessage from '../ErrorMessage';
 import NewsMappedList from './NewsMappedList';
 import CardFooter from '../CardFooter';
-import Row from '../Row';
 
 const NewsCard = ({ query, style }) => {
   const { news, isLoading, error } = useFetchStockNews(query, 1, 2);

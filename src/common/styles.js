@@ -89,6 +89,13 @@ export default StyleSheet.create({
   popupButtonGroup: {
     flexDirection: 'column',
   },
+  newsItem: {
+    flexDirection: 'row',
+    paddingVertical: 15,
+    flex: 1,
+    borderBottomColor: '#eee',
+    borderBottomWidth: 1,
+  },
   newsImg: {
     width: 120,
     height: 90,

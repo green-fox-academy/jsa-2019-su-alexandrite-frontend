@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
-import commonStyles from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
 import PortfolioValue from './PortfolioValue';
 import { calculatePortfolioValue } from '../redux/investment/actionCreator';

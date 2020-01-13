@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import {
   FlatList,
-  View,
   ActivityIndicator,
 } from 'react-native';
 import { useNavigationParam } from 'react-navigation-hooks';
 import PropTypes from 'prop-types';
 import NewsListItem from './NewsListItem';
-import commonStyles from '../styles';
 import useFetchStockNews from './useFetchStockNews';
 import ErrorMessage from '../ErrorMessage';
 import Card from '../Card';
