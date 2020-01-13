@@ -9,12 +9,14 @@ import {
 import { BlurView } from 'expo-blur';
 import PropTypes from 'prop-types';
 import styles from './styles';
+import Row from './Row';
+import Column from './Column';
 
 const PopupHeader = ({ title, onCancel }) => (
   <View style={styles.popupHeader}>
     <Text style={styles.popupTitle}>{title}</Text>
     <TouchableHighlight style={styles.popupCloseButtonWrapper} underlayColor="rgba(0,0,0,0.1)" onPress={onCancel}>
-      <FontAwesome5 name="times" size={13} color="white" />
+      <FontAwesome5 name="times" size={16} color="black" />
     </TouchableHighlight>
   </View>
 );
@@ -22,28 +24,32 @@ const PopupHeader = ({ title, onCancel }) => (
 const PopupButtonGroup = ({
   onConfirm, onCancel, confirmButtonText, confirmDisabled,
 }) => (
-    <View style={styles.popupButtonGroup}>
-      <TouchableHighlight
-        style={[
-          styles.popupButton,
-          { backgroundColor: '#5eceb1' },
-          confirmDisabled && { opacity: 0.5 },
-        ]}
-        disabled={confirmDisabled}
-        onPress={onConfirm}
-        underlayColor="#5eceb1a0"
-      >
-        <Text style={{ fontSize: 14, color: '#fff' }}>{confirmButtonText}</Text>
-      </TouchableHighlight>
+  <Row>
+    <Column flex={1}>
       <TouchableHighlight
         style={styles.popupButton}
         onPress={onCancel}
         underlayColor="#eee"
       >
-        <Text style={{ color: '#666' }}>Cancel</Text>
+        <Text style={{ color: '#333' }}>Cancel</Text>
       </TouchableHighlight>
-    </View>
-  );
+    </Column>
+    <Column flex={1}>
+      <TouchableHighlight
+        style={[
+          styles.popupButton,
+          styles.popupButtonPrimary,
+          confirmDisabled && { opacity: 0.5 },
+        ]}
+        disabled={confirmDisabled}
+        onPress={onConfirm}
+        underlayColor="#999"
+      >
+        <Text style={{ fontSize: 14, color: '#fff' }}>{confirmButtonText}</Text>
+      </TouchableHighlight>
+    </Column>
+  </Row>
+);
 
 export default function Popup({
   visible, onCancel, onConfirm, confirmButtonText, children, confirmDisabled, title,

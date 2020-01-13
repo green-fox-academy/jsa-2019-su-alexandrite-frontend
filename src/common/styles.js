@@ -59,17 +59,25 @@ export default StyleSheet.create({
     width: 300,
     height: 300,
     backgroundColor: '#fff',
+    elevation: 2,
+    shadowColor: '#333',
+    shadowRadius: 6,
+    shadowOpacity: 0.3,
+    shadowOffset: {
+      height: 3,
+    },
   },
   popupHeader: {
-    backgroundColor: '#4d63be',
+    backgroundColor: '#fff',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   popupTitle: {
     padding: 15,
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#333',
   },
   popupCloseButtonWrapper: {
     padding: 15,
@@ -81,13 +89,18 @@ export default StyleSheet.create({
   },
   popupButton: {
     height: 40,
-    width: 255,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 2,
   },
-  popupButtonGroup: {
-    flexDirection: 'column',
+  popupButtonPrimary: {
+    elevation: 2,
+    backgroundColor: '#333',
+    shadowColor: '#333',
+    shadowRadius: 3,
+    shadowOpacity: 0.3,
+    shadowOffset: {
+      height: 3,
+    },
   },
   newsItem: {
     flexDirection: 'row',
