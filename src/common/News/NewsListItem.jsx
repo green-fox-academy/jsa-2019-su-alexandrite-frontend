@@ -8,10 +8,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import PropTypes from 'prop-types';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useNavigation } from 'react-navigation-hooks';
+import moment from 'moment';
 import commonStyle from '../styles';
 
 const NewsListItem = ({ item, style }) => {
-  const date = new Date(item.datetime).toLocaleString();
+  const date = moment(new Date(item.datetime)).toNow();
   const { push } = useNavigation();
   return (
     <TouchableHighlight
