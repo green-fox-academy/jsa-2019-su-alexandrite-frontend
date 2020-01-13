@@ -22,7 +22,7 @@ const Investments = () => {
 
   const { alignItems, ...rest } = commonStyles.container;
   return (
-    <ScrollView style={rest} contentContainerStyle={{ alignItems }}>
+    <ScrollView contentContainerStyle={{ flexDirection: 'column', padding: 15 }}>
       <PortfolioValue />
       <Allocation />
       <PortfolioNews />

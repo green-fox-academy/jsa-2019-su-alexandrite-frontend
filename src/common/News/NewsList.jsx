@@ -11,6 +11,7 @@ import commonStyles from '../styles';
 import useFetchStockNews from './useFetchStockNews';
 import ErrorMessage from '../ErrorMessage';
 import Card from '../Card';
+import Row from '../Row';
 
 const ListFooter = ({ errorMessage, isLoading, pageNumber }) => {
   if (pageNumber !== 1) {
@@ -23,9 +24,9 @@ const ListFooter = ({ errorMessage, isLoading, pageNumber }) => {
     }
     if (isLoading) {
       return (
-        <View style={{ padding: 15 }}>
+        <Row style={{ padding: 15 }}>
           <ActivityIndicator />
-        </View>
+        </Row>
       );
     }
     return null;
@@ -49,7 +50,6 @@ const NewsList = () => {
       ) : null)}
       stickyHeaderIndices={[0]}
       keyExtractor={(item) => item.id}
-      ItemSeparatorComponent={() => <View style={commonStyles.newsCardSeparator} />}
       renderItem={({ item }) => <NewsListItem item={item} />}
       refreshing={pageNumber === 1 && isLoading}
       onRefresh={() => setPageNumber(1)}

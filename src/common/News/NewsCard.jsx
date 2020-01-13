@@ -14,6 +14,7 @@ import Card from '../Card';
 import ErrorMessage from '../ErrorMessage';
 import NewsMappedList from './NewsMappedList';
 import CardFooter from '../CardFooter';
+import Row from '../Row';
 
 const NewsCard = ({ query, style }) => {
   const { news, isLoading, error } = useFetchStockNews(query, 1, 2);
@@ -21,23 +22,21 @@ const NewsCard = ({ query, style }) => {
   return (
     <Card title="News" style={style}>
       {!error ? (
-        <View style={styles.newsContainer}>
+        <>
           {isLoading && <ActivityIndicator size="large" />}
           {!isLoading && news && (
-            <>
-              <NewsMappedList news={news} />
-              <CardFooter>
-                <TouchableHighlight
-                  style={styles.cardFooterButton}
-                  onPress={() => navigator.navigate('NewsList', { query })}
-                  underlayColor="#eee"
-                >
-                  <Text style={styles.cardFooterButtonText}>View more</Text>
-                </TouchableHighlight>
-              </CardFooter>
-            </>
+            <NewsMappedList news={news} />
           )}
-        </View>
+          <CardFooter>
+            <TouchableHighlight
+              style={styles.cardFooterButton}
+              onPress={() => navigator.navigate('NewsList', { query })}
+              underlayColor="#eee"
+            >
+              <Text style={styles.cardFooterButtonText}>View more</Text>
+            </TouchableHighlight>
+          </CardFooter>
+        </>
       ) : <ErrorMessage message={error.message} />}
     </Card>
   );

@@ -19,7 +19,7 @@ const PortfolioNews = () => {
       <>
         {isLoading && <ActivityIndicator size="large" style={styles.loading} color="#fff" />}
         {!isLoading && !error && stocks && (
-          <NewsCard query={stocks.map(({ symbol }) => symbol)} style={{ marginTop: 15 }} />
+          <NewsCard query={stocks.map(({ symbol }) => symbol)} />
         )}
       </>
     ) : <Text>{error.message}</Text>

@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import NewsListItem from './NewsListItem';
 
 const NewsMappedList = ({ news }) => (
-  news.map((item, i) => (
+  news.map((item) => (
     <NewsListItem
       key={item.id}
       item={item}
-      style={[i !== news.length - 1 && { marginBottom: 15 }]}
     />
   ))
 );

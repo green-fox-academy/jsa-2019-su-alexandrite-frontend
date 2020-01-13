@@ -89,22 +89,19 @@ export default StyleSheet.create({
   popupButtonGroup: {
     flexDirection: 'column',
   },
-  newsCard: {
-    height: 169,
-    backgroundColor: '#ccc',
+  newsImg: {
+    width: 120,
+    height: 90,
+    marginRight: 15,
     borderRadius: 6,
-    overflow: 'hidden',
-  },
-  newsCardSeparator: {
-    height: 15,
   },
   newsTime: {
     fontSize: 12,
-    color: '#fff',
+    color: '#999',
   },
   newsHeadline: {
     fontSize: 14,
-    color: '#fff',
+    color: '#333',
     fontWeight: 'bold',
     lineHeight: 20,
   },
@@ -112,9 +109,6 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     padding: 15,
-  },
-  newsContainer: {
-    width: width - 60,
   },
   cardFooterButton: {
     padding: 5,

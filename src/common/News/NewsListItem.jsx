@@ -1,13 +1,16 @@
 import React from 'react';
 import {
   Text,
-  ImageBackground,
+  Image,
   ViewPropTypes,
+  View,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+// import { LinearGradient } from 'expo-linear-gradient';
 import PropTypes from 'prop-types';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useNavigation } from 'react-navigation-hooks';
+import Row from '../Row';
+import Column from '../Column';
 import commonStyle from '../styles';
 
 const NewsListItem = ({ item, style }) => {
@@ -16,17 +19,19 @@ const NewsListItem = ({ item, style }) => {
   return (
     <TouchableHighlight
       onPress={() => push('NewsWebView', { url: item.url })}
-      style={[style, { borderRadius: 6 }]}
+      underlayColor="#eee"
+      style={[style, { flexDirection: 'row', paddingVertical: 15, flex: 1, borderBottomColor: '#eee', borderBottomWidth: 1 }]}
     >
-      <ImageBackground
-        source={item.image ? { uri: item.image } : null}
-        style={commonStyle.newsCard}
-      >
-        <LinearGradient style={commonStyle.newsCardOverlay} colors={['#0000', '#0000', '#0008', '#000f']}>
+      <>
+        <Image
+          source={item.image ? { uri: item.image } : null}
+          style={commonStyle.newsImg}
+        />
+        <Column flex={1}>
+          <Text style={commonStyle.newsHeadline} lineBreakMode="tail" numberOfLines={3}>{item.headline}</Text>
           <Text style={commonStyle.newsTime}>{date.toLocaleString()}</Text>
-          <Text style={commonStyle.newsHeadline}>{item.headline}</Text>
-        </LinearGradient>
-      </ImageBackground>
+        </Column>
+      </>
     </TouchableHighlight>
   );
 };
