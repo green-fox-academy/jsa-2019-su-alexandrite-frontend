@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "lint": "eslint src",
-    "test": "jest --coverage"
+    "test": "jest --coverage --maxWorkers=2"
   },
   "jest": {
     "preset": "jest-expo",
