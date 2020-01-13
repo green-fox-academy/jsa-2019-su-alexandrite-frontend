@@ -6,12 +6,14 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Watchlists from '../Watchlists';
 import Investments from '../Investments';
 import Account from '../Account';
-import Playground from '../Playground';
 import Login from '../Account/Login';
 
-import accountIcon from '../../assets/icons/bottom-tab/me.png';
-import watchlistsIcon from '../../assets/icons/bottom-tab/watchlists.png';
-import investmentsIconActive from '../../assets/icons/bottom-tab/investments-active.png';
+import iconAccountActive from '../../assets/icons/bottom-tab/account-active.png';
+import iconAccountInactive from '../../assets/icons/bottom-tab/account-inactive.png';
+import iconWatchlistsActive from '../../assets/icons/bottom-tab/watchlists-active.png';
+import iconWatchlistsInactive from '../../assets/icons/bottom-tab/watchlists-inactive.png';
+import iconInvestmentsActive from '../../assets/icons/bottom-tab/investments-active.png';
+import iconInvestmentsInactive from '../../assets/icons/bottom-tab/investments-inactive.png';
 import StockDetails from '../StockDetails';
 import Search from '../Search';
 import NewsList from '../common/News/NewsList';
@@ -47,36 +49,39 @@ const AccountStack = createStackNavigator({
   },
   Login,
   Transactions,
+}, {
+  title: 'ACCOUNT',
 });
 
-const PlaygroundStack = createStackNavigator({
-  Playground,
-  StockDetails,
-  Search,
-  NewsList,
-  NewsWebView,
-});
-
-const renderIcon = (icon, tintColor) => (<Image source={icon} style={{ tintColor }} />);
+const renderIcon = (icon, tintColor) => (<Image source={icon} style={{ tintColor, height: 25, resizeMode: 'contain' }} />);
 
 const tabs = {
-  ...(process.env.NODE_ENV === 'development' && { Playground: PlaygroundStack }),
   Investments: {
     screen: InvestmentsStack,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => renderIcon(investmentsIconActive, tintColor),
+      tabBarIcon: ({ focused, tintColor }) => renderIcon(
+        focused ? iconInvestmentsActive : iconInvestmentsInactive,
+        tintColor,
+      ),
     },
   },
   Watchlists: {
     screen: WatchlistsStack,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => renderIcon(watchlistsIcon, tintColor),
+      tabBarIcon: ({ focused, tintColor }) => renderIcon(
+        focused ? iconWatchlistsActive : iconWatchlistsInactive,
+        tintColor,
+      ),
+
     },
   },
-  Me: {
+  Account: {
     screen: AccountStack,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => renderIcon(accountIcon, tintColor),
+      tabBarIcon: ({ focused, tintColor }) => renderIcon(
+        focused ? iconAccountActive : iconAccountInactive,
+        tintColor,
+      ),
     },
   },
 };
@@ -85,6 +90,7 @@ const BottomTabNavigatorConfig = {
   tabBarOptions: {
     activeTintColor: '#566ed3',
     inactiveTintColor: '#999999',
+    showLabel: false,
   },
 };
 
