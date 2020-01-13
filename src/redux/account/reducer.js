@@ -12,7 +12,7 @@ const initialState = {
   accessToken: '',
   error: '',
   isLoggingIn: false,
-  isLoading: false,
+  topUpIsLoading: false,
   balance: '0.00',
   topUpError: '',
 };
@@ -46,21 +46,21 @@ export default (state = initialState, action) => {
     case ADD_TO_BALANCE_START:
       return {
         ...state,
-        isLoading: true,
-        topUperror: '',
+        topUpIsLoading: true,
+        topUpError: '',
       };
     case ADD_TO_BALANCE_FAIL:
       return {
         ...state,
-        isLoading: false,
-        topUperror: action.payload,
+        topUpIsLoading: false,
+        topUpError: action.payload,
       };
     case ADD_TO_BALANCE_SUCCESS:
       return {
         ...state,
-        isLoading: false,
+        topUpIsLoading: false,
         balance: action.payload,
-        topUperror: '',
+        topUpError: '',
       };
     default:
       return state;
