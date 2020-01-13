@@ -5,6 +5,7 @@ import {
   FETCH_PORTFOLIO_DETAILS_SUCCESS,
 } from './actionType';
 import { moneyAmount2String } from '../../common/numbers';
+import chartHelper from '../../common/chartHelper';
 
 export const fetchPortfolioDetailsStart = () => ({
   type: FETCH_PORTFOLIO_DETAILS_START,
@@ -20,10 +21,13 @@ export const fetchPortfolioDetailsSuccess = (payload) => ({
   payload,
 });
 
-export const calculatePortfolioValue = (uid = 1) => (dispatch) => {
-  const serverUrl = new URL(`${SERVER_URL}/investments/user/${uid}`);
+export const calculatePortfolioValue = () => (dispatch, getState) => {
+  const serverUrl = new URL(`${SERVER_URL}/investments/user/`);
+  const headers = new Headers();
+  const { accessToken } = getState((state) => state.user);
+  headers.append('authorization', `Bearer ${accessToken}`);
   dispatch(fetchPortfolioDetailsStart());
-  fetch(serverUrl)
+  fetch(serverUrl, { headers })
     .then((response) => {
       if (!response.ok) {
         switch (response.status) {
@@ -35,8 +39,7 @@ export const calculatePortfolioValue = (uid = 1) => (dispatch) => {
       }
       return response.json();
     })
-    .then((response) => {
-      const stocks = [...response.stocks];
+    .then((stocks) => {
       const symbols = stocks.map((stock) => stock.symbol);
       const apiUrl = new URL(`${API_URL}/stock/market/batch`);
       apiUrl.searchParams.append('symbols', symbols);
@@ -54,9 +57,11 @@ export const calculatePortfolioValue = (uid = 1) => (dispatch) => {
             .map(({ shares, symbol }) => shares * res[symbol].price)
             .reduce((a, b) => a + b);
           totalValue = moneyAmount2String((totalValue));
+          const allocation = chartHelper.processInvestmentAllocationData(stocks, res);
           dispatch(fetchPortfolioDetailsSuccess({
             totalValue,
             stocks,
+            allocation,
           }));
         });
     })

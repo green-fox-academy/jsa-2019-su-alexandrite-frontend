@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { width } from '../common/styles';
 
 export default StyleSheet.create({
   valueCard: {
@@ -41,5 +42,27 @@ export default StyleSheet.create({
   },
   loading: {
     marginTop: 70,
+  },
+  pieChart: {
+    flex: 1,
+    height: 135,
+  },
+  pieChartLegend: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  pieChartLegendColorIndicator: {
+    height: 9,
+    width: 9,
+    borderRadius: 5,
+    fontSize: 11,
+    marginRight: 5,
+  },
+  pieChartLegendLabel: {
+    fontSize: 11,
+    color: '#485465',
+  },
+  pieChartContainer: {
+    width: width - 30,
   },
 });
