@@ -5,7 +5,7 @@ import {
   TouchableHighlight,
   TextInput,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Popup from '../common/Popup';
 import styles from './styles';
 import TransactionSelector from './TransactionSelector';
@@ -15,6 +15,7 @@ const TransactionPopup = () => {
   const [popupVisible, setModalVisible] = useState(false);
   const [shares, setShares] = useState(0);
   const [transactionBehavior, setTransactionBehavior] = useState('SELL');
+  const { error } = useSelector((state) => state.investments);
   const stockName = 'Tesla';
   const dispatch = useDispatch();
 
@@ -25,6 +26,7 @@ const TransactionPopup = () => {
 
   const onConfirmAddModal = () => {
     if (shares) dispatch(purchaseStock(stockName, shares, transactionBehavior));
+    console.log(error);
     setModalVisible(false);
     setShares('');
   };
@@ -39,7 +41,7 @@ const TransactionPopup = () => {
         confirmButtonText="OK"
         confirmDisabled={!shares}
       >
-        <TextInput style={styles.sharesField} placeholder="shares" onChangeText={() => setShares(Text)} />
+        <TextInput style={styles.sharesField} placeholder="shares" onChangeText={(text) => setShares(text)} />
         <TransactionSelector selected={transactionBehavior} onSelect={setTransactionBehavior} />
       </Popup>
       <TouchableHighlight

@@ -71,18 +71,21 @@ const purchaseStockSuccess = () => ({
 
 const purchaseStockFail = (payload) => ({
   type: PURCHASE_STOCK_FAIL,
-  err: payload,
+  error: payload,
 });
 
-export const purchaseStock = (stockName, shares, transactionBehavior) => (dispatch) => {
+export const purchaseStock = (symbol, shares, type) => (dispatch) => {
+  console.log(symbol + shares + type);
   const serverUrl = new URL(`${SERVER_URL}/order`);
   fetch(serverUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(
-      stockName,
-      shares,
-      transactionBehavior,
+      {
+        symbol,
+        shares,
+        type,
+      },
     ),
   })
     .then((response) => {
@@ -97,5 +100,5 @@ export const purchaseStock = (stockName, shares, transactionBehavior) => (dispat
       return response.json();
     })
     .then((response) => dispatch(purchaseStockSuccess(response.shares)))
-    .catch((err) => dispatch(purchaseStockFail(err)));
+    .catch((error) => dispatch(purchaseStockFail(error)));
 };
