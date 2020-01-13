@@ -1,10 +1,9 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
 
-import Account from './index';
+import Login from './Login';
 
 jest.mock('react-redux');
 jest.mock('../redux/account/actionCreator');
@@ -16,31 +15,44 @@ const SAMPLE_STATE = {
   isLoggingIn: false,
 };
 
-describe('<Account />', () => {
+describe('<Login />', () => {
+  beforeEach(() => {
+    useDispatch.mockReturnValue(jest.fn(() => { }));
+  });
+
   it('Expect to not log errors in console', () => {
     useSelector.mockReturnValue(SAMPLE_STATE);
-    const push = jest.fn(() => { });
-    useNavigation.mockReturnValue({ push });
+    const pop = jest.fn(() => { });
+    useNavigation.mockReturnValue({ pop });
     const spy = jest.spyOn(global.console, 'error');
     const wrapper = renderer.create(
-      <Account />,
+      <Login />,
     );
     expect(wrapper).not.toBeNull();
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('Should render and match the snapshot with accessToken', () => {
+  it('Should render and match the snapshot without error', () => {
     useSelector.mockReturnValue(SAMPLE_STATE);
     const tree = renderer.create(
-      <Account />,
+      <Login />,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should render and match the snapshot without accessToken', () => {
-    useSelector.mockReturnValue({ ...SAMPLE_STATE, accessToken: null });
+  it('Should render and match the snapshot with error', () => {
+    useSelector.mockReturnValue({ ...SAMPLE_STATE, error: 'error message' });
+
     const tree = renderer.create(
-      <Account />,
+      <Login isLoading="true" />,
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render and match the snapshot when loading', () => {
+    useSelector.mockReturnValue({ ...SAMPLE_STATE, isLoggingIn: true });
+    const tree = renderer.create(
+      <Login />,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

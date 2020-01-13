@@ -17,6 +17,10 @@ describe('<Investments />', () => {
     useDispatch.mockReturnValue(jest.fn(() => { }));
   });
 
+  afterAll(() => {
+    jest.resetModules();
+  });
+
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const wrapper = renderer.create(
