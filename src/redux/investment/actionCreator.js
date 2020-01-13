@@ -20,10 +20,13 @@ export const fetchPortfolioDetailsSuccess = (payload) => ({
   payload,
 });
 
-export const calculatePortfolioValue = (uid = 1) => (dispatch) => {
-  const serverUrl = new URL(`${SERVER_URL}/investments/user/${uid}`);
+export const calculatePortfolioValue = () => (dispatch, getState) => {
+  const serverUrl = new URL(`${SERVER_URL}/investments/user/`);
+  const headers = new Headers();
+  const { accessToken } = getState().user;
+  headers.append('authorization', `Bearer ${accessToken}`);
   dispatch(fetchPortfolioDetailsStart());
-  fetch(serverUrl)
+  fetch(serverUrl, { headers })
     .then((response) => {
       if (!response.ok) {
         switch (response.status) {
@@ -35,12 +38,11 @@ export const calculatePortfolioValue = (uid = 1) => (dispatch) => {
       }
       return response.json();
     })
-    .then((response) => {
-      const stocks = [...response.stocks];
+    .then((stocks) => {
       const symbols = stocks.map((stock) => stock.symbol);
       const apiUrl = new URL(`${API_URL}/stock/market/batch`);
       apiUrl.searchParams.append('symbols', symbols);
-      apiUrl.searchParams.append('types', 'price');
+      apiUrl.searchParams.append('types', 'price,company,logo');
       apiUrl.searchParams.append('token', API_KEY);
       fetch(apiUrl)
         .then((res) => {
@@ -50,13 +52,23 @@ export const calculatePortfolioValue = (uid = 1) => (dispatch) => {
           return res.json();
         })
         .then((res) => {
+          const instruments = {};
           let totalValue = stocks
-            .map(({ shares, symbol }) => shares * res[symbol].price)
+            .map(({ shares, symbol }) => {
+              instruments[symbol] = {
+                logo: res[symbol].logo.url,
+                company: res[symbol].company.companyName,
+                description: res[symbol].company.description,
+                marketValue: shares * res[symbol].price,
+              };
+              return shares * res[symbol].price;
+            })
             .reduce((a, b) => a + b);
           totalValue = moneyAmount2String((totalValue));
           dispatch(fetchPortfolioDetailsSuccess({
             totalValue,
             stocks,
+            instruments,
           }));
         });
     })

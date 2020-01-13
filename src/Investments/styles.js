@@ -12,6 +12,7 @@ export default StyleSheet.create({
     shadowRadius: 6,
     shadowOpacity: 0.7,
     elevation: 6,
+    marginBottom: 15,
   },
   value: {
     flexDirection: 'row',
@@ -42,6 +43,9 @@ export default StyleSheet.create({
   },
   loading: {
     marginTop: 70,
+  },
+  instrumentContainer: {
+    width: width - 30,
   },
   companyTitle: {
     borderRadius: 6,
