@@ -2,7 +2,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { useDispatch, useSelector } from 'react-redux';
 import PortfolioValue from './PortfolioValue';
-import { calculatePortfolioValue } from '../redux/investment/actionCreator';
 
 jest.useFakeTimers();
 
@@ -55,17 +54,5 @@ describe('<PortfolioValue />', () => {
       <PortfolioValue />,
     ).toJSON();
     expect(tree).toMatchSnapshot();
-  });
-
-  it('Should dispatch calculatePortfolioValue onload', () => {
-    const mockDispatch = jest.fn(() => { });
-    useDispatch.mockReturnValueOnce(mockDispatch);
-    calculatePortfolioValue.mockReturnValue('test_action');
-    const wrapper = renderer.create(
-      <PortfolioValue />,
-    );
-    wrapper.update(<PortfolioValue />);
-    expect(useDispatch).toHaveBeenCalled();
-    expect(mockDispatch).toHaveBeenCalledWith('test_action');
   });
 });

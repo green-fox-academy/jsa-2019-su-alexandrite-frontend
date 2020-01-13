@@ -6,6 +6,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Watchlists from '../Watchlists';
 import Investments from '../Investments';
 import Account from '../Account';
+import Login from '../Account/Login';
 
 import accountIcon from '../../assets/icons/bottom-tab/me.png';
 import watchlistsIcon from '../../assets/icons/bottom-tab/watchlists.png';
@@ -42,6 +43,7 @@ const AccountStack = createStackNavigator({
     screen: Account,
     path: 'account/',
   },
+  Login,
 });
 
 export const renderIcon = (icon, tintColor) => (<Image source={icon} style={{ tintColor }} />);

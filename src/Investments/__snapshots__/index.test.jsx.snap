@@ -12,5 +12,6 @@ exports[`<Investments /> Should render and match the snapshot 1`] = `
   }
 >
   <<PortfolioValue /> />
+  <<PortfolioNews /> />
 </View>
 `;
