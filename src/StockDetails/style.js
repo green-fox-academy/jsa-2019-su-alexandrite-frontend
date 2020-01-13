@@ -65,6 +65,11 @@ export default StyleSheet.create({
   perfChartButtonTextActive: {
     color: '#fff',
   },
+  sharesField: {
+    padding: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
   TransactionSelector: {
     flexDirection: 'row',
     justifyContent: 'space-between',

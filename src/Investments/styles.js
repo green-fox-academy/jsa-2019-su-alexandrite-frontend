@@ -42,9 +42,4 @@ export default StyleSheet.create({
   loading: {
     marginTop: 70,
   },
-  sharesField: {
-    padding: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
-  },
 });
