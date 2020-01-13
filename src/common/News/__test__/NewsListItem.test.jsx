@@ -8,7 +8,7 @@ import NewsListItem from '../NewsListItem';
 jest.mock('react-navigation-hooks');
 jest.mock('../useFetchStockNews');
 
-jest.mock('moment', () => () => ({ toNow: () => '2020-01-10T04:46:05.638Z' }));
+jest.mock('moment', () => () => ({ toNow: () => '' }));
 
 const sampleNewsItem = {
   datetime: '2020-01-10T04:46:05.638Z',
