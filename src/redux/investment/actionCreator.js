@@ -74,12 +74,14 @@ const purchaseStockFail = (payload) => ({
   error: payload,
 });
 
-export const purchaseStock = (symbol, shares, type) => (dispatch) => {
-  console.log(symbol + shares + type);
-  const serverUrl = new URL(`${SERVER_URL}/order`);
-  fetch(serverUrl, {
+export const purchaseStock = (symbol, shares, type, accessToken) => (dispatch) => {
+  const orderUrl = `${SERVER_URL}/order`;
+  fetch(orderUrl, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    },
     body: JSON.stringify(
       {
         symbol,

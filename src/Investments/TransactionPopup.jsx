@@ -13,10 +13,10 @@ import { purchaseStock } from '../redux/investment/actionCreator';
 
 const TransactionPopup = () => {
   const [popupVisible, setModalVisible] = useState(false);
-  const [shares, setShares] = useState(0);
-  const [transactionBehavior, setTransactionBehavior] = useState('SELL');
-  const { error } = useSelector((state) => state.investments);
-  const stockName = 'Tesla';
+  const [shares, setShares] = useState('');
+  const [transactionBehavior, setTransactionBehavior] = useState('sell');
+  const { accessToken } = useSelector((state) => state.user);
+  const stockName = 'MSFT';
   const dispatch = useDispatch();
 
   const onCloseAddModal = () => {
@@ -25,8 +25,8 @@ const TransactionPopup = () => {
   };
 
   const onConfirmAddModal = () => {
-    if (shares) dispatch(purchaseStock(stockName, shares, transactionBehavior));
-    console.log(error);
+    const share = parseInt(shares, 10);
+    if (shares) dispatch(purchaseStock(stockName, share, transactionBehavior, accessToken));
     setModalVisible(false);
     setShares('');
   };

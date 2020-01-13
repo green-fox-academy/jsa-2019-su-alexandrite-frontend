@@ -5,7 +5,7 @@ import TransactionButton from './TransactionButton';
 import styles from './styles';
 
 const TransactionSelector = ({ selected, onSelect }) => {
-  const behaviros = ['SELL', 'BUY'];
+  const behaviros = ['sell', 'buy'];
   return (
     <View style={styles.TransactionSelector}>
       {behaviros.map((transactionBehavior) => {
