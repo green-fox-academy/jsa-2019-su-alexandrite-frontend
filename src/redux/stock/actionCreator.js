@@ -140,8 +140,9 @@ export const placeOrder = (symbol, shares, type) => async (dispatch, getState) =
     .catch((err) => dispatch(placeOrderFail(err)));
 };
 
-const purchaseStockSuccess = () => ({
+const purchaseStockSuccess = (payload) => ({
   type: PURCHASE_STOCK_SUCCESS,
+  shares: payload,
 });
 
 const purchaseStockFail = (payload) => ({
@@ -149,7 +150,7 @@ const purchaseStockFail = (payload) => ({
   error: payload,
 });
 
-export const purchaseStock = (symbol, shares, type, accessToken) => (dispatch) => {
+export const purchaseStock = (symbol, shares, type, accessToken, balance, status) => (dispatch) => {
   const orderUrl = `${SERVER_URL}/order`;
   fetch(orderUrl, {
     method: 'POST',
@@ -162,6 +163,8 @@ export const purchaseStock = (symbol, shares, type, accessToken) => (dispatch) =
         symbol,
         shares,
         type,
+        status,
+        balance,
       },
     ),
   })
@@ -177,5 +180,5 @@ export const purchaseStock = (symbol, shares, type, accessToken) => (dispatch) =
       return response.json();
     })
     .then((response) => dispatch(purchaseStockSuccess(response.shares)))
-    .catch((error) => dispatch(purchaseStockFail(error)));
+    .catch((error) => dispatch(purchaseStockFail(error.message)));
 };

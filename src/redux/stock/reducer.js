@@ -17,6 +17,8 @@ const initState = {
   isLoadingHistoricalChartData: true,
   historicalData: undefined,
   historicalDataError: undefined,
+  error: '',
+  shares: 0,
 };
 
 export default (state = initState, action) => {
@@ -61,10 +63,12 @@ export default (state = initState, action) => {
     case PURCHASE_STOCK_SUCCESS:
       return {
         ...state,
+        shares: action.payload,
       };
     case PURCHASE_STOCK_FAIL:
       return {
         ...state,
+        error: action.payload,
       };
     default:
       return state;

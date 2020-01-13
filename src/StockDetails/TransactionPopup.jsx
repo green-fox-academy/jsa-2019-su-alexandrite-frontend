@@ -16,6 +16,8 @@ const TransactionPopup = () => {
   const [shares, setShares] = useState('');
   const [transactionBehavior, setTransactionBehavior] = useState('sell');
   const { accessToken } = useSelector((state) => state.user);
+  const { price } = useSelector((state) => state.investments);
+  const { balance } = useSelector((state) => state.user);
   const stockName = 'MSFT';
   const dispatch = useDispatch();
 
@@ -26,9 +28,24 @@ const TransactionPopup = () => {
 
   const onConfirmAddModal = () => {
     const share = parseInt(shares, 10);
-    if (shares) dispatch(purchaseStock(stockName, share, transactionBehavior, accessToken));
-    setModalVisible(false);
-    setShares('');
+    if (shares) {
+      const stockTotalValue = share * price;
+      if (transactionBehavior === 'sell') {
+        // eslint-disable-next-line no-const-assign
+        balance += stockTotalValue;
+        dispatch(purchaseStock(stockName, share, transactionBehavior, accessToken, balance, 'settled'));
+      } else if (transactionBehavior === 'buy') {
+        if (balance >= stockTotalValue) {
+          // eslint-disable-next-line no-const-assign
+          balance -= stockTotalValue;
+          dispatch(stockName, share, transactionBehavior, accessToken, balance, 'settled');
+        } else {
+          dispatch(stockName, share, transactionBehavior, accessToken, balance, 'failed');
+        }
+      }
+      setModalVisible(false);
+      setShares('');
+    }
   };
 
   return (
