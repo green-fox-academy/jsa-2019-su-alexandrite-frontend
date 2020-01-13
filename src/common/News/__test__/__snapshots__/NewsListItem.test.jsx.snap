@@ -89,7 +89,7 @@ exports[`<NewsListItem /> Should render properly and match the snapshot 1`] = `
             }
           }
         >
-          1/10/2020, 12:46:05 PM
+          2020-1-10 12:46:05
         </Text>
         <Text
           style={
@@ -194,7 +194,7 @@ exports[`<NewsListItem /> Should render properly and match the snapshot when ima
             }
           }
         >
-          1/10/2020, 12:46:05 PM
+          2020-1-10 12:46:05
         </Text>
         <Text
           style={
