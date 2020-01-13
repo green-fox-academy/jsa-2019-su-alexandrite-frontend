@@ -17,16 +17,14 @@ const Allocation = () => {
   } = useSelector((state) => state.investments);
   return (
     <Card title="Allocation" style={{ ...styles.pieChartContainer, marginTop: 15 }}>
-      <Row>
-        {!error ? (
-          <>
-            {isLoading && <ActivityIndicator size="large" />}
-            {!isLoading && !error && allocation && (
-              <AllocationPieChart data={allocation} />
-            )}
-          </>
-        ) : <ErrorMessage message={error.message} />}
-      </Row>
+      {!error ? (
+        <>
+          {isLoading && <ActivityIndicator size="large" />}
+          {!isLoading && !error && allocation && (
+            <AllocationPieChart data={allocation} />
+          )}
+        </>
+      ) : <ErrorMessage message={error.message} />}
     </Card>
   );
 };

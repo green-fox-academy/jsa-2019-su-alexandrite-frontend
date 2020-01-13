@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import Column from '../common/Column';
 import AllocationPieChartLegend from './AllocationPieChartLegend';
 import styles from './styles';
+import Row from '../common/Row';
 
 const AllocationPieChart = ({ data }) => (
-  <>
-    <Column style={{ flex: 3 }}>
+  <Row>
+    <Column flex={3}>
       <PieChart
         data={data}
         style={styles.pieChart}
@@ -18,12 +19,12 @@ const AllocationPieChart = ({ data }) => (
         sort={(_, b) => (b.key === 'Other' ? 1 : 0)}
       />
     </Column>
-    <Column style={{ flex: 2 }}>
+    <Column flex={2} style={{ justifyContent: 'space-around' }}>
       {data.map(({ key, svg: { fill: color } }) => (
         <AllocationPieChartLegend key={key} label={key} color={color} />
       ))}
     </Column>
-  </>
+  </Row>
 );
 
 AllocationPieChart.propTypes = {
