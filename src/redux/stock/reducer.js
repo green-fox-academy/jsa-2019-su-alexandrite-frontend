@@ -6,6 +6,8 @@ import {
   FETCH_HISTORY_CHART_DATA_SUCCESS,
   FETCH_HISTORY_CHART_DATA_FAIL,
   RESET_STOCK_INFO,
+  PURCHASE_STOCK_SUCCESS,
+  PURCHASE_STOCK_FAIL,
 } from './actionType';
 
 const initState = {
@@ -56,6 +58,14 @@ export default (state = initState, action) => {
       };
     case RESET_STOCK_INFO:
       return initState;
+    case PURCHASE_STOCK_SUCCESS:
+      return {
+        ...state,
+      };
+    case PURCHASE_STOCK_FAIL:
+      return {
+        ...state,
+      };
     default:
       return state;
   }

@@ -2,8 +2,6 @@ import {
   FETCH_PORTFOLIO_DETAILS_START,
   FETCH_PORTFOLIO_DETAILS_FAIL,
   FETCH_PORTFOLIO_DETAILS_SUCCESS,
-  PURCHASE_STOCK_SUCCESS,
-  PURCHASE_STOCK_FAIL,
 } from './actionType';
 
 const initState = {
@@ -32,16 +30,6 @@ export default (state = initState, action) => {
         isLoading: false,
         ...action.payload,
         error: '',
-      };
-    case PURCHASE_STOCK_SUCCESS:
-      return {
-        ...state,
-        totalValue: action.payload, // need to multiply by stock price
-      };
-    case PURCHASE_STOCK_FAIL:
-      return {
-        ...state,
-        error: action.payload,
       };
     default:
       return state;

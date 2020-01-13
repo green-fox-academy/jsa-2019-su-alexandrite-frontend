@@ -7,9 +7,9 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Popup from '../common/Popup';
-import styles from './styles';
+import styles from '../Investments/styles';
 import TransactionSelector from './TransactionSelector';
-import { purchaseStock } from '../redux/investment/actionCreator';
+import { purchaseStock } from '../redux/stock/actionCreator';
 
 const TransactionPopup = () => {
   const [popupVisible, setModalVisible] = useState(false);
