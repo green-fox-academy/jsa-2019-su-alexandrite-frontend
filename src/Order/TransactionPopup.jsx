@@ -17,7 +17,7 @@ const TransactionPopup = () => {
   const [transactionBehavior, setTransactionBehavior] = useState('sell');
   const { accessToken } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.orders);
-  const stockName = 'AAPL';
+  const stockName = 'MSFT';
   const dispatch = useDispatch();
 
   const onCloseAddModal = () => {
