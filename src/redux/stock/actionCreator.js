@@ -1,4 +1,4 @@
-import { SERVER_URL, API_URL, API_KEY } from 'react-native-dotenv';
+import { API_URL, API_KEY } from 'react-native-dotenv';
 
 import {
   FETCH_STOCK_DETAILS_START,
@@ -11,8 +11,6 @@ import {
   PLACE_ORDER_START,
   PLACE_ORDER_FAIL,
   PLACE_ORDER_SUCCESS,
-  PURCHASE_STOCK_SUCCESS,
-  PURCHASE_STOCK_FAIL,
 } from './actionType';
 
 import chartHelper from '../../common/chartHelper';
@@ -138,47 +136,4 @@ export const placeOrder = (symbol, shares, type) => async (dispatch, getState) =
     })
     .then((res) => dispatch(placeOrderSuccess(res)))
     .catch((err) => dispatch(placeOrderFail(err)));
-};
-
-const purchaseStockSuccess = (payload) => ({
-  type: PURCHASE_STOCK_SUCCESS,
-  shares: payload,
-});
-
-const purchaseStockFail = (payload) => ({
-  type: PURCHASE_STOCK_FAIL,
-  error: payload,
-});
-
-export const purchaseStock = (symbol, shares, type, accessToken, balance, status) => (dispatch) => {
-  const orderUrl = `${SERVER_URL}/order`;
-  fetch(orderUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
-    body: JSON.stringify(
-      {
-        symbol,
-        shares,
-        type,
-        status,
-        balance,
-      },
-    ),
-  })
-    .then((response) => {
-      if (response.status !== 201) {
-        switch (response.status) {
-          case 401:
-            throw new Error('Sorry, we cannot validate your identity. Please login and try again.');
-          default:
-            throw new Error('Oops! there\'s something wrong with our app.');
-        }
-      }
-      return response.json();
-    })
-    .then((response) => dispatch(purchaseStockSuccess(response.shares)))
-    .catch((error) => dispatch(purchaseStockFail(error.message)));
 };

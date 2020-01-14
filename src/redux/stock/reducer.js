@@ -6,8 +6,6 @@ import {
   FETCH_HISTORY_CHART_DATA_SUCCESS,
   FETCH_HISTORY_CHART_DATA_FAIL,
   RESET_STOCK_INFO,
-  PURCHASE_STOCK_SUCCESS,
-  PURCHASE_STOCK_FAIL,
 } from './actionType';
 
 const initState = {
@@ -17,8 +15,6 @@ const initState = {
   isLoadingHistoricalChartData: true,
   historicalData: undefined,
   historicalDataError: undefined,
-  error: '',
-  shares: 0,
 };
 
 export default (state = initState, action) => {
@@ -60,16 +56,6 @@ export default (state = initState, action) => {
       };
     case RESET_STOCK_INFO:
       return initState;
-    case PURCHASE_STOCK_SUCCESS:
-      return {
-        ...state,
-        shares: action.payload,
-      };
-    case PURCHASE_STOCK_FAIL:
-      return {
-        ...state,
-        error: action.payload,
-      };
     default:
       return state;
   }

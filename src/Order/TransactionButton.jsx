@@ -4,7 +4,7 @@ import {
   Text,
 } from 'react-native';
 import propTypes from 'prop-types';
-import styles from './style';
+import styles from './styles';
 
 const TransactionButton = ({ transactionBehavior, active, onPress }) => (
   <TouchableHighlight

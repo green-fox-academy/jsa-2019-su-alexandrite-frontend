@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import propTypes from 'prop-types';
 import TransactionButton from './TransactionButton';
-import styles from './style';
+import styles from './styles';
 
 const TransactionSelector = ({ selected, onSelect }) => {
   const behaviros = ['sell', 'buy'];

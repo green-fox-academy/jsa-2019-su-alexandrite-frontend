@@ -9,16 +9,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import Popup from '../common/Popup';
 import styles from '../Investments/styles';
 import TransactionSelector from './TransactionSelector';
-import { purchaseStock } from '../redux/stock/actionCreator';
+import purchaseStock from '../redux/order/actionCreator';
 
 const TransactionPopup = () => {
   const [popupVisible, setModalVisible] = useState(false);
-  const [shares, setShares] = useState('');
+  const [shares, setShares] = useState(0);
   const [transactionBehavior, setTransactionBehavior] = useState('sell');
   const { accessToken } = useSelector((state) => state.user);
-  const { price } = useSelector((state) => state.investments);
-  const { balance } = useSelector((state) => state.user);
-  const stockName = 'MSFT';
+  const { error } = useSelector((state) => state.orders);
+  const stockName = 'AAPL';
   const dispatch = useDispatch();
 
   const onCloseAddModal = () => {
@@ -29,20 +28,7 @@ const TransactionPopup = () => {
   const onConfirmAddModal = () => {
     const share = parseInt(shares, 10);
     if (shares) {
-      const stockTotalValue = share * price;
-      if (transactionBehavior === 'sell') {
-        // eslint-disable-next-line no-const-assign
-        balance += stockTotalValue;
-        dispatch(purchaseStock(stockName, share, transactionBehavior, accessToken, balance, 'settled'));
-      } else if (transactionBehavior === 'buy') {
-        if (balance >= stockTotalValue) {
-          // eslint-disable-next-line no-const-assign
-          balance -= stockTotalValue;
-          dispatch(stockName, share, transactionBehavior, accessToken, balance, 'settled');
-        } else {
-          dispatch(stockName, share, transactionBehavior, accessToken, balance, 'failed');
-        }
-      }
+      dispatch(purchaseStock(stockName, share, transactionBehavior, accessToken));
       setModalVisible(false);
       setShares('');
     }
@@ -60,6 +46,7 @@ const TransactionPopup = () => {
       >
         <TextInput style={styles.sharesField} placeholder="shares" onChangeText={(text) => setShares(text)} />
         <TransactionSelector selected={transactionBehavior} onSelect={setTransactionBehavior} />
+        {error ? (<View><Text>{error}</Text></View>) : null}
       </Popup>
       <TouchableHighlight
         onPress={() => setModalVisible(true)}
