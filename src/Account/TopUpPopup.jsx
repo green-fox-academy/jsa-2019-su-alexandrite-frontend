@@ -22,7 +22,7 @@ const WatchlistPickerPopup = ({ visible, onClose }) => {
       onCancel={onClose}
       confirmButtonText="OK"
       onConfirm={() => {
-        dispatch(addToBalance(topUpInput));
+        dispatch(addToBalance(parseInt(topUpInput, 10)));
         return onClose();
       }}
     >

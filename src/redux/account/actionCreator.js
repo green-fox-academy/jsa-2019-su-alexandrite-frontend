@@ -90,7 +90,7 @@ export const addToBalance = (topUp) => (dispatch, getState) => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
     }),
-    body: JSON.stringify({ topUp }),
+    body: JSON.stringify({ amount: topUp }),
   })
     .then((res) => {
       if (!res.ok) {
