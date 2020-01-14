@@ -4,7 +4,7 @@ import {
   FETCH_PORTFOLIO_DETAILS_FAIL,
   FETCH_PORTFOLIO_DETAILS_SUCCESS,
 } from './actionType';
-import { moneyAmount2String } from '../../common/numbers';
+import { round, moneyAmount2String } from '../../common/numbers';
 
 export const fetchPortfolioDetailsStart = () => ({
   type: FETCH_PORTFOLIO_DETAILS_START,
@@ -59,7 +59,7 @@ export const calculatePortfolioValue = () => (dispatch, getState) => {
                 logo: res[symbol].logo.url,
                 company: res[symbol].company.companyName,
                 description: res[symbol].company.description,
-                marketValue: shares * res[symbol].price,
+                marketValue: round(shares * res[symbol].price),
               };
               return shares * res[symbol].price;
             })

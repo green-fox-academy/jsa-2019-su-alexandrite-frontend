@@ -57,10 +57,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   companyLogo: {
-    width: 48,
-    height: 48,
+    width: 50,
+    height: 50,
     paddingVertical: 15,
     paddingHorizontal: 15,
+    backgroundColor: '#ccc',
   },
   companyInformation: {
     paddingLeft: 20,

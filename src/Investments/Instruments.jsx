@@ -11,6 +11,7 @@ import { useNavigation } from 'react-navigation-hooks';
 import Card from '../common/Card';
 import Column from '../common/Column';
 import styles from './styles';
+import { round } from '../common/numbers';
 
 const Instruments = () => {
   const { push } = useNavigation();
@@ -27,15 +28,24 @@ const Instruments = () => {
         {isLoading && <ActivityIndicator size="large" style={styles.loading} color="#fff" />}
         {!isLoading && !error && stocks && (
           stocks.map(({ shares, symbol, entryPrice }) => (
-            <Card title="Instruments" style={{ ...styles.instrumentContainer, marginTop: 15 }} key={symbol}>
+            <Card
+              title="Instruments"
+              style={{ ...styles.instrumentContainer, marginTop: 15 }}
+              key={symbol}
+            >
               <View style={styles.companyTitle}>
                 <Image
                   style={styles.companyLogo}
-                  source={{ uri: `${instruments.logo}` }}
+                  source={{ uri: `${instruments[symbol].logo}` }}
                 />
                 <Column style={styles.companyInformation}>
-                  <Text style={styles.companyName}>{instruments.company}</Text>
-                  <Text style={styles.companyDescription}>{instruments.description}</Text>
+                  <Text style={styles.companyName}>{instruments[symbol].company}</Text>
+                  <Text
+                    style={styles.companyDescription}
+                    numberOfLines={2}
+                  >
+                    {instruments[symbol].description}
+                  </Text>
                 </Column>
               </View>
               <View style={styles.details}>
@@ -44,17 +54,19 @@ const Instruments = () => {
                   <Text style={styles.detailLabel}>Positions</Text>
                 </Column>
                 <Column style={styles.detailsColumn}>
-                  <Text style={styles.detailNumber}>{instruments.marketValue}</Text>
+                  <Text style={styles.detailNumber}>{instruments[symbol].marketValue}</Text>
                   <Text style={styles.detailLabel}>Market Value</Text>
                 </Column>
                 <Column style={styles.detailsColumn}>
                   <Text style={styles.detailNumber}>
-                    {(instruments.marketValue - entryPrice) / entryPrice}
+                    {round((instruments[symbol].marketValue - entryPrice) / entryPrice)}
                   </Text>
                   <Text style={styles.detailLabel}>Unrlzd P/L%</Text>
                 </Column>
                 <Column style={styles.detailsColumn}>
-                  <Text style={styles.detailNumber}>{instruments.marketValue - entryPrice}</Text>
+                  <Text style={styles.detailNumber}>
+                    {round(instruments[symbol].marketValue - entryPrice)}
+                  </Text>
                   <Text style={styles.detailLabel}>Unrlzd P/L</Text>
                 </Column>
               </View>
