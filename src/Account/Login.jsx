@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
 import { FontAwesome5 } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import loginUser from '../redux/account/actionCreator';
+import { loginUser } from '../redux/account/actionCreator';
 import styles from './styles';
 import Row from '../common/Row';
 import Column from '../common/Column';

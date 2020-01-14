@@ -26,7 +26,7 @@ export const loginUserFail = (payload) => ({
   payload,
 });
 
-const loginUser = (username, password) => (dispatch) => {
+export const loginUser = (username, password) => (dispatch) => {
   dispatch(loginUserStart());
   if (username === '') {
     const error = 'username is required';
@@ -134,5 +134,3 @@ export const fetchUserTransactions = () => async (dispatch, getState) => {
 export const logOut = () => ({
   type: LOGOUT_SUCCESS,
 });
-
-export default loginUser;
