@@ -66,9 +66,6 @@ const PerformanceChart = ({ range, symbol, onPress }) => {
 };
 
 PerformanceChart.propTypes = {
-  data: PropTypes.shape({
-    [PropTypes.string]: PropTypes.number,
-  }).isRequired,
   range: PropTypes.string.isRequired,
   symbol: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
