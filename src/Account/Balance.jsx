@@ -8,8 +8,7 @@ import Row from '../common/Row';
 import Card from '../common/Card';
 import Column from '../common/Column';
 import { moneyAmount2String } from '../common/numbers';
-import Popup from '../common/Popup';
-import { TextInput } from 'react-native-gesture-handler';
+import TopUpPopup from './TopUpPopup';
 
 const Balance = () => {
   const {
@@ -48,12 +47,10 @@ const Balance = () => {
               TOP-UP
             </Text>
           </TouchableHighlight>
-          <Popup
+          <TopUpPopup
             visible={topUpVisible}
-            onCancel={() => setTopUpVisible(false)}
-          >
-            <TextInput />
-          </Popup>
+            onClose={() => setTopUpVisible(false)}
+          />
         </Row>
       </Column>
     </Card>

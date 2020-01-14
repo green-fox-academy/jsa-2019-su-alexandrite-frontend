@@ -3,11 +3,9 @@ import { View, Text, Button, ScrollView } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
 import { logOut, fetchUserProfile } from '../redux/account/actionCreator';
-import styles from './styles';
 import commonStyles from '../common/styles';
 import Profile from './Profile';
 import Balance from './Balance';
-import Transactions from '../Transactions';
 import MenuItem from './MenuItem';
 
 const Account = () => {

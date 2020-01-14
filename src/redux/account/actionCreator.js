@@ -10,7 +10,11 @@ import {
   FETCH_USER_TRANSACTIONS_START,
   FETCH_USER_TRANSACTIONS_FAIL,
   FETCH_USER_TRANSACTIONS_SUCCESS,
+  ADD_TO_BALANCE_START,
+  ADD_TO_BALANCE_SUCCESS,
+  ADD_TO_BALANCE_FAIL,
 } from './actionType';
+import { moneyAmount2String } from '../../common/numbers';
 
 const loginUserStart = () => ({
   type: LOGIN_USER_START,
@@ -134,3 +138,46 @@ export const fetchUserTransactions = () => async (dispatch, getState) => {
 export const logOut = () => ({
   type: LOGOUT_SUCCESS,
 });
+
+export const addToBalanceStart = () => ({
+  type: ADD_TO_BALANCE_START,
+});
+
+export const addToBalanceSuccess = (payload) => ({
+  type: ADD_TO_BALANCE_SUCCESS,
+  payload,
+});
+
+export const addToBalanceFail = (payload) => ({
+  type: ADD_TO_BALANCE_FAIL,
+  payload,
+});
+
+export const addToBalance = (topUp) => (dispatch, getState) => {
+  const serverUrl = new URL(`${SERVER_URL}/account/topup`);
+  const { accessToken } = getState().user;
+  dispatch(addToBalanceStart());
+  // if (typeof topUp !== 'number') {
+  //   const error = 'please input a number';
+  //   dispatch(addToBalanceFail(error));
+  // }
+  fetch(serverUrl, {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    }),
+    body: JSON.stringify({ amount: topUp }),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Oops, there\'s something wrong with our app.');
+      }
+      return res.json();
+    })
+    .then((res) => {
+      const result = moneyAmount2String(res.balance);
+      dispatch(addToBalanceSuccess(result));
+    })
+    .catch((err) => dispatch(addToBalanceFail(err)));
+};

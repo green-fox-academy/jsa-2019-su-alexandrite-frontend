@@ -9,6 +9,9 @@ import {
   FETCH_USER_TRANSACTIONS_START,
   FETCH_USER_TRANSACTIONS_SUCCESS,
   FETCH_USER_TRANSACTIONS_FAIL,
+  ADD_TO_BALANCE_START,
+  ADD_TO_BALANCE_SUCCESS,
+  ADD_TO_BALANCE_FAIL,
 } from './actionType';
 
 const initialState = {
@@ -22,6 +25,8 @@ const initialState = {
   isLoadingTransactions: false,
   transactions: [],
   transactionsError: null,
+  topUpIsLoading: false,
+  topUpError: '',
 };
 
 export default (state = initialState, action) => {
@@ -84,6 +89,25 @@ export default (state = initialState, action) => {
         accessToken: null,
         isLoggingIn: false,
         error: null,
+      };
+    case ADD_TO_BALANCE_START:
+      return {
+        ...state,
+        topUpIsLoading: true,
+        topUpError: '',
+      };
+    case ADD_TO_BALANCE_FAIL:
+      return {
+        ...state,
+        topUpIsLoading: false,
+        topUpError: action.payload,
+      };
+    case ADD_TO_BALANCE_SUCCESS:
+      return {
+        ...state,
+        topUpIsLoading: false,
+        balance: action.payload,
+        topUpError: '',
       };
     default:
       return state;
