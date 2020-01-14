@@ -33,7 +33,7 @@ const PerformanceChart = ({ range, symbol, onPress }) => {
     dispatch(fetchHistoryChartData(symbol, range));
   }, [range]);
 
-  const isIncreasing = data ? (data[data.length - 1] >= data[0]) : false;
+  const isIncreasing = data.length ? (data[data.length - 1].value >= data[0].value) : false;
 
   return (
     <>

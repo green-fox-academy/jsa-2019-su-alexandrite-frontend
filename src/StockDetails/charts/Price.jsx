@@ -18,14 +18,14 @@ const Price = ({ data }) => {
 
   if (error) {
     return (
-      <Row>
+      <Row style={{ marginTop: 30 }}>
         <ErrorMessage error={error.message} />
       </Row>
     );
   }
   if (isLoading || !data) {
     return (
-      <Row style={{ justifyContent: 'center' }}>
+      <Row style={{ justifyContent: 'center', marginTop: 30 }}>
         <Column>
           <ActivityIndicator size="large" />
         </Column>
@@ -33,9 +33,8 @@ const Price = ({ data }) => {
     );
   }
   return (
-    <Row style={{ justifyContent: 'center' }}>
+    <Row style={{ justifyContent: 'center', marginTop: 30 }}>
       <Column>
-
         <Text style={styles.price}>
           {moneyAmount2String(data.value)}
         </Text>
