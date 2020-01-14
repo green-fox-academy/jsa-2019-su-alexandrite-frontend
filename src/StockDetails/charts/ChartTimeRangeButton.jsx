@@ -22,7 +22,7 @@ const ChartTimeRangeButton = ({ range, active, onPress }) => (
         active && style.perfChartButtonTextActive,
       ]}
     >
-      {range}
+      {range.toUpperCase()}
     </Text>
   </TouchableHighlight>
 );

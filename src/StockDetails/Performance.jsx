@@ -1,29 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import {
-  ActivityIndicator,
-} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchHistoryChartData, resetStockInfo } from '../redux/stock/actionCreator';
-import style from './style';
+import { resetStockInfo } from '../redux/stock/actionCreator';
 import Card from '../common/Card';
-import ErrorMessage from '../common/ErrorMessage';
 import Row from '../common/Row';
 import PerformanceChart from './charts/PerformanceChart';
+import Price from './charts/Price';
 import TimeRangeSelector from './charts/TimeRangeSelector';
 
 const Performance = ({ symbol }) => {
   const dispatch = useDispatch();
   const [timeRange, setTimeRange] = useState('1y');
+  const [selectedData, setSelectedData] = useState({});
   const {
     historicalData: data,
-    isLoadingHistoricalChartData: isLoading,
-    historicalDataError: error,
   } = useSelector((state) => state.stock);
 
   useEffect(() => {
-    dispatch(fetchHistoryChartData(symbol, timeRange));
-  }, [timeRange]);
+    if (data.length) setSelectedData(data[data.length - 1]);
+  }, [data]);
 
   useEffect(
     () => () => dispatch(resetStockInfo()),
@@ -31,19 +26,16 @@ const Performance = ({ symbol }) => {
   );
 
   return (
-    <Card title="Performance">
-      {!error ? (
-        <Row style={style.perfChartContainer}>
-          {isLoading && <ActivityIndicator size="large" />}
-          {!isLoading && !error && (
-            <PerformanceChart
-              data={data}
-              range={timeRange}
-            />
-          )}
-        </Row>
-      ) : <ErrorMessage message={error.message} />}
+    <Card style={{ borderBottomWidth: 0 }}>
+      <Row style={{ justifyContent: 'center', minHeight: 250 }}>
+        <PerformanceChart
+          symbol={symbol}
+          range={timeRange}
+          onPress={setSelectedData}
+        />
+      </Row>
       <TimeRangeSelector selected={timeRange} onSelect={setTimeRange} />
+      <Price data={selectedData} />
     </Card>
   );
 };

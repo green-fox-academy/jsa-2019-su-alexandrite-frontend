@@ -1,45 +1,67 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { AreaChart } from 'react-native-svg-charts';
 import {
-  Dimensions,
-} from 'react-native';
-import { LineChart } from 'react-native-chart-kit';
+  Circle,
+} from 'react-native-svg';
+import * as shape from 'd3-shape';
 import PropTypes from 'prop-types';
-import chartHelper from '../../common/chartHelper';
+import { fetchHistoryChartData } from '../../redux/stock/actionCreator';
 
-const chartConfig = {
-  propsForDots: {
-    r: '1',
-  },
-  backgroundColor: '#fff',
-  backgroundGradientFrom: '#fff',
-  backgroundGradientTo: '#fff',
-  decimalPlaces: 0,
-  labelColor: () => '#666',
-};
+const Decorators = ({
+  x, y, data, onPress, isIncreasing,
+}) => data.map((value, index) => (
+  <Circle
+    key={value.date}
+    cx={x(index)}
+    cy={y(value.value)}
+    r={4}
+    stroke={isIncreasing ? '#7DE892' : '#E87D7D'}
+    fill="white"
+    onPress={() => onPress(value)}
+  />
+));
 
-const PerformanceChart = ({ data, range }) => {
-  const values = Object.values(data);
-  const keys = Object.keys(data);
-  const firstOccurrence = chartHelper.firstOccurrence(keys, range);
+const PerformanceChart = ({ range, symbol, onPress }) => {
+  const dispatch = useDispatch();
+  const {
+    historicalData: data,
+  } = useSelector((state) => state.stock);
+
+  useEffect(() => {
+    dispatch(fetchHistoryChartData(symbol, range));
+  }, [range]);
+
+  const isIncreasing = data ? (data[data.length - 1] >= data[0]) : false;
+
   return (
-    <LineChart
-      data={{
-        labels: [...Object.keys(data).keys()], // indexes instead of raw labels
-        datasets: [{ data: Object.values(data) }],
-      }}
-      width={Dimensions.get('window').width - 60}
-      height={200}
-      formatXLabel={(val) => chartHelper.formatXLabel(val, range, keys[val], firstOccurrence)}
-      yAxisLabel="$"
-      yLabelsOffset={10}
-      chartConfig={{
-        ...chartConfig,
-        color: (opacity = 1) => (
-          (values[0] > values[values.length - 1])
-            ? `rgba(255, 0, 0, ${opacity})`
-            : `rgba(94, 206, 177, ${opacity})`),
-      }}
-    />
+    <>
+      <AreaChart
+        animate
+        yAccessor={({ item }) => item.value}
+        data={data}
+        style={{
+          flex: 1,
+          height: 250,
+          borderBottomColor: '#eee',
+          borderBottomWidth: 1,
+        }}
+        contentInset={{
+          top: 10,
+          bottom: 30,
+          left: 6,
+          right: 6,
+        }}
+        numberOfTicks={data.length}
+        curve={shape.curveNatural}
+        svg={{
+          fill: isIncreasing ? '#7DE89233' : '#FFB5B533', stroke: isIncreasing ? '#7DE892' : '#E87D7D', strokeWidth: 3,
+        }}
+      >
+        <Decorators onPress={onPress} isIncreasing={isIncreasing} />
+      </AreaChart>
+    </>
   );
 };
 
@@ -48,6 +70,8 @@ PerformanceChart.propTypes = {
     [PropTypes.string]: PropTypes.number,
   }).isRequired,
   range: PropTypes.string.isRequired,
+  symbol: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default PerformanceChart;

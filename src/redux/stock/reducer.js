@@ -13,7 +13,7 @@ const initState = {
   stockStatsData: undefined,
   stockStatsDataError: undefined,
   isLoadingHistoricalChartData: true,
-  historicalData: undefined,
+  historicalData: [],
   historicalDataError: undefined,
 };
 

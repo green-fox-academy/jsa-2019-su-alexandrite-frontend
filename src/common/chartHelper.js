@@ -39,16 +39,19 @@ const processMonthlyData = (data) => {
     };
   }, {});
 
-  return Object.keys(yearMonth2Data).reduce((result, key) => ({
+  return Object.keys(yearMonth2Data).reduce((result, key) => ([
     ...result,
-    [key]: yearMonth2Data[key].reduce((a, b) => a + b) / yearMonth2Data[key].length,
-  }), {});
+    {
+      date: key,
+      value: yearMonth2Data[key].reduce((a, b) => a + b) / yearMonth2Data[key].length,
+    },
+  ]), []);
 };
 
-const processDailyData = (data) => data.reduce((result, curr) => ({
-  ...result,
-  [curr.date]: curr.close,
-}), {});
+const processDailyData = (data) => data.map((day) => ({
+  date: day.date,
+  value: day.close,
+}));
 
 const processInvestmentAllocationData = (stocks, prices) => {
   const sector2value = stocks

@@ -1,68 +1,52 @@
 import { StyleSheet } from 'react-native';
-import { width } from '../common/styles';
 
 export default StyleSheet.create({
-  detailsContentContainer: {
-    borderRadius: 6,
-    paddingHorizontal: 8,
-    paddingVertical: 15,
-    backgroundColor: '#f2f3fb',
-    flexDirection: 'row',
-    width: width - 60,
-    justifyContent: 'center',
-    minHeight: 200,
-  },
   detailsContentRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  detailsContentCell: {
+    alignItems: 'center',
+    marginBottom: 15,
+    width: '33%',
+  },
   detailsContentKey: {
-    fontSize: 11,
-    lineHeight: 30,
-    letterSpacing: 0.21,
+    fontSize: 12,
+    lineHeight: 18,
     color: '#7e92a3',
   },
   detailsContentVal: {
-    fontSize: 11,
-    lineHeight: 30,
-    letterSpacing: 0.21,
-    color: '#566ed3',
+    fontSize: 18,
+    lineHeight: 25,
+    color: '#333',
     fontWeight: 'bold',
-    textAlign: 'right',
-  },
-  perfChartContainer: {
-    width: width - 60,
-    minHeight: 200,
-    justifyContent: 'center',
+    textAlign: 'center',
   },
   perfChartTimeRangeSelector: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#f2f3fb',
-    marginTop: 10,
     borderRadius: 20,
-    padding: 5,
+    paddingTop: 15,
   },
   perfChartButton: {
     paddingHorizontal: 20,
     paddingVertical: 5,
     borderRadius: 20,
-  },
-  perfChartButtonActive: {
-    backgroundColor: '#566ed3',
-    elevation: 2,
-    shadowColor: '#566ed3',
-    shadowRadius: 2,
-    shadowOpacity: 0.8,
-    shadowOffset: {
-      height: 2,
-    },
+    flexDirection: 'row',
   },
   perfChartButtonText: {
-    color: '#666',
+    color: '#333',
+    opacity: 0.2,
     fontWeight: 'bold',
   },
   perfChartButtonTextActive: {
-    color: '#fff',
+    opacity: 1,
+  },
+  price: { fontSize: 36, lineHeight: 46, fontWeight: 'bold' },
+  priceDate: {
+    fontSize: 12,
+    lineHeight: 18,
+    color: '#999',
+    textAlign: 'center',
   },
 });

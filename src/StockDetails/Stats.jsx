@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import {
-  View,
   Text,
   ActivityIndicator,
 } from 'react-native';
@@ -12,12 +11,13 @@ import Card from '../common/Card';
 import Column from '../common/Column';
 import ErrorMessage from '../common/ErrorMessage';
 import { decimal2Percentage, processLargeNumbers } from '../common/numbers';
+import Row from '../common/Row';
 
 const DetailsRow = (key, val) => (
-  <View style={style.detailsContentRow}>
-    <Text style={style.detailsContentKey}>{`${key}:`}</Text>
-    <Text style={style.detailsContentVal}>{`${val}`}</Text>
-  </View>
+  <Column style={style.detailsContentCell}>
+    <Text style={style.detailsContentKey}>{`${key}`}</Text>
+    <Text style={style.detailsContentVal}>{`${val || 'N/A'}`}</Text>
+  </Column>
 );
 
 const Stats = ({ symbol }) => {
@@ -33,34 +33,31 @@ const Stats = ({ symbol }) => {
   }, []);
 
   return (
-    <Card title="Details">
+    <Card>
+
       {!error ? (
-        <View style={style.detailsContentContainer}>
+        <Row style={{ flexWrap: 'wrap' }}>
           {isLoading && <ActivityIndicator size="large" />}
           {!isLoading && details && (
             <>
-              <Column>
-                {DetailsRow('52 WK Low', details.week52low)}
-                {DetailsRow('52 WK High', details.week52high)}
-                {DetailsRow('P/E', details.peRatio)}
-                {DetailsRow('EPS', details.ttmEPS)}
-                {DetailsRow('DIV. Yield', `${decimal2Percentage(details.dividendYield)}%`)}
-                {DetailsRow('Payout Ratio', 'N/A')}
-                {DetailsRow('Div...Date', details.nextDividendDate)}
-              </Column>
-              <Column style={{ marginLeft: 25 }}>
-                {DetailsRow('Total Cash', processLargeNumbers(details.totalCash))}
-                {DetailsRow('Total Cash/Share', 'N/A')}
-                {DetailsRow('Total Debt', processLargeNumbers(details.currentDebt))}
-                {DetailsRow('Operating Cash F', 'N/A')}
-                {DetailsRow('Free Cash F', 'N/A')}
-                {DetailsRow('Revenue', processLargeNumbers(details.revenue))}
-                {DetailsRow('Rev/Share', details.revenuePerShare)}
-                {DetailsRow('EBITDA', processLargeNumbers(details.EBITDA))}
-              </Column>
+              {DetailsRow('52 WK Low', details.week52low)}
+              {DetailsRow('52 WK High', details.week52high)}
+              {DetailsRow('P/E', details.peRatio)}
+              {DetailsRow('EPS', details.ttmEPS)}
+              {DetailsRow('DIV. Yield', `${decimal2Percentage(details.dividendYield)}%`)}
+              {DetailsRow('Payout Ratio', 'N/A')}
+              {DetailsRow('Div...Date', details.nextDividendDate)}
+              {DetailsRow('Total Cash', processLargeNumbers(details.totalCash))}
+              {DetailsRow('Total Cash/Share', 'N/A')}
+              {DetailsRow('Total Debt', processLargeNumbers(details.currentDebt))}
+              {DetailsRow('Operating Cash F', 'N/A')}
+              {DetailsRow('Free Cash F', 'N/A')}
+              {DetailsRow('Revenue', processLargeNumbers(details.revenue))}
+              {DetailsRow('Rev/Share', details.revenuePerShare)}
+              {DetailsRow('EBITDA', processLargeNumbers(details.EBITDA))}
             </>
           )}
-        </View>
+        </Row>
       ) : <ErrorMessage message={error.message} />}
     </Card>
   );
