@@ -7,6 +7,7 @@ import {
 const initState = {
   isLoading: false,
   totalValue: 0,
+  instruments: {},
   error: '',
 };
 

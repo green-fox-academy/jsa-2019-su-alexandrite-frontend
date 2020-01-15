@@ -4,8 +4,8 @@ import {
   FETCH_PORTFOLIO_DETAILS_FAIL,
   FETCH_PORTFOLIO_DETAILS_SUCCESS,
 } from './actionType';
-import { moneyAmount2String } from '../../common/numbers';
 import chartHelper from '../../common/chartHelper';
+import { round, moneyAmount2String } from '../../common/numbers';
 
 export const fetchPortfolioDetailsStart = () => ({
   type: FETCH_PORTFOLIO_DETAILS_START,
@@ -43,7 +43,7 @@ export const calculatePortfolioValue = () => (dispatch, getState) => {
       const symbols = stocks.map((stock) => stock.symbol);
       const apiUrl = new URL(`${API_URL}/stock/market/batch`);
       apiUrl.searchParams.append('symbols', symbols);
-      apiUrl.searchParams.append('types', 'price');
+      apiUrl.searchParams.append('types', 'price,company,logo');
       apiUrl.searchParams.append('token', API_KEY);
       fetch(apiUrl)
         .then((res) => {
@@ -53,8 +53,17 @@ export const calculatePortfolioValue = () => (dispatch, getState) => {
           return res.json();
         })
         .then((res) => {
+          const instruments = {};
           let totalValue = stocks
-            .map(({ shares, symbol }) => shares * res[symbol].price)
+            .map(({ shares, symbol }) => {
+              instruments[symbol] = {
+                logo: res[symbol].logo.url,
+                company: res[symbol].company.companyName,
+                description: res[symbol].company.description,
+                marketValue: round(shares * res[symbol].price),
+              };
+              return shares * res[symbol].price;
+            })
             .reduce((a, b) => a + b);
           totalValue = moneyAmount2String((totalValue));
           const allocation = chartHelper.processInvestmentAllocationData(stocks, res);
@@ -62,6 +71,7 @@ export const calculatePortfolioValue = () => (dispatch, getState) => {
             totalValue,
             stocks,
             allocation,
+            instruments,
           }));
         });
     })
