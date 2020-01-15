@@ -18,7 +18,7 @@ import FAB from '../common/FAB';
 const EMPTY_LIST_MESSAGE = 'You don\'t have any watchlists right now.\nStart by adding one! ;)';
 
 const navigationOptions = {
-  title: 'Watchlists',
+  title: 'WATCHLISTS',
   headerRight: () => <SearchButton />,
 };
 

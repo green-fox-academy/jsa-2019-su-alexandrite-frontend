@@ -17,7 +17,7 @@ import Allocation from './Allocation';
 import Instruments from './Instruments';
 
 const navigationOptions = {
-  title: 'Investments',
+  title: 'INVESTMENTS',
   headerRight: () => <SearchButton />,
 };
 
@@ -44,7 +44,6 @@ const Investments = () => {
         <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
       }
     >
-      <Text>{`${isLoading}`}</Text>
       {accessToken
         ? (
           <>

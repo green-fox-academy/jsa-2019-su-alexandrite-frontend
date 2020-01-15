@@ -7,6 +7,7 @@ import {
 import { useSelector } from 'react-redux';
 import styles from './styles';
 import cardBackground from '../../assets/img/investment/card.png';
+import { moneyAmount2String } from '../common/numbers';
 
 export default function PortfolioValue() {
   const {
@@ -27,7 +28,7 @@ export default function PortfolioValue() {
           {!isLoading && !error && (
             <>
               <Text style={styles.totalText}>Total Investment</Text>
-              <Text style={styles.valueNumber}>{totalValue}</Text>
+              <Text style={styles.valueNumber}>{moneyAmount2String(totalValue)}</Text>
             </>
           )}
         </>

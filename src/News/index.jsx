@@ -11,8 +11,12 @@ const News = () => {
   useEffect(() => {
     dispatch(fetchInvestedStocks());
   }, []);
-  if (isLoading) return <Column flex={1} style={{ justifyContent: 'center' }}><ActivityIndicator /></Column>;
+  if (isLoading || !symbols.length) return <Column flex={1} style={{ justifyContent: 'center' }}><ActivityIndicator /></Column>;
   return <NewsList propQuery={symbols} />;
+};
+
+News.navigationOptions = {
+  title: 'NEWS',
 };
 
 export default News;

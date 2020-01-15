@@ -44,4 +44,8 @@ const Account = () => {
   );
 };
 
+Account.navigationOptions = {
+  title: 'ACCOUNT',
+};
+
 export default Account;
