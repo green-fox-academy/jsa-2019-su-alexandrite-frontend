@@ -2,9 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   sharesField: {
-    padding: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    flex: 1,
+    color: '#333',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 8,
+    // padding: 10,
   },
   TransactionSelector: {
     flexDirection: 'row',

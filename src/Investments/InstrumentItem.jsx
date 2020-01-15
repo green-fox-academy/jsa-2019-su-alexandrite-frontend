@@ -30,6 +30,7 @@ const InstrumentItem = ({
         <Image
           style={styles.companyLogo}
           source={{ uri: `${instrument.logo}` }}
+          resizeMode="contain"
         />
         <Column style={styles.companyInformation} flex={1}>
           <Text style={styles.companySymbol}>{symbol}</Text>

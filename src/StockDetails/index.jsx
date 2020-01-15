@@ -12,7 +12,6 @@ import addToWatchlistIcon from '../../assets/icons/header/add-to-wl.png';
 import WatchlistPickerPopup from './WatchlistPickerPopup';
 import Performance from './Performance';
 import NewsCard from '../common/News/NewsCard';
-import FAB from '../common/FAB';
 import Row from '../common/Row';
 import TransactionPopup from '../Order/TransactionPopup';
 
@@ -43,12 +42,8 @@ const StockDetails = () => {
           visible={A2WPopupVisible}
           onClose={() => setA2WPopupVisible(false)}
         />
-        <TransactionPopup />
       </ScrollView>
-      <FAB
-        onPress={() => { }}
-        iconName="exchange-alt"
-      />
+      <TransactionPopup symbol={symbol} />
     </View>
   );
 };

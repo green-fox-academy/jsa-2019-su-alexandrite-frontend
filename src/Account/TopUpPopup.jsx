@@ -68,7 +68,7 @@ const WatchlistPickerPopup = ({ visible, onClose }) => {
           </View>
         )}
       {error && <ErrorMessage message={error.message} />}
-      {topUpIsLoading && <ActivityIndicator size="large" style={styles.loading} color="#fff" />}
+      {topUpIsLoading && <ActivityIndicator size="large" style={styles.loading} />}
     </Popup>
   );
 };
