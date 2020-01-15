@@ -45,6 +45,7 @@ export default (query, page = 1, pageSize = 20) => {
 
   useEffect(() => {
     setIsLoading(true);
+    setError(null);
     const fetchData = async () => {
       try {
         const result = await fetchNews(query, page, pageSize);

@@ -13,7 +13,7 @@ export default StyleSheet.create({
   detailsContentKey: {
     fontSize: 12,
     lineHeight: 18,
-    color: '#7e92a3',
+    color: '#999',
   },
   detailsContentVal: {
     fontSize: 18,

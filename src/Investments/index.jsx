@@ -4,6 +4,7 @@ import {
   View,
   Text,
   Button,
+  RefreshControl,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
@@ -11,7 +12,7 @@ import commonStyles from '../common/styles';
 import SearchButton from '../common/HeaderSearchButton';
 import PortfolioValue from './PortfolioValue';
 import { calculatePortfolioValue } from '../redux/investment/actionCreator';
-import PortfolioNews from './PortfolioNews';
+// import PortfolioNews from './PortfolioNews';
 import Allocation from './Allocation';
 import Instruments from './Instruments';
 
@@ -22,8 +23,13 @@ const navigationOptions = {
 
 const Investments = () => {
   const { accessToken } = useSelector((state) => state.user);
+  const { isLoading } = useSelector((state) => state.investments);
   const dispatch = useDispatch();
   const { push } = useNavigation();
+
+  const onRefresh = React.useCallback(() => {
+    dispatch(calculatePortfolioValue());
+  });
 
   useEffect(() => {
     if (accessToken !== '') {
@@ -31,16 +37,20 @@ const Investments = () => {
     }
   }, [accessToken]);
 
-  const { alignItems, ...rest } = commonStyles.container;
   return (
-    <ScrollView style={rest} contentContainerStyle={{ alignItems }}>
+    <ScrollView
+      contentContainerStyle={commonStyles.container}
+      refreshControl={
+        <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
+      }
+    >
+      <Text>{`${isLoading}`}</Text>
       {accessToken
         ? (
           <>
             <PortfolioValue />
             <Allocation />
             <Instruments />
-            <PortfolioNews />
           </>
         )
         : (

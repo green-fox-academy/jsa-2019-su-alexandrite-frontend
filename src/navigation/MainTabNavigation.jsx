@@ -11,8 +11,14 @@ import Login from '../Account/Login';
 import StockDetails from '../StockDetails';
 import Search from '../Search';
 import NewsList from '../common/News/NewsList';
+import NewsScreen from '../News';
 import NewsWebView from '../common/News/NewsWebView';
 import Transactions from '../Transactions';
+
+const NewsStack = createStackNavigator({
+  NewsScreen,
+  NewsWebView,
+});
 
 const InvestmentsStack = createStackNavigator({
   Investments: {
@@ -52,6 +58,12 @@ const renderIcon = (name, color, solid = false) => (
 );
 
 const tabs = {
+  News: {
+    screen: NewsStack,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => renderIcon('newspaper', tintColor),
+    },
+  },
   Investments: {
     screen: InvestmentsStack,
     navigationOptions: {

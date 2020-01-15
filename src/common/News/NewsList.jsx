@@ -32,8 +32,8 @@ const ListFooter = ({ errorMessage, isLoading, pageNumber }) => {
   return null;
 };
 
-const NewsList = () => {
-  const query = useNavigationParam('query');
+const NewsList = ({ propQuery }) => {
+  const query = propQuery || useNavigationParam('query');
   const [pageNumber, setPageNumber] = useState(1);
   const { news, isLoading, error } = useFetchStockNews(query, pageNumber);
 
@@ -63,6 +63,18 @@ const NewsList = () => {
     />
   );
 };
+
+NewsList.propTypes = {
+  propQuery: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
+};
+
+NewsList.defaultProps = {
+  propQuery: undefined,
+};
+
 
 ListFooter.propTypes = {
   pageNumber: PropTypes.number.isRequired,

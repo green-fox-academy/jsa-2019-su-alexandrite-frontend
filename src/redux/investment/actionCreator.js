@@ -1,11 +1,12 @@
-import { SERVER_URL, API_URL, API_KEY } from 'react-native-dotenv';
+import {
+  SERVER_URL, API_URL, API_KEY, API_PROD_KEY, API_PROD_URL,
+} from 'react-native-dotenv';
 import {
   FETCH_PORTFOLIO_DETAILS_START,
   FETCH_PORTFOLIO_DETAILS_FAIL,
   FETCH_PORTFOLIO_DETAILS_SUCCESS,
 } from './actionType';
 import chartHelper from '../../common/chartHelper';
-import { round, moneyAmount2String } from '../../common/numbers';
 
 export const fetchPortfolioDetailsStart = () => ({
   type: FETCH_PORTFOLIO_DETAILS_START,
@@ -21,59 +22,67 @@ export const fetchPortfolioDetailsSuccess = (payload) => ({
   payload,
 });
 
-export const calculatePortfolioValue = () => (dispatch, getState) => {
-  const serverUrl = new URL(`${SERVER_URL}/investments/user/`);
-  const headers = new Headers();
-  const { accessToken } = getState().user;
-  headers.append('authorization', `Bearer ${accessToken}`);
-  dispatch(fetchPortfolioDetailsStart());
-  fetch(serverUrl, { headers })
-    .then((response) => {
-      if (!response.ok) {
-        switch (response.status) {
-          case 401:
-            throw new Error('Sorry, we cannot validate your identity. Please login and try again.');
-          default:
-            throw new Error('Oops, there\'s something wrong with our app.');
-        }
+export const calculatePortfolioValue = () => async (dispatch, getState) => {
+  try {
+    const serverUrl = new URL(`${SERVER_URL}/investments/user/`);
+    const headers = new Headers();
+    const { accessToken } = getState().user;
+    headers.append('authorization', `Bearer ${accessToken}`);
+
+    dispatch(fetchPortfolioDetailsStart());
+    const investmentsResult = await fetch(serverUrl, { headers });
+    if (!investmentsResult.ok) {
+      switch (investmentsResult.status) {
+        case 401:
+          throw new Error('Sorry, we cannot validate your identity. Please login and try again.');
+        default:
+          throw new Error('Oops, there\'s something wrong with our app.');
       }
-      return response.json();
-    })
-    .then((stocks) => {
-      const symbols = stocks.map((stock) => stock.symbol);
-      const apiUrl = new URL(`${API_URL}/stock/market/batch`);
-      apiUrl.searchParams.append('symbols', symbols);
-      apiUrl.searchParams.append('types', 'price,company,logo');
-      apiUrl.searchParams.append('token', API_KEY);
-      fetch(apiUrl)
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error('Oops, there\'s something wrong with our app.');
-          }
-          return res.json();
-        })
-        .then((res) => {
-          const instruments = {};
-          let totalValue = stocks
-            .map(({ shares, symbol }) => {
-              instruments[symbol] = {
-                logo: res[symbol].logo.url,
-                company: res[symbol].company.companyName,
-                description: res[symbol].company.description,
-                marketValue: round(shares * res[symbol].price),
-              };
-              return shares * res[symbol].price;
-            })
-            .reduce((a, b) => a + b);
-          totalValue = moneyAmount2String((totalValue));
-          const allocation = chartHelper.processInvestmentAllocationData(stocks, res);
-          dispatch(fetchPortfolioDetailsSuccess({
-            totalValue,
-            stocks,
-            allocation,
-            instruments,
-          }));
-        });
-    })
-    .catch((err) => dispatch(fetchPortfolioDetailsFail(err)));
+    }
+
+    const stocks = await investmentsResult.json();
+    const symbols = stocks.map((stock) => stock.symbol);
+
+    const companyLogoUrl = new URL(`${API_PROD_URL}/stock/market/batch`);
+    companyLogoUrl.searchParams.append('symbols', symbols);
+    companyLogoUrl.searchParams.append('types', 'company,logo');
+    companyLogoUrl.searchParams.append('token', API_PROD_KEY);
+    const companyLogoResult = await fetch(companyLogoUrl);
+    if (!companyLogoResult.ok) {
+      throw new Error('Oops, there\'s something wrong with our app.');
+    }
+    const companyAndLogo = await companyLogoResult.json();
+
+    const priceUrl = new URL(`${API_URL}/stock/market/batch`);
+    priceUrl.searchParams.append('symbols', symbols);
+    priceUrl.searchParams.append('types', 'price');
+    priceUrl.searchParams.append('token', API_KEY);
+    const priceResult = await fetch(priceUrl);
+    if (!priceResult.ok) {
+      throw new Error('Oops, there\'s something wrong with our app.');
+    }
+    const parsedPriceResult = await priceResult.json();
+
+    const instruments = {};
+    const totalValue = stocks
+      .map(({ shares, symbol }) => {
+        instruments[symbol] = {
+          logo: companyAndLogo[symbol].logo.url,
+          company: companyAndLogo[symbol].company.companyName,
+          description: companyAndLogo[symbol].company.description,
+          marketValue: shares * parsedPriceResult[symbol].price,
+        };
+        return shares * parsedPriceResult[symbol].price;
+      })
+      .reduce((a, b) => a + b);
+    const allocation = chartHelper.processInvestmentAllocationData(stocks, parsedPriceResult);
+    dispatch(fetchPortfolioDetailsSuccess({
+      totalValue,
+      stocks,
+      allocation,
+      instruments,
+    }));
+  } catch (err) {
+    dispatch(fetchPortfolioDetailsFail(err));
+  }
 };

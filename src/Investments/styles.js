@@ -60,12 +60,7 @@ export default StyleSheet.create({
     width: width - 30,
   },
   companyTitle: {
-    borderRadius: 6,
-    paddingHorizontal: 8,
-    paddingVertical: 15,
-    backgroundColor: '#f2f3fb',
     flexDirection: 'row',
-    width: width - 60,
     justifyContent: 'center',
   },
   companyLogo: {
@@ -78,15 +73,20 @@ export default StyleSheet.create({
   companyInformation: {
     paddingLeft: 20,
   },
-  companyName: {
-    fontSize: 14,
-    color: '#566ed3',
+  companySymbol: {
+    fontSize: 18,
+    color: '#333',
     fontWeight: 'bold',
+  },
+  companyName: {
+    fontSize: 12,
+    color: '#999',
   },
   companyDescription: {
     fontSize: 12,
-    color: '#7e92a3',
-    paddingTop: 12,
+    color: '#333',
+    lineHeight: 16,
+    // paddingTop: 12,
   },
   details: {
     paddingHorizontal: 8,

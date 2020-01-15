@@ -13,10 +13,10 @@ import ErrorMessage from '../common/ErrorMessage';
 import { decimal2Percentage, processLargeNumbers } from '../common/numbers';
 import Row from '../common/Row';
 
-const DetailsRow = (key, val) => (
+export const DetailsRow = (key, val, color) => (
   <Column style={style.detailsContentCell}>
     <Text style={style.detailsContentKey}>{`${key}`}</Text>
-    <Text style={style.detailsContentVal}>{`${val || 'N/A'}`}</Text>
+    <Text style={{ ...style.detailsContentVal, color }}>{`${val || 'N/A'}`}</Text>
   </Column>
 );
 
