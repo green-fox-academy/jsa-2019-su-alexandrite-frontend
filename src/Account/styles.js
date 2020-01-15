@@ -86,12 +86,11 @@ export default StyleSheet.create({
     marginBottom: -25,
   },
   topUpInput: {
-    height: 50,
-    color: 'black',
-    fontSize: 30,
-    borderWidth: 2,
-    borderColor: '#566ed3',
-    borderRadius: 10,
-    padding: 10,
+    flex: 1,
+    color: '#333',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 8,
+    // padding: 10,
   },
 });

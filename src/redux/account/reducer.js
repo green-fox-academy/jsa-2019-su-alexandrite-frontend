@@ -12,6 +12,7 @@ import {
   ADD_TO_BALANCE_START,
   ADD_TO_BALANCE_SUCCESS,
   ADD_TO_BALANCE_FAIL,
+  INITIALIZE_TOP_UP,
 } from './actionType';
 
 const initialState = {
@@ -26,7 +27,8 @@ const initialState = {
   transactions: [],
   transactionsError: null,
   topUpIsLoading: false,
-  topUpError: '',
+  topUpError: null,
+  isSettled: false,
 };
 
 export default (state = initialState, action) => {
@@ -93,12 +95,14 @@ export default (state = initialState, action) => {
     case ADD_TO_BALANCE_START:
       return {
         ...state,
+        isSettled: false,
         topUpIsLoading: true,
-        topUpError: '',
+        topUpError: null,
       };
     case ADD_TO_BALANCE_FAIL:
       return {
         ...state,
+        isSettled: false,
         topUpIsLoading: false,
         topUpError: action.payload,
       };
@@ -107,7 +111,15 @@ export default (state = initialState, action) => {
         ...state,
         topUpIsLoading: false,
         balance: action.payload,
-        topUpError: '',
+        isSettled: true,
+        topUpError: null,
+      };
+    case INITIALIZE_TOP_UP:
+      return {
+        ...state,
+        topUpIsLoading: false,
+        isSettled: false,
+        topUpError: null,
       };
     default:
       return state;

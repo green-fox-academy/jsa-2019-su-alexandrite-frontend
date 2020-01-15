@@ -13,8 +13,8 @@ import {
   ADD_TO_BALANCE_START,
   ADD_TO_BALANCE_SUCCESS,
   ADD_TO_BALANCE_FAIL,
+  INITIALIZE_TOP_UP,
 } from './actionType';
-import { moneyAmount2String } from '../../common/numbers';
 
 const loginUserStart = () => ({
   type: LOGIN_USER_START,
@@ -153,31 +153,33 @@ export const addToBalanceFail = (payload) => ({
   payload,
 });
 
-export const addToBalance = (topUp) => (dispatch, getState) => {
+export const initializeTopUp = () => ({
+  type: INITIALIZE_TOP_UP,
+});
+
+export const addToBalance = (amount) => (dispatch, getState) => {
   const serverUrl = new URL(`${SERVER_URL}/account/topup`);
   const { accessToken } = getState().user;
   dispatch(addToBalanceStart());
-  // if (typeof topUp !== 'number') {
-  //   const error = 'please input a number';
-  //   dispatch(addToBalanceFail(error));
-  // }
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  headers.append('authorization', `Bearer ${accessToken}`);
   fetch(serverUrl, {
     method: 'POST',
-    headers: new Headers({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    }),
-    body: JSON.stringify({ amount: topUp }),
+    headers,
+    body: JSON.stringify({ amount }),
   })
     .then((res) => {
       if (!res.ok) {
+        if (res.status === 400) {
+          throw new Error('Invalid top-up amount.');
+        }
         throw new Error('Oops, there\'s something wrong with our app.');
       }
       return res.json();
     })
     .then((res) => {
-      const result = moneyAmount2String(res.balance);
-      dispatch(addToBalanceSuccess(result));
+      dispatch(addToBalanceSuccess(res.balance));
     })
     .catch((err) => dispatch(addToBalanceFail(err)));
 };

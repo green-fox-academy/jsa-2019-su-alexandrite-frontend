@@ -111,6 +111,7 @@ export default StyleSheet.create({
     height: 90,
     marginRight: 15,
     borderRadius: 6,
+    backgroundColor: '#ccc',
   },
   newsTime: {
     fontSize: 12,

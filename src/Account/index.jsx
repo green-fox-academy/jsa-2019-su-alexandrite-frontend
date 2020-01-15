@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { View, Text, Button, ScrollView } from 'react-native';
+import {
+  View, Text, Button, ScrollView,
+} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
 import { logOut, fetchUserProfile } from '../redux/account/actionCreator';
@@ -29,7 +31,6 @@ const Account = () => {
           <>
             <Profile />
             <Balance />
-            {/* <Transactions /> */}
             <MenuItem name="Transactions" onPress={() => navigator.push('Transactions')} />
             <MenuItem name="Logout" color="red" onPress={handleLogOut} />
           </>
