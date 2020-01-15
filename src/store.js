@@ -9,6 +9,7 @@ import searchReducer from './redux/search/reducer';
 import watchlistsReducer from './redux/watchList/reducer';
 import invsetmentsReducer from './redux/investment/reducer';
 import newsReducer from './redux/news/reducer';
+import ordersReducer from './redux/order/reducer';
 
 const reducer = combineReducers({
   user: accountReducer,
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   watchlists: watchlistsReducer,
   investments: invsetmentsReducer,
   news: newsReducer,
+  orders: ordersReducer,
 });
 
 const persistConfig = {

@@ -14,6 +14,7 @@ import Performance from './Performance';
 import NewsCard from '../common/News/NewsCard';
 import FAB from '../common/FAB';
 import Row from '../common/Row';
+import TransactionPopup from '../Order/TransactionPopup';
 
 const StockDetails = () => {
   const symbol = useNavigationParam('symbol');
@@ -42,6 +43,7 @@ const StockDetails = () => {
           visible={A2WPopupVisible}
           onClose={() => setA2WPopupVisible(false)}
         />
+        <TransactionPopup />
       </ScrollView>
       <FAB
         onPress={() => { }}
