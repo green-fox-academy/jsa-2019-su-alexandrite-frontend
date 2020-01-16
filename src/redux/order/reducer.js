@@ -36,6 +36,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isSettled: false,
+        error: null,
       };
     default:
       return state;

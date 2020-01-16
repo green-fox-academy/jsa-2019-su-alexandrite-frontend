@@ -33,7 +33,11 @@ const MenuItem = ({
 MenuItem.propTypes = {
   name: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
+};
+
+MenuItem.defaultProps = {
+  color: '#333',
 };
 
 export default MenuItem;

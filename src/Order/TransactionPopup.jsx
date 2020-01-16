@@ -138,8 +138,11 @@ const TransactionPopup = ({ symbol }) => {
                   {isLoading && <ActivityIndicator style={styles.loading} />}
                 </View>
               </Row>
-              <Text style={{ fontSize: 12, color: '#999', marginTop: 5 }}>{'* Only refers to current price.\nPrice might fluctuate based on purchase time'}</Text>
-              {error && <ErrorMessage message={error.message} />}
+              {
+                error
+                  ? <ErrorMessage message={error.message} />
+                  : <Text style={{ fontSize: 12, color: '#999', marginTop: 5 }}>{'* Only refers to current price.\nPrice might fluctuate based on purchase time'}</Text>
+              }
             </Column>
           )}
 
