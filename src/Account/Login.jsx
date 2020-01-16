@@ -17,7 +17,7 @@ import Row from '../common/Row';
 import Column from '../common/Column';
 
 const LoginButton = ({ onPress, isLoading }) => (
-  <TouchableHighlight style={styles.button} onPress={onPress} underlayColor="#5d70ba" activeOpacity={0.5}>
+  <TouchableHighlight style={styles.button} onPress={onPress} underlayColor="#999" activeOpacity={0.5}>
     {isLoading
       ? <ActivityIndicator size="large" color="white" />
       : (

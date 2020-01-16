@@ -4,15 +4,19 @@ import { ActivityIndicator } from 'react-native';
 import NewsList from '../common/News/NewsList';
 import { fetchInvestedStocks } from '../redux/news/actionCreator';
 import Column from '../common/Column';
+import LoginButtonPage from '../Account/LoginButtonPage';
 
 const News = () => {
   const { symbols, isLoading } = useSelector((state) => state.news);
+  const { accessToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchInvestedStocks());
   }, []);
   if (isLoading || !symbols.length) return <Column flex={1} style={{ justifyContent: 'center' }}><ActivityIndicator /></Column>;
-  return <NewsList propQuery={symbols} />;
+  return accessToken
+    ? <NewsList propQuery={symbols} />
+    : <LoginButtonPage />;
 };
 
 News.navigationOptions = {

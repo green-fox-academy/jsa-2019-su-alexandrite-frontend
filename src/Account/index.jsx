@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {
-  View, Text, Button, ScrollView,
+  ScrollView,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from 'react-navigation-hooks';
@@ -9,11 +9,11 @@ import commonStyles from '../common/styles';
 import Profile from './Profile';
 import Balance from './Balance';
 import MenuItem from './MenuItem';
+import LoginButtonPage from './LoginButtonPage';
 
 const Account = () => {
   const { accessToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const { push } = useNavigation();
 
   useEffect(() => {
     dispatch(fetchUserProfile());
@@ -25,22 +25,19 @@ const Account = () => {
   const { alignItems, ...SVStyles } = commonStyles.container;
   const navigator = useNavigation();
   return (
-    <ScrollView style={SVStyles} contentContainerStyle={{ alignItems }}>
-      {accessToken
-        ? (
+    accessToken
+      ? (
+        <ScrollView style={SVStyles} contentContainerStyle={{ alignItems }}>
           <>
             <Profile />
             <Balance />
             <MenuItem name="Transactions" onPress={() => navigator.push('Transactions')} />
             <MenuItem name="Logout" color="red" onPress={handleLogOut} />
           </>
-        ) : (
-          <View>
-            <Text>Please Login</Text>
-            <Button title="login" onPress={() => push('Login')} />
-          </View>
-        )}
-    </ScrollView>
+        </ScrollView>
+      ) : (
+        <LoginButtonPage />
+      )
   );
 };
 
