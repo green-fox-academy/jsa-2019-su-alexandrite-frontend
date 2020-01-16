@@ -12,7 +12,6 @@ import { useNavigation } from 'react-navigation-hooks';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import styles from './styles';
 
-import tradeIcon from '../../assets/icons/search-page/trade.png';
 import detailIcon from '../../assets/icons/search-page/detail.png';
 
 const ResultItem = ({ symbol, exchange }) => {
@@ -24,9 +23,6 @@ const ResultItem = ({ symbol, exchange }) => {
         <Text style={styles.stockExchange}>{exchange}</Text>
       </View>
       <View style={styles.resultButton}>
-        <TouchableHighlight>
-          <Image source={tradeIcon} />
-        </TouchableHighlight>
         <TouchableHighlight
           style={styles.detailButton}
           onPress={() => push('StockDetails', { symbol })}

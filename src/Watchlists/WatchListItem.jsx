@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
 import styles from './styles';
-import tradeIcon from '../../assets/icons/watchList/trade.png';
 import detailIcon from '../../assets/icons/watchList/detail.png';
 
 export default function WatchListItem({
@@ -47,13 +46,12 @@ export default function WatchListItem({
           {volume}
         </Text>
       </View>
-      <View style={[styles.watchListItemColumn, { flexDirection: 'row' }]}>
-        <Image source={tradeIcon} />
+      <View style={[styles.watchListItemColumn]}>
         <TouchableHighlight
           onPress={() => push('StockDetails', { symbol: ticker })}
           underlayColor="#0000"
           activeOpacity={0.5}
-          style={styles.detailIcon}
+          style={[styles.detailIcon, { flex: 1, justifyContent: 'center', alignItems: 'center' }]}
         >
           <Image source={detailIcon} />
         </TouchableHighlight>
