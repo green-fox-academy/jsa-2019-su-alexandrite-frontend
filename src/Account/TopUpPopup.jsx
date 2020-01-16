@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   TextInput, Text, ActivityIndicator, View,
 } from 'react-native';
+import { API_PROD_KEY, API_PROD_URL } from 'react-native-dotenv';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesome5 } from '@expo/vector-icons';

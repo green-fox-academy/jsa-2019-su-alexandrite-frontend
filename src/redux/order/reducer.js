@@ -27,7 +27,6 @@ export default (state = initialState, action) => {
         isSettled: true,
       };
     case PURCHASE_STOCK_FAIL:
-      alert(JSON.stringify(action))
       return {
         ...state,
         isLoading: false,

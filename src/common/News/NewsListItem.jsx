@@ -24,7 +24,7 @@ const NewsListItem = ({ item, style }) => {
           source={item.image ? { uri: item.image } : null}
           style={commonStyles.newsImg}
         />
-        <Column flex={1}>
+        <Column flex={1} style={{ justifyContent: 'space-between' }}>
           <Text style={commonStyles.newsHeadline} lineBreakMode="tail" numberOfLines={3}>{item.headline}</Text>
           <Text style={commonStyles.newsTime}>{date.toLocaleString()}</Text>
         </Column>

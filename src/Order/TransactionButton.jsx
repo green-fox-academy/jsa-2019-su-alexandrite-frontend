@@ -22,7 +22,7 @@ const TransactionButton = ({ transactionBehavior, active, onPress }) => (
         active && styles.TransactionButtonTextActive,
       ]}
     >
-      {transactionBehavior}
+      {transactionBehavior.toUpperCase()}
     </Text>
 
   </TouchableHighlight>

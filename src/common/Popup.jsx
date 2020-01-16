@@ -5,6 +5,7 @@ import {
   View,
   Modal,
   TouchableHighlight,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import PropTypes from 'prop-types';
@@ -63,18 +64,20 @@ export default function Popup({
       onRequestClose={onCancel}
     >
       <BlurView tint="dark" intensity={90} style={styles.popupBackground}>
-        <View style={styles.popupContainer}>
-          <PopupHeader title={title} onCancel={onCancel} />
-          <View style={styles.popupBody}>
-            {children}
-            <PopupButtonGroup
-              confirmButtonText={confirmButtonText}
-              confirmDisabled={confirmDisabled}
-              onConfirm={onConfirm}
-              onCancel={onCancel}
-            />
+        <KeyboardAvoidingView behavior="padding">
+          <View style={styles.popupContainer}>
+            <PopupHeader title={title} onCancel={onCancel} />
+            <View style={styles.popupBody}>
+              {children}
+              <PopupButtonGroup
+                confirmButtonText={confirmButtonText}
+                confirmDisabled={confirmDisabled}
+                onConfirm={onConfirm}
+                onCancel={onCancel}
+              />
+            </View>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </BlurView>
     </Modal>
   );

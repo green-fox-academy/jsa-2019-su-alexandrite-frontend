@@ -18,7 +18,7 @@ const purchaseStockSuccess = (payload) => ({
 
 const purchaseStockFail = (payload) => ({
   type: PURCHASE_STOCK_FAIL,
-  error: payload,
+  payload,
 });
 
 export const purchaseStockReset = () => ({
