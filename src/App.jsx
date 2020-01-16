@@ -7,7 +7,6 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import { store, persistor } from './store';
 import MainTabNavigation from './navigation/MainTabNavigation';
 
-store.subscribe(() => console.log(store.getState()));
 const App = () => (
   <Provider store={store}>
     <PersistGate persistor={persistor}>
