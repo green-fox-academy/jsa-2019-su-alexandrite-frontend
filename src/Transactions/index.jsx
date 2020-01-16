@@ -11,7 +11,7 @@ const Transactions = () => {
   const {
     transactions,
     transactionsError,
-    isLoadingUserTransactions,
+    isLoadingTransactions,
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const Transactions = () => {
           data={transactions}
           keyExtractor={(item) => item.id}
           ItemSeparatorComponent={() => <View style={{ flex: 1, borderBottomWidth: 1, borderBottomColor: '#eee' }} />}
-          refreshing={isLoadingUserTransactions}
+          refreshing={isLoadingTransactions}
           onRefresh={() => dispatch(fetchUserTransactions())}
           renderItem={({ item }) => (
             <TransactionItem item={item} />
