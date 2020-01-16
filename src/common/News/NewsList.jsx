@@ -22,7 +22,7 @@ const ListFooter = ({ errorMessage, isLoading, pageNumber }) => {
     }
     if (isLoading) {
       return (
-        <Row style={{ padding: 15 }}>
+        <Row style={{ padding: 15, justifyContent: 'center' }}>
           <ActivityIndicator />
         </Row>
       );
