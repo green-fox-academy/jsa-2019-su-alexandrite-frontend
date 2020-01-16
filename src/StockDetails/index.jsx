@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import {
   View,
-  Image,
   ScrollView,
   TouchableHighlight,
 } from 'react-native';
 import { useNavigationParam, useNavigation } from 'react-navigation-hooks';
 import { useSelector } from 'react-redux';
+import { FontAwesome5 } from '@expo/vector-icons';
 import commonStyles from '../common/styles';
 import Stats from './Stats';
-import addToWatchlistIcon from '../../assets/icons/header/add-to-wl.png';
 import WatchlistPickerPopup from './WatchlistPickerPopup';
 import Performance from './Performance';
 import NewsCard from '../common/News/NewsCard';
@@ -61,7 +60,7 @@ StockDetails.navigationOptions = ({ navigation }) => ({
         activeOpacity={0.5}
         style={commonStyles.headerIcon}
       >
-        <Image source={addToWatchlistIcon} />
+        <FontAwesome5 name="plus" size={18} />
       </TouchableHighlight>
     );
   },
