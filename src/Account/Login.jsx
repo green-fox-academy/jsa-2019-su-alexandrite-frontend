@@ -45,7 +45,7 @@ const Login = () => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+    <KeyboardAvoidingView style={[styles.container, { justifyContent: 'center' }]} behavior="padding" enabled>
       <Row style={{ justifyContent: 'center', alignItems: 'center' }}>
         <Text style={styles.loginTitle}>Login</Text>
       </Row>
