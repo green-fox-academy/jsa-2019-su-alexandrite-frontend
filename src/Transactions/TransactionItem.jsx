@@ -20,22 +20,22 @@ const TransactionItem = ({
     status,
   },
 }) => (
-    <Row style={styles.transactionItem}>
-      <Column>
-        <Row>
-          <StockIcon symbol={symbol} />
-          <TransactionTypeAndTime symbol={symbol} timestamp={timestamp} type={type} />
-        </Row>
-      </Column>
-      <Column style={{ alignItems: 'flex-end' }}>
-        {
-          type === 'topUp'
-            ? <TransactionTopUpAmount amount={amount} />
-            : <TransactionTradingAmount shares={shares} price={price} type={type} status={status} />
-        }
-      </Column>
-    </Row>
-  );
+  <Row style={styles.transactionItem}>
+    <Column>
+      <Row>
+        <StockIcon symbol={symbol} />
+        <TransactionTypeAndTime symbol={symbol} timestamp={timestamp} type={type} />
+      </Row>
+    </Column>
+    <Column style={{ alignItems: 'flex-end' }}>
+      {
+        type === 'topUp'
+          ? <TransactionTopUpAmount amount={amount} />
+          : <TransactionTradingAmount shares={shares} price={price} type={type} status={status} />
+      }
+    </Column>
+  </Row>
+);
 
 TransactionItem.propTypes = {
   item: PropTypes.oneOfType([
