@@ -69,7 +69,7 @@ const WatchlistsScreen = () => {
         renderItem={({ item }) => (
           <WatchList item={item} />
         )}
-        refreshing={isLoading}
+        refreshing={isLoading !== undefined ? isLoading : false}
         onRefresh={loadDetails}
         ListEmptyComponent={<Card><ErrorMessage message={EMPTY_LIST_MESSAGE} /></Card>}
       />
