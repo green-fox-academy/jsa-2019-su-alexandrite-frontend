@@ -50,7 +50,7 @@ const LoginButtonPage = () => {
               fontWeight: 'bold',
             }}
           >
-            TOP-UP
+            LOGIN
           </Text>
         </TouchableHighlight>
       </Row>

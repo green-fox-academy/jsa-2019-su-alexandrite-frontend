@@ -6,6 +6,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import { useNavigationParam, useNavigation } from 'react-navigation-hooks';
+import { useSelector } from 'react-redux';
 import commonStyles from '../common/styles';
 import Stats from './Stats';
 import addToWatchlistIcon from '../../assets/icons/header/add-to-wl.png';
@@ -18,6 +19,7 @@ import TransactionPopup from '../Order/TransactionPopup';
 const StockDetails = () => {
   const symbol = useNavigationParam('symbol');
   const navigation = useNavigation();
+  const { accessToken } = useSelector((state) => state.user);
   const [A2WPopupVisible, setA2WPopupVisible] = useState(false);
   const showAddToWatchlistPopup = () => setA2WPopupVisible(true);
 
@@ -43,7 +45,7 @@ const StockDetails = () => {
           onClose={() => setA2WPopupVisible(false)}
         />
       </ScrollView>
-      <TransactionPopup symbol={symbol} />
+      {accessToken && <TransactionPopup symbol={symbol} />}
     </View>
   );
 };

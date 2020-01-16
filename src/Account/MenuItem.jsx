@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  View,
   Text,
   TouchableHighlight,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 const MenuItem = ({
@@ -30,6 +30,12 @@ const MenuItem = ({
       </>
     </TouchableHighlight>
   );
+};
+
+MenuItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
 };
 
 export default MenuItem;

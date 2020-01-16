@@ -17,24 +17,25 @@ const TransactionItem = ({
     price,
     amount,
     symbol,
+    status,
   },
 }) => (
-  <Row style={styles.transactionItem}>
-    <Column>
-      <Row>
-        <StockIcon symbol={symbol} />
-        <TransactionTypeAndTime symbol={symbol} timestamp={timestamp} type={type} />
-      </Row>
-    </Column>
-    <Column style={{ alignItems: 'flex-end' }}>
-      {
+    <Row style={styles.transactionItem}>
+      <Column>
+        <Row>
+          <StockIcon symbol={symbol} />
+          <TransactionTypeAndTime symbol={symbol} timestamp={timestamp} type={type} />
+        </Row>
+      </Column>
+      <Column style={{ alignItems: 'flex-end' }}>
+        {
           type === 'topUp'
             ? <TransactionTopUpAmount amount={amount} />
-            : <TransactionTradingAmount shares={shares} price={price} type={type} />
+            : <TransactionTradingAmount shares={shares} price={price} type={type} status={status} />
         }
-    </Column>
-  </Row>
-);
+      </Column>
+    </Row>
+  );
 
 TransactionItem.propTypes = {
   item: PropTypes.oneOfType([
@@ -42,6 +43,7 @@ TransactionItem.propTypes = {
       type: PropTypes.string,
       amount: PropTypes.number,
       timestamp: PropTypes.string,
+      status: PropTypes.string,
     }),
     PropTypes.shape({
       type: PropTypes.string,
@@ -49,6 +51,7 @@ TransactionItem.propTypes = {
       price: PropTypes.number,
       timestamp: PropTypes.string,
       symbol: PropTypes.string,
+      status: PropTypes.string,
     }),
   ]).isRequired,
 };
