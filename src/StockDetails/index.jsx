@@ -11,6 +11,7 @@ import addToWatchlistIcon from '../../assets/icons/header/add-to-wl.png';
 import WatchlistPickerPopup from './WatchlistPickerPopup';
 import Performance from './Performance';
 import NewsCard from '../common/News/NewsCard';
+import TransactionPopup from '../Order/TransactionPopup';
 
 const StockDetails = () => {
   const symbol = useNavigationParam('symbol');
@@ -34,6 +35,7 @@ const StockDetails = () => {
         visible={A2WPopupVisible}
         onClose={() => setA2WPopupVisible(false)}
       />
+      <TransactionPopup />
     </ScrollView>
   );
 };

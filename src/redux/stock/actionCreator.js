@@ -8,6 +8,9 @@ import {
   FETCH_HISTORY_CHART_DATA_SUCCESS,
   FETCH_HISTORY_CHART_DATA_FAIL,
   RESET_STOCK_INFO,
+  PLACE_ORDER_START,
+  PLACE_ORDER_FAIL,
+  PLACE_ORDER_SUCCESS,
 } from './actionType';
 
 import chartHelper from '../../common/chartHelper';
@@ -92,3 +95,45 @@ export const fetchHistoryChartData = (symbol, range) => (dispatch) => {
 export const resetStockInfo = () => ({
   type: RESET_STOCK_INFO,
 });
+
+const placeOrderStart = () => ({
+  type: PLACE_ORDER_START,
+});
+
+const placeOrderFail = (payload) => ({
+  type: PLACE_ORDER_FAIL,
+  payload,
+});
+
+const placeOrderSuccess = (payload) => ({
+  type: PLACE_ORDER_SUCCESS,
+  payload,
+});
+
+export const placeOrder = (symbol, shares, type) => async (dispatch, getState) => {
+  const url = new URL(`${API_URL}/order`);
+  const { accessToken } = getState((state) => state.user);
+  url.searchParams.append('token', API_KEY);
+  dispatch(placeOrderStart());
+  const body = {
+    symbol,
+    shares,
+    type,
+  };
+  const headers = new Headers();
+  headers.append('authorization', `Bearer ${accessToken}`);
+  fetch(url, { headers, body })
+    .then((res) => {
+      if (!res.ok) {
+        switch (res.status) {
+          case 404:
+            throw new Error(`The stock ${symbol} you are looking for does not exist.`);
+          default:
+            throw new Error('Oops, there\'s something wrong with our app.');
+        }
+      }
+      return res.json();
+    })
+    .then((res) => dispatch(placeOrderSuccess(res)))
+    .catch((err) => dispatch(placeOrderFail(err)));
+};
