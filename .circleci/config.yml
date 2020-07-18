@@ -12,6 +12,9 @@ jobs:
           keys:
             - v1-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - v1-dependencies-
+      - run:
+          name: Generate mocked .env
+          command: cp .env.template .env
 
       - run:
           name: Install Frontend Dependencies
@@ -20,6 +23,16 @@ jobs:
       - run:
           name: Run eslint
           command: yarn lint
+
+      - run:
+          name: Run Jest
+          command: yarn test
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ~/repo/test-results
+            JEST_JUNIT_OUTPUT_NAME: results.xml
+
+      - store_test_results:
+          path: ~/repo/test-results
 
       - save_cache:
           paths:

@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewsCard /> Should render properly and match the snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#333",
+        "fontSize": 13,
+        "fontWeight": "600",
+        "lineHeight": 18,
+        "marginBottom": 15,
+      }
+    }
+  >
+    News
+  </Text>
+  <View
+    style={
+      Object {
+        "width": 690,
+      }
+    }
+  >
+    <<NewsMappedList />
+      news={Array []}
+    />
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+          "paddingTop": 15,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "borderRadius": 3,
+            "padding": 5,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#999",
+              "fontSize": 12,
+            }
+          }
+        >
+          View more
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<NewsCard /> Should render properly and match the snapshot on error 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#333",
+        "fontSize": 13,
+        "fontWeight": "600",
+        "lineHeight": 18,
+        "marginBottom": 15,
+      }
+    }
+  >
+    News
+  </Text>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#fff6f6",
+        "borderRadius": 6,
+        "paddingHorizontal": 8,
+        "paddingVertical": 15,
+        "width": 690,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#9f3a38",
+          "fontWeight": "bold",
+        }
+      }
+    >
+      test error
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<NewsCard /> Should render properly and match the snapshot when loading 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#333",
+        "fontSize": 13,
+        "fontWeight": "600",
+        "lineHeight": 18,
+        "marginBottom": 15,
+      }
+    }
+  >
+    News
+  </Text>
+  <View
+    style={
+      Object {
+        "width": 690,
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#999999"
+      hidesWhenStopped={true}
+      size="large"
+    />
+  </View>
+</View>
+`;

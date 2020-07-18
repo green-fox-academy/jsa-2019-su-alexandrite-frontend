@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProgressBar /> should render properly and match the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#eee",
+      "flexDirection": "row",
+      "height": 4,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#4d63be",
+        "flex": 0.5,
+        "flexDirection": "column",
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "flex": 0.5,
+        "flexDirection": "column",
+      }
+    }
+  />
+</View>
+`;

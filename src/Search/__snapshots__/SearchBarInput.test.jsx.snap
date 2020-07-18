@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchBarInput /> Should render and match the snapshot 1`] = `
+<TextInput
+  allowFontScaling={true}
+  clearButtonMode="while-editing"
+  onChangeText={[MockFunction]}
+  rejectResponderTermination={true}
+  style={
+    Object {
+      "backgroundColor": "white",
+      "borderRadius": 50,
+      "flex": 1,
+      "fontSize": 12,
+      "paddingHorizontal": 11,
+      "paddingVertical": 8,
+    }
+  }
+  testID="search-text-input"
+  underlineColorAndroid="transparent"
+  value=""
+/>
+`;

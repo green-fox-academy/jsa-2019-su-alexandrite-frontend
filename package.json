@@ -6,13 +6,40 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "jest --coverage --maxWorkers=2"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    },
+    "verbose": true,
+    "collectCoverage": true,
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
     "expo": "^36.0.0",
     "expo-constants": "~8.0.0",
     "expo-linear-gradient": "~8.0.0",
+    "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "16.9.0",
     "react-dom": "16.9.0",
@@ -30,17 +57,27 @@
     "react-navigation-tabs": "^2.6.2",
     "react-redux": "^7.1.3",
     "redux": "^4.0.4",
-    "redux-persist": "^6.0.0",
+    "redux-persist": "5.10.0",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react-hooks": "^3.2.1",
     "babel-preset-expo": "^7.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.7.2",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^1.7.0"
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "fetch-mock": "^8.3.1",
+    "jest": "^24.9.0",
+    "jest-expo": "^36.0.1",
+    "react-test-renderer": "^16.12.0",
+    "redux-mock-store": "^1.5.4",
+    "whatwg-fetch": "^3.0.0"
   },
   "private": true
 }

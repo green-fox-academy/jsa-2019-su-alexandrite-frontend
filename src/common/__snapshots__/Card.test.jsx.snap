@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card render properly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+/>
+`;
+
+exports[`Card render properly with children 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+>
+  <Text>
+    test children
+  </Text>
+</View>
+`;
+
+exports[`Card render properly with title 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#333",
+        "fontSize": 13,
+        "fontWeight": "600",
+        "lineHeight": 18,
+        "marginBottom": 15,
+      }
+    }
+  >
+    test title
+  </Text>
+</View>
+`;

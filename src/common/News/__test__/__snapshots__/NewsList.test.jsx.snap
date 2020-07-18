@@ -1,0 +1,325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewsList /> ItemSeparatorComponent should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "height": 15,
+    }
+  }
+/>
+`;
+
+exports[`<NewsList /> Should render properly and match the snapshot 1`] = `
+<RCTScrollView
+  ItemSeparatorComponent={[Function]}
+  ListFooterComponent={
+    <ListFooter
+      errorMessage={null}
+      isLoading={false}
+      pageNumber={1}
+    />
+  }
+  ListHeaderComponent={[Function]}
+  contentContainerStyle={
+    Object {
+      "padding": 15,
+    }
+  }
+  data={Array []}
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={1}
+  onContentSizeChange={[Function]}
+  onEndReached={[Function]}
+  onEndReachedThreshold={0.9}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onRefresh={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  refreshControl={
+    <RefreshControlMock
+      onRefresh={[Function]}
+      refreshing={false}
+    />
+  }
+  refreshing={false}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={
+    Array [
+      0,
+    ]
+  }
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
+>
+  <RCTRefreshControl />
+  <View>
+    <View
+      onLayout={[Function]}
+    />
+    <View
+      onLayout={[Function]}
+    />
+  </View>
+</RCTScrollView>
+`;
+
+exports[`<NewsList /> Should render properly and match the snapshot on error 1`] = `
+<RCTScrollView
+  ItemSeparatorComponent={[Function]}
+  ListFooterComponent={
+    <ListFooter
+      errorMessage="test error"
+      isLoading={false}
+      pageNumber={1}
+    />
+  }
+  ListHeaderComponent={[Function]}
+  contentContainerStyle={
+    Object {
+      "padding": 15,
+    }
+  }
+  data={null}
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={1}
+  onContentSizeChange={[Function]}
+  onEndReached={[Function]}
+  onEndReachedThreshold={0.9}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onRefresh={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  refreshControl={
+    <RefreshControlMock
+      onRefresh={[Function]}
+      refreshing={false}
+    />
+  }
+  refreshing={false}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={
+    Array [
+      0,
+    ]
+  }
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
+>
+  <RCTRefreshControl />
+  <View>
+    <View
+      onLayout={[Function]}
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#fff",
+              "borderRadius": 6,
+              "elevation": 3,
+              "marginBottom": 15,
+              "padding": 15,
+              "shadowColor": "#000",
+              "shadowOffset": Object {
+                "x": 0,
+                "y": 4,
+              },
+              "shadowOpacity": 0.1,
+              "shadowRadius": 6,
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#fff6f6",
+              "borderRadius": 6,
+              "paddingHorizontal": 8,
+              "paddingVertical": 15,
+              "width": 690,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#9f3a38",
+                "fontWeight": "bold",
+              }
+            }
+          >
+            test error
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+    />
+  </View>
+</RCTScrollView>
+`;
+
+exports[`<NewsList /> Should render properly and match the snapshot when loading 1`] = `
+<RCTScrollView
+  ItemSeparatorComponent={[Function]}
+  ListFooterComponent={
+    <ListFooter
+      errorMessage={null}
+      isLoading={true}
+      pageNumber={1}
+    />
+  }
+  ListHeaderComponent={[Function]}
+  contentContainerStyle={
+    Object {
+      "padding": 15,
+    }
+  }
+  data={null}
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={1}
+  onContentSizeChange={[Function]}
+  onEndReached={[Function]}
+  onEndReachedThreshold={0.9}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onRefresh={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  refreshControl={
+    <RefreshControlMock
+      onRefresh={[Function]}
+      refreshing={true}
+    />
+  }
+  refreshing={true}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={
+    Array [
+      0,
+    ]
+  }
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
+>
+  <RCTRefreshControl />
+  <View>
+    <View
+      onLayout={[Function]}
+    />
+    <View
+      onLayout={[Function]}
+    />
+  </View>
+</RCTScrollView>
+`;
+
+exports[`<NewsList /> listFooter should not render when no error and not loading 1`] = `null`;
+
+exports[`<NewsList /> listFooter should render and match snapshot on Loading 1`] = `
+<View
+  style={
+    Object {
+      "padding": 15,
+    }
+  }
+>
+  <ActivityIndicator
+    animating={true}
+    color="#999999"
+    hidesWhenStopped={true}
+    size="small"
+  />
+</View>
+`;
+
+exports[`<NewsList /> listFooter should render and match snapshot on onError 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      Object {
+        "marginTop": 15,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#fff6f6",
+        "borderRadius": 6,
+        "paddingHorizontal": 8,
+        "paddingVertical": 15,
+        "width": 690,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#9f3a38",
+          "fontWeight": "bold",
+        }
+      }
+    >
+      error
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<NewsList /> renderItem should render NewsListItem and match snapshot 1`] = `
+<NewsListItem
+  item={Object {}}
+/>
+`;

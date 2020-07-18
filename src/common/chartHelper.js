@@ -13,7 +13,7 @@ const formatXLabel = (i, range, label, firstOccurrence) => {
   if (['1y', '2y', '5y'].indexOf(range) > -1) {
     // if display data by years, display the year label only
     // on January data points
-    return (label.substr(5, 7) === '01') ? label.substr(0, 4) : '';
+    return (label.substr(5, 2) === '01') ? label.substr(0, 4) : '';
   }
   return constants.MONTHS[new Date(label).getMonth()];
 };
@@ -22,7 +22,11 @@ const firstOccurrence = (keys, range) => {
   if (range === '3m') {
     return keys.reduce((result, key, i) => ({
       ...result,
-      ...(result[key.substr(0, 7)] || { [key.substr(0, 7)]: i }),
+      ...(
+        result[key.substr(0, 7)] !== undefined
+          ? result[key.substr(0, 7)]
+          : { [key.substr(0, 7)]: i }
+      ),
     }), {});
   }
   return null;

@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewsListItem /> Should render properly and match the snapshot 1`] = `
+<RNGestureHandlerButton
+  collapsable={false}
+  onGestureEvent={[Function]}
+  onGestureHandlerEvent={[Function]}
+  onGestureHandlerStateChange={[Function]}
+  onHandlerStateChange={[Function]}
+  rippleColor={0}
+  style={
+    Array [
+      Object {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    style={
+      Object {
+        "borderRadius": 6,
+      }
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        Object {
+          "backgroundColor": "#ccc",
+          "borderRadius": 6,
+          "height": 169,
+          "overflow": "hidden",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "http://test.test/test.jpg",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "height": 169,
+              "width": undefined,
+            },
+            undefined,
+          ]
+        }
+      />
+      <ViewManagerAdapter_ExpoLinearGradient
+        proxiedProperties={
+          Object {
+            "colors": Array [
+              0,
+              0,
+              2281701376,
+              4278190080,
+            ],
+            "endPoint": undefined,
+            "locations": undefined,
+            "startPoint": undefined,
+          }
+        }
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "flex-end",
+            "padding": 15,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 12,
+            }
+          }
+        >
+          
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "lineHeight": 20,
+            }
+          }
+        >
+          headline
+        </Text>
+      </ViewManagerAdapter_ExpoLinearGradient>
+    </View>
+  </View>
+</RNGestureHandlerButton>
+`;
+
+exports[`<NewsListItem /> Should render properly and match the snapshot when image url not present 1`] = `
+<RNGestureHandlerButton
+  collapsable={false}
+  onGestureEvent={[Function]}
+  onGestureHandlerEvent={[Function]}
+  onGestureHandlerStateChange={[Function]}
+  onHandlerStateChange={[Function]}
+  rippleColor={0}
+  style={
+    Array [
+      Object {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    style={
+      Object {
+        "borderRadius": 6,
+      }
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        Object {
+          "backgroundColor": "#ccc",
+          "borderRadius": 6,
+          "height": 169,
+          "overflow": "hidden",
+        }
+      }
+    >
+      <Image
+        source={null}
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "height": 169,
+              "width": undefined,
+            },
+            undefined,
+          ]
+        }
+      />
+      <ViewManagerAdapter_ExpoLinearGradient
+        proxiedProperties={
+          Object {
+            "colors": Array [
+              0,
+              0,
+              2281701376,
+              4278190080,
+            ],
+            "endPoint": undefined,
+            "locations": undefined,
+            "startPoint": undefined,
+          }
+        }
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "flex-end",
+            "padding": 15,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 12,
+            }
+          }
+        >
+          
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "lineHeight": 20,
+            }
+          }
+        >
+          headline
+        </Text>
+      </ViewManagerAdapter_ExpoLinearGradient>
+    </View>
+  </View>
+</RNGestureHandlerButton>
+`;

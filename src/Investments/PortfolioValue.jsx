@@ -10,7 +10,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import styles from './styles';
 import cardBackground from '../../assets/img/investment/card.png';
 
-export default function PortfolioValue() {
+export default function () {
   const {
     isLoading,
     totalValue,

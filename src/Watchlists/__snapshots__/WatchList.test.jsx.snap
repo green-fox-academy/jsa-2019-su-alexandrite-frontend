@@ -1,0 +1,612 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Watchlist /> shoud render watchlist and match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#333",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "lineHeight": 18,
+        }
+      }
+    >
+      app
+    </Text>
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginRight": -15,
+          "marginVertical": -15,
+          "padding": 15,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          Object {
+            "transform": Array [
+              Object {
+                "rotateZ": "90deg",
+              },
+            ],
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 2,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#ccc",
+        }
+      }
+    >
+      This watchList is empty
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignSelf": "flex-end",
+        "flex": 1,
+        "marginTop": 10,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "borderRadius": 6,
+          "paddingHorizontal": 10,
+          "paddingVertical": 8,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Watchlist /> should render empty text and match snapshot when watchlist is empty 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#333",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "lineHeight": 18,
+        }
+      }
+    >
+      app
+    </Text>
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginRight": -15,
+          "marginVertical": -15,
+          "padding": 15,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          Object {
+            "transform": Array [
+              Object {
+                "rotateZ": "90deg",
+              },
+            ],
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 2,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#ccc",
+        }
+      }
+    >
+      This watchList is empty
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignSelf": "flex-end",
+        "flex": 1,
+        "marginTop": 10,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "borderRadius": 6,
+          "paddingHorizontal": 10,
+          "paddingVertical": 8,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Watchlist /> should render stock details and match snapshot when watchlist is not empty 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#333",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "lineHeight": 18,
+        }
+      }
+    >
+      app
+    </Text>
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginRight": -15,
+          "marginVertical": -15,
+          "padding": 15,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          Object {
+            "transform": Array [
+              Object {
+                "rotateZ": "90deg",
+              },
+            ],
+          }
+        }
+      />
+    </View>
+  </View>
+  <<WatchlistItem />
+    currPrice={123.1}
+    dailyChange={-3.4}
+    ticker="MSFT"
+    volume="43M"
+  />
+  <View
+    style={
+      Object {
+        "alignSelf": "flex-end",
+        "flex": 1,
+        "marginTop": 10,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "borderRadius": 6,
+          "paddingHorizontal": 10,
+          "paddingVertical": 8,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Watchlist /> should render stock details and match snapshot when watchlist is not open 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#333",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "lineHeight": 18,
+        }
+      }
+    >
+      app
+    </Text>
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginRight": -15,
+          "marginVertical": -15,
+          "padding": 15,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          Object {
+            "transform": Array [
+              Object {
+                "rotateZ": "90deg",
+              },
+            ],
+          }
+        }
+      />
+    </View>
+  </View>
+  <<WatchlistItem />
+    currPrice={123.1}
+    dailyChange={-3.4}
+    ticker="MSFT"
+    volume="43M"
+  />
+  <View
+    style={
+      Object {
+        "alignSelf": "flex-end",
+        "flex": 1,
+        "marginTop": 10,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "borderRadius": 6,
+          "paddingHorizontal": 10,
+          "paddingVertical": 8,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Watchlist /> should render stock details and match snapshot when watchlist is open 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 6,
+        "elevation": 3,
+        "marginBottom": 15,
+        "padding": 15,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "x": 0,
+          "y": 4,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+      },
+      null,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#333",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "lineHeight": 18,
+        }
+      }
+    >
+      app
+    </Text>
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginRight": -15,
+          "marginVertical": -15,
+          "padding": 15,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          Object {
+            "transform": Array [
+              Object {
+                "rotateZ": "90deg",
+              },
+            ],
+          }
+        }
+      />
+    </View>
+  </View>
+  <<WatchlistItem />
+    currPrice={123.1}
+    dailyChange={-3.4}
+    ticker="MSFT"
+    volume="43M"
+  />
+  <View
+    style={
+      Object {
+        "alignSelf": "flex-end",
+        "flex": 1,
+        "marginTop": 10,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "borderRadius": 6,
+          "paddingHorizontal": 10,
+          "paddingVertical": 8,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;

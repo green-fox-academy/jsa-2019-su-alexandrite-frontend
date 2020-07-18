@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Investments /> Should render and match the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#f4f6f8",
+      "flex": 1,
+      "padding": 15,
+    }
+  }
+>
+  <<PortfolioValue /> />
+  <<PortfolioNews /> />
+</View>
+`;

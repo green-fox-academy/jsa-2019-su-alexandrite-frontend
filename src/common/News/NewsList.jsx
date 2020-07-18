@@ -12,7 +12,7 @@ import useFetchStockNews from './useFetchStockNews';
 import ErrorMessage from '../ErrorMessage';
 import Card from '../Card';
 
-const ListFooter = ({ errorMessage, isLoading, pageNumber }) => {
+export const ListFooter = ({ errorMessage, isLoading, pageNumber }) => {
   if (pageNumber !== 1) {
     if (errorMessage) {
       return (
